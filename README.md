@@ -18,7 +18,7 @@ La struttura della repository si presenta nel seguente modo:
 |–– .gitignore
 |–– .travis.yml
 |–– build.gradle
-|–– Caso di studio.md
+|–– Assegnazione progetto.md
 |–– Guida per lo studente.md
 |–– gradlew
 |–– gradle.bat
@@ -37,7 +37,7 @@ Nel seguito si dettagliano i ruoli dei diversi componenti:
 - **.gitignore**: specifica tutti i file che devono essere esclusi dal sistema di controllo versione.
 - **.travis.yml**: dettaglia le direttive per assicurare la *continuous integration* attraverso l’uso di Travis CI;
 - **build.gradle**: esplicita le direttive e la configurazione per *Gradle*. 
-- **Caso di studio.md**: fare riferimento a questo file per la descrizione dettagliata del progetto;
+- **Assegnazione progetto.md**: fare riferimento a questo file per la descrizione dettagliata del progetto assegnato;
 - **Guida per lo studente.pdf:**: elenca e descrive tutti i passi di configurazione necessari per attivare l’intero flusso di lavoro dietro lo sviluppo del progetto;
 - **gradlew & gradlew.bat**: sono i file eseguibili di *Gradle*, rispettivamente per Unix e per Windows. Vengono generati automaticamente da Eclipse;
 - **settings.gradle**: file di configurazione di *Gradle*. Anche quest’ultimo viene generato automaticamente da Eclipse.
