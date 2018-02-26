@@ -38,7 +38,7 @@ Nel seguito si dettagliano i ruoli dei diversi componenti:
 - **.travis.yml**: dettaglia le direttive per assicurare la *continuous integration* attraverso l’uso di Travis CI;
 - **build.gradle**: esplicita le direttive e la configurazione per *Gradle*. 
 - **Assegnazione progetto.md**: fare riferimento a questo file per la descrizione dettagliata del progetto assegnato;
-- **Guida per lo studente.pdf:**: elenca e descrive tutti i passi di configurazione necessari per attivare l’intero flusso di lavoro dietro lo sviluppo del progetto;
+- **Guida per lo studente.md:**: elenca e descrive tutti i passi di configurazione necessari per attivare l’intero flusso di lavoro dietro lo sviluppo del progetto;
 - **gradlew & gradlew.bat**: sono i file eseguibili di *Gradle*, rispettivamente per Unix e per Windows. Vengono generati automaticamente da Eclipse;
 - **settings.gradle**: file di configurazione di *Gradle*. Anche quest’ultimo viene generato automaticamente da Eclipse.
 - **Workflow.xml**: descrive il flusso di lavoro attraverso un diagramma di attività in UML.
