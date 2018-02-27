@@ -20,10 +20,10 @@ cache:
     - $HOME/.gradle/wrapper/
 
 script:
-  - ./gradlew check && ./gradlew dockerDistTar && docker build -t $DOCKER_ORGANIZATION/$DOCKER_REPO:1.0 ./build/docker/
+  - ./gradlew check && ./gradlew dockerDistTar && docker build -t $DOCKER_ORGANIZATION/$DOCKER_REPO ./build/docker/
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" AND "$TRAVIS_TEST_RESULT" == 0]; then
-    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
-    docker push $DOCKER_ORGANIZATION/$DOCKER_REPO:1.0;
+  - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_TEST_RESULT" == 0 ]; then 
+      docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+      docker push $DOCKER_ORGANIZATION/$DOCKER_REPO;
     fi

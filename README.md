@@ -1,5 +1,3 @@
-[![Build Status][image-1]][1]
-
 # SNA4Slack
 La struttura della repository si presenta nel seguente modo:
 ```
@@ -44,7 +42,3 @@ Nel seguito si dettagliano i ruoli dei diversi componenti:
 - **Workflow.xml**: descrive il flusso di lavoro attraverso un diagramma di attività in UML.
 
 In alcune cartelle è possibile notare la presenza di un unico file nascosto “.keep”: questo ha il solo scopo di richiedere a Git l’inclusione delle cartelle in cui è contenuto (Git esclude dal *versioning* le cartelle vuote). Pertanto, il file può essere ignorato o eventualmente cancellato nel momento in cui si inserisca almeno un altro file all’interno della cartella.
-
-[1]:	https://travis-ci.org/agiove3/SNA4Slack
-
-[image-1]:	https://travis-ci.org/agiove3/SNA4Slack.svg?branch=master

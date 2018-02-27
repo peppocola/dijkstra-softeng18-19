@@ -15,12 +15,13 @@
 
 - Iscrizione a [**github.com**](https://github.com)
 - Iscrizione a [**education.travis-ci.com**](https://education.travis-ci.com/) (tramite account GitHub) 
-- Iscrizione a [**docker.com**](https://www.docker.com)
+- Iscrizione a [**docker.com**](https://www.docker.com) (un account per gruppo)
 
 In aggiunta, occorre installare i seguenti strumenti:
 
 - [**Git**](https://git-scm.com/downloads)
 - [ **Docker**](https://www.docker.com/community-edition#/download)
+
 Si suppone che lo studente abbia già installato sulla sua macchina l’ultima versione di **Eclipse  for Java Developers** disponibile.
 
 ## Accettazione caso di studio e creazione team
@@ -66,9 +67,10 @@ Si desidera un feedback immediato dello stato della build in Travis CI, consulta
 Per rendersi operativi con il progetto in locale, occorre seguire questi passi.
 
 **Clonazione della repository remota**
+
 Come prima attività, è necessario clonare la repository remota sulla propria macchina. Procedere come segue:
 
-- Individuare la cartella nel proprio file system dove posizionare la cartella di progetto;
+- Individuare la posizione nel proprio file system dove clonare la cartella di progetto. *Per evitare successivi problemi con l'importazione di Eclipse, evitare di salvare la cartella di progetto nella root del workspace di Eclipse*;
 - Da terminale (Unix) o prompt dei comandi (Windows) spostarsi attraverso il comando *cd* nella cartella scelta al passo precedente;
 - Scrivere il comando `git clone <url>` , dove l’url è quello visibile da GitHub premendo il bottone *Clone or Download*, in alto a destra nell’interfaccia. Ad esempio:
 
@@ -77,6 +79,7 @@ Come prima attività, è necessario clonare la repository remota sulla propria m
 Se l’operazione è andata a buon fine, siamo quasi pronti per partire… Ma prima, è necessario importare il progetto in Eclipse!
 
 **Importazione del progetto in Eclipse**
+
 Per importare correttamente il progetto in Eclipse, si dovrà seguire solo un semplice accorgimento: anziché creare un progetto Java (scelta di default), si opterà per la creazione di un progetto Gradle. Più nel dettaglio: 
 
 - Da *File* selezionare la voce *Import* per importare il progetto;
@@ -89,6 +92,7 @@ Per importare correttamente il progetto in Eclipse, si dovrà seguire solo un se
 
 
 **Modifica della cartella di default per javadoc**
+
 La cartella di default per la generazione di *javadoc* è la cartella **doc**. Per conformità con la struttura della repository di base del progetto, dovremo modificare il percorso e puntare a **doc/javadoc**:
 
 - Premere il tasto destro sulla cartella di progetto di Eclipse. Scegliere quindi l’opzione *Properties*, in coda al menù contestuale;
@@ -138,22 +142,22 @@ Si svolgano le seguenti operazioni:
 - avviare Docker localmente (una volta aperta l’applicazione, bisogna attendere che nel menu di Docker compaia la scritta “Docker is running”)
 - digitare nel terminale il seguente comando:
 
-		docker pull <nome_account>/<nome_repository>:<version_number>
+		docker pull <nome_account>/<nome_repository>
 
-Ad esempio, per l’utente registrato su docker.com con l’username `json932` e per la repository denominata `sna4slack` nella sua prima versione, scriviamo:
+Ad esempio, per l’utente registrato su docker.com con l’username `json932` e per la repository denominata `sna4slack` nella sua ultima versione, scriviamo:
 
-	docker pull json932/sna4slack:1.0
+	docker pull json932/sna4slack
 
 Attendere che Docker scarichi l’immagine dell’applicazione.
 
 - digitare il comando:
 
-		docker run --rm <nome_account>/<nome_repository>:<version_number>
+		docker run --rm <nome_account>/<nome_repository>
 
 A questo punto l’applicazione verrà eseguita in un container sul computer locale.
 **N.B.:**
 
-1. Il `<version_number>` per l’intera durata del caso di studio si assume essere 1.0.
+1. Si omette di specificare esplicitamente il `<version_number>` poiché si assume per default la versione *:latest* dell'immagine caricata su *docker.com*.
 2. l’opzione `—-rm` serve per far sì che docker fermi l’esecuzione del container nel momento in cui l’applicazione eseguita al suo interno termina.
 
 ## Riferimenti
