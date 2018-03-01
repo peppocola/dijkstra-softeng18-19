@@ -1,4 +1,6 @@
 # Assegnazione Progetto
 
-Per la descrizione completa del progetto assegnato, si rimanda al seguente indirizzo:
+##sna4slack command
+Versione semplificata e command-line interface (CLI) di [SNA4Slack](http://score-contest.org/2018/projects/sna4slack.php)
+
 
