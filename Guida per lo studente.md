@@ -2,7 +2,7 @@
 
 ## Indice
 - Passi preliminari
-- Accettazione caso di studio e creazione team
+- Accettazione progetto e creazione team
 - Configurazione Travis CI
 - Configurazione locale del progetto
 - Lavoro sul codice dell’applicazione
@@ -11,7 +11,7 @@
 - Riferimenti
 
 ## Passi preliminari
-È necessario effettuare l’iscrizione a diversi servizi che saranno utilizzati durante tutto lo sviluppo del caso di studio. In particolare:
+È necessario effettuare l’iscrizione a diversi servizi che saranno utilizzati durante tutto lo sviluppo del progetto. In particolare:
 
 - Iscrizione a [**github.com**](https://github.com)
 - Iscrizione a [**education.travis-ci.com**](https://education.travis-ci.com/) (tramite account GitHub) 
@@ -24,8 +24,8 @@ In aggiunta, occorre installare i seguenti strumenti:
 
 Si suppone che lo studente abbia già installato sulla sua macchina l’ultima versione di **Eclipse  for Java Developers** disponibile.
 
-## Accettazione caso di studio e creazione team
-Mediante il canale *Slack* del corso, verrà comunicato un link di *GitHub Classroom* attraverso cui accettare l’assegnazione del caso di studio e creare, o partecipare, ad un team di lavoro. La schermata che apparirà all’apertura del link sarà simile a questa:
+## Accettazione progetto e creazione team
+Mediante il canale *Slack* del corso, verrà comunicato un link di *GitHub Classroom* attraverso cui accettare l’assegnazione del progetto e creare, o partecipare, a un team di lavoro. La schermata che apparirà all’apertura del link sarà simile a questa:
 
 ![](res/img/guida-studente/Schermata1.png)
 
@@ -33,7 +33,7 @@ Uno dei membri, per ogni gruppo, si prenderà carico di creare un nuovo team, in
 Questa procedura creerà automaticamente una repository privata nell’organizzazione “Ingegneria del Software, Cdl Informatica, UNIBA” con tutti i membri del gruppo all’interno.
 
 ## Configurazione Travis CI
-Dopo aver effettuato l’iscrizione e il login su *education.travis-ci.com* ed aver accettato l’assegnazione del caso di studio, occorrerà che uno dei membri del gruppo esegua qualche semplice passo di configurazione.
+Dopo aver effettuato l’iscrizione e il login su *education.travis-ci.com* ed aver accettato l’assegnazione del progetto, occorrerà che uno dei membri del gruppo esegua qualche semplice passo di configurazione.
 
 - Recarsi sulla propria pagina personale (cliccare sul proprio nome e foto di Github in alto a destra)
 - Nella parte sinistra dell’interfaccia dovrebbe essere visibile l’organizzazione “Ingegneria del Software, Cdl Informatica, UNIBA”. In caso positivo, selezionarla. In caso negativo provare a premere il bottone *Sync Account*.
