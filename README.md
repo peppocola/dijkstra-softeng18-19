@@ -18,11 +18,11 @@ La struttura della repository si presenta nel seguente modo:
 |–– build.gradle
 |–– Assegnazione progetto.md
 |–– Guida per lo studente.md
+|–– README.md
+|–– Workflow progetto.xml
 |–– gradlew
 |–– gradle.bat
-|–– README.md
 |–– settings.gradle
-|–– Workflow progetto.xml
 ```
 
 Nel seguito si dettagliano i ruoli dei diversi componenti:
