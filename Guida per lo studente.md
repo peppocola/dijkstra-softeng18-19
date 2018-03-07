@@ -2,7 +2,8 @@
 
 ## Indice
 - Passi preliminari
-- Accettazione progetto e creazione team
+- Comunicazione del gruppo su Slack 
+- Accettazione progetto e creazione team su GitHub Classroom
 - Configurazione Travis CI
 - Configurazione locale del progetto
 - Lavoro sul codice dell’applicazione
@@ -13,23 +14,34 @@
 ## Passi preliminari
 È necessario effettuare l’iscrizione a diversi servizi che saranno utilizzati durante tutto lo sviluppo del progetto. In particolare:
 
+- Iscrizione a [**Slack**](https://slack.com/) con nome e cognome (anche una foto non sarebbe male), possibilmente con lo stesso indirizzo email usato in ADA
+- Adesione al workspace Slack di progetto (ingsw1718) mediante link mostrato dal docente a lezione
 - Iscrizione a [**github.com**](https://github.com)
 - Iscrizione a [**education.travis-ci.com**](https://education.travis-ci.com/) (tramite account GitHub) 
 - Iscrizione a [**docker.com**](https://www.docker.com) (un account per gruppo)
 
 In aggiunta, occorre installare i seguenti strumenti:
 
+- [**Slack**](https://slack.com/) per desktop e mobile
 - [**Git**](https://git-scm.com/downloads)
-- [ **Docker**](https://www.docker.com/community-edition#/download)
+- [**Docker**](https://www.docker.com/community-edition#/download)
 
 Si suppone che lo studente abbia già installato sulla sua macchina l’ultima versione di **Eclipse  for Java Developers** disponibile.
 
-## Accettazione progetto e creazione team
-Mediante il canale *Slack* del corso, verrà comunicato un link di *GitHub Classroom* attraverso cui accettare l’assegnazione del progetto e creare, o partecipare, a un team di lavoro. La schermata che apparirà all’apertura del link sarà simile a questa:
+## Comunicazione del gruppo su Slack 
+Comunicazione del nome del gruppo al docente per la creazione di un «channel» di gruppo (inizialmente un *public channel*; a partire dalla prima iterazione sarà convertito in *private channel*)
+– Nome del gruppo = cognome di un vincitore del Turing Award 
+- Nome del gruppo tutto in minuscolo e senza spazi se composto 
+- Il nome del gruppo sarà lo stesso anche su GitHub Classroom, Travis CI e docker.com – 
+- Sottoscrizione del proprio «channel» di gruppo
+
+
+## Accettazione progetto e creazione team su GitHub Classroom
+Mediante *Slack*, verrà comunicato un link di *GitHub Classroom* attraverso cui accettare l’assegnazione del progetto e creare, o partecipare, a un team di lavoro. La schermata che apparirà all’apertura del link sarà simile a questa:
 
 ![](res/img/guida-studente/Schermata1.png)
 
-Uno dei membri, per ogni gruppo, si prenderà carico di creare un nuovo team, inserendo il nome pattuito preventivamente con il docente. A quel punto gli altri membri potranno aggiungersi tramite il pulsante *Join*.
+Uno dei membri, per ogni gruppo, si prenderà carico di creare un nuovo team, inserendo il nome usato precedentemente per il channel di Slack. A quel punto gli altri membri potranno aggiungersi tramite il pulsante *Join*.
 Questa procedura creerà automaticamente una repository privata nell’organizzazione “Ingegneria del Software, Cdl Informatica, UNIBA” con tutti i membri del gruppo all’interno.
 
 ## Configurazione Travis CI
