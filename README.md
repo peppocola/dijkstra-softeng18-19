@@ -1,4 +1,4 @@
-# SNA4Slack
+# sna4slack
 La struttura della repository si presenta nel seguente modo:
 ```
 |–– config
