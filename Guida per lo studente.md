@@ -15,7 +15,7 @@
 ## Continuous deployment pipeline
 La creazione e l'aggiornamento degli eseguibili coinvolge una serie di tool collegati in sequenza in modo che l'output del precedente sia l'input del successivo, come da figura.
 ![Continuous deployment pipeline](res/img/guida-studente/Pipeline.png)
-Di seguito si riportano le istruzioni dettagliate della pipeline.  
+Di seguito si riportano le istruzioni dettagliate per attivare la pipeline.  
 
 ## Passi preliminari
 È necessario effettuare l’iscrizione a diversi servizi che saranno utilizzati durante tutto lo sviluppo del progetto. In particolare:
