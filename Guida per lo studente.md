@@ -1,7 +1,7 @@
 # Guida allo studente
 
 ## Indice
-- Continuous deployment pipeline
+- Pipeline di progetto
 - Passi preliminari
 - Comunicazione del gruppo su Slack 
 - Accettazione progetto e creazione team su GitHub Classroom
@@ -12,9 +12,9 @@
 - Eseguire immagine docker
 - Riferimenti
 
-## Continuous deployment pipeline
-La creazione e l'aggiornamento degli eseguibili coinvolge una serie di tool collegati in sequenza in modo che l'output del precedente sia l'input del successivo, come da figura.
-![Continuous deployment pipeline](res/img/guida-studente/Pipeline.png)
+## Pipeline di progetto
+La creazione e l'aggiornamento degli eseguibili coinvolge una *pipeline* ovvero serie di tool collegati in sequenza in modo che l'output del precedente sia l'input del successivo, come da figura.
+![pipeline](res/img/guida-studente/Pipeline.png)
 Di seguito si riportano le istruzioni dettagliate per attivare la pipeline.  
 
 ## Passi preliminari
