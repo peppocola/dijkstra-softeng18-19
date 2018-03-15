@@ -5,9 +5,12 @@ public class Main {
 	 * This is the main entry of the application
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Hello World!");
-	}
+		public int addition(int a, int b) {
+			return a + b;
+		}
+
+		public float divide(int num, int div) {
+			return new Float(num / div);
+		}
 
 }
