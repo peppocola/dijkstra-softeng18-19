@@ -10,8 +10,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import it.uniba.example.utils.math.MathUtils;
 
@@ -20,7 +18,6 @@ import it.uniba.example.utils.math.MathUtils;
  * are meant to show you how to create your own JUnit 5 test cases for your
  * code.
  */
-@RunWith(JUnitPlatform.class)
 public class MathUtilsTest {
 
 	private static MathUtils mu = null;

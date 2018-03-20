@@ -11,8 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import it.uniba.example.utils.strings.StringUtils;
 
@@ -21,7 +19,6 @@ import it.uniba.example.utils.strings.StringUtils;
  * are meant to show you how to create your own JUnit 5 test cases for your
  * code.
  */
-@RunWith(JUnitPlatform.class)
 public class StringUtilsTest {
 
 	@Test
