@@ -1,7 +1,7 @@
 package it.uniba.example.utils.strings;
 
 /**
- * This class and package are for demo purpose only and must be deleted.
+ * This class is demo purpose only and must be deleted.
  */
 public class StringUtils {
 

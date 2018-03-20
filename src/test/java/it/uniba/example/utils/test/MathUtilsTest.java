@@ -1,4 +1,4 @@
-package it.uniba.example.utils.math.test;
+package it.uniba.example.utils.test;
 
 import static org.junit.Assume.assumeNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,9 +14,8 @@ import org.junit.jupiter.api.Test;
 import it.uniba.example.utils.math.MathUtils;
 
 /**
- * This class and package are for demo purpose only and must be deleted. They
- * are meant to show you how to create your own JUnit 5 test cases for your
- * code.
+ * This class is for demo purpose only and must be deleted. It is meant to show
+ * you how to create your own JUnit 5 test cases for your code.
  */
 public class MathUtilsTest {
 

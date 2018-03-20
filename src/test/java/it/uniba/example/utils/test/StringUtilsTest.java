@@ -1,4 +1,4 @@
-package it.uniba.example.utils.strings.test;
+package it.uniba.example.utils.test;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,9 +15,8 @@ import org.junit.jupiter.api.Test;
 import it.uniba.example.utils.strings.StringUtils;
 
 /**
- * This class and packages are for demo purpose only and must be deleted. They
- * are meant to show you how to create your own JUnit 5 test cases for your
- * code.
+ * This class is for demo purpose only and must be deleted. It is meant to show
+ * you how to create your own JUnit 5 test cases for your code.
  */
 public class StringUtilsTest {
 
