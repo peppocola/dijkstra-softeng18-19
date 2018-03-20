@@ -58,18 +58,16 @@ repositories {
 }
 
 dependencies {
-	// For internal usage
+    // For internal usage
     compile 'com.google.guava:guava:21.0'
     
     // Compile all jars in the lib directory of the project
     //compile fileTree(dir:'lib', include: ['*.jar'])
-
-    // Use JUnit test framework
-    //testCompile 'junit:junit:4.12'
     
     // JUnit Jupiter API and TestEngine implementation
-	testCompile("org.junit.jupiter:junit-jupiter-api:5.0.0")
-	testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0")
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.0.0")
+    testCompile("org.junit.platform:junit-platform-runner:1.0.0")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0")
   
 }
 
