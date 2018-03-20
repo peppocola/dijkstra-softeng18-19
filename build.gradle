@@ -160,5 +160,5 @@ test {
 
 
 // Main class
-mainClassName = 'main/Main'
+mainClassName = 'it.uniba.main/Main'
 
