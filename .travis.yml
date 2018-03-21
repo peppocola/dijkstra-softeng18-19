@@ -5,11 +5,11 @@ language: java
 jdk:
   - oraclejdk8
 
-before_install:
-  - gradle wrapper
+#before_install:
+#  - gradle wrapper
 
-install:
-  - gradle assemble
+#install:
+#  - gradle assemble
 
 services:
   - docker
