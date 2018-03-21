@@ -5,6 +5,9 @@ language: java
 jdk:
   - oraclejdk8
 
+before_install:
+  - gradle wrapper
+
 install:
   - gradle assemble
 
