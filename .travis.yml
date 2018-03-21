@@ -19,4 +19,4 @@ after_success:
       docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
       docker push $DOCKER_ORGANIZATION/$DOCKER_REPO;
     fi
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -t b4ecca35-ed02-4e87-9b34-fc8d814c2d5b
