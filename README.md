@@ -1,4 +1,4 @@
-# sna4slack
+# sna4slack   [![Build Status](https://travis-ci.com/softeng-inf-uniba/base1718.svg?token=qPSHqHRJS6eXDxLetTSE&branch=master)](https://travis-ci.com/softeng-inf-uniba/base1718)
 La struttura della repository si presenta nel seguente modo:
 ```
 |–– config
