@@ -134,9 +134,9 @@ Il workflow da utilizzare è il ![GitHub Flow](https://guides.github.com/introdu
 - Dopo l’esecuzione dei test è possibile lanciare gli strumenti di **Quality Assurance** (checkstyle, pmd, findbugs) per assicurarsi di aver scritto codice di qualità. Leggere la sezione *Controlli di Qualità* per ulteriori informazioni.
 - A questo punto, dunque, si può procedere all'apertura di una pull request, andando su GitHub e posizionandosi sul branch su cui si sta lavorando.
 - Scrivere un titolo conciso ed esplicativo per la pull request e una descrizione significativa per il revisore. Aggiungere un riferimento all'issue nella forma *Closes #n* e scegliere almeno un reviewer tra i componenti del team.
+- Si attiverà la costruzione della build e ci sarà da attendere qualche minuto. Se ci sono conflitti bisogna risolverli prima di riprovare il merge. Può essere utile consultare la ![documentazione](https://help.github.com/articles/about-merge-conflicts/) di GitHub e parlare con chi ha effettuato le modifiche in conflitto.  
 - Discutere eventuali commenti dei reviewer e apportare le modifiche se necessarie come commit sul branch di lavoro.
 - Ricevuta l'approvazione esplicita di almeno un componente del team, si può procedere da GitHub alla fusione del nuovo *branch* con il *master branch*.
-- Si attiverà la costruzione della build e ci sarà da attendere qualche minuto. Se ci sono conflitti bisogna risolverli prima di riprovare il merge. Può essere utile consultare la ![documentazione](https://help.github.com/articles/about-merge-conflicts/) di GitHub e parlare con chi ha effettuato le modifiche in conflitto.  
 - Per completare il lavoro, cancellare il branch su GitHub e sul repository locale
 
 ## Controlli di Qualità
