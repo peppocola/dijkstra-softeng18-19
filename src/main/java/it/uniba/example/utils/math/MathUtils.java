@@ -4,25 +4,17 @@ package it.uniba.example.utils.math;
  * This class and package are for demo purpose only and must be deleted.
  */
 public class MathUtils {
-
-	/**
-	 * Default empty constructor.
-	 */
-	public MathUtils() {
-
-	}
-
 	/**
 	 * Returns the arithmetic sum of two integers.
 	 * 
-	 * @param a
+	 * @param addend1
 	 *            First integer to sum.
-	 * @param b
+	 * @param addend2
 	 *            Second integer to sum.
 	 * @return The arithmetic sum of <code>a</code> and <code>b</code>.
 	 */
-	public int add(final int a, final int b) {
-		return a + b;
+	public int add(final int addend1, final int addend2) {
+		return addend1 + addend2;
 	}
 
 	/**

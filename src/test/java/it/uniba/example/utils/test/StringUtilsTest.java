@@ -47,8 +47,6 @@ public class StringUtilsTest {
 		// Test case with the age is null
 		String age = null;
 		Double actual = StringUtils.convertToDouble(age);
-		assertNull(actual, "The actual is not null");
-		// Java 8 Style
 		assertNull(actual, () -> "The actual is not null");
 	}
 
@@ -71,7 +69,6 @@ public class StringUtilsTest {
 		String input = null;
 
 		assertTrue(StringUtils.isNullOrBlank(input));
-		// Java 8 Lambdas Style
 		assertTrue(StringUtils.isNullOrBlank(input), () -> "The string is not null or blank");
 
 		// Test case with the input is empty
