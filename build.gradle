@@ -31,6 +31,7 @@ apply plugin: 'application'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 apply plugin: 'findbugs'
+apply plugin: 'jacoco'
 apply plugin: "com.bmuschko.docker-java-application"
 apply plugin: 'org.junit.platform.gradle.plugin'
 
@@ -40,6 +41,19 @@ apply plugin: 'org.junit.platform.gradle.plugin'
     //environmentVariable('JAVA_OPTS', '-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap')
 //}
 
+ sourceSets {
+      main {
+         java {
+            srcDir 'src/main/java'
+         }
+      }
+      test {
+         java {
+            srcDir 'src/test/java'
+         }
+      }
+}
+   
 docker {
     javaApplication {
         baseImage = 'openjdk:8'
@@ -76,6 +90,7 @@ findbugs {
   toolVersion = "3.0.1"
   effort = "max"
   //findbugsTest.enabled=false
+  sourceSets = [sourceSets.main]
 }
 
 pmd {
@@ -83,6 +98,7 @@ pmd {
   //pmdTest.enabled=false
   toolVersion = '5.8.1'
   consoleOutput = true
+  sourceSets = [sourceSets.main]
   ruleSets = [
       //      'java-android',
             'java-basic',
@@ -116,7 +132,7 @@ pmd {
 checkstyle {
 	// Whether to allow the build to continue if there are warnings. Default: ignoreFailures = false
 	ignoreFailures = true
-	
+	sourceSets = [sourceSets.main]
 	// Checkstyle version
 	toolVersion "8.8"
 }
@@ -136,7 +152,7 @@ junitPlatform {
 	}
 	// configurationParameter 'junit.jupiter.conditions.deactivate', '*'
 	enableStandardTestTask true
-	reportsDir file('build/test-results/junit-platform') // this is the default
+	reportsDir file("${buildDir}/test-results/junit-platform") // this is the default
 	//logManager 'org.apache.logging.log4j.jul.LogManager'
 }
 
@@ -145,8 +161,19 @@ task wrapper(type: Wrapper) {
 	gradleVersion = '4.6.1'
 }
 
-tasks.withType(Checkstyle) {
-    exclude 'src/test/*'
+jacocoTestReport {
+    // Show code coverage results
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports after running tests."
+    executionData fileTree(project.rootDir.absolutePath).include("**/${buildDir}/jacoco/*.exec")
+    additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)    
+
+    reports {
+        xml.enabled true
+        xml.destination "${buildDir}/reports/jacoco/report.xml"
+        csv.enabled false
+        html.destination file("${buildDir}/reports/jacoco/reports.html")
+    }
 }
 
 test {
@@ -160,8 +187,9 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
+    
+    finalizedBy jacocoTestReport
 }
-
 
 // Main class
 mainClassName = 'it.uniba.main/Main'
