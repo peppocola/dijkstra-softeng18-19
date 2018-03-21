@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import it.uniba.example.utils.math.MathUtils;
@@ -17,6 +18,7 @@ import it.uniba.example.utils.math.MathUtils;
  * This class is for demo purpose only and must be deleted. It is meant to show
  * you how to create your own JUnit 5 test cases for your code.
  */
+@Tag("util")
 public class MathUtilsTest {
 
 	private static MathUtils mu = null;
