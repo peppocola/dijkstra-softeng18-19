@@ -15,8 +15,14 @@ buildscript {
     classpath "com.bmuschko:gradle-docker-plugin:3.2.3"
   }
 }
-plugins {
-  id "org.sonarqube" version "2.6.2"
+
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'org.junit.platform:junit-platform-gradle-plugin:1.1.0'
+	}
 }
 
 // Apply the java-library plugin to add support for Java Library
@@ -26,6 +32,7 @@ apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 apply plugin: 'findbugs'
 apply plugin: "com.bmuschko.docker-java-application"
+apply plugin: 'org.junit.platform.gradle.plugin'
 
 // You can add additional instructions to the dockerfile using dockerDistTar and Dockerfile task dsl:
 //dockerDistTar {
@@ -51,14 +58,16 @@ repositories {
 }
 
 dependencies {
-	// For internal usage
+    // For internal usage
     compile 'com.google.guava:guava:21.0'
     
     // Compile all jars in the lib directory of the project
     //compile fileTree(dir:'lib', include: ['*.jar'])
-
-    // Use JUnit test framework
-    testCompile 'junit:junit:4.12'
+    
+    // JUnit Jupiter API and TestEngine implementation
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.0.0")
+    testCompile("org.junit.platform:junit-platform-runner:1.0.0")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0")
   
 }
 
@@ -112,6 +121,44 @@ checkstyle {
 	toolVersion "8.8"
 }
 
+junitPlatform {
+	// platformVersion '1.1.0'
+	filters {
+		engines {
+			include 'junit-jupiter'
+			// exclude 'custom-engine'
+		}
+		tags {
+			// include 'fast'
+			exclude 'slow'
+		}
+		// includeClassNamePattern '.*Test'
+	}
+	// configurationParameter 'junit.jupiter.conditions.deactivate', '*'
+	enableStandardTestTask true
+	reportsDir file('build/test-results/junit-platform') // this is the default
+	//logManager 'org.apache.logging.log4j.jul.LogManager'
+}
+
+task wrapper(type: Wrapper) {
+	description = 'Generates gradlew[.bat] scripts'
+	gradleVersion = '4.6.1'
+}
+
+test {
+    // Enable JUnit 5 (Gradle 4.6+).
+    useJUnitPlatform()
+
+    // Always run tests, even when nothing changed.
+    dependsOn 'cleanTest'
+
+    // Show test results.
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+
 // Main class
-mainClassName = 'main/Main'
+mainClassName = 'it.uniba.main/Main'
 
