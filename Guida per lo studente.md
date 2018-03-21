@@ -3,7 +3,7 @@
 ## Indice
 - Pipeline di progetto
 - Passi preliminari
-- Comunicazione del gruppo su Slack 
+- Comunicazione del gruppo su Slack
 - Accettazione progetto e creazione team su GitHub Classroom
 - Configurazione Travis CI
 - Configurazione locale del progetto
@@ -23,7 +23,7 @@ Di seguito si riportano le istruzioni dettagliate per attivare la pipeline.
 - Iscrizione a [**Slack**](https://slack.com/) con nome e cognome (anche una foto non sarebbe male), possibilmente con lo stesso indirizzo email usato in ADA
 - Adesione al workspace Slack di progetto (ingsw1718) mediante link mostrato dal docente a lezione
 - Iscrizione a [**github.com**](https://github.com)
-- Iscrizione a [**education.travis-ci.com**](https://education.travis-ci.com/) (tramite account GitHub) 
+- Iscrizione a [**education.travis-ci.com**](https://education.travis-ci.com/) (tramite account GitHub)
 - Iscrizione a [**docker.com**](https://www.docker.com) (un account per gruppo)
 
 In aggiunta, occorre installare i seguenti strumenti:
@@ -34,11 +34,11 @@ In aggiunta, occorre installare i seguenti strumenti:
 
 Si suppone che lo studente abbia già installato sulla sua macchina l’ultima versione di **Eclipse  for Java Developers** disponibile.
 
-## Comunicazione del gruppo su Slack 
+## Comunicazione del gruppo su Slack
 Comunicazione del nome del gruppo al docente per la creazione di un «channel» di gruppo (inizialmente un *public channel*; a partire dalla prima iterazione sarà convertito in *private channel*)
-– Nome del gruppo = cognome di un vincitore del Turing Award 
-- Nome del gruppo tutto in minuscolo e senza spazi se composto 
-- Il nome del gruppo sarà lo stesso anche su GitHub Classroom, Travis CI e docker.com – 
+– Nome del gruppo = cognome di un vincitore del Turing Award
+- Nome del gruppo tutto in minuscolo e senza spazi se composto
+- Il nome del gruppo sarà lo stesso anche su GitHub Classroom, Travis CI e docker.com –
 - Sottoscrizione del proprio «channel» di gruppo
 
 
@@ -59,7 +59,7 @@ Dopo aver effettuato l’iscrizione e il login su *education.travis-ci.com* ed a
 ![](res/img/guida-studente/OrganizzazioneTravisCI.png)
 
 - Selezionare la repository con il nome del proprio team, all’interno della pagina dell’organizzazione.
-- Selezionare quindi *More options* e poi *Settings* 
+- Selezionare quindi *More options* e poi *Settings*
 
 ![](res/img/guida-studente/Schermata2.png)
 
@@ -98,7 +98,7 @@ Se l’operazione è andata a buon fine, siamo quasi pronti per partire… Ma pr
 
 **Importazione del progetto in Eclipse**
 
-Per importare correttamente il progetto in Eclipse, si dovrà seguire solo un semplice accorgimento: anziché creare un progetto Java (scelta di default), si opterà per la creazione di un progetto Gradle. Più nel dettaglio: 
+Per importare correttamente il progetto in Eclipse, si dovrà seguire solo un semplice accorgimento: anziché creare un progetto Java (scelta di default), si opterà per la creazione di un progetto Gradle. Più nel dettaglio:
 
 - Da *File* selezionare la voce *Import* per importare il progetto;
 - Selezionare sotto la cartella *Gradle*, la voce *Existing Gradle Project*
@@ -122,34 +122,35 @@ La cartella di default per la generazione di *javadoc* è la cartella **doc**. P
 - Chiudere la finestra con *Apply and Close*.
 
 ## Lavoro sul codice dell’applicazione
-Il workflow da utilizzare con git prevede essenzialmente i seguenti passi.
+Il workflow da utilizzare è il ![GitHub Flow](https://guides.github.com/introduction/flow/) e prevede essenzialmente i seguenti passi.
 
-- Per ogni nuova *feature* o *bug fix* occorre creare un nuovo **branch** attraverso il comando `git branch <nome branch> ` ed eseguire `git checkout <nome branch>` per passare dal *master branch* al nuovo branch appena creato. In un comando solo:
-	
-		git checkout -b <nome-branch> 
-	
+- Subito prima di lavorare sul codice, è opportuno eseguire una `git pull` e lavorare sul codice più aggiornato
+- Per ogni nuova *feature* *user story* o *bug fix* occorre creare o scegliere l’issue su cui lavorare su GitHub e segnarsi come **assigned**
+- Creare un nuovo **branch** sul repository locale con il numero dell'issue o il titolo come nome del branch (*issue#n* oppure *titoloissue*) attraverso il comando `git branch <nome branch> `
+- Spostarsi sul nuovo branch appena creato con il comando `git checkout <nome branch>` 	
 - Lavorare al codice dell’applicazione. È consigliabile fare piccole **commit** autoconsistenti di volta in volta, con uno scopo ben preciso ed una descrizione dettagliata. *Evitare di fare un’unica grande commit alla fine del lavoro, a meno che la feature o il bug fix non sia davvero di poco conto.*
-- Ad ogni nuova **commit** può seguire una **push**. Questo è lasciato alla discrezionalità dello studente; *ovviamente, nel caso in cui ad una feature stiano lavorando più persone, la push diventa necessaria!*
-- Quando la modifica è stata correttamente implementata, si consiglia *caldamente* di scrivere adeguati test per validarne la correttezza.
+- Aggiorna con regolarità il branch sul server origin in GitHub con il comando `git push origin <nome branch>`
+- Quando la modifica è stata correttamente implementata, si consiglia di scrivere adeguati test di unità per validarne la correttezza.
 - Dopo l’esecuzione dei test è possibile lanciare gli strumenti di **Quality Assurance** (checkstyle, pmd, findbugs) per assicurarsi di aver scritto codice di qualità. Leggere la sezione *Controlli di Qualità* per ulteriori informazioni.
-- Subito prima della fusione del nuovo *branch* con il *master branch*, è opportuno eseguire una `git pull` e lavorare sul codice più aggiornato. Risolvere eventuali conflitti presenti; 
-- A questo punto, dunque, si può procedere alla fusione del nuovo *branch* con il *master branch*. Se non lo si è già fatto, spostarsi sul master branch con una `git checkout master` ed eseguire il comando:
-	`git merge master`
-- Per completare il lavoro, eseguire una push sulla repository remota.
-	`git push origin master` o più semplicemente `git push`
+- A questo punto, dunque, si può procedere all'apertura di una pull request, andando su GitHub e posizionandosi sul branch su cui si sta lavorando.
+- Scrivere un titolo conciso ed esplicativo per la pull request e una descrizione significativa per il revisore. Aggiungere un riferimento all'issue nella forma *Closes #n* e scegliere almeno un reviewer tra i componenti del team.
+- Discutere eventuali commenti dei reviewer e apportare le modifiche se necessarie come commit sul branch di lavoro.
+- Ricevuta l'approvazione esplicita di almeno un componente del team, si può procedere da GitHub alla fusione del nuovo *branch* con il *master branch*.
+- Si attiverà la costruzione della build e ci sarà da attendere qualche minuto. Se ci sono conflitti bisogna risolverli prima di riprovare il merge. Può essere utile consultare la ![documentazione](https://help.github.com/articles/about-merge-conflicts/) di GitHub e parlare con chi ha effettuato le modifiche in conflitto.  
+- Per completare il lavoro, cancellare il branch su GitHub e sul repository locale
 
 ## Controlli di Qualità
 È possibile operare dei controlli statici sulla qualità del codice Java (QA, quality assurance), grazie a strumenti come *checkstyle*, *pmd*, *findbugs*. Per lanciarli in un colpo solo si può utilizzare *Gradle*.
 
-- Assicurarsi che sia aperta la vista *Gradle Tasks* in Eclipse. In caso negativo, dal menù *Window*, selezionare *Show View* e poi *Other*. La vista si troverà sotto la voce *Gradle*. Nell’eventualità che la vista non compaia, provare a cambiare *perspective* su Eclipse e selezionare *Java EE*: ciò si può fare o premendo Java EE dal bottone in alto a destra o da menù *Window-\>Perspective-\>Open Perspective-\>Other* e poi *Java EE*. 
-- Selezionare il nome del progetto e, tra le diverse opzioni, *verification*. 
+- Assicurarsi che sia aperta la vista *Gradle Tasks* in Eclipse. In caso negativo, dal menù *Window*, selezionare *Show View* e poi *Other*. La vista si troverà sotto la voce *Gradle*. Nell’eventualità che la vista non compaia, provare a cambiare *perspective* su Eclipse e selezionare *Java EE*: ciò si può fare o premendo Java EE dal bottone in alto a destra o da menù *Window-\>Perspective-\>Open Perspective-\>Other* e poi *Java EE*.
+- Selezionare il nome del progetto e, tra le diverse opzioni, *verification*.
 - Avviare il controllo attraverso l’operazione di **check**, che eseguirà automaticamente sia la build del progetto, sia i test di unità, sia i controlli di qualità.
 
  ![](res/img/guida-studente/Java_-_SNA4Slack_src_main_java_main_Main_java_-_Eclipse_IDE.png)
 
 - Per verificare gli errori, eventualmente individuati dagli strumenti di QA, si deve aprire la vista *Console*.
 
-**N.B.** Nella configurazione attuale del progetto la presenza di errori non impedisce la corretta compilazione del codice. Si suggerisce, tuttavia, di limitare il più possibile *warnings* ed *errori* segnalati da questi strumenti. 
+**N.B.** Nella configurazione attuale del progetto la presenza di errori non impedisce la corretta compilazione del codice. Si suggerisce, tuttavia, di limitare il più possibile *warnings* ed *errori* segnalati da questi strumenti.
 
 
 ## Esecuzione immagine docker
