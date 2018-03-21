@@ -51,13 +51,13 @@ public final class StringUtils {
 		String concatStr = null;
 
 		if (strings != null && strings.length > 0) {
-			StringBuilder sb = new StringBuilder();
-			for (String str : strings) {
+			final StringBuilder stringBuilder = new StringBuilder();
+			for (final String str : strings) {
 				if (!isNullOrBlank(str)) {
-					sb.append(str);
+					stringBuilder.append(str);
 				}
 			}
-			concatStr = sb.toString();
+			concatStr = stringBuilder.toString();
 		}
 		return concatStr;
 	}
