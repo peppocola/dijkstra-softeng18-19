@@ -13,7 +13,7 @@
 - Riferimenti
 
 ## Pipeline di progetto
-La creazione e l'aggiornamento degli eseguibili coinvolge una *pipeline* ovvero una serie di tool collegati in sequenza in modo che l'output del precedente sia l'input del successivo, come da figura.
+La creazione e l'aggiornamento degli eseguibili coinvolge una *toolchain* in *pipeline* ovvero una serie di tool collegati in sequenza in modo che l'output del precedente sia l'input del successivo, come da figura.
 ![pipeline](res/img/guida-studente/Pipeline.png)
 Di seguito si riportano le istruzioni dettagliate per attivare la pipeline.  
 
