@@ -134,10 +134,10 @@ Il workflow da utilizzare è il ![GitHub Flow](https://guides.github.com/introdu
 - Dopo l’esecuzione dei test è possibile lanciare gli strumenti di **Quality Assurance** (checkstyle, pmd, findbugs) per assicurarsi di aver scritto codice di qualità. Leggere la sezione *Controlli di Qualità* per ulteriori informazioni.
 - A questo punto, dunque, si può procedere all'apertura di una pull request, andando su GitHub e posizionandosi sul branch su cui si sta lavorando.
 - Scrivere un titolo conciso ed esplicativo per la pull request e una descrizione significativa per il revisore. Aggiungere un riferimento all'issue nella forma *Closes #n* e scegliere almeno un reviewer tra i componenti del team.
-- Si attiverà la costruzione della build e ci sarà da attendere qualche minuto. Se ci sono conflitti bisogna risolverli prima di riprovare il merge. Può essere utile consultare la ![documentazione](https://help.github.com/articles/about-merge-conflicts/) di GitHub e parlare con chi ha effettuato le modifiche in conflitto.  
-- Discutere eventuali commenti dei reviewer e apportare le modifiche se necessarie come commit sul branch di lavoro.
-- Ricevuta l'approvazione esplicita di almeno un componente del team, si può procedere da GitHub alla fusione del nuovo *branch* con il *master branch*.
-- Per completare il lavoro, cancellare il branch su GitHub e sul repository locale
+- Una volta lanciata la pull request, si attiverà la costruzione automatica della build e ci sarà da attendere qualche minuto. In caso di conflitti, bisogna risolverli. Può essere utile consultare la ![documentazione](https://help.github.com/articles/about-merge-conflicts/) di GitHub e comunicare con chi ha effettuato le modifiche in conflitto.  
+- Discutere eventuali commenti dei reviewer e apportare le modifiche se necessarie come commit sul branch di lavoro. Ricordare che i commit aggiuntivi vanno comunque propagati sul repository remoto in GitHub mediante comando `git push origin <nome branch>`.
+- Ricevuta l'approvazione esplicita di almeno un componente del team, si può procedere da GitHub al merge del nuovo *branch* con il *master branch* sul repository remoto.
+- Se il merge è andato a buon fine, per completare il lavoro, cancellare il branch sul repository remoto (mediante interfaccia web di GitHub) e sul repository locale con `git branch -d <nome branch>`. Se quest'ultimo comando restituisce un messaggio di errore del tipo 'error: The branch <nome branch> is not fully merged', solo se il merge su GitHub è stato veramente completato con successo, ripetere il comando con il flag -D: `git branch -D <nome branch>`
 
 ## Controlli di Qualità
 È possibile operare dei controlli statici sulla qualità del codice Java (QA, quality assurance), grazie a strumenti come *checkstyle*, *pmd*, *findbugs*. Per lanciarli in un colpo solo si può utilizzare *Gradle*.
