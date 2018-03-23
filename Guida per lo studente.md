@@ -140,7 +140,7 @@ Il workflow da utilizzare è il [GitHub Flow](https://guides.github.com/introduc
 - Se il merge è andato a buon fine, per completare il lavoro, cancellare il branch sul repository remoto (mediante interfaccia web di GitHub) e sul repository locale con la sequenza di comandi: `git checkout master`, `git pull` e `git branch -d <nome branch>`.
 
 ## Controlli di Qualità
-È possibile operare dei controlli statici sulla qualità del codice Java (QA, quality assurance), grazie a strumenti come *checkstyle*, *pmd*, *findbugs*. Per lanciarli in un colpo solo si può utilizzare *Gradle*.
+È possibile operare dei controlli statici e dinamici sulla qualità del codice Java (QA, quality assurance), grazie a strumenti come *JUnit*, *JaCoCo*, *Codecov*, *Checkstyle*, *PMD*, *Findbugs*. Per lanciarli in un colpo solo si può utilizzare *Gradle*.
 
 - Assicurarsi che sia aperta la vista *Gradle Tasks* in Eclipse. In caso negativo, dal menù *Window*, selezionare *Show View* e poi *Other*. La vista si troverà sotto la voce *Gradle*. Nell’eventualità che la vista non compaia, provare a cambiare *perspective* su Eclipse e selezionare *Java EE*: ciò si può fare o premendo Java EE dal bottone in alto a destra o da menù *Window-\>Perspective-\>Open Perspective-\>Other* e poi *Java EE*.
 - Selezionare il nome del progetto e, tra le diverse opzioni, *verification*.
