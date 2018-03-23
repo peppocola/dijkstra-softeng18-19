@@ -8,7 +8,7 @@
 - Configurazione Travis CI
 - Configurazione locale del progetto
 - Lavoro sul codice dell’applicazione
-- Controlli di Qualità
+- Test automatici e Controlli di Qualità
 - Eseguire immagine docker
 - Riferimenti
 
@@ -143,8 +143,8 @@ Il workflow da utilizzare è il [GitHub Flow](https://guides.github.com/introduc
 - Ricevuta l'approvazione esplicita di almeno un componente del team, si può procedere da GitHub al merge del nuovo *branch* con il *master branch* sul repository remoto.
 - Se il merge è andato a buon fine, per completare il lavoro, cancellare il branch sul repository remoto (mediante interfaccia web di GitHub) e sul repository locale con la sequenza di comandi: `git checkout master`, `git pull` e `git branch -d <nome branch>`.
 
-## Controlli di Qualità
-È possibile operare dei controlli statici e dinamici sulla qualità del codice Java (QA, quality assurance), grazie a strumenti come *JUnit*, *JaCoCo*, *Codecov*, *Checkstyle*, *PMD*, *Findbugs*. Per lanciarli in un colpo solo si può utilizzare *Gradle*.
+## Test automatici e Controlli di Qualità
+È possibile misurare la copertura dei test automatici e operare dei controlli statici sulla qualità del codice Java (QA, quality assurance), grazie a strumenti come *JUnit*, *JaCoCo*, *Codecov*, *Checkstyle*, *PMD*, *Findbugs*. Per lanciarli in un colpo solo si può utilizzare *Gradle*.
 
 - Assicurarsi che sia aperta la vista *Gradle Tasks* in Eclipse. In caso negativo, dal menù *Window*, selezionare *Show View* e poi *Other*. La vista si troverà sotto la voce *Gradle*. Nell’eventualità che la vista non compaia, provare a cambiare *perspective* su Eclipse e selezionare *Java EE*: ciò si può fare o premendo Java EE dal bottone in alto a destra o da menù *Window-\>Perspective-\>Open Perspective-\>Other* e poi *Java EE*.
 - Selezionare il nome del progetto e, tra le diverse opzioni, *verification*.
