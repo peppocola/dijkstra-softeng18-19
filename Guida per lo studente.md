@@ -122,7 +122,7 @@ La cartella di default per la generazione di *javadoc* è la cartella **doc**. P
 - Chiudere la finestra con *Apply and Close*.
 
 ## Lavoro sul codice dell’applicazione
-Il workflow da utilizzare è il ![GitHub Flow](https://guides.github.com/introduction/flow/) e prevede essenzialmente i seguenti passi.
+Il workflow da utilizzare è il ![GitHub Flow](https://guides.github.com/introduction/flow/) e prevede essenzialmente i seguenti passi:
 
 - Subito prima di lavorare sul codice, è opportuno eseguire una `git pull` e lavorare sul codice più aggiornato
 - Per ogni nuova *feature* *user story* o *bug fix* occorre creare o scegliere l’issue su cui lavorare su GitHub e segnarsi come **assigned**
