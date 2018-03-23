@@ -6,6 +6,8 @@
 - Comunicazione del gruppo su Slack
 - Accettazione progetto e creazione team su GitHub Classroom
 - Configurazione Travis CI
+- Configurazione Codecov
+- Aggiunta badges in GitHub
 - Configurazione locale del progetto
 - Lavoro sul codice dell’applicazione
 - Test automatici e Controlli di Qualità
@@ -24,6 +26,7 @@ Di seguito si riportano le istruzioni dettagliate per attivare la pipeline.
 - Adesione al workspace Slack di progetto (ingsw1718) mediante link mostrato dal docente a lezione
 - Iscrizione a [**github.com**](https://github.com)
 - Iscrizione a [**education.travis-ci.com**](https://education.travis-ci.com/) (tramite account GitHub)
+- Iscrizione a [**codecov.io**](https://codecov.io/) (tramite account GitHub)
 - Iscrizione a [**docker.com**](https://www.docker.com) (un account per gruppo)
 
 In aggiunta, occorre installare i seguenti strumenti:
@@ -51,7 +54,7 @@ Uno dei membri, per ogni gruppo, si prenderà carico di creare un nuovo team, in
 Questa procedura creerà automaticamente una repository privata nell’organizzazione “Ingegneria del Software, Cdl Informatica, UNIBA” con tutti i membri del gruppo all’interno.
 
 ## Configurazione Travis CI
-Dopo aver effettuato l’iscrizione e il login su *education.travis-ci.com* ed aver accettato l’assegnazione del progetto, occorrerà che uno dei membri del gruppo esegua qualche semplice passo di configurazione.
+Dopo aver effettuato l’iscrizione e il login su *education.travis-ci.com* ed aver accettato l’assegnazione del progetto, occorrerà che uno dei componenti del gruppo esegua i seguenti passi di configurazione.
 
 - Recarsi sulla propria pagina personale (cliccare sul proprio nome e foto di Github in alto a destra)
 - Nella parte sinistra dell’interfaccia dovrebbe essere visibile l’organizzazione “Ingegneria del Software, Cdl Informatica, UNIBA”. In caso positivo, selezionarla. In caso negativo provare a premere il bottone *Sync Account*.
@@ -84,6 +87,39 @@ Si desidera un feedback immediato dello stato della build in Travis CI, consulta
 - Selezionare *Markdown*, anziché *Image URL*, nel secondo dropdown.
 - Copiare il codice generato in cima al file "README.md" nella cartella di progetto. Questo può essere fatto sia andando a modificare il file direttamente da Github, sia con una *commit* in locale, seguita da una push per aggiornare la repository remota.
 
+## Configurazione Codecov
+Dopo aver effettuato l’iscrizione e il login su *codecov.io*, occorrerà che uno dei componenti del gruppo esegua i seguenti passi di configurazione:
+
+1. Cliccare su *Add a repository*
+2. Cliccare sul nome del repository *base1718*
+3. Cliccare su *Settings* in alto a destra
+4. Cliccare su *Activate Repository* nella sezione Activation
+
+## Aggiunta badges in GitHub
+Per aggiungere il badge di build status di Travis CI nel README.md del repository su GitHub, a fianco del titolo del progetto (sna4slack), seguire le istruzioni seguenti: https://docs.travis-ci.com/user/status-images/
+
+La riga del titolo nel README.md sarà editata (usare direttamente l'editor di GitHub) come segue:
+```
+
+# sna4slack [![Build Status](https://travis-ci.com/<username>/base1718.svg?token=<tokenvalue>&branch=master)](https://travis-ci.com/<username>/base1718
+
+```
+
+Per aggiungere il badge di copertura del testing di Codecov nel README.md del repository su GitHub, a fianco del titolo, seguire le seguenti istruzioni:
+
+1. Andare sul sito di [Codecov](https://codecov.io/) con l'id di GitHub
+2. CLiccare sul repository *base1718*
+3. Cliccare sul pulsante *Copy* per copiare il token
+4. Cliccare su *Settings* in alto a destra
+5. Cliccare su *Badge* a sinistra
+6. Cliccare a destra sul pulsante *Copy* nella sezione Markdown
+7. Incollare (paste) la stringa copiata alla fine della riga del titolo in README.md
+
+Il titolo del README.md apparirà come nella seguente figura:
+
+![](res/img/guida-studente/Badges.png)
+
+I badge cambieranno dopo ogni build riflettendo lo stato del progetto.
 
 ## Configurazione locale del progetto
 Per rendersi operativi con il progetto in locale, occorre seguire questi passi.
