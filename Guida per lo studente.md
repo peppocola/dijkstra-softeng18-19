@@ -63,6 +63,10 @@ Dopo aver effettuato l’iscrizione e il login su *education.travis-ci.com* ed a
 
 ![](res/img/guida-studente/Schermata2.png)
 
+- Nelle sezioni *General* e *Auto Cancellation* selezionare le opzioni come da figura che seguente
+
+![](res/img/guida-studente/Schermata3.png)
+
 - Nella sezione *Environment Variables*, tramite il tasto *Add*, definire le seguenti 4 Variabili d’ambiente:
 
 	- **DOCKER\_ORGANIZATION**: il nome dell’organizzazione su *docker.com*
