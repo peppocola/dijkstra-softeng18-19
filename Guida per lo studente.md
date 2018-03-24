@@ -91,7 +91,7 @@ Si desidera un feedback immediato dello stato della build in Travis CI, consulta
 Dopo aver effettuato l’iscrizione e il login su *codecov.io*, occorrerà che uno dei componenti del gruppo esegua i seguenti passi di configurazione:
 
 1. Cliccare su *Add a repository*
-2. Cliccare sul nome del repository *base1718*
+2. Cliccare sul nome del repository *<nomegruppo>*
 3. Cliccare su *Settings* in alto a destra
 4. Cliccare su *Activate Repository* nella sezione Activation
 
@@ -101,14 +101,14 @@ Per aggiungere il badge di build status di Travis CI nel README.md del repositor
 La riga del titolo nel README.md sarà editata (usare direttamente l'editor di GitHub) come segue:
 ```
 
-# sna4slack [![Build Status](https://travis-ci.com/<username>/base1718.svg?token=<tokenvalue>&branch=master)](https://travis-ci.com/<username>/base1718
+# sna4slack [![Build Status](https://travis-ci.com/softeng-inf-uniba/<nomegruppo>.svg?token=<tokenvalue>&branch=master)](https://travis-ci.com/softeng-inf-uniba/<nomegruppo>
 
 ```
 
 Per aggiungere il badge di copertura del testing di Codecov nel README.md del repository su GitHub, a fianco del titolo, seguire le seguenti istruzioni:
 
 1. Andare sul sito di [Codecov](https://codecov.io/) con l'id di GitHub
-2. CLiccare sul repository *base1718*
+2. CLiccare sul repository *<nomegruppo>*
 3. Cliccare sul pulsante *Copy* per copiare il token
 4. Cliccare su *Settings* in alto a destra
 5. Cliccare su *Badge* a sinistra
