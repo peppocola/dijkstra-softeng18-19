@@ -19,7 +19,6 @@ import it.uniba.example.utils.strings.StringUtils;
  * you how to create your own JUnit 5 test cases for your code.
  */
 public class StringUtilsTest {
-
 	@Test
 	@DisplayName("Convert to double pass")
 	public void testConvertToDoubleOK() {
@@ -34,7 +33,6 @@ public class StringUtilsTest {
 		});
 
 		// Or Java 8 Lambdas style
-
 		assertAll("Do many assertions.Java 8 Lambdas style", () -> {
 			assertNotNull(actual, () -> "The actual is NULL");
 			assertEquals(expAge, actual, () -> "The expected is: " + expAge + " while the actual is:" + actual);

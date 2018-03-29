@@ -3,11 +3,15 @@ package it.uniba.example.utils.test;
 import static org.junit.Assume.assumeNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -24,13 +28,25 @@ public class MathUtilsTest {
 	private static MathUtils mu = null;
 
 	@BeforeAll
-	public static void setUpAll() {
+	static void setUpAll() {
+		System.out.println("setUpAll");
 		mu = new MathUtils();
 	}
 
 	@AfterAll
-	public static void cleanUpAll() {
+	static void tearDownAll() {
+		System.out.println("teadDownAll");
 		mu = null;
+	}
+	
+	@BeforeEach
+	void setUp() {
+		System.out.println("setUpEach");
+	}
+	
+	@AfterEach
+	void tearDown() {
+		System.out.println("teadDownEach");
 	}
 
 	@Test
@@ -39,6 +55,11 @@ public class MathUtilsTest {
 		assumeNotNull(mu);
 		assertEquals(3, mu.add(1, 2));
 		assertEquals(-2, mu.add(-5, 3));
+		assertSame(3, mu.add(1, 2));
+		Integer val1 = new Integer(3);
+		Integer val2 = mu.add(1, 2);
+		assertTrue(val1.equals(val2));
+		assertNotSame(val1, val2);
 	}
 
 	@Test
