@@ -6,8 +6,7 @@
 - Comunicazione del gruppo su Slack
 - Accettazione progetto e creazione team su GitHub Classroom
 - Configurazione Travis CI
-- Configurazione Codecov
-- Aggiornamento badges in GitHub
+- Aggiornamento badge in GitHub
 - Configurazione locale del progetto
 - Lavoro sul codice dell’applicazione
 - Test automatici e Controlli di Qualità
@@ -26,7 +25,6 @@ Di seguito si riportano le istruzioni dettagliate per attivare la pipeline.
 - Adesione al workspace Slack di progetto (ingsw1718) mediante link mostrato dal docente a lezione
 - Iscrizione a [**github.com**](https://github.com)
 - Iscrizione a [**education.travis-ci.com**](https://education.travis-ci.com/) (tramite account GitHub)
-- Iscrizione a [**codecov.io**](https://codecov.io/) (tramite account GitHub)
 - Iscrizione a [**docker.com**](https://www.docker.com) (un account per gruppo)
 
 In aggiunta, occorre installare i seguenti strumenti:
@@ -88,34 +86,18 @@ Su invito esplicito del docente, dopo aver effettuato l’iscrizione e il login 
 
 **N.B.:** è fondamentale che i nomi delle variabili d’ambiente siano scritti esattamente come sono riportati in questa guida.
 
-## Configurazione Codecov
-Dopo aver effettuato l’iscrizione e il login su *codecov.io*, occorrerà che uno dei componenti del gruppo esegua i seguenti passi di configurazione:
-
-1. Cliccare su *Add a repository*
-2. Cliccare sul nome del repository *<nomegruppo>*
-3. Cliccare su *Settings* in alto a destra
-4. Cliccare su *Activate Repository* nella sezione Activation
-
-## Aggiornamento badges in GitHub
+## Aggiornamento badge in GitHub
 Per aggiungere il badge di build status di Travis CI nel file README.md del repository su GitHub, a fianco del titolo del progetto (sna4slack), seguire le istruzioni seguenti (vedi anche https://docs.travis-ci.com/user/status-images/):
 - Cliccare sul *badge* accanto al nome della repository nella pagina del progetto su Travis CI (quello in grigio con su scritto (build|unknown)).
 - Selezionare *Markdown*, anziché *Image URL*, nel secondo dropdown.
-- Copiare il codice generato per aggiornare la riga del titolo nel file "README.md" nella cartella di progetto (usare direttamente l'editor di GitHub) come segue:
+- Copiare il codice generato per aggiornare la riga del titolo nel file "README.md" nella cartella di progetto (potete anche usare direttamente l'editor di GitHub).
+- Eliminate dalla riga del titolo nel file "README.md" il riferimento al badge di Codecov.
 
-Per aggiungere il badge di copertura del testing di Codecov nel README.md del repository su GitHub, a fianco del titolo, seguire le seguenti istruzioni:
-1. Andare sul sito di [Codecov](https://codecov.io/) con l'id di GitHub
-2. CLiccare sul repository *<nomegruppo>*
-3. Cliccare sul pulsante *Copy* per copiare il token
-4. Cliccare su *Settings* in alto a destra
-5. Cliccare su *Badge* a sinistra
-6. Cliccare a destra sul pulsante *Copy* nella sezione Markdown
-7. Incollare (paste) la stringa copiata alla fine della riga del titolo in README.md
+Il titolo del README.md dovrà apparire come nella seguente figura:
 
-Il titolo del README.md apparirà come nella seguente figura:
+![](res/img/guida-studente/Badge.png)
 
-![](res/img/guida-studente/Badges.png)
-
-I badge cambieranno dopo ogni build riflettendo lo stato del progetto.
+Il colore e lo stato del badge potranno cambiare dopo ogni build riflettendo lo stato del progetto.
 
 ## Configurazione locale del progetto
 Per rendersi operativi con il progetto in locale, occorre seguire questi passi.
