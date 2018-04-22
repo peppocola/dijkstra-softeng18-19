@@ -176,22 +176,21 @@ Dopo ogni operazione di push sul master branch remoto, Travis-CI tenta di compil
 Si svolgano le seguenti operazioni:
 
 - avviare Docker localmente (una volta aperta l’applicazione, bisogna attendere che nel menu di Docker compaia la scritta “Docker is running”)
-- digitare nel terminale il seguente comando:
+- se si utilizza Windows selezionare `Switch to Linux containers` nel menu di Docker
+- digitare nel terminale il seguente comando:`
 
-		docker pull <nome_account>/<nome_repository>
+		docker pull softenginfuniba/<nome_repository>
 
-Ad esempio, per l’utente registrato su docker.com con l’username `json932` e per la repository denominata `sna4slack` nella sua ultima versione, scriviamo:
-
-	docker pull json932/sna4slack
+Nel caso specifico, **softenginfuniba** è il nome della organization che ospita i repository del corso.
 
 Attendere che Docker scarichi l’immagine dell’applicazione.
 
 - digitare il comando:
 
-		docker run --rm <nome_account>/<nome_repository>
+		docker run --rm softenginfuniba/<nome_repository>
 
-A questo punto l’applicazione verrà eseguita in un container sul computer locale.
+L’applicazione verrà eseguita in un container sul computer locale.
+
 **N.B.:**
-
-1. Si omette di specificare esplicitamente il `<version_number>` poiché si assume per default la versione *:latest* dell'immagine caricata su *docker.com*.
-2. l’opzione `—-rm` serve per far sì che docker fermi l’esecuzione del container nel momento in cui l’applicazione eseguita al suo interno termina.
+1. l’opzione `—-rm` serve per far sì che docker fermi l’esecuzione del container nel momento in cui l’applicazione eseguita al suo interno termina.
+2. Si assume per default la versione *:latest* dell'immagine caricata su *docker.com* e quindi si omette di specificare esplicitamente il `<version_number>`
