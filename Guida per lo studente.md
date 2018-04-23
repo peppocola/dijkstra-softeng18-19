@@ -189,7 +189,9 @@ Attendere che Docker scarichi l’immagine dell’applicazione.
 
 		docker run --rm softenginfuniba/<nome_repository>
 
-L’applicazione verrà eseguita in un container sul computer locale.
+L’applicazione verrà eseguita in un container sul computer locale. Il nome dell'applicazione coincide con il nome del repository e quindi non avrete modo di chiamare l'applicazione *sna4slack*. Potrete invece passare parametri aggiungendo stringhe in coda al comando. Per esempio: 
+
+		docker run --rm softenginfuniba/<nome_repository> help
 
 **N.B.:**
 1. l’opzione `—-rm` serve per far sì che docker fermi l’esecuzione del container nel momento in cui l’applicazione eseguita al suo interno termina.
