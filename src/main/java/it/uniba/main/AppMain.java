@@ -22,7 +22,26 @@ public final class AppMain {
 	 *            The command-line arguments.
 	 */
 	public static void main(final String[] args) {
-		System.out.println("Hello world.");
+		
+		if(args.length > 0) {
+			switch (args[0]) {
+			case "it":
+				System.out.println("Ciao mondo");
+				break;
+				
+			case "es":
+				System.out.println("Hola Mundo");
+				break;
+
+			default:
+				System.out.println("Specify the language. Languages supported: 'it' or 'es'.");
+				break;
+			
+			}
+		} else {
+			System.out.println("Hello world.");
+		}
+		
 	}
 
 }
