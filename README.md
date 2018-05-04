@@ -13,6 +13,7 @@ La struttura della repository si presenta nel seguente modo:
 |–– src
 |    |–– main
 |    |–– test
+|-- .coveralls.yml
 |–– .gitignore
 |–– .travis.yml
 |–– build.gradle
