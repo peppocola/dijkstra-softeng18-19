@@ -111,7 +111,7 @@ pmd {
             'java-codesize',
             //'java-comments',
             //'java-controversial',
-            //'java-coupling',
+            'java-coupling',
             'java-design',
             'java-empty',
             'java-finalizers',
@@ -120,7 +120,7 @@ pmd {
             'java-naming',
             'java-optimizations',
             'java-strictexception',
-             'java-strings',
+            'java-strings',
             'java-sunsecure',
             'java-typeresolution',
             'java-unnecessary',
@@ -169,9 +169,9 @@ jacocoTestReport {
 
     reports {
         xml.enabled true
-        xml.destination "${buildDir}/reports/jacoco/report.xml"
+        xml.destination "${buildDir}/reports/jacoco/jacocoTestReport.xml"
         csv.enabled false
-        html.destination file("${buildDir}/reports/jacoco/reports.html")
+        html.destination file("${buildDir}/reports/jacoco/jacocoTestReport.html")
     }
 }
 
