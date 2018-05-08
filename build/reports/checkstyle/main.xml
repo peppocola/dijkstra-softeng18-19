@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.8">
+<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/example/db/DatabaseConnection.java">
+</file>
+<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/example/db/package-info.java">
+</file>
+<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/example/utils/math/MathUtils.java">
+</file>
+<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/example/utils/package-info.java">
+</file>
+<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/example/utils/strings/StringUtils.java">
+</file>
+<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/main/AppMain.java">
+<error line="25" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="26" column="19" severity="error" message="&apos;if&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="31" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="39" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<error line="44" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+</file>
+</checkstyle>

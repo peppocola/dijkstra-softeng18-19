@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1" sequence="0" timestamp="1525777737256" analysisTimestamp="1525777737320" release="">
+  <Project projectName="">
+    <Jar>/Users/fabio/git/base1718/build/classes/java/main</Jar>
+    <AuxClasspathEntry>/Users/fabio/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/21.0/3a3d111be1be1b745edfa7d91678a12d7ed38709/guava-21.0.jar</AuxClasspathEntry>
+    <SrcDir>/Users/fabio/git/base1718/src/main/java/it/uniba/example/utils/strings/StringUtils.java</SrcDir>
+    <SrcDir>/Users/fabio/git/base1718/src/main/java/it/uniba/example/utils/math/MathUtils.java</SrcDir>
+    <SrcDir>/Users/fabio/git/base1718/src/main/java/it/uniba/example/utils/package-info.java</SrcDir>
+    <SrcDir>/Users/fabio/git/base1718/src/main/java/it/uniba/example/db/DatabaseConnection.java</SrcDir>
+    <SrcDir>/Users/fabio/git/base1718/src/main/java/it/uniba/example/db/package-info.java</SrcDir>
+    <SrcDir>/Users/fabio/git/base1718/src/main/java/it/uniba/main/AppMain.java</SrcDir>
+  </Project>
+  <BugInstance type="BX_BOXING_IMMEDIATELY_UNBOXED" priority="2" rank="18" abbrev="Bx" category="PERFORMANCE">
+    <Class classname="it.uniba.example.utils.math.MathUtils">
+      <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="6" end="32" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+    </Class>
+    <Method classname="it.uniba.example.utils.math.MathUtils" name="divide" signature="(II)F" isStatic="false">
+      <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="32" end="32" startBytecode="0" endBytecode="76" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="32" end="32" startBytecode="11" endBytecode="11" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+  </BugInstance>
+  <BugInstance type="ICAST_IDIV_CAST_TO_DOUBLE" priority="2" rank="17" abbrev="ICAST" category="STYLE">
+    <Class classname="it.uniba.example.utils.math.MathUtils">
+      <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="6" end="32" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+    </Class>
+    <Method classname="it.uniba.example.utils.math.MathUtils" name="divide" signature="(II)F" isStatic="false">
+      <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="32" end="32" startBytecode="0" endBytecode="76" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="32" end="32" startBytecode="7" endBytecode="7" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Tue, 8 May 2018 13:08:57 +0200" total_classes="4" referenced_classes="18" total_bugs="2" total_size="70" num_packages="4" java_version="1.8.0_131" vm_version="25.131-b11" cpu_seconds="5.80" clock_seconds="3.22" peak_mbytes="105.85" alloc_mbytes="3641.00" gc_seconds="0.05" priority_2="2">
+    <PackageStats package="it.uniba.example.db" total_bugs="0" total_types="1" total_size="28">
+      <ClassStats class="it.uniba.example.db.DatabaseConnection" sourceFile="DatabaseConnection.java" interface="false" size="28" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.uniba.example.utils.math" total_bugs="2" total_types="1" total_size="7" priority_2="2">
+      <ClassStats class="it.uniba.example.utils.math.MathUtils" sourceFile="MathUtils.java" interface="false" size="7" bugs="2" priority_2="2"/>
+    </PackageStats>
+    <PackageStats package="it.uniba.example.utils.strings" total_bugs="0" total_types="1" total_size="20">
+      <ClassStats class="it.uniba.example.utils.strings.StringUtils" sourceFile="StringUtils.java" interface="false" size="20" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.uniba.main" total_bugs="0" total_types="1" total_size="15">
+      <ClassStats class="it.uniba.main.AppMain" sourceFile="AppMain.java" interface="false" size="15" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="562" invocations="339" avgMicrosecondsPerInvocation="1658" maxMicrosecondsPerInvocation="94693" standardDeviationMircosecondsPerInvocation="6248"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="198" invocations="340" avgMicrosecondsPerInvocation="584" maxMicrosecondsPerInvocation="11261" standardDeviationMircosecondsPerInvocation="1079"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="129" invocations="17" avgMicrosecondsPerInvocation="7639" maxMicrosecondsPerInvocation="92006" standardDeviationMircosecondsPerInvocation="22066"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="127" invocations="18" avgMicrosecondsPerInvocation="7074" maxMicrosecondsPerInvocation="33627" standardDeviationMircosecondsPerInvocation="9972"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="91" invocations="306" avgMicrosecondsPerInvocation="298" maxMicrosecondsPerInvocation="9162" standardDeviationMircosecondsPerInvocation="816"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="79" invocations="17" avgMicrosecondsPerInvocation="4695" maxMicrosecondsPerInvocation="71659" standardDeviationMircosecondsPerInvocation="16751"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="72" invocations="76" avgMicrosecondsPerInvocation="952" maxMicrosecondsPerInvocation="10457" standardDeviationMircosecondsPerInvocation="1973"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="56" invocations="36" avgMicrosecondsPerInvocation="1572" maxMicrosecondsPerInvocation="39135" standardDeviationMircosecondsPerInvocation="6423"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="53" invocations="18" avgMicrosecondsPerInvocation="2954" maxMicrosecondsPerInvocation="41125" standardDeviationMircosecondsPerInvocation="9302"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="53" invocations="18" avgMicrosecondsPerInvocation="2947" maxMicrosecondsPerInvocation="17427" standardDeviationMircosecondsPerInvocation="4701"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="52" invocations="18" avgMicrosecondsPerInvocation="2898" maxMicrosecondsPerInvocation="15090" standardDeviationMircosecondsPerInvocation="4460"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="49" invocations="17" avgMicrosecondsPerInvocation="2902" maxMicrosecondsPerInvocation="20349" standardDeviationMircosecondsPerInvocation="5648"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="44" invocations="17" avgMicrosecondsPerInvocation="2613" maxMicrosecondsPerInvocation="32290" standardDeviationMircosecondsPerInvocation="7470"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="36" invocations="17" avgMicrosecondsPerInvocation="2162" maxMicrosecondsPerInvocation="16085" standardDeviationMircosecondsPerInvocation="4542"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="36" invocations="18" avgMicrosecondsPerInvocation="2030" maxMicrosecondsPerInvocation="22355" standardDeviationMircosecondsPerInvocation="5074"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>
