@@ -43,4 +43,5 @@ local.properties
 /build/jacoco
 /build/libs
 /build/scripts
+/build/test-results
 
