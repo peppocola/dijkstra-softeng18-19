@@ -3,6 +3,11 @@ La struttura della repository si presenta nel seguente modo:
 ```
 |-- build
 |    |-- reports
+|    |      |-- checkstyle
+|    |      |-- findbugs
+|    |      |-- jacoco/tests
+|    |      |-- tests/test
+|    |      |-- checkstyle
 |–– config
 |    |–– checkstyle
 |–– doc
