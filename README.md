@@ -7,7 +7,6 @@ La struttura della repository si presenta nel seguente modo:
 |    |      |-- findbugs
 |    |      |-- jacoco/tests
 |    |      |-- tests/test
-|    |      |-- checkstyle
 |–– config
 |    |–– checkstyle
 |–– doc
