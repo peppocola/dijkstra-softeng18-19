@@ -1,4 +1,4 @@
-# sna4slack [![Build Status](https://travis-ci.com/softeng-inf-uniba/base1718.svg?token=qPSHqHRJS6eXDxLetTSE&branch=master)](https://travis-ci.com/softeng-inf-uniba/base1718) [![Coverage Status](https://coveralls.io/repos/github/softeng-inf-uniba/base1718/badge.svg?branch=master&t=05fE1a)](https://coveralls.io/github/softeng-inf-uniba/base1718?branch=master)
+# sna4so [![Build Status](https://travis-ci.com/softeng-inf-uniba/base1718.svg?token=qPSHqHRJS6eXDxLetTSE&branch=master)](https://travis-ci.com/softeng-inf-uniba/base1718) [![Coverage Status](https://coveralls.io/repos/github/softeng-inf-uniba/base1718/badge.svg?branch=master&t=05fE1a)](https://coveralls.io/github/softeng-inf-uniba/base1718?branch=master)
 La struttura della repository si presenta nel seguente modo:
 ```
 |-- build
