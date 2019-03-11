@@ -80,7 +80,7 @@ Su invito esplicito del docente, dopo aver effettuato l’iscrizione e il login 
 	- **DOCKER\_REPO**: il nome del repository di gruppo *(coincide con il nome del gruppo su Slack)*
 	- **DOCKER\_USERNAME**: l'id dell’account di gruppo su *docker.com*
 
-![](res/img/guida-studente/agiove3_SNA4Slack_-_Travis_CI.png)
+![](res/img/guida-studente/env_vars.png)
 
 **N.B.:** è fondamentale che i nomi delle variabili d’ambiente siano scritti esattamente come sono riportati in questa guida.
 
