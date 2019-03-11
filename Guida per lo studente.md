@@ -21,8 +21,8 @@ Di seguito si riportano le istruzioni dettagliate per attivare la pipeline.
 ## Passi preliminari
 È necessario effettuare l’iscrizione a diversi servizi che saranno utilizzati durante tutto lo sviluppo del progetto. In particolare:
 
-- Iscrizione a [**Slack**](https://slack.com/) con nome e cognome (anche una foto non sarebbe male), possibilmente con lo stesso indirizzo email usato in ADA
-- Adesione al workspace Slack di progetto (ingsw1718) mediante link mostrato dal docente a lezione
+- Iscrizione a [**Slack**](https://slack.com/) con nome, cognome e foto
+- Adesione al workspace Slack di progetto (softeng1819) mediante link mostrato dal docente a lezione
 - Iscrizione a [**github.com**](https://github.com)
 - Iscrizione a [**education.travis-ci.com**](https://education.travis-ci.com/) (tramite account GitHub)
 - Iscrizione a [**docker.com**](https://www.docker.com) (un account per gruppo)
@@ -35,19 +35,17 @@ In aggiunta, occorre installare i seguenti strumenti:
 
 Si suppone che lo studente abbia già installato sulla sua macchina l’ultima versione di **Eclipse  for Java Developers** disponibile.
 
-## Comunicazione del gruppo su Slack
-Uno dei componenti del gruppo
-* crea un «channel» di gruppo e lo comunica sul channel #general
-  -  Nome del gruppo = cognome di un vincitore del Turing Award
-  - Nome del gruppo tutto in minuscolo, senza caratteri speciali o spazi se composto
-* edita la descrizione del gruppo con solo i cognomi dei componenti (aggiungere i nomi solo in caso di omonimie)
-* aggiunge l'id Docker come messaggio nel proprio channel di gruppo
-Ogni componente del gruppo
-* sottoscrive il proprio channel di gruppo
-* aggiunge il proprio id GitHub come messaggio nel proprio channel di gruppo
+## Comunicazione del gruppo
+* Immettere i propri dati nel form Google Drive pubblicato su Slack
+  - indicare come email quella usata o che si userà per l'iscrizione a Github
+* Scrivere nello spreadsheet associato al form il proprio GitHub username
+  - solo il cognome se non è ancora stata fatta l'iscrizione a GitHub; nel caso in seguito aggiornare
+* Scrivere nello spreadsheet associato al form il nome del gruppo e i GitHub username dei componenti
+  - il nome del gruppo deve essere un cognome di un vincitore del Turing Award, scritto tutto in minuscolo senza spazi e caratteri speciali
+* Aggiornare il proprio profilo Slack con il nome del gruppo nel campo *What I do*
+* Scrivere nello spreadsheet il Docker id di gruppo (uno solo si registra per tutto il gruppo)
 
 Il nome del gruppo sarà il nome del repository su GitHub Classroom, Travis CI, docker.com.
-
 
 ## Accettazione progetto e accesso al repository di team su GitHub
 Mediante *Slack*, verrà comunicato un link di *GitHub Classroom* attraverso cui accettare l’assegnazione del progetto e partecipare, tramite pulsante *Join*, a un team di lavoro associato a un repository privato di GitHub.
@@ -56,13 +54,13 @@ La schermata che apparirà all’apertura del link sarà simile a questa:
 ![](res/img/guida-studente/Schermata1.png)
 
 Sarà necessario aspettare che il docente convalidi la richiesta su GitHub Classroom.  
-Questo passo terminerà con successo se tutti i membri del gruppo potranno accedere al repository con URL ``` https://github.com/softeng-inf-uniba/progetto1718-<nome del gruppo> ```
+Questo passo terminerà con successo se tutti i membri del gruppo potranno accedere al repository con URL ``` https://github.com/softeng1819-inf-uniba/progetto1819-<nome del gruppo> ```
 
 ## Configurazione Travis CI
 Su invito esplicito del docente, dopo aver effettuato l’iscrizione e il login su *education.travis-ci.com* ed aver accettato l’assegnazione del progetto, occorrerà che uno dei componenti del gruppo esegua i seguenti passi di configurazione.
 
 - Recarsi sulla propria pagina personale (cliccare sul proprio nome e foto di Github in alto a destra)
-- Nella parte sinistra dell’interfaccia dovrebbe essere visibile l’organizzazione “Ingegneria del Software, Cdl Informatica, UNIBA”. In caso positivo, selezionarla. In caso negativo provare a premere il bottone *Sync Account*.
+- Nella parte sinistra dell’interfaccia dovrebbe essere visibile l’organizzazione “IngSw 18-19, Informatica, UNIBA”. In caso positivo, selezionarla. In caso negativo provare a premere il bottone *Sync Account*.
 
 ![](res/img/guida-studente/OrganizzazioneTravisCI.png)
 
@@ -77,7 +75,7 @@ Su invito esplicito del docente, dopo aver effettuato l’iscrizione e il login 
 
 - Nella sezione *Environment Variables*, tramite il tasto *Add*, definire le seguenti 4 Variabili d’ambiente:
 
-	- **DOCKER\_ORGANIZATION**: il nome dell’organizzazione: **softenginfuniba**
+	- **DOCKER\_ORGANIZATION**: il nome dell’organizzazione: **softeng1819infuniba**
 	- **DOCKER\_PASSWORD**: la password dell'account di gruppo su *docker.com*
 	- **DOCKER\_REPO**: il nome del repository di gruppo *(coincide con il nome del gruppo su Slack)*
 	- **DOCKER\_USERNAME**: l'id dell’account di gruppo su *docker.com*
@@ -148,7 +146,7 @@ Il workflow da utilizzare è il [GitHub Flow](https://guides.github.com/introduc
 - Lavorare al codice dell’applicazione. È consigliabile fare piccole **commit** autoconsistenti di volta in volta, con uno scopo ben preciso ed una descrizione dettagliata. *Evitare di fare un’unica grande commit alla fine del lavoro, a meno che la feature o il bug fix non sia davvero di poco conto.*
 - Aggiorna con regolarità il branch sul server origin in GitHub con il comando `git push origin <nome branch>`
 - Quando la modifica è stata correttamente implementata, si consiglia di scrivere adeguati test di unità per validarne la correttezza.
-- Dopo l’esecuzione dei test è possibile lanciare gli strumenti di **Quality Assurance** (checkstyle, pmd, findbugs) per assicurarsi di aver scritto codice di qualità. Leggere la sezione *Controlli di Qualità* per ulteriori informazioni.
+- Dopo l’esecuzione dei test è possibile lanciare gli strumenti di **Quality Assurance** (checkstyle e findbugs) per assicurarsi di aver scritto codice di qualità. Leggere la sezione *Controlli di Qualità* per ulteriori informazioni.
 - A questo punto, dunque, si può procedere all'apertura di una pull request, andando su GitHub e posizionandosi sul branch su cui si sta lavorando.
 - Scrivere un titolo conciso ed esplicativo per la pull request e una descrizione significativa per il revisore come commento, incluso un riferimento all'issue nella forma *closes #n*. Scegliere almeno un reviewer tra i componenti del team.
 - Una volta lanciata la pull request, si attiverà la costruzione automatica della build e ci sarà da attendere qualche minuto. In caso di conflitti, bisogna risolverli. Può essere utile consultare la documentazione di GitHub (<https://help.github.com/articles/about-merge-conflicts/>) e comunicare con chi ha effettuato le modifiche in conflitto.  
@@ -157,7 +155,7 @@ Il workflow da utilizzare è il [GitHub Flow](https://guides.github.com/introduc
 - Se il merge è andato a buon fine, per completare il lavoro, cancellare il branch sul repository remoto (mediante interfaccia web di GitHub) e sul repository locale con la sequenza di comandi: `git checkout master`, `git pull` e `git branch -d <nome branch>`.
 
 ## Test automatici e Controlli di Qualità
-È possibile misurare la copertura dei test automatici e operare dei controlli statici sulla qualità del codice Java (QA, quality assurance), grazie a strumenti come *JUnit*, *JaCoCo*, *Checkstyle*, *PMD*, *Findbugs*. Per lanciarli in un colpo solo si può utilizzare *Gradle*.
+È possibile misurare la copertura dei test automatici e operare dei controlli statici sulla qualità del codice Java (QA, quality assurance), grazie a strumenti come *JUnit*, *JaCoCo*, *Checkstyle*, *Findbugs*. Per lanciarli in un colpo solo si può utilizzare *Gradle*.
 
 - Assicurarsi che sia aperta la vista *Gradle Tasks* in Eclipse. In caso negativo, dal menù *Window*, selezionare *Show View* e poi *Other*. La vista si troverà sotto la voce *Gradle*. Nell’eventualità che la vista non compaia, provare a cambiare *perspective* su Eclipse e selezionare *Java EE*: ciò si può fare o premendo Java EE dal bottone in alto a destra o da menù *Window-\>Perspective-\>Open Perspective-\>Other* e poi *Java EE*.
 - Selezionare il nome del progetto e, tra le diverse opzioni, *verification*.
@@ -180,19 +178,19 @@ Si svolgano le seguenti operazioni:
 - se si utilizza Windows selezionare `Switch to Linux containers` nel menu di Docker
 - digitare nel terminale il seguente comando:`
 
-		docker pull softenginfuniba/<nome_repository>
+		docker pull softeng1819infuniba/<nome_repository>
 
-Nel caso specifico, **softenginfuniba** è il nome della organization che ospita i repository del corso.
+Nel caso specifico, **softeng1819infuniba** è il nome della organization che ospita i repository del corso.
 
 Attendere che Docker scarichi l’immagine dell’applicazione.
 
 - digitare il comando:
 
-		docker run --rm softenginfuniba/<nome_repository>
+		docker run --rm softeng1819infuniba/<nome_repository>
 
-L’applicazione verrà eseguita in un container sul computer locale. Il nome dell'applicazione coincide con il nome del repository e quindi non avrete modo di chiamare l'applicazione *sna4slack*. Potrete invece passare parametri aggiungendo stringhe in coda al comando. Per esempio: 
+L’applicazione verrà eseguita in un container sul computer locale. Il nome dell'applicazione coincide con il nome del repository e quindi non avrete modo di chiamare l'applicazione *sna4so*. Potrete invece passare parametri aggiungendo stringhe in coda al comando. Per esempio:
 
-		docker run --rm softenginfuniba/<nome_repository> help
+		docker run --rm softeng1819infuniba/<nome_repository> help
 
 **N.B.:**
 1. l’opzione `—-rm` serve per far sì che docker fermi l’esecuzione del container nel momento in cui l’applicazione eseguita al suo interno termina.

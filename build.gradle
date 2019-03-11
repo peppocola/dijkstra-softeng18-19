@@ -34,7 +34,7 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'checkstyle'
-apply plugin: 'pmd'
+// apply plugin: 'pmd'
 apply plugin: 'findbugs'
 apply plugin: 'jacoco'
 apply plugin: "com.bmuschko.docker-java-application"
@@ -98,6 +98,7 @@ findbugs {
   sourceSets = [sourceSets.main]
 }
 
+/*
 pmd {
   ignoreFailures = true
   //pmdTest.enabled=false
@@ -127,7 +128,8 @@ pmd {
             'java-unusedcode'
             ]
 }
-
+ */
+ 
 checkstyle {
 	// Whether to allow the build to continue if there are warnings. Default: ignoreFailures = false
 	ignoreFailures = true
