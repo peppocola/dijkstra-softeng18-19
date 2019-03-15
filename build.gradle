@@ -64,7 +64,7 @@ docker {
         baseImage = 'openjdk:8'
         //maintainer = '<name> "<email>"'
         // ports = [9090, 5701]
-        tag = 'sna4slack:1.0'
+        tag = 'sotorrent:1.0'
     }
 }
 
@@ -77,6 +77,9 @@ repositories {
 }
 
 dependencies {
+	// Google Big Query
+	compile 'com.google.cloud:google-cloud-bigquery:1.64.0'
+
     // For internal usage
     compile 'com.google.guava:guava:21.0'
     
