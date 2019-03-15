@@ -64,7 +64,7 @@ docker {
         baseImage = 'openjdk:8'
         //maintainer = '<name> "<email>"'
         // ports = [9090, 5701]
-        tag = 'sotorrent:1.0'
+        tag = 'sna4so:1.0'
     }
 }
 
