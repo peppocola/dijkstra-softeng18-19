@@ -48,12 +48,8 @@ Si suppone che lo studente abbia già installato sulla sua macchina l’ultima v
 Il nome del gruppo sarà il nome del repository su GitHub Classroom, Travis CI, docker.com.
 
 ## Accettazione progetto e accesso al repository di team su GitHub
-Mediante *Slack*, verrà comunicato un link di *GitHub Classroom* attraverso cui accettare l’assegnazione del progetto e partecipare, tramite pulsante *Join*, a un team di lavoro associato a un repository privato di GitHub.
-La schermata che apparirà all’apertura del link sarà simile a questa:
-
-![](res/img/guida-studente/Schermata1.png)
-
-Sarà necessario aspettare che il docente convalidi la richiesta su GitHub Classroom.  
+Sarà necessario aspettare che il docente crei il team e il repository ad esso associato su GitHub.
+Una volta creato il team, riceverete via email un invito a farne parte che dovrete accettare. 
 Questo passo terminerà con successo se tutti i membri del gruppo potranno accedere al repository con URL ``` https://github.com/softeng1819-inf-uniba/progetto1819-<nome del gruppo> ```
 
 ## Configurazione Travis CI
