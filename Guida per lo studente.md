@@ -103,7 +103,7 @@ Come prima attività, è necessario clonare la repository remota sulla propria m
 - Da terminale (Unix) o prompt dei comandi (Windows) spostarsi attraverso il comando *cd* nella cartella scelta al passo precedente;
 - Scrivere il comando `git clone <url>` , dove l’url è quello visibile da GitHub premendo il bottone *Clone or Download*, in alto a destra nell’interfaccia. Ad esempio:
 
-![](res/img/guida-studente/cloneusingurl.png)
+![](res/img/guida-studente/cloneusingurl.PNG)
 
 Se l’operazione è andata a buon fine, siamo quasi pronti per partire… Ma prima, è necessario importare il progetto in Eclipse!
 
