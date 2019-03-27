@@ -12,7 +12,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath "com.bmuschko:gradle-docker-plugin:3.2.3"
+    classpath "com.bmuschko:gradle-docker-plugin:3.6.2"
   }
 }
 
@@ -32,6 +32,7 @@ plugins {
 
 // Apply the java-library plugin to add support for Java Library
 apply plugin: 'java'
+apply plugin: 'eclipse'
 apply plugin: 'application'
 apply plugin: 'checkstyle'
 // apply plugin: 'pmd'
@@ -46,7 +47,7 @@ apply plugin: 'org.junit.platform.gradle.plugin'
     //environmentVariable('JAVA_OPTS', '-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap')
 //}
 
- sourceSets {
+sourceSets {
       main {
          java {
             srcDir 'src/main/java'
@@ -58,6 +59,10 @@ apply plugin: 'org.junit.platform.gradle.plugin'
          }
       }
 }
+
+/*dockerCreateDockerfile {
+    	instruction 'COPY credentials.json /'
+}*/
    
 docker {
     javaApplication {
@@ -68,6 +73,7 @@ docker {
     }
 }
 
+
 // Java Application Dependencies & properties
 sourceCompatibility = 1.8
 repositories {
@@ -77,8 +83,15 @@ repositories {
 }
 
 dependencies {
-	// Google Big Query
+	// Google Big Query API v?: ?
 	compile 'com.google.cloud:google-cloud-bigquery:1.64.0'
+	
+	// Google Spreadsheet API v4: ? 
+	compile 'com.google.api-client:google-api-client:1.23.0'
+    compile 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
+    compile 'com.google.apis:google-api-services-sheets:v4-rev516-1.23.0'
+    // Google Drive API v3: https://developers.google.com/api-client-library/java/apis/drive/v3
+    compile 'com.google.apis:google-api-services-drive:v3-rev154-1.25.0'
 
     // For internal usage
     compile 'com.google.guava:guava:21.0'
