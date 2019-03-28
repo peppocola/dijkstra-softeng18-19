@@ -8,6 +8,7 @@
 - Configurazione Travis CI
 - Aggiornamento badge in GitHub
 - Configurazione locale del progetto
+- Eseguire l'applicazione
 - Lavoro sul codice dell’applicazione
 - Test automatici e Controlli di Qualità
 - Eseguire immagine docker
@@ -81,7 +82,7 @@ Su invito esplicito del docente, dopo aver effettuato l’iscrizione e il login 
 **N.B.:** è fondamentale che i nomi delle variabili d’ambiente siano scritti esattamente come sono riportati in questa guida.
 
 ## Aggiornamento badge in GitHub
-Per aggiungere il badge di build status di Travis CI nel file README.md del repository su GitHub, a fianco del titolo del progetto (sna4slack), seguire le istruzioni seguenti (vedi anche https://docs.travis-ci.com/user/status-images/):
+Per aggiungere il badge di build status di Travis CI nel file README.md del repository su GitHub, a fianco del titolo del progetto (sna4so), seguire le istruzioni seguenti (vedi anche https://docs.travis-ci.com/user/status-images/):
 - Cliccare sul *badge* accanto al nome della repository nella pagina del progetto su Travis CI (quello in grigio con su scritto (build|unknown)).
 - Selezionare *Markdown*, anziché *Image URL*, nel secondo dropdown.
 - Copiare il codice generato per aggiornare la riga del titolo nel file "README.md" nella cartella di progetto (potete anche usare direttamente l'editor di GitHub).
@@ -91,6 +92,57 @@ Il titolo del README.md dovrà apparire come nella seguente figura:
 ![](res/img/guida-studente/Badge.png)
 
 Il colore e lo stato del badge potranno cambiare dopo ogni build riflettendo lo stato del progetto.
+
+## Configurazione Coveralls
+Collegarsi al [sito](https://coveralls.io) (effettuando nuovamente il login tramite account GitHub, se necessario). Nel menu a comparsa sulla sinistra, selezionare la voce **+ ADD REPOS**. 
+Il repository `softeng-inf-uniba/<nomegruppo>` dovrebbe essere immediatamente visibile nella pagina. Se non lo fosse, nel campo di testo digitare le prime lettere per renderlo visibile. Qualora ancora non fosse visibile, andate in fondo alla pagina e cliccata sul bottone **REFRESH PRIVATE REPOS**. 
+Una volta visibile il progetto, cliccate sul tasto OFF, per trasformarlo in ON, come mostrato in figura.
+
+![](res/img/guida-studente/add_repo_coveralls.png)
+
+Una volta attivato, cliccate su **DETAILS** per vedere il _token privato_ associato al repository da ricopiare nei file di configurazione del progetto. Precisamente.
+
+* Aprite il file `.coveralls.yml` nella radice della cartella di progetto e aggiungete il _token privato_ al campo `repo_token:` , come nell'esempio sottostante:
+
+  ```yml
+  service_name: travis-pro
+  repo_token: YOUR-PRIVATE-ALPHANUMERIC-TOKEN
+  ```
+
+* Aprite il file `.travis.yml` e copiate di nuovo il _token privato_ nel campo `COVERALLS_REPO_TOKEN=` come mostrato di seguito:
+
+   ```yml
+   env:
+      global:
+         - CI_NAME:travis-pro
+         - COVERALLS_REPO_TOKEN=YOUR-PRIVATE-ALPHANUMERIC-TOKEN
+   ```
+
+### Aggiornamento badge Coveralls in GitHub
+
+Ritornate sulla pagina details del sito di Coveralls (dove avete copiato il token). Spostatevi in basso, troverete una figura simile a quella mostrata qui sotto, la quale vi avvisa che il vostro progetto non ha ancora nessun badge incorporato nel file `README.md`.
+
+![](res/img/guida-studente/coveralls_no_badge.png)
+
+Cliccate sul tasto **EMBED** e copiate il codice in formato Markdown. Il blocco assomiglierà a quello mostrato di sequito:
+```
+[![Coverage Status](https://coveralls.io/repos/github/softeng-inf-uniba/<NOME-GRUPPO>/badge.svg?branch=master)](https://coveralls.io/github/softeng-inf-uniba/<NOME-GRUPPO>?branch=master)
+```
+
+Qualora il tasto **EMBED** non fosse visibile, nel menu a sinistra cliccate su _Settings_ (vi porterà a questo URL https://coveralls.io/github/softeng-inf-uniba/progetto1718-NOMEGRUPPO/settings)
+
+Quindi, aprite il file `README.md` del vostro progetto, e incollate il codice di seguito a quello del badge di TRAVIS-CI. Alla fine, il file `README.md` dovrà mostrare due badge, simili a quelli in figura sottostante:
+
+![](res/img/guida-studente/coveralls+travis-badges.png)
+
+#### Troubleshooting
+Qualora doveste accorgervi che il badge con il coverage non si aggiorna - nonstante le modifiche ai casi di test - potete forzare il refresh aggiungendo `&service=github` al link, come mostrato di seguito:
+
+```
+[![Coverage Status](https://coveralls.io/repos/github/softeng-inf-uniba/<NOME-GRUPPO>/badge.svg?branch=master&service=github)](https://coveralls.io/github/softeng-inf-uniba/<NOME-GRUPPO>?branch=master)
+```
+
+
 
 ## Configurazione locale del progetto
 Per rendersi operativi con il progetto in locale, occorre seguire questi passi.
@@ -107,6 +159,18 @@ Come prima attività, è necessario clonare la repository remota sulla propria m
 
 Se l’operazione è andata a buon fine, siamo quasi pronti per partire… Ma prima, è necessario importare il progetto in Eclipse!
 
+**Configurazione di Eclipse**
+
+Assicuarsi di aver installato [Java versione 8](https://www.oracle.com/technetwork/java/javase/overview/index.html) o superiore ed [Eclipse IDE for Java](https://www.eclipse.org/downloads/) versione 2018-12 (4.10.0) o superiore.
+
+###### Installazione Google Cloud Tools
+
+Dopo aver completato l'installazione, avviate Eclipse. Quindi, selezionate la voce del menu `Help > Eclipse Marketplace`.  Nella finestra, effettuate la ricerca delle parole chiave *Google cloud* per far comparire la componente *Google Cloud Tools for Eclipse*  come da figura.
+
+![](res/img/guida-studente/marketplace.png)
+
+Completate l'installazione e riavviate.
+
 **Importazione del progetto in Eclipse**
 
 Per importare correttamente il progetto in Eclipse, si dovrà seguire solo un semplice accorgimento: anziché creare un progetto Java (scelta di default), si opterà per la creazione di un progetto Gradle. Più nel dettaglio:
@@ -122,7 +186,7 @@ Per importare correttamente il progetto in Eclipse, si dovrà seguire solo un se
 
 **Modifica della cartella di default per javadoc**
 
-La cartella di default per la generazione di *javadoc* è la cartella **doc**. Per conformità con la struttura della repository di base del progetto, dovremo modificare il percorso e puntare a **doc/javadoc**:
+La cartella di default per la generazione di *javadoc* è la cartella `doc`. Per conformità con la struttura della repository di base del progetto, dovremo modificare il percorso e puntare a `nomeprogetto/doc/javadoc`:
 
 - Premere il tasto destro sulla cartella di progetto di Eclipse. Scegliere quindi l’opzione *Properties*, in coda al menù contestuale;
 - Individuare, tra le proprietà, quella denominata *Javadoc Location*;
@@ -132,7 +196,46 @@ La cartella di default per la generazione di *javadoc* è la cartella **doc**. P
 - Tramite il pulsante *Browse*, selezionare il percorso **doc/javadoc** all’interno della cartella di progetto;
 - Chiudere la finestra con *Apply and Close*.
 
+###### Verifica setup librerie
+
+Dopo aver importato il progetto, verificate la presenza delle librerie nel build path di Java.
+
+Dall'albero di progetto nella vista *Navigator*, attivate il menu contestuale e selezionate al voce `Properties`, come da figura.
+
+![](res/img/guida-studente/project-properties.png)
+
+Quindi, selezionate la voce `Java Build Path` e verificate le seguenti librerie siano presenti come in figura. Qualora mancassero, procedete ad aggiungerle premendo il bottone `Add Library…`. I file `jar` richiesti sono salvati nella cartella `<nomeprogetto>/libs`.
+
+![](res/img/guida-studente/buildpath.png)
+
+## Eseguire l'applicazione
+
+#### Attivare Google Service Account 
+
+Questi passi devono essere eseguiti da un solo componente del gruppo di progetto. 
+
+1. Collegarsi alla [Piattaforma Google Cloud](https://console.cloud.google.com/home/dashboard) (è richiesta autenticazione tramite account Google).
+2. Create un nuovo progetto con il nome ***SNA4SO***, come in figura. L'altro campo non è necessario
+   ![](res/img/guida-studente/new-gcloud-project.png)
+
+3. Assicuratevi che il progetto sia selezionato nella dashboard, dopodiché dal menu a sinistra selezionate la voce `APIs & Services > Library`
+4. Selezionare una per volta le API di ***Google BigQuery***, ***Drive*** e ***Spreadsheet*** e attivatele premendo il tasto `Enable`.
+5. Selezionate la voce `APIs & Services > Credentials` della dashboard e create una ***Service account key*** come da figura.
+   ![](res/img/guida-studente/service-account-credentials.png)
+
+6. Compilate i campi come da figura e create la chiave in formato JSON (NB. il valore del campo `Service Account ID` è generato automaticamente).
+   ![](res/img/guida-studente/create-json-key.png)
+
+7. Rinominate il file JSON utilizzando il nome del vostro progetto; per esempio, se fate parte del progetto ***Allen***, la chiave dovrà chiamarsi `project-allen.json`.
+8. Via Slack, inviate la chiave a Fabio Calefato ***come messaggio privato***.
+9. Il file sarà accessibile all'URL: http://neo.di.uniba.it/credentials/DOCKERID.json, dove `DOCKERID` deve essere sostituito con il Docker ID usato per l'accesso a Docker Hub.
+9. L'URL precedente deve essere usato per aggiornare l'attributo `url` nei file:
+   * `SOQuery.java` (riga 36)
+   * `GoogleDocsUtils.java` (riga 63)
+10. Posizionatevi sul file `AppMain.java` ed eseguite come Java application da Eclipse.
+
 ## Lavoro sul codice dell’applicazione
+
 Il workflow da utilizzare è il [GitHub Flow](https://guides.github.com/introduction/flow/) e prevede essenzialmente i seguenti passi:
 
 - Subito prima di lavorare sul codice, è opportuno eseguire una `git pull` e lavorare sul codice più aggiornato
