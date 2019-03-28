@@ -70,6 +70,8 @@ Su invito esplicito del docente, dopo aver effettuato l’iscrizione e il login 
 
 ![](res/img/guida-studente/Schermata3.png)
 
+![](res/img/guida-studente/autocancellation.png)
+
 - Nella sezione *Environment Variables*, tramite il tasto *Add*, definire le seguenti 4 Variabili d’ambiente:
 
 	- **DOCKER\_ORGANIZATION**: il nome dell’organizzazione: **softeng1819infuniba**
