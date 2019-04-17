@@ -163,7 +163,7 @@ Se l’operazione è andata a buon fine, siamo quasi pronti per partire… Ma pr
 
 **Configurazione di Eclipse**
 
-Assicuarsi di aver installato [Java versione 8](https://www.oracle.com/technetwork/java/javase/overview/index.html) o superiore ed [Eclipse IDE for Java](https://www.eclipse.org/downloads/) versione 2018-12 (4.10.0) o superiore.
+Assicuarsi di aver installato [Java versione 8](https://www.oracle.com/technetwork/java/javase/overview/index.html) ed [Eclipse IDE for Java](https://www.eclipse.org/downloads/) versione 2018-12 (4.10.0) o superiore.
 
 ###### Installazione Google Cloud Tools
 
