@@ -1,4 +1,4 @@
-# sna4so [![Build Status](https://travis-ci.com/softeng1819-inf-uniba/progetto1819-dijkstra.svg?token=umsPBkftsv3XTHUT9qUM&branch=master)](https://travis-ci.com/softeng1819-inf-uniba/progetto1819-dijkstra) [![Coverage Status](https://coveralls.io/repos/github/softeng1819-inf-uniba/base1819/badge.svg?t=JIwk0A)](https://coveralls.io/github/softeng1819-inf-uniba/base1819)
+# sna4so [![Build Status](https://travis-ci.com/softeng1819-inf-uniba/progetto1819-dijkstra.svg?token=umsPBkftsv3XTHUT9qUM&branch=master)](https://travis-ci.com/softeng1819-inf-uniba/progetto1819-dijkstra) [![Coverage Status](https://coveralls.io/repos/github/softeng1819-inf-uniba/progetto1819-dijkstra/badge.svg?t=znZHhB)](https://coveralls.io/github/softeng1819-inf-uniba/progetto1819-dijkstra)
 La struttura della repository si presenta nel seguente modo:
 ```
 |-- build
