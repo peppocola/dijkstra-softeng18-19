@@ -68,13 +68,6 @@ public class Arguments {
 		else {
 			throw new ArgumentException("invalid argument "+type);
 		}
-		/*
-		SELECT owner_user_id
-		FROM `bigquery-public-data.stackoverflow.posts_questions`
-		WHERE EXTRACT(YEAR FROM creation_date)=2016 and EXTRACT(MONTH FROM creation_date)=02 and EXTRACT(DAY FROM creation_date)=11 and post_type_id=1 and owner_user_id is not null
-		order by owner_user_id
-		LIMIT 100 
-		*/
 		return query;
 	}
 	

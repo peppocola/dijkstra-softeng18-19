@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
-import java.util.Map;
 
 import com.google.cloud.bigquery.Job;
 
@@ -77,7 +76,7 @@ public final class AppMain {
 		ArrayList<Long> res = soq.getResults(job);
 
 		GoogleDocsUtils ut = new GoogleDocsUtils();
-		String spid = ut.createSheet("Prova sna4so");
+		String spid = ut.createSheet("Result");
 		ut.shareSheet(spid);
 		ut.getSheetByTitle(spid);
 		ut.writeSheet(spid, res);
