@@ -43,33 +43,21 @@ public final class AppMain {
 												 InterruptedException,
 												 GeneralSecurityException,
 												 URISyntaxException {
-		System.out.println("Current working dir: " + System.getProperty("user.dir"));
-
-		if (args.length > 0) {
-			switch (args[0]) {
-			case "it":
-				System.out.println(
-						"Seleziona i 10 post piu' 'favoriti' su Stack Overflow "
-						+ "sull'argomento 'google-bigquery'");
-				break;
-
-			case "en":
-				System.out.println("Select the 10 most favorited Stack Overflow posts "
-								   + "on 'google-bigquery'");
-				break;
-
-			default:
-				System.out.println("Specify the language. "
-								   + "Languages supported: 'it' or 'en'");
-				break;
-
-			}
-		} else {
-			System.out.println("Using default language 'en'");
-			System.out.println("Select the 10 most favorited Stack Overflow posts "
-							   + "on 'google-bigquery'");
+		if (args.length <= 0) {
+			System.out.println("missing arguments");
+			return;
 		}
 
+		try {
+			Arguments params = new Arguments(args);
+			System.out.println(params);
+		} catch(ParseException e) {
+			System.err.println(e);
+		} catch(NumberFormatException e) {
+			System.err.println(e);
+		}
+	
+		/*
 		ISOQuery soq = new SOQuery();
 		Job job = soq.runQuery();
 		Map<String, Long> res = soq.getResults(job);
@@ -79,7 +67,7 @@ public final class AppMain {
 		ut.shareSheet(spid);
 		ut.getSheetByTitle(spid);
 		ut.writeSheet(spid, res);
-
+		*/
 	}
 
 }
