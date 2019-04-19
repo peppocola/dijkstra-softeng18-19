@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
-import java.util.Map;
+import java.util.ArrayList;
 
 import com.google.cloud.bigquery.Job;
 
@@ -43,31 +43,44 @@ public final class AppMain {
 												 InterruptedException,
 												 GeneralSecurityException,
 												 URISyntaxException {
+
 		if (args.length <= 0) {
 			System.out.println("missing arguments");
 			return;
 		}
 
+		Arguments params;
+		
 		try {
-			Arguments params = new Arguments(args);
+			params = new Arguments(args);
 			System.out.println(params);
 		} catch(ParseException e) {
 			System.err.println(e);
+			return;
 		} catch(NumberFormatException e) {
 			System.err.println(e);
+			return;
 		}
-	
-		/*
+		
+		String query;
+		
+		try {
+			query = params.getQuery();	
+		}catch (ArgumentException e) {
+			System.err.println(e);
+			return;
+		}
+		
 		ISOQuery soq = new SOQuery();
-		Job job = soq.runQuery();
-		Map<String, Long> res = soq.getResults(job);
+		Job job = soq.runQuery(query);
+		ArrayList<Long> res = soq.getResults(job);
 
 		GoogleDocsUtils ut = new GoogleDocsUtils();
-		String spid = ut.createSheet("Prova sna4so");
+		String spid = ut.createSheet("Result");
 		ut.shareSheet(spid);
 		ut.getSheetByTitle(spid);
 		ut.writeSheet(spid, res);
-		*/
+		
 	}
 
 }

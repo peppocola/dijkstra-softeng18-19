@@ -6,8 +6,7 @@ package it.uniba.sotorrent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import com.google.auth.oauth2.ServiceAccountCredentials;
@@ -43,18 +42,12 @@ public final class SOQuery implements ISOQuery {
 				.getService();
 	}
 
-	@Override
-	public Job runQuery() throws InterruptedException {
+	
+	
+	public Job runQuery(String query) throws InterruptedException {
 		// Use standard SQL syntax for queries.
 		// See: https://cloud.google.com/bigquery/sql-reference/
-		QueryJobConfiguration queryConfig = QueryJobConfiguration.newBuilder("SELECT "
-						+ "CONCAT('https://stackoverflow.com/questions/', "
-						+ "CAST(id as STRING)) as url, "
-						+ "view_count "
-						+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
-						+ "WHERE tags like '%google-bigquery%' "
-						+ "ORDER BY favorite_count DESC LIMIT 10")
-				.setUseLegacySql(false).build();
+		QueryJobConfiguration queryConfig = QueryJobConfiguration.newBuilder(query).setUseLegacySql(false).build();
 
 		// Create a job ID so that we can safely retry.
 		JobId jobId = JobId.of(UUID.randomUUID().toString());
@@ -74,20 +67,19 @@ public final class SOQuery implements ISOQuery {
 		return queryJob;
 	}
 
-
-	@Override
-	public Map<String, Long> getResults(final Job queryJob) throws JobException, InterruptedException {
-		Map<String, Long> results = new HashMap<String, Long>();
+	
+public ArrayList<Long> getResults(final Job queryJob) throws JobException, InterruptedException {
+		
+		ArrayList<Long> results = new ArrayList<Long>();
 
 		if (queryJob != null) {
 			TableResult result = queryJob.getQueryResults();
-			// Print all pages of the results.
+			
 			for (FieldValueList row : result.iterateAll()) {
-				String keyUrl = row.get("url").getStringValue();
-				long viewCount = row.get("view_count").getLongValue();
-				System.out.printf("url: %s views: %d%n", keyUrl, viewCount);
-				results.put(keyUrl, viewCount);
+				Long user_id = row.get("owner_user_id").getLongValue();
+				results.add(user_id);
 			}
+			
 		}
 		return results;
 	}

@@ -192,6 +192,47 @@ public class GoogleDocsUtils {
 
 	}
 
+	
+	public void writeSheet(final String spid, final ArrayList<Long> res) throws IOException {
+		List<Request> requests = new ArrayList<>();
+		List<CellData> values = new ArrayList<>();
+
+		values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue("owner_user_id")));
+		requests.add(new Request().setUpdateCells(
+				new UpdateCellsRequest().setStart(new GridCoordinate().setSheetId(0).setRowIndex(0)
+						.setColumnIndex(0))
+						.setRows(Arrays.asList(new RowData().setValues(values)))
+						.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
+
+		BatchUpdateSpreadsheetRequest batchUpdateRequest =
+				new BatchUpdateSpreadsheetRequest().setRequests(requests);
+		sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();
+
+
+		if (null != res) {
+			int rowIndex = 1;
+			for (Long entry : res) {
+				requests = new ArrayList<>();
+				values = new ArrayList<>();
+
+				values.add(new CellData()
+						.setUserEnteredValue(new ExtendedValue().setStringValue(entry.toString())));
+				
+				requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
+						.setStart(new GridCoordinate().setSheetId(0).setRowIndex(rowIndex)
+								.setColumnIndex(0))
+						.setRows(Arrays.asList(new RowData().setValues(values)))
+						.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
+
+				batchUpdateRequest = new BatchUpdateSpreadsheetRequest().setRequests(requests);
+				sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();
+
+				rowIndex++;
+			}
+		}
+
+	}
+
 	/**
 	 * Makes the spreadsheet readable to anyone with the link.
 	 * @param spid The spreadsheet id.
