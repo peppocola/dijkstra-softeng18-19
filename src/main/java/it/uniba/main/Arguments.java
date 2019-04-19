@@ -41,7 +41,7 @@ public class Arguments {
 				type = values[1];
 				break;
 			case "taglike":
-				type = values[1];
+				taglike = values[1];
 				break;
 			case "limit":
 				limit = Integer.parseInt(values[1]);
@@ -50,6 +50,32 @@ public class Arguments {
 				throw new ParseException("unknown pattern: " + values[0]);
 			}
 		}
+	}
+	
+	public String getQuery()
+	throws ArgumentException
+	{
+		String query = "";
+		
+		if(type.equals("question") && taglike==null) {
+			query="SELECT owner_user_id\r\n" + 
+					"		FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n" + 
+					"		WHERE EXTRACT(YEAR FROM creation_date)="+year+" and EXTRACT(MONTH FROM creation_date)="+month+
+					" 		and EXTRACT(DAY FROM creation_date)="+day+" and post_type_id=1 and owner_user_id is not null\r\n" + 
+					"		order by owner_user_id\r\n" + 
+					"		LIMIT "+limit+" ";
+		}
+		else {
+			throw new ArgumentException("invalid argument "+type);
+		}
+		/*
+		SELECT owner_user_id
+		FROM `bigquery-public-data.stackoverflow.posts_questions`
+		WHERE EXTRACT(YEAR FROM creation_date)=2016 and EXTRACT(MONTH FROM creation_date)=02 and EXTRACT(DAY FROM creation_date)=11 and post_type_id=1 and owner_user_id is not null
+		order by owner_user_id
+		LIMIT 100 
+		*/
+		return query;
 	}
 	
 	public int getYear() {
