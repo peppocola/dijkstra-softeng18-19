@@ -6,6 +6,7 @@ package it.uniba.sotorrent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -99,7 +100,7 @@ public final class SOQuery implements ISOQuery {
 
 
 
-	@Override
+	/*@Override
 	public Map<String, Long> getResults(final Job queryJob) throws JobException, InterruptedException {
 		
 		Map<String, Long> results = new HashMap<String, Long>();
@@ -114,6 +115,22 @@ public final class SOQuery implements ISOQuery {
 				System.out.printf("url: %s views: %d%n", keyUrl, viewCount);
 				results.put(keyUrl, viewCount);
 				
+			}
+			
+		}
+		return results;
+	}*/
+	
+public ArrayList<Long> getResults(final Job queryJob) throws JobException, InterruptedException {
+		
+		ArrayList<Long> results = new ArrayList<Long>();
+
+		if (queryJob != null) {
+			TableResult result = queryJob.getQueryResults();
+			
+			for (FieldValueList row : result.iterateAll()) {
+				Long user_id = row.get("owner_user_id").getLongValue();
+				results.add(user_id);
 			}
 			
 		}

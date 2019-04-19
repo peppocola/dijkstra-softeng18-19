@@ -2,6 +2,7 @@ package it.uniba.sotorrent;
 
 import com.google.cloud.bigquery.JobException;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.google.cloud.bigquery.Job;
@@ -18,7 +19,7 @@ public interface ISOQuery {
 	 */
 	Job runQuery() throws InterruptedException;
 	Job runQuery(String query) throws InterruptedException;
-
+	 
 	/**
 	 * Returns the results from the query job.
 	 * @param job The job associated to the query.
@@ -26,6 +27,6 @@ public interface ISOQuery {
 	 * @throws JobException Generic error occurred.
 	 * @throws InterruptedException Raised on timeouts.
 	 */
-	Map<String, Long> getResults(Job job) throws JobException, InterruptedException;
-
+	//Map<String, Long> getResults(Job job) throws JobException, InterruptedException;
+	ArrayList<Long> getResults(final Job queryJob) throws JobException, InterruptedException;
 }

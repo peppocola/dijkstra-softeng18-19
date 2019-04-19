@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.google.cloud.bigquery.Job;
@@ -73,7 +74,7 @@ public final class AppMain {
 		
 		ISOQuery soq = new SOQuery();
 		Job job = soq.runQuery(query);
-		Map<String, Long> res = soq.getResults(job);
+		ArrayList<Long> res = soq.getResults(job);
 
 		GoogleDocsUtils ut = new GoogleDocsUtils();
 		String spid = ut.createSheet("Prova sna4so");
