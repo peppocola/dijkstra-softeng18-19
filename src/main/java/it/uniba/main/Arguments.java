@@ -1,22 +1,51 @@
 
 package it.uniba.main;
 
+/**
+ * The input parameters class.
+ */
 public class Arguments {
 	
+	/**
+	 * The year.
+	 */
 	private int year;
 	
+	/**
+	 * The month.
+	 */
 	private int month;
 	
+	/**
+	 * The day.
+	 */
 	private int day;
 	
+	/**
+	 * The type (can be 'question', 'post' and 'answer').
+	 */
 	private String type;
 	
+	/**
+	 * The tag string.
+	 */
 	private String taglike;
 	
+	/**
+	 * The limit number to the query output.
+	 */
 	private long limit;
 	
+	/**
+	 * The regular expression used to parse the arguments.
+	 */
 	private static final String REGEX = "="; 
 	
+	/**
+	 * The Arguments constructor.
+	 * @param args An array of argument strings
+	 * @throws ParseException A parse exception
+	 */
 	public Arguments(String[] args) 
 		throws ParseException
 	{
@@ -52,8 +81,13 @@ public class Arguments {
 		}
 	}
 	
+	/**
+	 * Generates the query string.
+	 * @return The query string
+	 * @throws ArgumentException An invalid argument exception
+	 */
 	public String getQuery()
-	throws ArgumentException
+			throws ArgumentException
 	{
 		String query = "";
 		
@@ -64,37 +98,65 @@ public class Arguments {
 					" 		and EXTRACT(DAY FROM creation_date)="+day+" and post_type_id=1 and owner_user_id is not null\r\n" + 
 					"		order by owner_user_id\r\n" + 
 					"		LIMIT "+limit+" ";
-		}
-		else {
+		} else {
 			throw new ArgumentException("invalid argument "+type);
 		}
+
 		return query;
 	}
-	
+
+	/**
+	 * Get the year.
+	 * @return The year
+	 */
 	public int getYear() {
 		return year;
 	}
 	
+	/**
+	 * Get the month.
+	 * @return The month
+	 */
 	public int getMonth() {
 		return month;
 	}
 	
+	/**
+	 * Get the day.
+	 * @return The day
+	 */
 	public int getDay() {
 		return day;
 	}
 	
+	/**
+	 * Get the type.
+	 * @return The type
+	 */
 	public String getType() {
 		return type;
 	}
 	
+	/**
+	 * Get the tag.
+	 * @return The tag
+	 */
 	public String getTaglike() {
 		return taglike;
 	}
 	
+	/**
+	 * Get the limit.
+	 * @return The limit
+	 */
 	public long getLimit() {
 		return limit;
 	}
 	
+	/**
+	 * Converts the arguments to a String.
+	 * @return The string that rappresents the arguments
+	 */
 	public String toString() {
 		String str = "";
 		
