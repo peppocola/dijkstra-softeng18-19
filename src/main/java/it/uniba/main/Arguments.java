@@ -65,6 +65,15 @@ public class Arguments {
 					"		order by owner_user_id\r\n" + 
 					"		LIMIT "+limit+" ";
 		}
+		
+		else if (type.equals("answer") && taglike == null) {
+			query = "SELECT distinct owner_user_id\r\n" + 
+					"		FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n" + 
+					"		WHERE EXTRACT(YEAR FROM creation_date)=" + year + " and EXTRACT(MONTH FROM creation_date)=" + month + "\r\n" + 
+					"    	and EXTRACT(DAY FROM creation_date)=" + day + " and post_type_id=2 and owner_user_id is not null\r\n" + 
+					"		order by owner_user_id\r\n" + 
+					"		LIMIT " + limit;
+		}
 		else {
 			throw new ArgumentException("invalid argument "+type);
 		}
