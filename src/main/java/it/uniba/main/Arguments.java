@@ -137,11 +137,30 @@ public class Arguments {
 					"order by owner_user_id\r\n" + 
 					"LIMIT " + limit;
 		}
+		else if (type.equals("post") && taglike != null) {
+			query="SELECT distinct owner_user_id \r\n" + 
+					"FROM \r\n" + 
+					"  (SELECT distinct owner_user_id\r\n" + 
+					"		FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n" + 
+					"		WHERE EXTRACT(YEAR FROM creation_date)=" + year + " and EXTRACT(MONTH FROM creation_date)=" + month + "\r\n" + 
+					"    and REGEXP_CONTAINS(tags, r\"" + taglike + "\")\r\n" + 
+					"    and owner_user_id is not null\r\n" + 
+					"    \r\n" + 
+					"  UNION ALL\r\n" + 
+					"\r\n" + 
+					"  SELECT distinct answer.owner_user_id\r\n" + 
+					"		FROM `bigquery-public-data.stackoverflow.posts_answers` answer\r\n" + 
+					"    INNER JOIN  `bigquery-public-data.stackoverflow.posts_questions` questions on parent_id = questions.id \r\n" + 
+					"		WHERE REGEXP_CONTAINS(questions.tags, r\"" + taglike + "\") and EXTRACT(YEAR FROM answer.creation_date)=" + year + " and EXTRACT(MONTH FROM answer.creation_date)=" + month + "\r\n" + 
+					"    and answer.owner_user_id is not null) \r\n" + 
+					"order by owner_user_id\r\n" + 
+					"LIMIT " + limit;
+		}
 		else {
 
 			throw new ArgumentException("invalid argument "+type);
 		}
-
+		
 		return query;
 	}
 
