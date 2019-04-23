@@ -108,6 +108,21 @@ public class Arguments {
 					"		order by owner_user_id\r\n" + 
 					"		LIMIT " + limit;
 		}
+		else if (type.equals("post") && taglike == null) {
+			query="SELECT distinct owner_user_id\r\n" + 
+					"FROM\r\n" + 
+					"((SELECT distinct owner_user_id\r\n" + 
+					"      FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n" + 
+					"      WHERE EXTRACT(YEAR FROM creation_date)=" + year + " and EXTRACT(MONTH FROM creation_date)=" + month + " and EXTRACT(DAY FROM creation_date)=" + day +" and owner_user_id is not null)\r\n" + 
+					"\r\n" + 
+					"UNION ALL\r\n" + 
+					"\r\n" + 
+					"(SELECT distinct owner_user_id\r\n" + 
+					"      FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n" + 
+					"      WHERE EXTRACT(YEAR FROM creation_date)=" + year + " and EXTRACT(MONTH FROM creation_date)=" + month + " and EXTRACT(DAY FROM creation_date)=" + day + " and owner_user_id is not null))\r\n" + 
+					"order by owner_user_id\r\n" + 
+					"LIMIT " + limit;
+		}
 		else {
 
 			throw new ArgumentException("invalid argument "+type);
