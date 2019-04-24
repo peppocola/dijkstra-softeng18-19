@@ -48,7 +48,6 @@ public final class AppMain {
 		Arguments params;
 		try {
 			params = new Arguments(args);
-			System.out.println(params);
 		} catch (ParseException e) {
 			System.err.println(e);
 			return;
