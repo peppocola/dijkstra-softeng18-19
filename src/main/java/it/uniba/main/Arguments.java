@@ -121,7 +121,11 @@ public class Arguments {
 					+ day;
 		}
 
-		if (type.equals("question") && taglike == null) {
+		if (type == null) {
+
+			throw new ArgumentException("invalid argument " + type);
+
+		} else if (type.equals("question") && taglike == null) {
 			query += 	" FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
 						+ "	WHERE "
 						+ date
@@ -182,8 +186,6 @@ public class Arguments {
 						+ date
 						+ " and REGEXP_CONTAINS(tags, r\"" + taglike + "\") \r\n"
 						+ " and owner_user_id is not null\r\n";
-		} else {
-			throw new ArgumentException("invalid argument " + type);
 		}
 
 		query += 		" order by owner_user_id\r\n"
