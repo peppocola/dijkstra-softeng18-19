@@ -83,6 +83,8 @@ public class Arguments {
 			case "limit":
 				limit = Integer.parseInt(values[1]);
 				break;
+			default:
+				break;
 			}
 		}
 	}
