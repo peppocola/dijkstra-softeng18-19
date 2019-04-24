@@ -20,6 +20,9 @@ import com.google.cloud.bigquery.JobInfo;
 import com.google.cloud.bigquery.QueryJobConfiguration;
 import com.google.cloud.bigquery.TableResult;
 
+/**
+ * Class which executes queries.
+ */
 public final class SOQuery implements ISOQuery {
 	/**
 	 * Instance of BigQuery service.
@@ -42,7 +45,12 @@ public final class SOQuery implements ISOQuery {
 	}
 
 
-
+	/**
+	 * Starts the query.
+	 * @param query The query string.
+	 * @return The job for the query.
+	 * @throws InterruptedException Raised on timeouts.
+	 */
 	public Job runQuery(final String query) throws InterruptedException {
 		// Use standard SQL syntax for queries.
 		// See: https://cloud.google.com/bigquery/sql-reference/
@@ -68,8 +76,14 @@ public final class SOQuery implements ISOQuery {
 		return queryJob;
 	}
 
-
-public ArrayList<Long> getResults(final Job queryJob) throws JobException, InterruptedException {
+	/**
+	 * Returns the results from the query job.
+	 * @param queryJob The job associated to the query.
+	 * @return Results as a array of long, with owner_user_id.
+	 * @throws JobException Generic error occurred.
+	 * @throws InterruptedException Raised on timeouts.
+	 */
+	public ArrayList<Long> getResults(final Job queryJob) throws JobException, InterruptedException {
 
 		ArrayList<Long> results = new ArrayList<Long>();
 
