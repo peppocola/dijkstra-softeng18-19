@@ -124,7 +124,6 @@ public class GoogleDocsUtils {
 		Spreadsheet spreadsheet = new Spreadsheet().setProperties(new SpreadsheetProperties().setTitle(title));
 		spreadsheet = sheetsService.spreadsheets().create(spreadsheet).setFields("spreadsheetId").execute();
 		String spid = spreadsheet.getSpreadsheetId();
-		System.out.println("Spreadsheet ID: " + spid);
 		System.out.println("Spreadhsheet URL: https://docs.google.com/spreadsheets/d/" + spid);
 		return spid;
 
@@ -138,7 +137,6 @@ public class GoogleDocsUtils {
 	public void getSheetByTitle(final String spid) throws IOException {
 		Sheets.Spreadsheets.Get request = sheetsService.spreadsheets().get(spid);
 		Spreadsheet response = request.execute();
-		System.out.println(response);
 	}
 
 	/**
@@ -257,7 +255,7 @@ public class GoogleDocsUtils {
 
 			public void onSuccess(final Permission permission, final HttpHeaders responseHeaders)
 							    		  throws IOException {
-				System.out.println("Permission ID: " + permission.getId());
+				//System.out.println("Permission ID: " + permission.getId());
 			}
 		};
 		BatchRequest batch = driveService.batch();
