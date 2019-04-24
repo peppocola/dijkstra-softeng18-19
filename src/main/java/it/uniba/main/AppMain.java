@@ -28,21 +28,17 @@ public final class AppMain {
 	}
 
 	/**
-	 * 	 * This is the main entry of the application.
+	 * * This is the main entry of the application.
 	 *
-	 * @param args
-	 *                 The command-line arguments.
-	 * @throws FileNotFoundException See stack trace for proper location.
-	 * @throws IOException  See stack trace for proper location.
-	 * @throws InterruptedException  See stack trace for proper location.
-	 * @throws GeneralSecurityException  See stack trace for proper location.
-	 * @throws URISyntaxException  See stack trace for proper location.
+	 * @param args The command-line arguments.
+	 * @throws FileNotFoundException    See stack trace for proper location.
+	 * @throws IOException              See stack trace for proper location.
+	 * @throws InterruptedException     See stack trace for proper location.
+	 * @throws GeneralSecurityException See stack trace for proper location.
+	 * @throws URISyntaxException       See stack trace for proper location.
 	 */
-	public static void main(final String[] args) throws FileNotFoundException,
-												 IOException,
-												 InterruptedException,
-												 GeneralSecurityException,
-												 URISyntaxException {
+	public static void main(final String[] args) throws FileNotFoundException, IOException, InterruptedException,
+			GeneralSecurityException, URISyntaxException {
 
 		if (args.length <= 0) {
 			System.out.println("missing arguments");
@@ -50,37 +46,31 @@ public final class AppMain {
 		}
 
 		Arguments params;
-		
 		try {
 			params = new Arguments(args);
 			System.out.println(params);
-		} catch(ParseException e) {
+		} catch (ParseException e) {
 			System.err.println(e);
 			return;
-		} catch(NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			System.err.println(e);
 			return;
 		}
-		
 		String query;
-		
 		try {
-			query = params.getQuery();	
-		}catch (ArgumentException e) {
+			query = params.getQuery();
+		} catch (ArgumentException e) {
 			System.err.println(e);
 			return;
 		}
-		
 		ISOQuery soq = new SOQuery();
 		Job job = soq.runQuery(query);
 		ArrayList<Long> res = soq.getResults(job);
-
 		GoogleDocsUtils ut = new GoogleDocsUtils();
 		String spid = ut.createSheet("Result");
 		ut.shareSheet(spid);
 		ut.getSheetByTitle(spid);
 		ut.writeSheet(spid, res);
-		
 	}
 
 }
