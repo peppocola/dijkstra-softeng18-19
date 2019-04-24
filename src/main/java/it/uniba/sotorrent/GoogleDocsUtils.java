@@ -60,7 +60,7 @@ public class GoogleDocsUtils {
 	/**
 	 * The location where the SON credential file is stored on the Internet.
 	 */
-	private static final String url = "http://neo.di.uniba.it/credentials/project-dijkstra-sxc5g6.json";
+	private static final String URL = "http://neo.di.uniba.it/credentials/project-dijkstra-sxc5g6.json";
 
 	/**
 	 * Default constructor, authenticates and instantiate services.
@@ -83,7 +83,7 @@ public class GoogleDocsUtils {
 	 * @throws URISyntaxException Malformed URI.
 	 */
 	private Credential authorize() throws IOException, GeneralSecurityException, URISyntaxException {
-		GoogleCredential authCred = GoogleCredential.fromStream(new URL(url).openStream()).toBuilder()
+		GoogleCredential authCred = GoogleCredential.fromStream(new URL(URL).openStream()).toBuilder()
 				.setServiceAccountScopes(SCOPES).build();
 		return authCred;
 	}
@@ -142,7 +142,8 @@ public class GoogleDocsUtils {
 	}
 
 	/**
-	 * Write results to the spreadsheet. Also, see <a href="https://developers.google.com/sheets/api/guides/values">here</a>.
+	 * Write results to the spreadsheet.
+	 * Also, see <a href="https://developers.google.com/sheets/api/guides/values">here</a>.
 	 * @param spid The spreadsheet id.
 	 * @param res The hash map of the results, with URL as key and view count as value.
 	 * @throws IOException Generic I/O error.
@@ -192,7 +193,13 @@ public class GoogleDocsUtils {
 
 	}
 
-	
+	/**
+	 * Write results to the spreadsheet.
+	 * Also, see <a href="https://developers.google.com/sheets/api/guides/values">here</a>.
+	 * @param spid The spreadsheet id.
+	 * @param res The array of the results, with owner_user_id as value.
+	 * @throws IOException Generic I/O error.
+	 */
 	public void writeSheet(final String spid, final ArrayList<Long> res) throws IOException {
 		List<Request> requests = new ArrayList<>();
 		List<CellData> values = new ArrayList<>();
@@ -216,11 +223,11 @@ public class GoogleDocsUtils {
 				values = new ArrayList<>();
 
 				values.add(new CellData()
-						.setUserEnteredValue(new ExtendedValue().setStringValue(entry.toString())));
-				
+					  .setUserEnteredValue(new ExtendedValue().setStringValue(entry.toString())));
+
 				requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
 						.setStart(new GridCoordinate().setSheetId(0).setRowIndex(rowIndex)
-								.setColumnIndex(0))
+						.setColumnIndex(0))
 						.setRows(Arrays.asList(new RowData().setValues(values)))
 						.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
 

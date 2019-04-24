@@ -17,15 +17,15 @@ public interface ISOQuery {
 	 * @return The job for the query.
 	 * @throws InterruptedException Raised on timeouts.
 	 */
-	
+
 	Job runQuery(String query) throws InterruptedException;
-	 
+
 	/**
 	 * Returns the results from the query job.
-	 * @param job The job associated to the query.
+	 * @param queryJob The job associated to the query.
 	 * @return Results as a array of long, with owner_user_id.
 	 * @throws JobException Generic error occurred.
 	 * @throws InterruptedException Raised on timeouts.
 	 */
-	ArrayList<Long> getResults(final Job queryJob) throws JobException, InterruptedException;
+	ArrayList<Long> getResults(Job queryJob) throws JobException, InterruptedException;
 }
