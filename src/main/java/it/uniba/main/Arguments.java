@@ -5,58 +5,58 @@ package it.uniba.main;
  * The input parameters class.
  */
 public class Arguments {
-	
+
 	/**
 	 * The year.
 	 */
 	private int year;
-	
+
 	/**
 	 * The month.
 	 */
 	private int month;
-	
+
 	/**
 	 * The day.
 	 */
 	private int day;
-	
+
 	/**
 	 * The type (can be 'question', 'post' and 'answer').
 	 */
 	private String type;
-	
+
 	/**
 	 * The tag string.
 	 */
 	private String taglike;
-	
+
 	/**
 	 * The limit number to the query output.
 	 */
 	private long limit;
-	
+
 	/**
 	 * The regular expression used to parse the arguments.
 	 */
-	private static final String REGEX = "="; 
-	
+	private static final String REGEX = "=";
+
 	/**
 	 * The Arguments constructor.
 	 * @param args An array of argument strings
 	 * @throws ParseException A parse exception
 	 */
-	public Arguments(String[] args) 
-		throws ParseException
-	{
+	public Arguments(final String[] args)
+		throws ParseException {
+
 		for (String str : args) {
 			String[] values = str.split(REGEX);
 
-			if(values.length != 2) {
+			if (values.length != 2) {
 				throw new ParseException("invalid assignment");
 			}
-			
-			switch(values[0]) {
+
+			switch (values[0]) {
 			case "yyyy":
 				year = Integer.parseInt(values[1]);
 				break;
@@ -80,21 +80,23 @@ public class Arguments {
 			}
 		}
 	}
-	
+
 	/**
 	 * Generates the query string.
 	 * @return The query string
 	 * @throws ArgumentException An invalid argument exception
 	 */
 	public String getQuery()
-			throws ArgumentException
-	{
+			throws ArgumentException {
+
 		String query = "SELECT distinct owner_user_id\r\n";
 		String date = "";
+
 		if (year != 0) {
 			date += " EXTRACT(YEAR FROM creation_date)="
 					+ year;
 		}
+
 		if (month != 0) {
 		    if (year != 0) {
 		        date += " and";
@@ -102,6 +104,7 @@ public class Arguments {
 		    date += " EXTRACT(MONTH FROM creation_date)="
 					+ month;
 		}
+
 		if (day != 0) {
 		    if (year != 0 || month != 0) {
 		    	date += " and";
@@ -109,6 +112,7 @@ public class Arguments {
 		    date += " EXTRACT(DAY FROM creation_date)="
 					+ day;
 		}
+
 		if (type.equals("question") && taglike == null) {
 			query += 	" FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
 						+ "	WHERE "
@@ -116,13 +120,13 @@ public class Arguments {
 						+ " and owner_user_id is not null\r\n";
 		} else if (type.equals("answer") && taglike == null) {
 			query += 	" FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
-						+ " WHERE " 
+						+ " WHERE "
 						+ date
 						+ " and owner_user_id is not null\r\n";
 		} else if (type.equals("post") && taglike == null) {
-			query += 	"FROM\r\n" 
+			query += 	"FROM\r\n"
 						+ "((SELECT distinct owner_user_id\r\n"
-						+ " FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n" 
+						+ " FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
 						+ " WHERE "
 						+ date
 						+ " and owner_user_id is not null)\r\n"
@@ -164,20 +168,20 @@ public class Arguments {
 						+ date
 						+ " and REGEXP_CONTAINS(tags, r\"" + taglike + "\") \r\n"
 						+ " and owner_user_id is not null))\r\n";
-		} else if(type.equals("question") && taglike != null) {
+		} else if (type.equals("question") && taglike != null) {
 			query += 	" FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
 						+ " WHERE "
 						+ date
 						+ " and REGEXP_CONTAINS(tags, r\"" + taglike + "\") \r\n"
 						+ " and owner_user_id is not null\r\n";
 		} else {
-			throw new ArgumentException("invalid argument "+type);
+			throw new ArgumentException("invalid argument " + type);
 		}
-		
-		query	+= 	" order by owner_user_id\r\n" 
-				+ 	" LIMIT "
+
+		query += 		" order by owner_user_id\r\n"
+				+ 		" LIMIT "
 				+ limit;
-		
+
 		return query;
 	}
 
@@ -188,7 +192,7 @@ public class Arguments {
 	public int getYear() {
 		return year;
 	}
-	
+
 	/**
 	 * Get the month.
 	 * @return The month
@@ -196,7 +200,7 @@ public class Arguments {
 	public int getMonth() {
 		return month;
 	}
-	
+
 	/**
 	 * Get the day.
 	 * @return The day
@@ -204,7 +208,7 @@ public class Arguments {
 	public int getDay() {
 		return day;
 	}
-	
+
 	/**
 	 * Get the type.
 	 * @return The type
@@ -212,7 +216,7 @@ public class Arguments {
 	public String getType() {
 		return type;
 	}
-	
+
 	/**
 	 * Get the tag.
 	 * @return The tag
@@ -220,7 +224,7 @@ public class Arguments {
 	public String getTaglike() {
 		return taglike;
 	}
-	
+
 	/**
 	 * Get the limit.
 	 * @return The limit
@@ -228,24 +232,18 @@ public class Arguments {
 	public long getLimit() {
 		return limit;
 	}
-	
+
 	/**
 	 * Converts the arguments to a String.
 	 * @return The string that rappresents the arguments
 	 */
 	public String toString() {
 		String str = "";
-		
-		str = "yyyy=" + year + " mm=" + month + " dd=" + day +
-				" type=" + type + " taglike=" + taglike + " limit=" + limit;
-		
+
+		str = 	"yyyy=" + year + " mm=" + month + " dd=" + day
+				+ " type=" + type + " taglike=" + taglike + " limit=" + limit;
+
 		return str;
 	}
 }
-
-
-
-
-
-
 
