@@ -7,7 +7,7 @@ public class ParseException extends Exception {
 	 * The ParseException constructor.
 	 * @param msg The error message
 	 */
-	public ParseException(String msg) {
+	public ParseException(final String msg) {
 		super(msg);
 	}
 }
