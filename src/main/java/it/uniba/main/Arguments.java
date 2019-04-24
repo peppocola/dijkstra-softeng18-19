@@ -89,87 +89,94 @@ public class Arguments {
 	public String getQuery()
 			throws ArgumentException
 	{
-		String query = "";
-		
-		if(type.equals("question") && taglike==null) {
-			query="SELECT owner_user_id\r\n" + 
-					"		FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n" + 
-					"		WHERE EXTRACT(YEAR FROM creation_date)="+year+" and EXTRACT(MONTH FROM creation_date)="+month+
-					" 		and EXTRACT(DAY FROM creation_date)="+day+" and post_type_id=1 and owner_user_id is not null\r\n" + 
-					"		order by owner_user_id\r\n" + 
-					"		LIMIT "+limit+" ";
-
+		String query = "SELECT distinct owner_user_id\r\n";
+		String date = "";
+		if (year != 0) {
+			date += " EXTRACT(YEAR FROM creation_date)="
+					+ year;
 		}
-		else if (type.equals("answer") && taglike == null) {
-			query = "SELECT distinct owner_user_id\r\n" + 
-					"		FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n" + 
-					"		WHERE EXTRACT(YEAR FROM creation_date)=" + year + " and EXTRACT(MONTH FROM creation_date)=" + month + "\r\n" + 
-					"    	and EXTRACT(DAY FROM creation_date)=" + day + " and post_type_id=2 and owner_user_id is not null\r\n" + 
-					"		order by owner_user_id\r\n" + 
-					"		LIMIT " + limit;
+		if (month != 0) {
+		    if (year != 0) {
+		        date += " and";
+		    }
+		    date += " EXTRACT(MONTH FROM creation_date)="
+					+ month;
 		}
-		else if (type.equals("post") && taglike == null) {
-			query="SELECT distinct owner_user_id\r\n" + 
-					"FROM\r\n" + 
-					"((SELECT distinct owner_user_id\r\n" + 
-					"      FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n" + 
-					"      WHERE EXTRACT(YEAR FROM creation_date)=" + year + " and EXTRACT(MONTH FROM creation_date)=" + month + " and EXTRACT(DAY FROM creation_date)=" + day +" and owner_user_id is not null)\r\n" + 
-					"\r\n" + 
-					"UNION ALL\r\n" + 
-					"\r\n" + 
-					"(SELECT distinct owner_user_id\r\n" + 
-					"      FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n" + 
-					"      WHERE EXTRACT(YEAR FROM creation_date)=" + year + " and EXTRACT(MONTH FROM creation_date)=" + month + " and EXTRACT(DAY FROM creation_date)=" + day + " and owner_user_id is not null))\r\n" + 
-					"order by owner_user_id\r\n" + 
-					"LIMIT " + limit;
+		if (day != 0) {
+		    if (year != 0 || month != 0) {
+		    	date += " and";
+		    }
+		    date += " EXTRACT(DAY FROM creation_date)="
+					+ day;
 		}
-		else if (type.equals("answer") && taglike != null) {
-			query="SELECT distinct owner_user_id\r\n" + 
-					"FROM\r\n" + 
-					"(SELECT distinct parent_id, owner_user_id\r\n" + 
-					"FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n" + 
-					"WHERE (EXTRACT(YEAR FROM creation_date)=" + year + " and EXTRACT(MONTH FROM creation_date)=" + month + " and owner_user_id is not null))\r\n" + 
-					"JOIN\r\n" + 
-					"(SELECT distinct id\r\n" + 
-					"FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n" + 
-					"WHERE REGEXP_CONTAINS (tags, r\"" + taglike + "\"))\r\n" + 
-					"ON parent_id = id\r\n" + 
-					"order by owner_user_id\r\n" + 
-					"LIMIT " + limit;
-		}
-		else if (type.equals("post") && taglike != null) {
-			query="SELECT distinct owner_user_id \r\n" + 
-					"FROM \r\n" + 
-					"  (SELECT distinct owner_user_id\r\n" + 
-					"		FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n" + 
-					"		WHERE EXTRACT(YEAR FROM creation_date)=" + year + " and EXTRACT(MONTH FROM creation_date)=" + month + "\r\n" + 
-					"    and REGEXP_CONTAINS(tags, r\"" + taglike + "\")\r\n" + 
-					"    and owner_user_id is not null\r\n" + 
-					"    \r\n" + 
-					"  UNION ALL\r\n" + 
-					"\r\n" + 
-					"  SELECT distinct answer.owner_user_id\r\n" + 
-					"		FROM `bigquery-public-data.stackoverflow.posts_answers` answer\r\n" + 
-					"    INNER JOIN  `bigquery-public-data.stackoverflow.posts_questions` questions on parent_id = questions.id \r\n" + 
-					"		WHERE REGEXP_CONTAINS(questions.tags, r\"" + taglike + "\") and EXTRACT(YEAR FROM answer.creation_date)=" + year + " and EXTRACT(MONTH FROM answer.creation_date)=" + month + "\r\n" + 
-					"    and answer.owner_user_id is not null) \r\n" + 
-					"order by owner_user_id\r\n" + 
-					"LIMIT " + limit;
-		}
-		else if(type.equals("question") && taglike != null) {
-			query="SELECT owner_user_id \r\n" + 
-					"  FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n" + 
-					"  WHERE EXTRACT(YEAR FROM creation_date)=" + year + " and EXTRACT(MONTH FROM creation_date)=" + month + "\r\n" + 
-					"  and REGEXP_CONTAINS(tags, r\"" + taglike + "\") \r\n" + 
-					"  and owner_user_id is not null\r\n" + 
-					"  group by owner_user_id\r\n" + 
-					"  order by owner_user_id\r\n" + 
-					"  LIMIT " + limit;
-		}
-		else {
-
+		if (type.equals("question") && taglike == null) {
+			query += 	" FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
+						+ "	WHERE "
+						+ date
+						+ " and owner_user_id is not null\r\n";
+		} else if (type.equals("answer") && taglike == null) {
+			query += 	" FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
+						+ " WHERE " 
+						+ date
+						+ " and owner_user_id is not null\r\n";
+		} else if (type.equals("post") && taglike == null) {
+			query += 	"FROM\r\n" 
+						+ "((SELECT distinct owner_user_id\r\n"
+						+ " FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n" 
+						+ " WHERE "
+						+ date
+						+ " and owner_user_id is not null)\r\n"
+						+ "UNION ALL\r\n"
+						+ "(SELECT distinct owner_user_id\r\n"
+						+ " FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
+						+ " WHERE "
+						+ date
+						+ " and owner_user_id is not null))\r\n";
+		} else if (type.equals("answer") && taglike != null) {
+			query +=	"FROM\r\n"
+						+ "(SELECT distinct parent_id, owner_user_id\r\n"
+						+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
+						+ " WHERE "
+						+ date
+						+ " and owner_user_id is not null)\r\n"
+						+ "JOIN\r\n"
+						+ "(SELECT distinct id\r\n"
+						+ "FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
+						+ " WHERE REGEXP_CONTAINS (tags, r\"" + taglike + "\"))\r\n"
+						+ "ON parent_id = id\r\n";
+		} else if (type.equals("post") && taglike != null) {
+			query +=	" FROM (SELECT distinct owner_user_id"
+						+ " FROM\r\n"
+						+ "(SELECT distinct parent_id, owner_user_id\r\n"
+						+ " FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
+						+ " WHERE "
+						+ date
+						+ " and owner_user_id is not null)\r\n"
+						+ " JOIN\r\n"
+						+ " (SELECT distinct id\r\n"
+						+ " FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
+						+ " WHERE REGEXP_CONTAINS (tags, r\"" + taglike + "\"))\r\n"
+						+ " ON parent_id = id\r\n"
+						+ " UNION ALL "
+						+ "(SELECT owner_user_id\r\n"
+						+ " FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
+						+ " WHERE "
+						+ date
+						+ " and REGEXP_CONTAINS(tags, r\"" + taglike + "\") \r\n"
+						+ " and owner_user_id is not null))\r\n";
+		} else if(type.equals("question") && taglike != null) {
+			query += 	" FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
+						+ " WHERE "
+						+ date
+						+ " and REGEXP_CONTAINS(tags, r\"" + taglike + "\") \r\n"
+						+ " and owner_user_id is not null\r\n";
+		} else {
 			throw new ArgumentException("invalid argument "+type);
 		}
+		
+		query	+= 	" order by owner_user_id\r\n" 
+				+ 	" LIMIT "
+				+ limit;
 		
 		return query;
 	}
