@@ -39,7 +39,15 @@ public class Arguments {
 	/**
 	 * The regular expression used to parse the arguments.
 	 */
-	private static final String REGEX = "=";
+	private static final String REGEX =
+			  "("
+			+ "(yyyy=(\\d){4})|"
+			+ "(mm=(\\d){1,2})|"
+			+ "(dd=(\\d){1,2})|"
+			+ "(type=(question|post|answer))|"
+			+ "(taglike=(\\w)+)|"
+			+ "(limit=(\\d)+)"
+			+ ")";
 
 	/**
 	 * The Arguments constructor.
@@ -50,11 +58,11 @@ public class Arguments {
 		throws ParseException {
 
 		for (String str : args) {
-			String[] values = str.split(REGEX);
-
-			if (values.length != 2) {
-				throw new ParseException("invalid assignment");
+			if (!str.matches(REGEX)) {
+				throw new ParseException("unknown pattern: " + str);
 			}
+
+			String[] values = str.split("=");
 
 			switch (values[0]) {
 			case "yyyy":
@@ -76,7 +84,7 @@ public class Arguments {
 				limit = Integer.parseInt(values[1]);
 				break;
 			default:
-				throw new ParseException("unknown pattern: " + values[0]);
+				break;
 			}
 		}
 	}
