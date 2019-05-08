@@ -17,29 +17,12 @@ public class Query {
 	 * The Query constructor.
 	 * 
 	 * @param args The arguments
+	 * @throws ArgumentException thrown when the type is null
 	 */
 	public Query(final Arguments args) throws ArgumentException {
 		query = "SELECT distinct owner_user_id\r\n";
 
-		String date = "";
-
-		if (args.getYear() != 0) {
-			date += " EXTRACT(year FROM creation_date)=" + args.getYear();
-		}
-
-		if (args.getMonth() != 0) {
-			if (args.getYear() != 0) {
-				date += " and";
-			}
-			date += " EXTRACT(month FROM creation_date)=" + args.getMonth();
-		}
-
-		if (args.getDay() != 0) {
-			if (args.getYear() != 0 || args.getMonth() != 0) {
-				date += " and";
-			}
-			date += " EXTRACT(day FROM creation_date)=" + args.getDay();
-		}
+		String date = new QueryDate(args.getYear(), args.getMonth(), args.getDay()).toString();
 
 		if (args.getType() == null) {
 
