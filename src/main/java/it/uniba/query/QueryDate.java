@@ -1,7 +1,7 @@
 package it.uniba.query;
 
 /**
- *The QueryDate class. 
+ * The QueryDate class.
  */
 class QueryDate {
 	/**
@@ -22,20 +22,22 @@ class QueryDate {
 
 	/**
 	 * The QueryDate constructor.
-	 * @param day The day
-	 * @param month The month
-	 * @param year The year
+	 * 
+	 * @param dd   The day
+	 * @param mm   The month
+	 * @param yyyy The year
 	 */
-	QueryDate(final int day, final  int month, final int year) {
+	QueryDate(final int dd, final int mm, final int yyyy) {
 
-		this.day = day;
-		this.month = month;
-		this.year = year;
+		this.day = dd;
+		this.month = mm;
+		this.year = yyyy;
 
 	}
 
 	/**
 	 * converts the QueryDate to a String.
+	 * 
 	 * @return the string you can append to the query
 	 */
 
