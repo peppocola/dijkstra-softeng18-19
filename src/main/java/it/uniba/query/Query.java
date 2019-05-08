@@ -22,7 +22,7 @@ public class Query {
 	public Query(final Arguments args) throws ArgumentException {
 		query = "SELECT distinct owner_user_id\r\n";
 
-		String date = new QueryDate(args.getYear(), args.getMonth(), args.getDay()).toString();
+		String date = new QueryDate(args.getDay(), args.getMonth(), args.getYear()).toString();
 
 		if (args.getType() == null) {
 
