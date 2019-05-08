@@ -283,7 +283,8 @@ public class Arguments {
 		String str = "";
 
 		str = 	"yyyy=" + year + " mm=" + month + " dd=" + day
-				+ " type=" + type + " taglike=" + taglike + " limit=" + limit;
+				+ " type=" + type + " taglike=" + taglike + " limit=" + limit
+				+ " edge=" + edge + " weight=" + weight + " user=" + user;
 
 		return str;
 	}
