@@ -66,7 +66,10 @@ public class Arguments {
 			+ "(dd=(\\d){1,2})|"
 			+ "(type=(question|post|answer))|"
 			+ "(taglike=(\\w)+)|"
-			+ "(limit=(\\d)+)"
+			+ "(limit=(\\d)+)|"
+			+ "(edge=(yes|no))|"
+			+ "(weight=(yes|no))|"
+			+ "(user=(\\d)+)"
 			+ ")";
 
 	/**
