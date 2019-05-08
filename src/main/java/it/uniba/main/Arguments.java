@@ -276,9 +276,34 @@ public class Arguments {
 	}
 
 	/**
+	 * Get the edge.
+	 * @return The edge
+	 */
+	public boolean getEdge() {
+		return edge;
+	}
+
+	/**
+	 * Get the weight.
+	 * @return The weight
+	 */
+	public boolean getWeight() {
+		return weight;
+	}
+
+	/**
+	 * Get the user.
+	 * @return The user
+	 */
+	public long getUser() {
+		return user;
+	}
+
+	/**
 	 * Converts the arguments to a String.
 	 * @return The string that rappresents the arguments
 	 */
+	@Override
 	public String toString() {
 		String str = "";
 
