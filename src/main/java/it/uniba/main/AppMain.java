@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.google.cloud.bigquery.Job;
 
+import it.uniba.query.Query;
 import it.uniba.sotorrent.GoogleDocsUtils;
 import it.uniba.sotorrent.ISOQuery;
 import it.uniba.sotorrent.SOQuery;
@@ -48,25 +49,27 @@ public final class AppMain {
 		Arguments params;
 		try {
 			params = new Arguments(args);
-		} catch (ParseException e) {
+		} catch (final ParseException e) {
 			System.err.println(e);
 			return;
-		} catch (NumberFormatException e) {
+		} catch (final NumberFormatException e) {
 			System.err.println(e);
 			return;
 		}
-		String query;
+
+		Query query;
 		try {
-			query = params.getQuery();
-		} catch (ArgumentException e) {
+			query = new Query(params);
+		} catch (final ArgumentException e) {
 			System.err.println(e);
 			return;
 		}
-		ISOQuery soq = new SOQuery();
-		Job job = soq.runQuery(query);
-		ArrayList<Long> res = soq.getResults(job);
-		GoogleDocsUtils ut = new GoogleDocsUtils();
-		String spid = ut.createSheet("Result");
+
+		final ISOQuery soq = new SOQuery();
+		final Job job = soq.runQuery(query);
+		final ArrayList<Long> res = soq.getResults(job);
+		final GoogleDocsUtils ut = new GoogleDocsUtils();
+		final String spid = ut.createSheet("Result");
 		ut.shareSheet(spid);
 		ut.getSheetByTitle(spid);
 		ut.writeSheet(spid, res);

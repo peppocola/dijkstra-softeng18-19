@@ -20,6 +20,8 @@ import com.google.cloud.bigquery.JobInfo;
 import com.google.cloud.bigquery.QueryJobConfiguration;
 import com.google.cloud.bigquery.TableResult;
 
+import it.uniba.query.Query;
+
 /**
  * Class which executes queries.
  */
@@ -27,7 +29,7 @@ public final class SOQuery implements ISOQuery {
 	/**
 	 * Instance of BigQuery service.
 	 */
-	private BigQuery bigquery;
+	private final BigQuery bigquery;
 	/**
 	 * URL of credentials JSON file.
 	 */
@@ -35,31 +37,30 @@ public final class SOQuery implements ISOQuery {
 
 	/**
 	 * Default constructor, instantiates BigQuery API service.
+	 * 
 	 * @throws FileNotFoundException The remote JSON file with credential is 404.
-	 * @throws IOException Malformed JSON file.
+	 * @throws IOException           Malformed JSON file.
 	 */
 	public SOQuery() throws FileNotFoundException, IOException {
 		bigquery = BigQueryOptions.newBuilder().setProjectId("enduring-button-237211")
-				.setCredentials(ServiceAccountCredentials.fromStream(new URL(URL).openStream())).build()
-				.getService();
+				.setCredentials(ServiceAccountCredentials.fromStream(new URL(URL).openStream())).build().getService();
 	}
-
 
 	/**
 	 * Starts the query.
+	 * 
 	 * @param query The query string.
 	 * @return The job for the query.
 	 * @throws InterruptedException Raised on timeouts.
 	 */
-	public Job runQuery(final String query) throws InterruptedException {
+	public Job runQuery(final Query query) throws InterruptedException {
 		// Use standard SQL syntax for queries.
 		// See: https://cloud.google.com/bigquery/sql-reference/
-		QueryJobConfiguration queryConfig = QueryJobConfiguration
-				.newBuilder(query)
+		final QueryJobConfiguration queryConfig = QueryJobConfiguration.newBuilder(query.toString())
 				.setUseLegacySql(false).build();
 
 		// Create a job ID so that we can safely retry.
-		JobId jobId = JobId.of(UUID.randomUUID().toString());
+		final JobId jobId = JobId.of(UUID.randomUUID().toString());
 		Job queryJob = bigquery.create(JobInfo.newBuilder(queryConfig).setJobId(jobId).build());
 
 		// Wait for the query to complete.
@@ -78,20 +79,22 @@ public final class SOQuery implements ISOQuery {
 
 	/**
 	 * Returns the results from the query job.
+	 * 
 	 * @param queryJob The job associated to the query.
 	 * @return Results as a array of long, with owner_user_id.
-	 * @throws JobException Generic error occurred.
+	 * @throws JobException         Generic error occurred.
 	 * @throws InterruptedException Raised on timeouts.
 	 */
+	@Override
 	public ArrayList<Long> getResults(final Job queryJob) throws JobException, InterruptedException {
 
-		ArrayList<Long> results = new ArrayList<Long>();
+		final ArrayList<Long> results = new ArrayList<Long>();
 
 		if (queryJob != null) {
-			TableResult result = queryJob.getQueryResults();
+			final TableResult result = queryJob.getQueryResults();
 
-			for (FieldValueList row : result.iterateAll()) {
-				Long userid = row.get("owner_user_id").getLongValue();
+			for (final FieldValueList row : result.iterateAll()) {
+				final Long userid = row.get("owner_user_id").getLongValue();
 				results.add(userid);
 			}
 
