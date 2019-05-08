@@ -106,6 +106,15 @@ public class Arguments {
 			case "limit":
 				limit = Integer.parseInt(values[1]);
 				break;
+			case "edge":
+				edge = values[1].equals("yes");
+				break;
+			case "weight":
+				weight = values[1].equals("yes");
+				break;
+			case "user":
+				user = Integer.parseInt(values[1]);
+				break;
 			default:
 				break;
 			}
