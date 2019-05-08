@@ -37,6 +37,26 @@ public class Arguments {
 	private long limit;
 
 	/**
+	 * The edge.
+	 * If true, enables edges in the query.
+	 * Default option is false.
+	 */
+	private boolean edge;
+
+	/**
+	 * The weight.
+	 * The option to show weights in the edges' output.
+	 * Default option is false.
+	 */
+	private boolean weight;
+
+	/**
+	 * The user.
+	 * The user id of the user whom created the post.
+	 */
+	private long user;
+
+	/**
 	 * The regular expression used to parse the arguments.
 	 */
 	private static final String REGEX =
@@ -46,7 +66,10 @@ public class Arguments {
 			+ "(dd=(\\d){1,2})|"
 			+ "(type=(question|post|answer))|"
 			+ "(taglike=(\\w)+)|"
-			+ "(limit=(\\d)+)"
+			+ "(limit=(\\d)+)|"
+			+ "(edge=(yes|no))|"
+			+ "(weight=(yes|no))|"
+			+ "(user=(\\d)+)"
 			+ ")";
 
 	/**
@@ -82,6 +105,15 @@ public class Arguments {
 				break;
 			case "limit":
 				limit = Integer.parseInt(values[1]);
+				break;
+			case "edge":
+				edge = values[1].equals("yes");
+				break;
+			case "weight":
+				weight = values[1].equals("yes");
+				break;
+			case "user":
+				user = Integer.parseInt(values[1]);
 				break;
 			default:
 				break;
@@ -244,14 +276,40 @@ public class Arguments {
 	}
 
 	/**
+	 * Get the edge.
+	 * @return The edge
+	 */
+	public boolean getEdge() {
+		return edge;
+	}
+
+	/**
+	 * Get the weight.
+	 * @return The weight
+	 */
+	public boolean getWeight() {
+		return weight;
+	}
+
+	/**
+	 * Get the user.
+	 * @return The user
+	 */
+	public long getUser() {
+		return user;
+	}
+
+	/**
 	 * Converts the arguments to a String.
 	 * @return The string that rappresents the arguments
 	 */
+	@Override
 	public String toString() {
 		String str = "";
 
 		str = 	"yyyy=" + year + " mm=" + month + " dd=" + day
-				+ " type=" + type + " taglike=" + taglike + " limit=" + limit;
+				+ " type=" + type + " taglike=" + taglike + " limit=" + limit
+				+ " edge=" + edge + " weight=" + weight + " user=" + user;
 
 		return str;
 	}
