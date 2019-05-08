@@ -37,6 +37,26 @@ public class Arguments {
 	private long limit;
 
 	/**
+	 * The edge.
+	 * If true, enables edges in the query.
+	 * Default option is false.
+	 */
+	private boolean edge;
+
+	/**
+	 * The weight.
+	 * The option to show weights in the edges' output.
+	 * Default option is false.
+	 */
+	private boolean weight;
+
+	/**
+	 * The user.
+	 * The user id of the user whom created the post.
+	 */
+	private long user;
+
+	/**
 	 * The regular expression used to parse the arguments.
 	 */
 	private static final String REGEX =
