@@ -71,6 +71,20 @@ public class Query {
 					+ " WHERE " + date
 					+ " and REGEXP_CONTAINS(tags, r\"" + args.getTaglike() + "\") \r\n"
 					+ " and owner_user_id is not null\r\n order by owner_user_id\r\n";
+		} else if (args.getType().equals("answer") && args.getTaglike() == null && args.getEdge() == true
+				&& args.getWeight() != true && date == "") {
+			query += "SELECT distinct `from`,`to` \r\n"
+					+ "FROM( \r\n"
+					+ "(SELECT owner_user_id as `to`, id \r\n"
+					+ "FROM `bigquery-public-data.stackoverflow.posts_questions` \r\n"
+					+ "WHERE owner_user_id is not null) \r\n"
+					+ "JOIN \r\n"
+					+ "(SELECT owner_user_id as `from`, parent_id \r\n"
+					+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
+					+ "WHERE owner_user_id is not null AND parent_id is not null \r\n" 
+					+ "AND owner_user_id =" + args.getUser() + ") \r\n"
+					+ "ON id= parent_id) \r\n"
+					+ "order by `from`,`to` \r\n";
 		} else if (args.getType().equals("question") && args.getTaglike() == null && args.getEdge() == true
 				&& args.getWeight() != true) {
 			query += "SELECT distinct `from`,`to` \r\n" + "FROM(\r\n" + "(SELECT owner_user_id as `to`, id\r\n"
@@ -81,7 +95,7 @@ public class Query {
 					+ "WHERE owner_user_id is not null AND parent_id is not null)\r\n" + "ON id= parent_id)\r\n"
 					+ "order by `from`,`to`\r\n";
 		}
-
+		
 		query += " LIMIT " + args.getLimit();
 	}
 
