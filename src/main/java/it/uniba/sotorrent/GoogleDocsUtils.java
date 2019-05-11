@@ -204,7 +204,9 @@ public class GoogleDocsUtils {
 		List<Request> requests = new ArrayList<>();
 		List<CellData> values = new ArrayList<>();
 
-		values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue("owner_user_id")));
+		for (String cell : res.getColumns()) {
+			values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(cell)));
+		}
 		requests.add(new Request().setUpdateCells(
 				new UpdateCellsRequest().setStart(new GridCoordinate().setSheetId(0).setRowIndex(0)
 						.setColumnIndex(0))
@@ -218,12 +220,14 @@ public class GoogleDocsUtils {
 
 		if (null != res) {
 			int rowIndex = 1;
-			for (Long entry : res) {
+			for (String[] entry : res) {
 				requests = new ArrayList<>();
 				values = new ArrayList<>();
 
-				values.add(new CellData()
-					  .setUserEnteredValue(new ExtendedValue().setStringValue(entry.toString())));
+				for (String value : entry) {
+					values.add(new CellData()
+							.setUserEnteredValue(new ExtendedValue().setStringValue(value)));
+				}
 
 				requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
 						.setStart(new GridCoordinate().setSheetId(0).setRowIndex(rowIndex)
