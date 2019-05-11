@@ -26,7 +26,7 @@ public interface ISOQuery {
 	 * Returns the results from the query job.
 	 * 
 	 * @param queryJob The job associated to the query.
-	 * @return Results as a array of long, with owner_user_id.
+	 * @return Results as QueryResults.
 	 * @throws JobException         Generic error occurred.
 	 * @throws InterruptedException Raised on timeouts.
 	 */
