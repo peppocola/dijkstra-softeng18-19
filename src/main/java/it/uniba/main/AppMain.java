@@ -9,6 +9,7 @@ import com.google.cloud.bigquery.Job;
 
 import it.uniba.query.Query;
 import it.uniba.query.QueryResults;
+import it.uniba.sotorrent.GoogleDocsUtils;
 import it.uniba.sotorrent.ISOQuery;
 import it.uniba.sotorrent.SOQuery;
 
@@ -68,11 +69,13 @@ public final class AppMain {
 		final Job job = soq.runQuery(query);
 		final QueryResults res = soq.getResults(job);
 		System.out.println(res);
-		/*
-		 * final GoogleDocsUtils ut = new GoogleDocsUtils(); final String spid =
-		 * ut.createSheet("Result"); ut.shareSheet(spid); ut.getSheetByTitle(spid);
-		 * ut.writeSheet(spid, res);
-		 */
+		
+		final GoogleDocsUtils ut = new GoogleDocsUtils(); 
+		final String spid = ut.createSheet("Result"); 
+		ut.shareSheet(spid); 
+		ut.getSheetByTitle(spid);
+		ut.writeSheet(spid, res);
+		
 	}
 
 }

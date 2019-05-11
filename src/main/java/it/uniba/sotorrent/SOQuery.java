@@ -99,13 +99,13 @@ public final class SOQuery implements ISOQuery {
 			final TableResult result = queryJob.getQueryResults();
 			int size = result.getSchema().getFields().size();
 			List<String> columns = new ArrayList<String>();
-			
+
 			for (final Field row : result.getSchema().getFields()) {
 				columns.add(row.getName());
 			}
-			
+
 			results.setColumns(columns);
-			
+
 			for (final FieldValueList row : result.iterateAll()) {
 				String[] tuple = new String[size];
 				for (int i = 0; i < size; i++) {
@@ -113,7 +113,6 @@ public final class SOQuery implements ISOQuery {
 				}
 				results.addTuple(tuple);
 			}
-
 		}
 		return results;
 	}
