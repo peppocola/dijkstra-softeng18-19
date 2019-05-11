@@ -1,11 +1,10 @@
 package it.uniba.sotorrent;
 
-import java.util.ArrayList;
-
 import com.google.cloud.bigquery.Job;
 import com.google.cloud.bigquery.JobException;
 
 import it.uniba.query.Query;
+import it.uniba.query.QueryResults;
 
 /**
  * Interface for running a query on Stack Overflow via Google's BigQuery
@@ -31,5 +30,5 @@ public interface ISOQuery {
 	 * @throws JobException         Generic error occurred.
 	 * @throws InterruptedException Raised on timeouts.
 	 */
-	ArrayList<Long> getResults(Job queryJob) throws JobException, InterruptedException;
+	QueryResults getResults(Job queryJob) throws JobException, InterruptedException;
 }

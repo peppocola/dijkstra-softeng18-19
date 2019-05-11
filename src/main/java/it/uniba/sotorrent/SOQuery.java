@@ -6,7 +6,6 @@ package it.uniba.sotorrent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.UUID;
 
 import com.google.auth.oauth2.ServiceAccountCredentials;
@@ -21,6 +20,7 @@ import com.google.cloud.bigquery.QueryJobConfiguration;
 import com.google.cloud.bigquery.TableResult;
 
 import it.uniba.query.Query;
+import it.uniba.query.QueryResults;
 
 /**
  * Class which executes queries.
@@ -53,6 +53,7 @@ public final class SOQuery implements ISOQuery {
 	 * @return The job for the query.
 	 * @throws InterruptedException Raised on timeouts.
 	 */
+	@Override
 	public Job runQuery(final Query query) throws InterruptedException {
 		// Use standard SQL syntax for queries.
 		// See: https://cloud.google.com/bigquery/sql-reference/
@@ -86,16 +87,20 @@ public final class SOQuery implements ISOQuery {
 	 * @throws InterruptedException Raised on timeouts.
 	 */
 	@Override
-	public ArrayList<Long> getResults(final Job queryJob) throws JobException, InterruptedException {
+	public QueryResults getResults(final Job queryJob) throws JobException, InterruptedException {
 
-		final ArrayList<Long> results = new ArrayList<Long>();
+		QueryResults results = new QueryResults();
 
 		if (queryJob != null) {
 			final TableResult result = queryJob.getQueryResults();
+			int size = result.getSchema().getFields().size();
 
 			for (final FieldValueList row : result.iterateAll()) {
-				final Long userid = row.get("owner_user_id").getLongValue();
-				results.add(userid);
+				String[] tuple = new String[size];
+				for (int i = 0; i < size; i++) {
+					tuple[i] = row.get(i).getStringValue();
+				}
+				results.addTuple(tuple);
 			}
 
 		}
