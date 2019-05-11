@@ -86,6 +86,15 @@ public class Query {
 					+ "AND owner_user_id =" + args.getUser() + ") \r\n" + "ON id= parent_id) \r\n"
 					+ "order by `from`,`to` \r\n";
 		} else if (args.getType().equals("question") && args.getTaglike() == null && args.getEdge() == true
+				&& args.getWeight() != true && date == "" && args.getUser() != 0) {
+			query += "SELECT distinct `from`,`to` \n" + "FROM(\n" + "(SELECT owner_user_id as `to`, id\n"
+					+ "FROM `bigquery-public-data.stackoverflow.posts_questions`\n"
+					+ "WHERE owner_user_id is not null AND owner_user_id = " + args.getUser()
+					+ ")\n" + "JOIN \n" + "(SELECT owner_user_id as `from`, parent_id\n"
+					+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\n"
+					+ "WHERE owner_user_id is not null AND parent_id is not null)\n"
+					+ "ON id= parent_id)\n" + "order by `from`,`to`\n";
+		} else if (args.getType().equals("question") && args.getTaglike() == null && args.getEdge() == true
 				&& args.getWeight() != true && args.getUser() == 0) {
 			query += "SELECT distinct `from`,`to` \r\n" + "FROM(\r\n"
 					+ "(SELECT owner_user_id as `to`, id\r\n"
