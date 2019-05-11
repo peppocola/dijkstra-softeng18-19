@@ -18,9 +18,13 @@ import com.google.cloud.bigquery.JobId;
 import com.google.cloud.bigquery.JobInfo;
 import com.google.cloud.bigquery.QueryJobConfiguration;
 import com.google.cloud.bigquery.TableResult;
+import com.google.cloud.bigquery.Field;
 
 import it.uniba.query.Query;
 import it.uniba.query.QueryResults;
+
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Class which executes queries.
@@ -90,11 +94,18 @@ public final class SOQuery implements ISOQuery {
 	public QueryResults getResults(final Job queryJob) throws JobException, InterruptedException {
 
 		QueryResults results = new QueryResults();
-
+	
 		if (queryJob != null) {
 			final TableResult result = queryJob.getQueryResults();
 			int size = result.getSchema().getFields().size();
-
+			List<String> columns = new ArrayList<String>();
+			
+			for (final Field row : result.getSchema().getFields()) {
+				columns.add(row.getName());
+			}
+			
+			results.setColumns(columns);
+			
 			for (final FieldValueList row : result.iterateAll()) {
 				String[] tuple = new String[size];
 				for (int i = 0; i < size; i++) {
