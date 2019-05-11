@@ -6,7 +6,6 @@ package it.uniba.sotorrent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.UUID;
 
 import com.google.auth.oauth2.ServiceAccountCredentials;
@@ -19,8 +18,13 @@ import com.google.cloud.bigquery.JobId;
 import com.google.cloud.bigquery.JobInfo;
 import com.google.cloud.bigquery.QueryJobConfiguration;
 import com.google.cloud.bigquery.TableResult;
+import com.google.cloud.bigquery.Field;
 
 import it.uniba.query.Query;
+import it.uniba.query.QueryResults;
+
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Class which executes queries.
@@ -53,6 +57,7 @@ public final class SOQuery implements ISOQuery {
 	 * @return The job for the query.
 	 * @throws InterruptedException Raised on timeouts.
 	 */
+	@Override
 	public Job runQuery(final Query query) throws InterruptedException {
 		// Use standard SQL syntax for queries.
 		// See: https://cloud.google.com/bigquery/sql-reference/
@@ -81,23 +86,33 @@ public final class SOQuery implements ISOQuery {
 	 * Returns the results from the query job.
 	 * 
 	 * @param queryJob The job associated to the query.
-	 * @return Results as a array of long, with owner_user_id.
+	 * @return Results as QueryResults.
 	 * @throws JobException         Generic error occurred.
 	 * @throws InterruptedException Raised on timeouts.
 	 */
 	@Override
-	public ArrayList<Long> getResults(final Job queryJob) throws JobException, InterruptedException {
+	public QueryResults getResults(final Job queryJob) throws JobException, InterruptedException {
 
-		final ArrayList<Long> results = new ArrayList<Long>();
-
+		QueryResults results = new QueryResults();
+	
 		if (queryJob != null) {
 			final TableResult result = queryJob.getQueryResults();
+			int size = result.getSchema().getFields().size();
+			List<String> columns = new ArrayList<String>();
 
-			for (final FieldValueList row : result.iterateAll()) {
-				final Long userid = row.get("owner_user_id").getLongValue();
-				results.add(userid);
+			for (final Field row : result.getSchema().getFields()) {
+				columns.add(row.getName());
 			}
 
+			results.setColumns(columns);
+
+			for (final FieldValueList row : result.iterateAll()) {
+				String[] tuple = new String[size];
+				for (int i = 0; i < size; i++) {
+					tuple[i] = row.get(i).getStringValue();
+				}
+				results.addTuple(tuple);
+			}
 		}
 		return results;
 	}
