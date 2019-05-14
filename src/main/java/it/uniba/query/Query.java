@@ -62,9 +62,9 @@ public class Query {
 							+ "WHERE owner_user_id is not null " + date_cond + ")\r\n"
 							+ "JOIN \r\n" + "(SELECT owner_user_id as `from`, parent_id\r\n"
 							+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
-							+ "WHERE owner_user_id is not null AND parent_id is not null "
-							+ date_cond + ")\r\n" + "ON id= parent_id)\r\n"
-							+ "group by `from`,`to`\r\n" + "order by `from`,`to`\r\n";
+							+ "WHERE owner_user_id is not null AND parent_id is not null"
+							+ ")\r\n" + "ON id= parent_id)\r\n" + "group by `from`,`to`\r\n"
+							+ "order by `from`,`to`\r\n";
 				}
 
 			} else {
