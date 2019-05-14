@@ -25,12 +25,11 @@ public class Query {
 		String date = new QueryDate(args.getDay(), args.getMonth(), args.getYear()).toString();
 
 		if (args.getType() == null) {
-
 			throw new ArgumentException("invalid argument " + args.getType());
-
 		}
-		if (args.getEdge() == true) {
-			if (args.getWeight() == true) {
+
+		if (args.getEdge()) {
+			if (args.getWeight()) {
 				if (args.getType().equals("answer") && args.getTaglike() == null
 						&& args.getUser() != 0) {
 					query += "SELECT `from`,`to`, count(*) as weight\r\n" + "FROM(\r\n"
@@ -43,8 +42,8 @@ public class Query {
 							+ args.getUser() + ")\r\n" + "ON id= parent_id)\r\n"
 							+ "group by `from`,`to`\r\n" + "\r\n"
 							+ "order by `from`,`to`\r\n" + "\r\n";
-				} else if (args.getType().equals("question") && args.getTaglike() == null
-						&& date.equals("") && args.getUser() != 0) {
+				} else if (args.getType().equals("question") && args.getTaglike() == null && date == ""
+						&& args.getUser() != 0) {
 					query += "SELECT distinct `from`,`to`, count (*) as weight \r\n" + "FROM(\r\n"
 							+ "(SELECT owner_user_id as `to`, id\r\n"
 							+ "FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
@@ -106,18 +105,16 @@ public class Query {
 
 		} else {
 			if (args.getTaglike() == null) {
-				if (args.getType().equals("question") && args.getEdge() != true
-						&& args.getWeight() != true && args.getUser() == 0) {
+				if (args.getType().equals("question") && !args.getWeight() && args.getUser() == 0) {
 					query += "SELECT distinct owner_user_id\r\n FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
 							+ "	WHERE " + date
 							+ " and owner_user_id is not null\r\n order by owner_user_id\r\n";
-				} else if (args.getType().equals("answer") && args.getEdge() != true
-						&& args.getWeight() != true && args.getUser() == 0) {
+				} else if (args.getType().equals("answer") && !args.getWeight()
+						&& args.getUser() == 0) {
 					query += "SELECT distinct owner_user_id\r\n FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
 							+ " WHERE " + date
 							+ " and owner_user_id is not null\r\n order by owner_user_id\r\n";
-				} else if (args.getType().equals("post") && args.getEdge() != true
-						&& args.getWeight() != true && args.getUser() == 0) {
+				} else if (args.getType().equals("post") && !args.getWeight() && args.getUser() == 0) {
 					query += "SELECT distinct owner_user_id\r\n FROM\r\n"
 							+ "((SELECT distinct owner_user_id\r\n"
 							+ " FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
@@ -128,8 +125,7 @@ public class Query {
 							+ " and owner_user_id is not null))\r\n order by owner_user_id\r\n";
 				}
 			} else {
-				if (args.getType().equals("answer") && args.getEdge() != true
-						&& args.getWeight() != true && args.getUser() == 0) {
+				if (args.getType().equals("answer") && !args.getWeight() && args.getUser() == 0) {
 					query += "SELECT distinct owner_user_id\r\n FROM\r\n"
 							+ "(SELECT distinct parent_id, owner_user_id\r\n"
 							+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
@@ -139,8 +135,7 @@ public class Query {
 							+ " WHERE REGEXP_CONTAINS (tags, r\"" + args.getTaglike()
 							+ "\"))\r\n"
 							+ "ON parent_id = id\r\n order by owner_user_id\r\n";
-				} else if (args.getType().equals("post") && args.getEdge() != true
-						&& args.getWeight() != true && args.getUser() == 0) {
+				} else if (args.getType().equals("post") && !args.getWeight() && args.getUser() == 0) {
 					query += "SELECT distinct owner_user_id\r\n FROM (SELECT distinct owner_user_id"
 							+ " FROM\r\n" + "(SELECT distinct parent_id, owner_user_id\r\n"
 							+ " FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
@@ -154,8 +149,8 @@ public class Query {
 							+ " WHERE " + date + " and REGEXP_CONTAINS(tags, r\""
 							+ args.getTaglike() + "\") \r\n"
 							+ " and owner_user_id is not null))\r\n order by owner_user_id\r\n";
-				} else if (args.getType().equals("question") && args.getEdge() != true
-						&& args.getWeight() != true && args.getUser() == 0) {
+				} else if (args.getType().equals("question") && !args.getWeight()
+						&& args.getUser() == 0) {
 					query += "SELECT distinct owner_user_id\r\n FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
 							+ " WHERE " + date + " and REGEXP_CONTAINS(tags, r\""
 							+ args.getTaglike() + "\") \r\n"
