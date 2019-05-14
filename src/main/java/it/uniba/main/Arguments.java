@@ -56,12 +56,12 @@ public class Arguments {
 	 * The regular expression used to parse the arguments.
 	 */
 	private static final String REGEX = "(" + "(yyyy=(\\d){4})|" + "(mm=(\\d){1,2})|" + "(dd=(\\d){1,2})|"
-			+ "(type=(question|post|answer))|" + "(taglike=(\\w)+)|" + "(limit=(\\d)+)|" + "(edge=(yes|no))|"
-			+ "(weight=(yes|no))|" + "(user=(\\d)+)" + ")";
+			+ "(type=(question|post|answer))|" + "(taglike=(\\w)+)|" + "(limit=(\\d)+)|"
+			+ "(edge=(yes|no))|" + "(weight=(yes|no))|" + "(user=(\\d)+)" + ")";
 
 	/**
 	 * The Arguments constructor.
-	 * 
+	 *
 	 * @param args An array of argument strings
 	 * @throws ParseException A parse exception
 	 */
@@ -110,7 +110,7 @@ public class Arguments {
 
 	/**
 	 * Get the year.
-	 * 
+	 *
 	 * @return The year
 	 */
 	public int getYear() {
@@ -119,7 +119,7 @@ public class Arguments {
 
 	/**
 	 * Get the month.
-	 * 
+	 *
 	 * @return The month
 	 */
 	public int getMonth() {
@@ -128,7 +128,7 @@ public class Arguments {
 
 	/**
 	 * Get the day.
-	 * 
+	 *
 	 * @return The day
 	 */
 	public int getDay() {
@@ -137,7 +137,7 @@ public class Arguments {
 
 	/**
 	 * Get the type.
-	 * 
+	 *
 	 * @return The type
 	 */
 	public String getType() {
@@ -146,7 +146,7 @@ public class Arguments {
 
 	/**
 	 * Get the tag.
-	 * 
+	 *
 	 * @return The tag
 	 */
 	public String getTaglike() {
@@ -155,7 +155,7 @@ public class Arguments {
 
 	/**
 	 * Get the limit.
-	 * 
+	 *
 	 * @return The limit
 	 */
 	public long getLimit() {
@@ -164,7 +164,7 @@ public class Arguments {
 
 	/**
 	 * Get the edge.
-	 * 
+	 *
 	 * @return The edge
 	 */
 	public boolean getEdge() {
@@ -173,7 +173,7 @@ public class Arguments {
 
 	/**
 	 * Get the weight.
-	 * 
+	 *
 	 * @return The weight
 	 */
 	public boolean getWeight() {
@@ -182,7 +182,7 @@ public class Arguments {
 
 	/**
 	 * Get the user.
-	 * 
+	 *
 	 * @return The user
 	 */
 	public long getUser() {
@@ -191,15 +191,15 @@ public class Arguments {
 
 	/**
 	 * Converts the arguments to a String.
-	 * 
+	 *
 	 * @return The string that rappresents the arguments
 	 */
 	@Override
 	public String toString() {
 		String str = "";
 
-		str = "yyyy=" + year + " mm=" + month + " dd=" + day + " type=" + type + " taglike=" + taglike + " limit="
-				+ limit + " edge=" + edge + " weight=" + weight + " user=" + user;
+		str = "yyyy=" + year + " mm=" + month + " dd=" + day + " type=" + type + " taglike=" + taglike
+				+ " limit=" + limit + " edge=" + edge + " weight=" + weight + " user=" + user;
 
 		return str;
 	}
