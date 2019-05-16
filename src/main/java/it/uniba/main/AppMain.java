@@ -39,7 +39,7 @@ public final class AppMain {
 	 * @throws URISyntaxException       See stack trace for proper location.
 	 */
 	public static void main(final String[] args) throws FileNotFoundException, IOException, InterruptedException,
-	GeneralSecurityException, URISyntaxException {
+			GeneralSecurityException, URISyntaxException {
 
 		if (args.length <= 0) {
 			System.out.println("missing arguments");
@@ -68,7 +68,6 @@ public final class AppMain {
 		final ISOQuery soq = new SOQuery();
 		final Job job = soq.runQuery(query);
 		final QueryResults res = soq.getResults(job);
-		System.out.println(res);
 
 		final GoogleDocsUtils ut = new GoogleDocsUtils();
 		final String spid = ut.createSheet("Result");
