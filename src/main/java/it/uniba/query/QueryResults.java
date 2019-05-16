@@ -13,12 +13,12 @@ public class QueryResults implements Iterable<String[]> {
 	 * The list of results.
 	 */
 	private LinkedList<String[]> data;
-	
+
 	/**
 	 * The list of columns' names.
 	 */
 	private List<String> columns;
-	
+
 	/**
 	 * The default QueryResult constructor.
 	 */
@@ -32,21 +32,23 @@ public class QueryResults implements Iterable<String[]> {
 	public void addTuple(final String[] tuple) {
 		data.add(tuple);
 	}
-	
+
 	/**
-	 * @param columns The columns' names.
+	 * @param cols The columns' names.
 	 */
-	public void setColumns(final List<String> columns) {
-		this.columns = columns;
+	public void setColumns(final List<String> cols) {
+		this.columns = cols;
 	}
-	
+
 	/**
-	 * 
+	 * returns columns.
+	 *
+	 * @return tag
 	 */
 	public List<String> getColumns() {
 		return columns;
 	}
-	
+
 	/**
 	 * The iterator for iterating on the elements of the list (arrays of strings).
 	 */

@@ -33,10 +33,11 @@ import com.google.api.services.sheets.v4.model.UpdateCellsRequest;
 
 import it.uniba.query.QueryResults;
 
-
 /**
- * Utility class for creating, sharing, and deleting Google spreadsheets.
- * For more, refer to <a href="https://developers.google.com/sheets/api/samples/">this documentation</a>.
+ * Utility class for creating, sharing, and deleting Google spreadsheets. For
+ * more, refer to
+ * <a href="https://developers.google.com/sheets/api/samples/">this
+ * documentation</a>.
  */
 public class GoogleDocsUtils {
 	/**
@@ -79,10 +80,11 @@ public class GoogleDocsUtils {
 
 	/**
 	 * Performs Google authentication process.
+	 *
 	 * @return Credential object.
-	 * @throws IOException Generic I/O error
+	 * @throws IOException              Generic I/O error
 	 * @throws GeneralSecurityException Failed authentication.
-	 * @throws URISyntaxException Malformed URI.
+	 * @throws URISyntaxException       Malformed URI.
 	 */
 	private Credential authorize() throws IOException, GeneralSecurityException, URISyntaxException {
 		GoogleCredential authCred = GoogleCredential.fromStream(new URL(URL).openStream()).toBuilder()
@@ -92,32 +94,35 @@ public class GoogleDocsUtils {
 
 	/**
 	 * Instantiates the the Google Sheets service.
+	 *
 	 * @return Instance of the Google Sheets service.
-	 * @throws IOException Generic I/O error.
+	 * @throws IOException              Generic I/O error.
 	 * @throws GeneralSecurityException Failed authentication.
-	 * @throws URISyntaxException Malformed URI.
+	 * @throws URISyntaxException       Malformed URI.
 	 */
 	private Sheets getSheetsService() throws IOException, GeneralSecurityException, URISyntaxException {
 		return new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(),
-				JacksonFactory.getDefaultInstance(), credential)
-				.setApplicationName(APPLICATION_NAME).build();
+				JacksonFactory.getDefaultInstance(), credential).setApplicationName(APPLICATION_NAME)
+				.build();
 	}
 
 	/**
 	 * Instantiates the the Google Drive service.
+	 *
 	 * @return Instance of the Google Drive service.
-	 * @throws IOException Generic I/O error.
+	 * @throws IOException              Generic I/O error.
 	 * @throws GeneralSecurityException Failed authentication.
-	 * @throws URISyntaxException Malformed URI.
+	 * @throws URISyntaxException       Malformed URI.
 	 */
 	private Drive getDriveService() throws IOException, GeneralSecurityException, URISyntaxException {
 		return new Drive.Builder(GoogleNetHttpTransport.newTrustedTransport(),
-				JacksonFactory.getDefaultInstance(), credential)
-				.setApplicationName(APPLICATION_NAME).build();
+				JacksonFactory.getDefaultInstance(), credential).setApplicationName(APPLICATION_NAME)
+				.build();
 	}
 
 	/**
 	 * Creates a new sheet on every execution.
+	 *
 	 * @param title Spreadsheet title.
 	 * @return The spreadsheet id.
 	 * @throws IOException Generic I/O error.
@@ -133,6 +138,7 @@ public class GoogleDocsUtils {
 
 	/**
 	 * Returns the spreadsheet id by title.
+	 *
 	 * @param spid The spreadsheet id.
 	 * @throws IOException Generic I/O error.
 	 */
@@ -142,10 +148,12 @@ public class GoogleDocsUtils {
 	}
 
 	/**
-	 * Write results to the spreadsheet.
-	 * Also, see <a href="https://developers.google.com/sheets/api/guides/values">here</a>.
+	 * Write results to the spreadsheet. Also, see
+	 * <a href="https://developers.google.com/sheets/api/guides/values">here</a>.
+	 *
 	 * @param spid The spreadsheet id.
-	 * @param res The hash map of the results, with URL as key and view count as value.
+	 * @param res  The hash map of the results, with URL as key and view count as
+	 *             value.
 	 * @throws IOException Generic I/O error.
 	 */
 	public void writeSheet(final String spid, final Map<String, Long> res) throws IOException {
@@ -154,16 +162,14 @@ public class GoogleDocsUtils {
 
 		values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue("URL")));
 		values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue("Views")));
-		requests.add(new Request().setUpdateCells(
-				new UpdateCellsRequest().setStart(new GridCoordinate().setSheetId(0).setRowIndex(0)
-						.setColumnIndex(0))
-						.setRows(Arrays.asList(new RowData().setValues(values)))
-						.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
+		requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
+				.setStart(new GridCoordinate().setSheetId(0).setRowIndex(0).setColumnIndex(0))
+				.setRows(Arrays.asList(new RowData().setValues(values)))
+				.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
 
-		BatchUpdateSpreadsheetRequest batchUpdateRequest =
-				new BatchUpdateSpreadsheetRequest().setRequests(requests);
+		BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
+				.setRequests(requests);
 		sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();
-
 
 		if (null != res) {
 			int rowIndex = 1;
@@ -175,9 +181,8 @@ public class GoogleDocsUtils {
 				values.add(new CellData()
 						.setUserEnteredValue(new ExtendedValue().setStringValue(keyUrl)));
 				Long views = entry.getValue();
-				values.add(
-						new CellData().setUserEnteredValue(new ExtendedValue()
-								.setStringValue(String.valueOf(views))));
+				values.add(new CellData().setUserEnteredValue(
+						new ExtendedValue().setStringValue(String.valueOf(views))));
 				requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
 						.setStart(new GridCoordinate().setSheetId(0).setRowIndex(rowIndex)
 								.setColumnIndex(0))
@@ -194,10 +199,11 @@ public class GoogleDocsUtils {
 	}
 
 	/**
-	 * Write results to the spreadsheet.
-	 * Also, see <a href="https://developers.google.com/sheets/api/guides/values">here</a>.
+	 * Write results to the spreadsheet. Also, see
+	 * <a href="https://developers.google.com/sheets/api/guides/values">here</a>.
+	 *
 	 * @param spid The spreadsheet id.
-	 * @param res The array of the results, with owner_user_id as value.
+	 * @param res  The array of the results, with owner_user_id as value.
 	 * @throws IOException Generic I/O error.
 	 */
 	public void writeSheet(final String spid, final QueryResults res) throws IOException {
@@ -207,16 +213,14 @@ public class GoogleDocsUtils {
 		for (String cell : res.getColumns()) {
 			values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(cell)));
 		}
-		requests.add(new Request().setUpdateCells(
-				new UpdateCellsRequest().setStart(new GridCoordinate().setSheetId(0).setRowIndex(0)
-						.setColumnIndex(0))
-						.setRows(Arrays.asList(new RowData().setValues(values)))
-						.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
+		requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
+				.setStart(new GridCoordinate().setSheetId(0).setRowIndex(0).setColumnIndex(0))
+				.setRows(Arrays.asList(new RowData().setValues(values)))
+				.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
 
-		BatchUpdateSpreadsheetRequest batchUpdateRequest =
-				new BatchUpdateSpreadsheetRequest().setRequests(requests);
+		BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
+				.setRequests(requests);
 		sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();
-
 
 		if (null != res) {
 			int rowIndex = 1;
@@ -225,13 +229,13 @@ public class GoogleDocsUtils {
 				values = new ArrayList<>();
 
 				for (String value : entry) {
-					values.add(new CellData()
-							.setUserEnteredValue(new ExtendedValue().setStringValue(value)));
+					values.add(new CellData().setUserEnteredValue(
+							new ExtendedValue().setStringValue(value)));
 				}
 
 				requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
 						.setStart(new GridCoordinate().setSheetId(0).setRowIndex(rowIndex)
-						.setColumnIndex(0))
+								.setColumnIndex(0))
 						.setRows(Arrays.asList(new RowData().setValues(values)))
 						.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
 
@@ -246,22 +250,25 @@ public class GoogleDocsUtils {
 
 	/**
 	 * Makes the spreadsheet readable to anyone with the link.
+	 *
 	 * @param spid The spreadsheet id.
-	 * @throws IOException Generic I/O error.
+	 * @throws IOException              Generic I/O error.
 	 * @throws GeneralSecurityException Failed authentication.
-	 * @throws URISyntaxException Malformed URI.
+	 * @throws URISyntaxException       Malformed URI.
 	 */
 	public void shareSheet(final String spid) throws IOException, GeneralSecurityException, URISyntaxException {
 		JsonBatchCallback<Permission> callback = new JsonBatchCallback<Permission>() {
+			@Override
 			public void onFailure(final GoogleJsonError e, final HttpHeaders responseHeaders)
-										  throws IOException {
+					throws IOException {
 				// Handle error
 				System.err.println(e.getMessage());
 			}
 
+			@Override
 			public void onSuccess(final Permission permission, final HttpHeaders responseHeaders)
-							    		  throws IOException {
-				//System.out.println("Permission ID: " + permission.getId());
+					throws IOException {
+				// System.out.println("Permission ID: " + permission.getId());
 			}
 		};
 		BatchRequest batch = driveService.batch();
@@ -275,6 +282,7 @@ public class GoogleDocsUtils {
 	// Intentionally not used it. Use it to delete a sheet.
 	/**
 	 * Deletes a spreadsheet.
+	 *
 	 * @param spid The spreadsheet id.
 	 * @throws IOException Generic I/O error.
 	 */

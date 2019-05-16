@@ -6,11 +6,14 @@ package it.uniba.sotorrent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.cloud.bigquery.BigQuery;
 import com.google.cloud.bigquery.BigQueryOptions;
+import com.google.cloud.bigquery.Field;
 import com.google.cloud.bigquery.FieldValueList;
 import com.google.cloud.bigquery.Job;
 import com.google.cloud.bigquery.JobException;
@@ -18,13 +21,9 @@ import com.google.cloud.bigquery.JobId;
 import com.google.cloud.bigquery.JobInfo;
 import com.google.cloud.bigquery.QueryJobConfiguration;
 import com.google.cloud.bigquery.TableResult;
-import com.google.cloud.bigquery.Field;
 
 import it.uniba.query.Query;
 import it.uniba.query.QueryResults;
-
-import java.util.List;
-import java.util.ArrayList;
 
 /**
  * Class which executes queries.
@@ -41,18 +40,19 @@ public final class SOQuery implements ISOQuery {
 
 	/**
 	 * Default constructor, instantiates BigQuery API service.
-	 * 
+	 *
 	 * @throws FileNotFoundException The remote JSON file with credential is 404.
 	 * @throws IOException           Malformed JSON file.
 	 */
 	public SOQuery() throws FileNotFoundException, IOException {
 		bigquery = BigQueryOptions.newBuilder().setProjectId("enduring-button-237211")
-				.setCredentials(ServiceAccountCredentials.fromStream(new URL(URL).openStream())).build().getService();
+				.setCredentials(ServiceAccountCredentials.fromStream(new URL(URL).openStream())).build()
+				.getService();
 	}
 
 	/**
 	 * Starts the query.
-	 * 
+	 *
 	 * @param query The query string.
 	 * @return The job for the query.
 	 * @throws InterruptedException Raised on timeouts.
@@ -84,7 +84,7 @@ public final class SOQuery implements ISOQuery {
 
 	/**
 	 * Returns the results from the query job.
-	 * 
+	 *
 	 * @param queryJob The job associated to the query.
 	 * @return Results as QueryResults.
 	 * @throws JobException         Generic error occurred.
@@ -94,7 +94,7 @@ public final class SOQuery implements ISOQuery {
 	public QueryResults getResults(final Job queryJob) throws JobException, InterruptedException {
 
 		QueryResults results = new QueryResults();
-	
+
 		if (queryJob != null) {
 			final TableResult result = queryJob.getQueryResults();
 			int size = result.getSchema().getFields().size();

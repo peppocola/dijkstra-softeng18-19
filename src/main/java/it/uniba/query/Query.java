@@ -22,7 +22,10 @@ public class Query {
 	public Query(final Arguments args) throws ArgumentException {
 		String date = new QueryDate(args.getDay(), args.getMonth(), args.getYear()).toString();
 
-		String date_cond = (date != "") ? ("AND " + date) : "";
+		String dataCond = "";
+		if (date != "") {
+			dataCond = "AND " + date;
+		}
 
 		if (args.getType() == null) {
 			throw new ArgumentException("invalid argument " + args.getType());
@@ -32,132 +35,132 @@ public class Query {
 			if (args.getWeight()) {
 				if (args.getType().equals("answer") && args.getTaglike() == null
 						&& args.getUser() != 0) {
-					query = "SELECT `from`,`to`, count(*) as weight\r\n" + "FROM(\r\n"
-							+ "(SELECT owner_user_id as `to`, id\r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
-							+ "WHERE owner_user_id is not null " + date_cond + ")\r\n"
-							+ "JOIN \r\n" + "(SELECT owner_user_id as `from`, parent_id\r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
-							+ "WHERE owner_user_id is not null AND parent_id is not null AND owner_user_id ="
-							+ args.getUser() + ")\r\n" + "ON id= parent_id)\r\n"
-							+ "group by `from`,`to`\r\n" + "\r\n"
-							+ "order by `from`,`to`\r\n" + "\r\n";
+					query = "SELECT `from`,`to`, count(*) as weight " + "FROM( "
+							+ "(SELECT owner_user_id as `to`, id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
+							+ "WHERE owner_user_id is not null " + dataCond + ") "
+							+ "JOIN  " + "(SELECT owner_user_id as `from`, parent_id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
+							+ "WHERE owner_user_id is not null "
+							+ "AND parent_id is not null AND owner_user_id ="
+							+ args.getUser() + ") " + "ON id= parent_id) "
+							+ "group by `from`,`to` " + " " + "order by `from`,`to` " + " ";
 				} else if (args.getType().equals("question") && args.getTaglike() == null
 						&& args.getUser() != 0) {
-					query = "SELECT distinct `from`,`to`, count (*) as weight \r\n" + "FROM(\r\n"
-							+ "(SELECT owner_user_id as `to`, id\r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
+					query = "SELECT distinct `from`,`to`, count (*) as weight  " + "FROM( "
+							+ "(SELECT owner_user_id as `to`, id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
 							+ "WHERE owner_user_id is not null AND owner_user_id ="
-							+ args.getUser() + " " + date_cond + ")\r\n" + "JOIN \r\n"
-							+ "(SELECT owner_user_id as `from`, parent_id\r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
+							+ args.getUser() + " " + dataCond + ") " + "JOIN  "
+							+ "(SELECT owner_user_id as `from`, parent_id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
 							+ "WHERE owner_user_id is not null AND parent_id is not null "
-							+ date_cond + ")\r\n" + "ON id= parent_id)\r\n"
-							+ "group by `from`,`to`\r\n" + "order by `from`,`to`\r\n";
+							+ dataCond + ") " + "ON id= parent_id) "
+							+ "group by `from`,`to` " + "order by `from`,`to` ";
 				} else if (args.getType().equals("question") && args.getTaglike() == null
 						&& args.getUser() == 0) {
-					query = "SELECT distinct `from`,`to`, count(*) as weight \r\n" + "FROM(\r\n"
-							+ "(SELECT owner_user_id as `to`, id\r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
-							+ "WHERE owner_user_id is not null " + date_cond + ")\r\n"
-							+ "JOIN \r\n" + "(SELECT owner_user_id as `from`, parent_id\r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
+					query = "SELECT distinct `from`,`to`, count(*) as weight  " + "FROM( "
+							+ "(SELECT owner_user_id as `to`, id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
+							+ "WHERE owner_user_id is not null " + dataCond + ") "
+							+ "JOIN  " + "(SELECT owner_user_id as `from`, parent_id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
 							+ "WHERE owner_user_id is not null AND parent_id is not null"
-							+ ")\r\n" + "ON id= parent_id)\r\n" + "group by `from`,`to`\r\n"
-							+ "order by `from`,`to`\r\n";
+							+ ") " + "ON id= parent_id) " + "group by `from`,`to` "
+							+ "order by `from`,`to` ";
 				}
 
 			} else {
 				if (args.getType().equals("answer") && args.getTaglike() == null
 						&& args.getUser() != 0) {
-					query = "SELECT distinct `from`,`to` \r\n" + "FROM( \r\n"
-							+ "(SELECT owner_user_id as `to`, id \r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` \r\n"
-							+ "WHERE owner_user_id is not null " + date_cond + ")\r\n"
-							+ "JOIN \r\n"
-							+ "(SELECT owner_user_id as `from`, parent_id \r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
+					query = "SELECT distinct `from`,`to`  " + "FROM(  "
+							+ "(SELECT owner_user_id as `to`, id  "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_questions`  "
+							+ "WHERE owner_user_id is not null " + dataCond + ") "
+							+ "JOIN  " + "(SELECT owner_user_id as `from`, parent_id  "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
 							+ "WHERE owner_user_id is not null AND parent_id is not null "
-							+ date_cond + "\r\n" + "AND owner_user_id =" + args.getUser()
-							+ ") \r\n" + "ON id= parent_id) \r\n"
-							+ "order by `from`,`to` \r\n";
+							+ dataCond + " " + "AND owner_user_id =" + args.getUser()
+							+ ")  " + "ON id= parent_id)  " + "order by `from`,`to`  ";
 				} else if (args.getType().equals("question") && args.getTaglike() == null
 						&& args.getUser() != 0) {
-					query = "SELECT distinct `from`,`to` \n" + "FROM(\n"
-							+ "(SELECT owner_user_id as `to`, id\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions`\n"
+					query = "SELECT distinct `from`,`to`  " + "FROM( "
+							+ "(SELECT owner_user_id as `to`, id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
 							+ "WHERE owner_user_id is not null AND owner_user_id = "
-							+ args.getUser() + " " + date_cond + ")\n" + "JOIN \n"
-							+ "(SELECT owner_user_id as `from`, parent_id\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\n"
+							+ args.getUser() + " " + dataCond + ") " + "JOIN  "
+							+ "(SELECT owner_user_id as `from`, parent_id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
 							+ "WHERE owner_user_id is not null AND parent_id is not null "
-							+ date_cond + ")\n" + "ON id= parent_id)\n"
-							+ "order by `from`,`to`\n";
+							+ dataCond + ") " + "ON id= parent_id) "
+							+ "order by `from`,`to` ";
 				} else if (args.getType().equals("question") && args.getTaglike() == null
 						&& args.getUser() == 0) {
-					query = "SELECT distinct `from`,`to` \r\n" + "FROM(\r\n"
-							+ "(SELECT owner_user_id as `to`, id\r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
-							+ "WHERE owner_user_id is not null " + date_cond + ")\r\n"
-							+ "JOIN \r\n" + "(SELECT owner_user_id as `from`, parent_id\r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
-							+ "WHERE owner_user_id is not null AND parent_id is not null)\r\n"
-							+ "ON id= parent_id)\r\n" + "order by `from`,`to`\r\n";
+					query = "SELECT distinct `from`,`to`  " + "FROM( "
+							+ "(SELECT owner_user_id as `to`, id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
+							+ "WHERE owner_user_id is not null " + dataCond + ") "
+							+ "JOIN  " + "(SELECT owner_user_id as `from`, parent_id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
+							+ "WHERE owner_user_id is not null AND parent_id is not null) "
+							+ "ON id= parent_id) " + "order by `from`,`to` ";
 				}
 			}
 
 		} else {
 			if (args.getTaglike() == null) {
 				if (args.getType().equals("question") && !args.getWeight() && args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id\r\n FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
-							+ "WHERE owner_user_id is not null " + date_cond + "\r\n"
-							+ "order by owner_user_id\r\n";
+					query = "SELECT distinct owner_user_id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
+							+ "WHERE owner_user_id is not null " + dataCond + " "
+							+ "order by owner_user_id ";
 				} else if (args.getType().equals("answer") && !args.getWeight()
 						&& args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id\r\n FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
-							+ " WHERE owner_user_id is not null " + date_cond + "\r\n"
-							+ "order by owner_user_id\r\n";
+					query = "SELECT distinct owner_user_id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
+							+ " WHERE owner_user_id is not null " + dataCond + " "
+							+ "order by owner_user_id ";
 				} else if (args.getType().equals("post") && !args.getWeight() && args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id\r\n FROM\r\n"
-							+ "((SELECT distinct owner_user_id\r\n"
-							+ " FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
-							+ " WHERE owner_user_id is not null " + date_cond + ")\r\n"
-							+ "UNION ALL\r\n" + "(SELECT distinct owner_user_id\r\n"
-							+ " FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
-							+ " WHERE owner_user_id is not null " + date_cond + "))\r\n"
-							+ "order by owner_user_id\r\n";
+					query = "SELECT distinct owner_user_id  FROM "
+							+ "((SELECT distinct owner_user_id "
+							+ " FROM `bigquery-public-data.stackoverflow.posts_answers` "
+							+ " WHERE owner_user_id is not null " + dataCond + ") "
+							+ "UNION ALL " + "(SELECT distinct owner_user_id "
+							+ " FROM `bigquery-public-data.stackoverflow.posts_questions` "
+							+ " WHERE owner_user_id is not null " + dataCond + ")) "
+							+ "order by owner_user_id ";
 				}
 			} else {
 				if (args.getType().equals("answer") && !args.getWeight() && args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id\r\n FROM\r\n"
-							+ "(SELECT distinct parent_id, owner_user_id\r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
-							+ " WHERE owner_user_id is not null " + date_cond + ")\r\n"
-							+ "JOIN\r\n" + "(SELECT distinct id\r\n"
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
+					query = "SELECT distinct owner_user_id  FROM "
+							+ "(SELECT distinct parent_id, owner_user_id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
+							+ " WHERE owner_user_id is not null " + dataCond + ") "
+							+ "JOIN " + "(SELECT distinct id "
+							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
 							+ " WHERE REGEXP_CONTAINS (tags, r\"" + args.getTaglike()
-							+ "\"))\r\n"
-							+ "ON parent_id = id\r\n order by owner_user_id\r\n";
+							+ "\")) " + "ON parent_id = id  order by owner_user_id ";
 				} else if (args.getType().equals("post") && !args.getWeight() && args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id\r\n FROM (SELECT distinct owner_user_id"
-							+ " FROM\r\n" + "(SELECT distinct parent_id, owner_user_id\r\n"
-							+ " FROM `bigquery-public-data.stackoverflow.posts_answers`\r\n"
-							+ " WHERE owner_user_id is not null " + date_cond + ")\r\n"
-							+ " JOIN\r\n" + " (SELECT distinct id\r\n"
-							+ " FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
+					query = "SELECT distinct owner_user_id  FROM (SELECT distinct owner_user_id"
+							+ " FROM " + "(SELECT distinct parent_id, owner_user_id "
+							+ " FROM `bigquery-public-data.stackoverflow.posts_answers` "
+							+ " WHERE owner_user_id is not null " + dataCond + ") "
+							+ " JOIN " + " (SELECT distinct id "
+							+ " FROM `bigquery-public-data.stackoverflow.posts_questions` "
 							+ " WHERE REGEXP_CONTAINS (tags, r\"" + args.getTaglike()
-							+ "\"))\r\n" + " ON parent_id = id\r\n" + " UNION ALL "
-							+ "(SELECT owner_user_id\r\n"
-							+ " FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
+							+ "\")) " + " ON parent_id = id " + " UNION ALL "
+							+ "(SELECT owner_user_id "
+							+ " FROM `bigquery-public-data.stackoverflow.posts_questions` "
 							+ " WHERE REGEXP_CONTAINS(tags, r\"" + args.getTaglike()
-							+ "\") " + date_cond + "\r\n"
-							+ " and owner_user_id is not null))\r\n order by owner_user_id\r\n";
+							+ "\") " + dataCond + " "
+							+ " and owner_user_id is not null))  order by owner_user_id ";
 				} else if (args.getType().equals("question") && !args.getWeight()
 						&& args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id\r\n FROM `bigquery-public-data.stackoverflow.posts_questions`\r\n"
+					query = "SELECT distinct owner_user_id "
+							+ " FROM `bigquery-public-data.stackoverflow.posts_questions` "
 							+ " WHERE REGEXP_CONTAINS(tags, r\"" + args.getTaglike()
-							+ "\") " + date_cond + "\r\n"
-							+ " and owner_user_id is not null\r\n order by owner_user_id\r\n";
+							+ "\") " + dataCond + " "
+							+ " and owner_user_id is not null  order by owner_user_id ";
 				}
 			}
 		}
