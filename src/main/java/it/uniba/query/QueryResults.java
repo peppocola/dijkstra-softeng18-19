@@ -34,15 +34,15 @@ public class QueryResults implements Iterable<String[]> {
 	}
 
 	/**
-	 * @param columns The columns' names.
+	 * @param cols The columns' names.
 	 */
-	public void setColumns(final List<String> columns) {
-		this.columns = columns;
+	public void setColumns(final List<String> cols) {
+		this.columns = cols;
 	}
 
 	/**
 	 * returns columns.
-	 * 
+	 *
 	 * @return tag
 	 */
 	public List<String> getColumns() {
