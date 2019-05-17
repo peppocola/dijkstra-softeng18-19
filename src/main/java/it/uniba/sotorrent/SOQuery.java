@@ -26,8 +26,12 @@ import it.uniba.query.Query;
 import it.uniba.query.QueryResults;
 
 /**
- * Class which executes queries.
+ * Class which executes queries. This class interfaces with Google Big Query's
+ * database.
+ * 
+ * <<Bound>>
  */
+
 public final class SOQuery implements ISOQuery {
 	/**
 	 * Instance of BigQuery service.
