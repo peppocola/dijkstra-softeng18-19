@@ -18,6 +18,8 @@ import it.uniba.sotorrent.SOQuery;
  * assignment specifications.
  *
  * <b>DO NOT RENAME</b>
+ * 
+ * <<Control>>
  */
 public final class AppMain {
 

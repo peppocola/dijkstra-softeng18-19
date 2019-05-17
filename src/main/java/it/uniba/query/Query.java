@@ -4,7 +4,10 @@ import it.uniba.main.ArgumentException;
 import it.uniba.main.Arguments;
 
 /**
- * The Query class.
+ * The Query class. This class creates the query using an instance of the class
+ * Arguments.
+ * 
+ * <<Entity>>
  */
 public class Query {
 

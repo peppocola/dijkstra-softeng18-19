@@ -1,6 +1,9 @@
 package it.uniba.main;
+
 /**
  * Exception thrown when a parse error occurs.
+ * 
+ * <<noECB>>
  */
 public class ParseException extends Exception {
 	/**

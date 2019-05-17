@@ -5,7 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * The QueryResult class.
+ * The QueryResult class. This class creates a linked list that contains the
+ * results of the query.
+ * 
+ * <<Entity>>
  */
 public class QueryResults implements Iterable<String[]> {
 
