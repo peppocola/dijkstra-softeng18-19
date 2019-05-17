@@ -38,7 +38,10 @@ import it.uniba.query.QueryResults;
  * more, refer to
  * <a href="https://developers.google.com/sheets/api/samples/">this
  * documentation</a>.
+ * 
+ * <<Bound>>
  */
+
 public class GoogleDocsUtils {
 	/**
 	 * The app name.
