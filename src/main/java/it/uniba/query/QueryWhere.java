@@ -8,21 +8,21 @@ class QueryWhere {
 
 	private QueryTaglike taglike;
 
-	QueryWhere(String ch) {
+	QueryWhere(final String ch) {
 		check = ch;
 	}
 
-	QueryWhere(String ch, QueryDate dt) {
+	QueryWhere(final String ch, final QueryDate dt) {
 		check = ch;
 		date = dt;
 	}
 
-	QueryWhere(String ch, QueryTaglike tag) {
+	QueryWhere(final String ch, final QueryTaglike tag) {
 		check = ch;
 		taglike = tag;
 	}
 
-	QueryWhere(String ch, QueryDate dt, QueryTaglike tag) {
+	QueryWhere(final String ch, final QueryDate dt, final QueryTaglike tag) {
 		check = ch;
 		date = dt;
 		taglike = tag;

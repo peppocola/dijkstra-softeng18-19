@@ -4,7 +4,7 @@ class QueryOrderBy {
 
 	private String[] attributes;
 
-	QueryOrderBy(String[] attr) {
+	QueryOrderBy(final String[] attr) {
 		attributes = attr;
 	}
 

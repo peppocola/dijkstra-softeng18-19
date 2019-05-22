@@ -21,13 +21,13 @@ class QuerySelect {
 		countAlias = count;
 	}
 
-	QuerySelect(final String[] attr, final String[] als, boolean dist) {
+	QuerySelect(final String[] attr, final String[] als, final boolean dist) {
 		attributes = attr;
 		aliases = als;
 		distinct = dist;
 	}
 
-	QuerySelect(final String[] attr, final String[] als, final String count, boolean dist) {
+	QuerySelect(final String[] attr, final String[] als, final String count, final boolean dist) {
 		attributes = attr;
 		aliases = als;
 		countAlias = count;

@@ -1,10 +1,10 @@
 package it.uniba.query;
 
-public class QueryGroupBy {
+class QueryGroupBy {
 
 	private String[] attributes;
 
-	QueryGroupBy(String[] attr) {
+	QueryGroupBy(final String[] attr) {
 		attributes = attr;
 	}
 

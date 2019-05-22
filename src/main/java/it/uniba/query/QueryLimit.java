@@ -4,7 +4,7 @@ class QueryLimit {
 
 	private long limit;
 
-	QueryLimit(long lim) {
+	QueryLimit(final long lim) {
 		limit = lim;
 	}
 

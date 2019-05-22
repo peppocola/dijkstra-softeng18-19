@@ -4,7 +4,7 @@ class QueryTaglike {
 
 	private String taglike;
 
-	QueryTaglike(String tag) {
+	QueryTaglike(final String tag) {
 		taglike = tag;
 	}
 

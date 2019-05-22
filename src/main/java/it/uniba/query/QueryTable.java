@@ -14,25 +14,25 @@ class QueryTable {
 
 	private QueryLimit limit;
 
-	QueryTable(QuerySelect s, String t) {
+	QueryTable(final QuerySelect s, final String t) {
 		select = s;
 		table = t;
 	}
 
-	QueryTable(QuerySelect s, String t, QueryWhere w) {
+	QueryTable(final QuerySelect s, final String t, final QueryWhere w) {
 		select = s;
 		table = t;
 		where = w;
 	}
 
-	QueryTable(QuerySelect s, String t, QueryWhere w, QueryOrderBy o) {
+	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o) {
 		select = s;
 		table = t;
 		where = w;
 		order = o;
 	}
 
-	QueryTable(QuerySelect s, String t, QueryWhere w, QueryOrderBy o, QueryLimit l) {
+	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o, final QueryLimit l) {
 		select = s;
 		table = t;
 		where = w;
@@ -40,7 +40,8 @@ class QueryTable {
 		limit = l;
 	}
 
-	QueryTable(QuerySelect s, String t, QueryWhere w, QueryOrderBy o, QueryGroupBy g, QueryLimit l) {
+	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o, final QueryGroupBy g,
+			final QueryLimit l) {
 		select = s;
 		table = t;
 		where = w;
