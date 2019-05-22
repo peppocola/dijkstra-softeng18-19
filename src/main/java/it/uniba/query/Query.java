@@ -214,7 +214,6 @@ public class Query {
 
 		QuerySelect select = new QuerySelect(new String[] {"`from`", "`to`" }, new String[] {}, true);
 		QueryOrderBy order = new QueryOrderBy(new String[] {"`from`", "`to`" });
-		QueryGroupBy group = new QueryGroupBy(new String[] {"`from`", "`to`" });
 		QueryLimit limit = new QueryLimit(args.getLimit());
 
 		String table = null;
@@ -260,7 +259,7 @@ public class Query {
 
 		table = queryJoin(firstTable.toString(), secondTable.toString(), "id=parent_id");
 
-		QueryTable queryTable = new QueryTable(select, table, where, order, group, limit);
+		QueryTable queryTable = new QueryTable(select, table, where, order, null, limit);
 
 		return queryTable.toString();
 	}
