@@ -145,7 +145,7 @@ public class Query {
 				}
 			}
 
-			table = new QueryJoin(firstTable, secondTable, "id=parent_id").toString();
+			table = queryJoin(firstTable.toString(), secondTable.toString(), "id=parent_id");
 
 			order = new QueryOrderBy(new String[] { "`from`", "`to`" });
 
@@ -173,7 +173,7 @@ public class Query {
 							"`bigquery-public-data.stackoverflow.posts_questions`",
 							new QueryWhere("owner_user_id is not null", date));
 
-					table = new QueryUnionAll(firstTable, secondTable).toString();
+					table = queryUnionAll(firstTable.toString(), secondTable.toString());
 				}
 			} else {
 				if (args.getType().equals("answer") && args.getUser() == 0) {
@@ -188,10 +188,11 @@ public class Query {
 							"`bigquery-public-data.stackoverflow.posts_questions`",
 							new QueryWhere("id is not null", taglike));
 
-					table = new QueryJoin(firstTable, secondTable, "parent_id=id").toString();
+					table = queryJoin(firstTable.toString(), secondTable.toString(),
+							"parent_id=id");
 				} else if (args.getType().equals("post") && args.getUser() == 0) {
 					QueryTable firstTable = new QueryTable(
-							new QuerySelect(new String[] { "owner_user_id" },
+							new QuerySelect(new String[] { "parent_id", "owner_user_id" },
 									new String[] {}, true),
 							"`bigquery-public-data.stackoverflow.posts_answers`",
 							new QueryWhere("owner_user_id is not null", date));
@@ -207,11 +208,12 @@ public class Query {
 							"`bigquery-public-data.stackoverflow.posts_questions`",
 							new QueryWhere("owner_user_id is not null", date, taglike));
 
-					String joinTable = new QueryJoin(firstTable, secondTable, "parent_id=id")
-							.toString();
+					String joinTable = queryJoin(firstTable.toString(), secondTable.toString(),
+							"parent_id=id");
 
-				} else if (args.getType().equals("question") && !args.getWeight()
-						&& args.getUser() == 0) {
+					table = queryUnionAll(joinTable, thirdTable.toString());
+
+				} else if (args.getType().equals("question") && args.getUser() == 0) {
 					table = "`bigquery-public-data.stackoverflow.posts_questions`";
 					where = new QueryWhere("owner_user_id is not null", date, taglike);
 				}
@@ -232,5 +234,13 @@ public class Query {
 	@Override
 	public String toString() {
 		return queryTable.toString();
+	}
+
+	private static String queryJoin(String first, String second, String condition) {
+		return "(" + first + ")" + " JOIN " + "(" + second + ")" + " ON " + condition;
+	}
+
+	private static String queryUnionAll(String first, String second) {
+		return "(" + first + ")" + " UNION ALL " + "(" + second + ")";
 	}
 }
