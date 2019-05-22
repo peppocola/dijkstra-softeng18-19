@@ -12,9 +12,9 @@ import it.uniba.main.Arguments;
 public class Query {
 
 	/**
-	 * The query string.
+	 * The query table.
 	 */
-	private String query;
+	private QueryTable queryTable;
 
 	/**
 	 * The Query constructor.
@@ -23,152 +23,207 @@ public class Query {
 	 * @throws ArgumentException thrown when the type is null
 	 */
 	public Query(final Arguments args) throws ArgumentException {
-		String date = new QueryDate(args.getDay(), args.getMonth(), args.getYear()).toString();
-
-		String dataCond = "";
-		if (date != "") {
-			dataCond = "AND " + date;
-		}
-
 		if (args.getType() == null) {
 			throw new ArgumentException("invalid argument " + args.getType());
 		}
 
-		if (args.getEdge()) {
-			if (args.getWeight()) {
-				if (args.getType().equals("answer") && args.getTaglike() == null
-						&& args.getUser() != 0) {
-					query = "SELECT `from`,`to`, count(*) as weight " + "FROM( "
-							+ "(SELECT owner_user_id as `to`, id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
-							+ "WHERE owner_user_id is not null " + dataCond + ") "
-							+ "JOIN  " + "(SELECT owner_user_id as `from`, parent_id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
-							+ "WHERE owner_user_id is not null "
-							+ "AND parent_id is not null AND owner_user_id ="
-							+ args.getUser() + ") " + "ON id= parent_id) "
-							+ "group by `from`,`to` " + " " + "order by `from`,`to` " + " ";
-				} else if (args.getType().equals("question") && args.getTaglike() == null
-						&& args.getUser() != 0) {
-					query = "SELECT distinct `from`,`to`, count (*) as weight  " + "FROM( "
-							+ "(SELECT owner_user_id as `to`, id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
-							+ "WHERE owner_user_id is not null AND owner_user_id ="
-							+ args.getUser() + " " + dataCond + ") " + "JOIN  "
-							+ "(SELECT owner_user_id as `from`, parent_id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
-							+ "WHERE owner_user_id is not null AND parent_id is not null "
-							+ dataCond + ") " + "ON id= parent_id) "
-							+ "group by `from`,`to` " + "order by `from`,`to` ";
-				} else if (args.getType().equals("question") && args.getTaglike() == null
-						&& args.getUser() == 0) {
-					query = "SELECT distinct `from`,`to`, count(*) as weight  " + "FROM( "
-							+ "(SELECT owner_user_id as `to`, id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
-							+ "WHERE owner_user_id is not null " + dataCond + ") "
-							+ "JOIN  " + "(SELECT owner_user_id as `from`, parent_id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
-							+ "WHERE owner_user_id is not null AND parent_id is not null"
-							+ ") " + "ON id= parent_id) " + "group by `from`,`to` "
-							+ "order by `from`,`to` ";
-				}
+		QueryDate date = new QueryDate(args.getDay(), args.getMonth(), args.getYear());
 
-			} else {
-				if (args.getType().equals("answer") && args.getTaglike() == null
-						&& args.getUser() != 0) {
-					query = "SELECT distinct `from`,`to`  " + "FROM(  "
-							+ "(SELECT owner_user_id as `to`, id  "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions`  "
-							+ "WHERE owner_user_id is not null " + dataCond + ") "
-							+ "JOIN  " + "(SELECT owner_user_id as `from`, parent_id  "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
-							+ "WHERE owner_user_id is not null AND parent_id is not null "
-							+ dataCond + " " + "AND owner_user_id =" + args.getUser()
-							+ ")  " + "ON id= parent_id)  " + "order by `from`,`to`  ";
-				} else if (args.getType().equals("question") && args.getTaglike() == null
-						&& args.getUser() != 0) {
-					query = "SELECT distinct `from`,`to`  " + "FROM( "
-							+ "(SELECT owner_user_id as `to`, id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
-							+ "WHERE owner_user_id is not null AND owner_user_id = "
-							+ args.getUser() + " " + dataCond + ") " + "JOIN  "
-							+ "(SELECT owner_user_id as `from`, parent_id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
-							+ "WHERE owner_user_id is not null AND parent_id is not null "
-							+ dataCond + ") " + "ON id= parent_id) "
-							+ "order by `from`,`to` ";
-				} else if (args.getType().equals("question") && args.getTaglike() == null
-						&& args.getUser() == 0) {
-					query = "SELECT distinct `from`,`to`  " + "FROM( "
-							+ "(SELECT owner_user_id as `to`, id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
-							+ "WHERE owner_user_id is not null " + dataCond + ") "
-							+ "JOIN  " + "(SELECT owner_user_id as `from`, parent_id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
-							+ "WHERE owner_user_id is not null AND parent_id is not null) "
-							+ "ON id= parent_id) " + "order by `from`,`to` ";
-				}
-			}
-
-		} else {
-			if (args.getTaglike() == null) {
-				if (args.getType().equals("question") && !args.getWeight() && args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
-							+ "WHERE owner_user_id is not null " + dataCond + " "
-							+ "order by owner_user_id ";
-				} else if (args.getType().equals("answer") && !args.getWeight()
-						&& args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
-							+ " WHERE owner_user_id is not null " + dataCond + " "
-							+ "order by owner_user_id ";
-				} else if (args.getType().equals("post") && !args.getWeight() && args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id  FROM "
-							+ "((SELECT distinct owner_user_id "
-							+ " FROM `bigquery-public-data.stackoverflow.posts_answers` "
-							+ " WHERE owner_user_id is not null " + dataCond + ") "
-							+ "UNION ALL " + "(SELECT distinct owner_user_id "
-							+ " FROM `bigquery-public-data.stackoverflow.posts_questions` "
-							+ " WHERE owner_user_id is not null " + dataCond + ")) "
-							+ "order by owner_user_id ";
-				}
-			} else {
-				if (args.getType().equals("answer") && !args.getWeight() && args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id  FROM "
-							+ "(SELECT distinct parent_id, owner_user_id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
-							+ " WHERE owner_user_id is not null " + dataCond + ") "
-							+ "JOIN " + "(SELECT distinct id "
-							+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
-							+ " WHERE REGEXP_CONTAINS (tags, r\"" + args.getTaglike()
-							+ "\")) " + "ON parent_id = id  order by owner_user_id ";
-				} else if (args.getType().equals("post") && !args.getWeight() && args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id  FROM (SELECT distinct owner_user_id"
-							+ " FROM " + "(SELECT distinct parent_id, owner_user_id "
-							+ " FROM `bigquery-public-data.stackoverflow.posts_answers` "
-							+ " WHERE owner_user_id is not null " + dataCond + ") "
-							+ " JOIN " + " (SELECT distinct id "
-							+ " FROM `bigquery-public-data.stackoverflow.posts_questions` "
-							+ " WHERE REGEXP_CONTAINS (tags, r\"" + args.getTaglike()
-							+ "\")) " + " ON parent_id = id " + " UNION ALL "
-							+ "(SELECT owner_user_id "
-							+ " FROM `bigquery-public-data.stackoverflow.posts_questions` "
-							+ " WHERE REGEXP_CONTAINS(tags, r\"" + args.getTaglike()
-							+ "\") " + dataCond + " "
-							+ " and owner_user_id is not null))  order by owner_user_id ";
-				} else if (args.getType().equals("question") && !args.getWeight()
-						&& args.getUser() == 0) {
-					query = "SELECT distinct owner_user_id "
-							+ " FROM `bigquery-public-data.stackoverflow.posts_questions` "
-							+ " WHERE REGEXP_CONTAINS(tags, r\"" + args.getTaglike()
-							+ "\") " + dataCond + " "
-							+ " and owner_user_id is not null  order by owner_user_id ";
-				}
-			}
+		if (date.toString() == "") {
+			date = null;
 		}
 
-		query += " LIMIT " + args.getLimit();
+		QueryTaglike taglike = null;
+
+		if (args.getTaglike() == null) {
+			taglike = null;
+		} else {
+			taglike = new QueryTaglike(args.getTaglike());
+		}
+
+		QuerySelect select = null;
+		String table = null;
+		QueryWhere where = null;
+		QueryOrderBy order = null;
+		QueryGroupBy group = null;
+		QueryLimit limit = null;
+
+		if (args.getEdge()) {
+			QueryTable firstTable = null;
+			QueryTable secondTable = null;
+
+			if (args.getWeight()) {
+				select = new QuerySelect(new String[] { "`from`", "`to`" }, new String[] {}, "weight");
+
+				if (args.getType().equals("answer") && args.getUser() != 0) {
+					firstTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "id" },
+									new String[] { "`to`" }),
+							"`bigquery-public-data.stackoverflow.posts_questions`",
+							new QueryWhere("owner_user_id is not null", date));
+
+					secondTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "parent_id" },
+									new String[] { "`from`" }),
+							"`bigquery-public-data.stackoverflow.posts_answers`",
+							new QueryWhere("owner_user_id is not null AND "
+									+ "parent_id is not null AND "
+									+ "owner_user_id=" + args.getUser()));
+				} else if (args.getType().equals("question") && args.getUser() != 0) {
+					firstTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "id" },
+									new String[] { "`to`" }),
+							"`bigquery-public-data.stackoverflow.posts_questions`",
+							new QueryWhere("owner_user_id=" + args.getUser(), date));
+
+					secondTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "parent_id" },
+									new String[] { "`from`" }),
+							"`bigquery-public-data.stackoverflow.posts_answers`",
+							new QueryWhere("owner_user_id is not null AND "
+									+ "parent_id is not null"));
+				} else if (args.getType().equals("question") && args.getUser() == 0) {
+					firstTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "id" },
+									new String[] { "`to`" }),
+							"`bigquery-public-data.stackoverflow.posts_questions`",
+							new QueryWhere("owner_user_id is not null", date));
+
+					secondTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "parent_id" },
+									new String[] { "`from`" }),
+							"`bigquery-public-data.stackoverflow.posts_answers`",
+							new QueryWhere("owner_user_id is not null AND "
+									+ "parent_id is not null"));
+				}
+			} else {
+				select = new QuerySelect(new String[] { "`from`", "`to`" }, new String[] {}, true);
+
+				if (args.getType().equals("answer") && args.getTaglike() == null
+						&& args.getUser() != 0) {
+					firstTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "id" },
+									new String[] { "`to`" }),
+							"`bigquery-public-data.stackoverflow.posts_questions`",
+							new QueryWhere("owner_user_id is not null", date));
+
+					secondTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "parent_id" },
+									new String[] { "`from`" }),
+							"`bigquery-public-data.stackoverflow.posts_answers`",
+							new QueryWhere("owner_user_id is not null AND "
+									+ "parent_id is not null AND owner_user_id="
+									+ args.getUser(), date));
+				} else if (args.getType().equals("question") && args.getTaglike() == null
+						&& args.getUser() != 0) {
+					firstTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "id" },
+									new String[] { "`to`" }),
+							"`bigquery-public-data.stackoverflow.posts_questions`",
+							new QueryWhere("owner_user_id=" + args.getUser(), date));
+
+					secondTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "parent_id" },
+									new String[] { "`from`" }),
+							"`bigquery-public-data.stackoverflow.posts_answers`",
+							new QueryWhere("owner_user_id is not null AND "
+									+ "parent_id is not null", date));
+				} else if (args.getType().equals("question") && args.getTaglike() == null
+						&& args.getUser() == 0) {
+					firstTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "id" },
+									new String[] { "`to`" }),
+							"`bigquery-public-data.stackoverflow.posts_questions`",
+							new QueryWhere("owner_user_id is not null", date));
+
+					secondTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id", "parent_id" },
+									new String[] { "`from`" }),
+							"`bigquery-public-data.stackoverflow.posts_answers`",
+							new QueryWhere("owner_user_id is not null AND "
+									+ "parent_id is not null"));
+				}
+			}
+
+			table = new QueryJoin(firstTable, secondTable, "id=parent_id").toString();
+
+			order = new QueryOrderBy(new String[] { "`from`", "`to`" });
+
+			group = new QueryGroupBy(new String[] { "`from`", "`to`" });
+		} else {
+			select = new QuerySelect(new String[] { "owner_user_id" }, new String[] {}, true);
+
+			if (taglike == null) {
+				if (args.getType().equals("question") && args.getUser() == 0) {
+					table = "`bigquery-public-data.stackoverflow.posts_questions`";
+					where = new QueryWhere("owner_user_id is not null", date);
+				} else if (args.getType().equals("answer") && args.getUser() == 0) {
+					table = "`bigquery-public-data.stackoverflow.posts_answers`";
+					where = new QueryWhere("owner_user_id is not null", date);
+				} else if (args.getType().equals("post") && args.getUser() == 0) {
+					QueryTable firstTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id" },
+									new String[] {}, true),
+							"`bigquery-public-data.stackoverflow.posts_answers`",
+							new QueryWhere("owner_user_id is not null", date));
+
+					QueryTable secondTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id" },
+									new String[] {}, true),
+							"`bigquery-public-data.stackoverflow.posts_questions`",
+							new QueryWhere("owner_user_id is not null", date));
+
+					table = new QueryUnionAll(firstTable, secondTable).toString();
+				}
+			} else {
+				if (args.getType().equals("answer") && args.getUser() == 0) {
+					QueryTable firstTable = new QueryTable(
+							new QuerySelect(new String[] { "parent_id", "owner_user_id" },
+									new String[] {}, true),
+							"`bigquery-public-data.stackoverflow.posts_answers`",
+							new QueryWhere("owner_user_id is not null", date));
+
+					QueryTable secondTable = new QueryTable(
+							new QuerySelect(new String[] { "id" }, new String[] {}, true),
+							"`bigquery-public-data.stackoverflow.posts_questions`",
+							new QueryWhere("id is not null", taglike));
+
+					table = new QueryJoin(firstTable, secondTable, "parent_id=id").toString();
+				} else if (args.getType().equals("post") && args.getUser() == 0) {
+					QueryTable firstTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id" },
+									new String[] {}, true),
+							"`bigquery-public-data.stackoverflow.posts_answers`",
+							new QueryWhere("owner_user_id is not null", date));
+
+					QueryTable secondTable = new QueryTable(
+							new QuerySelect(new String[] { "id" }, new String[] {}, true),
+							"`bigquery-public-data.stackoverflow.posts_questions`",
+							new QueryWhere("id is not null", taglike));
+
+					QueryTable thirdTable = new QueryTable(
+							new QuerySelect(new String[] { "owner_user_id" },
+									new String[] {}),
+							"`bigquery-public-data.stackoverflow.posts_questions`",
+							new QueryWhere("owner_user_id is not null", date, taglike));
+
+					String joinTable = new QueryJoin(firstTable, secondTable, "parent_id=id")
+							.toString();
+
+				} else if (args.getType().equals("question") && !args.getWeight()
+						&& args.getUser() == 0) {
+					table = "`bigquery-public-data.stackoverflow.posts_questions`";
+					where = new QueryWhere("owner_user_id is not null", date, taglike);
+				}
+
+			}
+
+			order = new QueryOrderBy(new String[] { "owner_user_id" });
+		}
+
+		limit = new QueryLimit(args.getLimit());
+
+		queryTable = new QueryTable(select, table, where, order, group, limit);
 	}
 
 	/**
@@ -176,6 +231,6 @@ public class Query {
 	 */
 	@Override
 	public String toString() {
-		return query;
+		return queryTable.toString();
 	}
 }
