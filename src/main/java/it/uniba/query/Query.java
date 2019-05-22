@@ -89,14 +89,7 @@ public class Query {
 			date = null;
 		}
 
-		QueryTaglike taglike = null;
-
-		if (args.getTaglike() == null) {
-			taglike = null;
-		} else {
-			taglike = new QueryTaglike(args.getTaglike());
-		}
-
+		QueryTaglike taglike = new QueryTaglike(args.getTaglike());
 		QuerySelect select = new QuerySelect(new String[] {"owner_user_id" }, new String[] {}, true);
 		QueryOrderBy order = new QueryOrderBy(new String[] {"owner_user_id" });
 		QueryLimit limit = new QueryLimit(args.getLimit());
