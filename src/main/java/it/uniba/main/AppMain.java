@@ -67,6 +67,8 @@ public final class AppMain {
 			return;
 		}
 
+		System.out.println(query);
+
 		final ISOQuery soq = new SOQuery();
 		final Job job = soq.runQuery(query);
 		final QueryResults res = soq.getResults(job);

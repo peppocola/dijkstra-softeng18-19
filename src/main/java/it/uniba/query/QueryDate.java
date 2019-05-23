@@ -55,15 +55,17 @@ class QueryDate {
 
 		if (month != 0) {
 			if (year != 0) {
-				date += " and";
+				date += " AND";
 			}
+
 			date += " EXTRACT(month FROM creation_date)=" + month;
 		}
 
 		if (day != 0) {
 			if (year != 0 || month != 0) {
-				date += " and";
+				date += " AND";
 			}
+
 			date += " EXTRACT(day FROM creation_date)=" + day;
 		}
 
