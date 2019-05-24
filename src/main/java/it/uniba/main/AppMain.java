@@ -19,7 +19,7 @@ import it.uniba.sotorrent.SOQuery;
  *
  * <b>DO NOT RENAME</b>
  * 
- * <<Control>>
+ * Control
  */
 public final class AppMain {
 

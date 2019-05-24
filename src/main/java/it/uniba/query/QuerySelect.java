@@ -4,7 +4,7 @@ package it.uniba.query;
  * The SQL syntax 'select' class. This class generates the 'select' segment of
  * the query.
  * 
- * <<Entity>>
+ * Entity
  */
 class QuerySelect {
 

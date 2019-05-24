@@ -3,7 +3,7 @@ package it.uniba.main;
 /**
  * Exception thrown when a parse error occurs.
  * 
- * <<noECB>>
+ * noECB
  */
 public class ParseException extends Exception {
 	/**

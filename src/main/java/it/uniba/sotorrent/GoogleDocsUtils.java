@@ -39,7 +39,7 @@ import it.uniba.query.QueryResults;
  * <a href="https://developers.google.com/sheets/api/samples/">this
  * documentation</a>.
  * 
- * <<Bound>>
+ * Bound
  */
 
 public class GoogleDocsUtils {

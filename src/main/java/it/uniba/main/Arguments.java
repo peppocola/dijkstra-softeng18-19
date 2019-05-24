@@ -5,7 +5,7 @@ package it.uniba.main;
  * The input parameters class. This class parses the input parameters.
  * 
  * 
- * <<Entity>>
+ * Entity
  */
 public class Arguments {
 

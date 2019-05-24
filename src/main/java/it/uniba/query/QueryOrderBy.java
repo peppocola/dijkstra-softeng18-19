@@ -4,7 +4,7 @@ package it.uniba.query;
  * The SQL syntax 'order by' class. This class generates the 'order by' segment
  * of the query.
  * 
- * <<Entity>>
+ * Entity
  */
 class QueryOrderBy {
 
