@@ -4,7 +4,7 @@ package it.uniba.query;
  * The SQL syntax of a table class. This class generates the table segment of
  * the query.
  * 
- * <<Entity>>
+ * Entity
  */
 class QueryTable {
 

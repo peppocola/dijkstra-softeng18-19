@@ -4,7 +4,7 @@ package it.uniba.query;
  * The SQL syntax 'group by' class. This class generates the 'group by' segment
  * of the query.
  * 
- * <<Entity>>
+ * Entity
  */
 class QueryGroupBy {
 

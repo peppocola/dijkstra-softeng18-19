@@ -4,7 +4,7 @@ package it.uniba.query;
  * The SQL syntax 'limit' class. This class generates the 'limit' segment of the
  * query.
  * 
- * <<Entity>>
+ * Entity
  */
 class QueryLimit {
 

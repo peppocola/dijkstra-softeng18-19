@@ -4,7 +4,7 @@ package it.uniba.query;
  * The SQL syntax 'where' class. This class generates the 'where' segment of the
  * query.
  * 
- * <<Entity>>
+ * Entity
  */
 class QueryWhere {
 

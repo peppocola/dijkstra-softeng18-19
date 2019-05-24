@@ -4,7 +4,7 @@ package it.uniba.query;
  * The QueryDate class. This class creates the date via toString generate a
  * piece of the query.
  * 
- * <<Entity>>
+ * Entity
  */
 class QueryDate {
 	/**
