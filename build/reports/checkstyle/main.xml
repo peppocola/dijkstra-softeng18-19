@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.8">
-<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/example/db/DatabaseConnection.java">
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\main\AppMain.java">
 </file>
-<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/example/db/package-info.java">
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\main\ArgumentException.java">
 </file>
-<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/example/utils/math/MathUtils.java">
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\main\Arguments.java">
 </file>
-<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/example/utils/package-info.java">
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\main\ParseException.java">
 </file>
-<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/example/utils/strings/StringUtils.java">
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\Query.java">
 </file>
-<file name="/Users/fabio/git/base1718/src/main/java/it/uniba/main/AppMain.java">
-<error line="25" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
-<error line="26" column="19" severity="error" message="&apos;if&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
-<error line="31" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
-<error line="39" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
-<error line="44" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryDate.java">
+</file>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryGroupBy.java">
+<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+</file>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryLimit.java">
+<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+</file>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryOrderBy.java">
+<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+</file>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryResults.java">
+</file>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QuerySelect.java">
+<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+</file>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryTable.java">
+<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+</file>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryTaglike.java">
+<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+</file>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryWhere.java">
+<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+</file>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\GoogleDocsUtils.java">
+</file>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\ISOQuery.java">
+</file>
+<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\SOQuery.java">
 </file>
 </checkstyle>

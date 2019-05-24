@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Query.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.query</a> &gt; <span class="el_source">Query.java</span></div><h1>Query.java</h1><pre class="source lang-java linenums">package it.uniba.query;
+
+import it.uniba.main.ArgumentException;
+import it.uniba.main.Arguments;
+
+/**
+ * The Query class. This class creates the query using an instance of the class
+ * Arguments.
+ * 
+ * &lt;&lt;Entity&gt;&gt;
+ */
+public class Query {
+
+	/**
+	 * The query string.
+	 */
+	private String query;
+
+	/**
+	 * The Query constructor.
+	 *
+	 * @param args The arguments
+	 * @throws ArgumentException thrown when the type is null
+	 */
+<span class="fc" id="L25">	public Query(final Arguments args) throws ArgumentException {</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">		if (args.getType() == null) {</span>
+<span class="fc" id="L27">			throw new ArgumentException(&quot;invalid argument &quot; + args.getType());</span>
+		}
+
+<span class="fc bfc" id="L30" title="All 2 branches covered.">		if (args.getEdge()) {</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">			if (args.getWeight()) {</span>
+<span class="fc" id="L32">				query = buildEdgeWeightQuery(args);</span>
+			} else {
+<span class="fc" id="L34">				query = buildEdgeQuery(args);</span>
+			}
+		} else {
+<span class="fc bfc" id="L37" title="All 2 branches covered.">			if (args.getTaglike() == null) {</span>
+<span class="fc" id="L38">				query = buildUserIDQuery(args);</span>
+			} else {
+<span class="fc" id="L40">				query = buildUserIDTaglikeQuery(args);</span>
+			}
+		}
+
+<span class="fc" id="L44">	}</span>
+
+	private static String buildUserIDQuery(final Arguments args) {
+<span class="fc" id="L47">		QueryDate date = new QueryDate(args.getDay(), args.getMonth(), args.getYear());</span>
+
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">		if (date.toString() == &quot;&quot;) {</span>
+<span class="nc" id="L50">			date = null;</span>
+		}
+
+<span class="fc" id="L53">		QuerySelect select = new QuerySelect(new String[] {&quot;owner_user_id&quot; }, new String[] {}, true);</span>
+<span class="fc" id="L54">		QueryOrderBy order = new QueryOrderBy(new String[] {&quot;owner_user_id&quot; });</span>
+<span class="fc" id="L55">		QueryLimit limit = new QueryLimit(args.getLimit());</span>
+
+<span class="fc" id="L57">		String table = null;</span>
+<span class="fc" id="L58">		QueryWhere where = null;</span>
+
+<span class="pc bpc" id="L60" title="1 of 4 branches missed.">		if (args.getType().equals(&quot;question&quot;) &amp;&amp; args.getUser() == 0) {</span>
+<span class="fc" id="L61">			table = &quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;;</span>
+<span class="fc" id="L62">			where = new QueryWhere(&quot;owner_user_id is not null&quot;, date);</span>
+<span class="pc bpc" id="L63" title="3 of 4 branches missed.">		} else if (args.getType().equals(&quot;answer&quot;) &amp;&amp; args.getUser() == 0) {</span>
+<span class="nc" id="L64">			table = &quot;`bigquery-public-data.stackoverflow.posts_answers`&quot;;</span>
+<span class="nc" id="L65">			where = new QueryWhere(&quot;owner_user_id is not null&quot;, date);</span>
+<span class="pc bpc" id="L66" title="2 of 4 branches missed.">		} else if (args.getType().equals(&quot;post&quot;) &amp;&amp; args.getUser() == 0) {</span>
+<span class="fc" id="L67">			QueryTable firstTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot; }, new String[] {}, true),
+					&quot;`bigquery-public-data.stackoverflow.posts_answers`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null&quot;, date));
+
+<span class="fc" id="L72">			QueryTable secondTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot; }, new String[] {}, true),
+					&quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null&quot;, date));
+
+<span class="fc" id="L77">			table = queryUnionAll(firstTable.toString(), secondTable.toString());</span>
+		}
+
+<span class="fc" id="L80">		QueryTable queryTable = new QueryTable(select, table, where, order, null, limit);</span>
+
+<span class="fc" id="L82">		return queryTable.toString();</span>
+	}
+
+	private static String buildUserIDTaglikeQuery(final Arguments args) {
+<span class="fc" id="L86">		QueryDate date = new QueryDate(args.getDay(), args.getMonth(), args.getYear());</span>
+
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">		if (date.toString() == &quot;&quot;) {</span>
+<span class="nc" id="L89">			date = null;</span>
+		}
+
+<span class="fc" id="L92">		QueryTaglike taglike = new QueryTaglike(args.getTaglike());</span>
+<span class="fc" id="L93">		QuerySelect select = new QuerySelect(new String[] {&quot;owner_user_id&quot; }, new String[] {}, true);</span>
+<span class="fc" id="L94">		QueryOrderBy order = new QueryOrderBy(new String[] {&quot;owner_user_id&quot; });</span>
+<span class="fc" id="L95">		QueryLimit limit = new QueryLimit(args.getLimit());</span>
+
+<span class="fc" id="L97">		String table = null;</span>
+<span class="fc" id="L98">		QueryWhere where = null;</span>
+
+<span class="pc bpc" id="L100" title="1 of 4 branches missed.">		if (args.getType().equals(&quot;answer&quot;) &amp;&amp; args.getUser() == 0) {</span>
+<span class="fc" id="L101">			QueryTable firstTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;parent_id&quot;, &quot;owner_user_id&quot; }, new String[] {},
+							true),
+					&quot;`bigquery-public-data.stackoverflow.posts_answers`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null&quot;, date));
+
+<span class="fc" id="L107">			QueryTable secondTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;id&quot; }, new String[] {}, true),
+					&quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;,
+					new QueryWhere(&quot;id is not null&quot;, taglike));
+
+<span class="fc" id="L112">			table = queryJoin(firstTable.toString(), secondTable.toString(), &quot;parent_id=id&quot;);</span>
+<span class="pc bpc" id="L113" title="2 of 4 branches missed.">		} else if (args.getType().equals(&quot;post&quot;) &amp;&amp; args.getUser() == 0) {</span>
+<span class="fc" id="L114">			QueryTable firstTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;parent_id&quot;, &quot;owner_user_id&quot; }, new String[] {},
+							true),
+					&quot;`bigquery-public-data.stackoverflow.posts_answers`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null&quot;, date));
+
+<span class="fc" id="L120">			QueryTable secondTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;id&quot; }, new String[] {}, true),
+					&quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;,
+					new QueryWhere(&quot;id is not null&quot;, taglike));
+
+<span class="fc" id="L125">			QueryTable thirdTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot; }, new String[] {}),
+					&quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null&quot;, date, taglike));
+
+<span class="fc" id="L130">			String joinTable = queryJoin(firstTable.toString(), secondTable.toString(), &quot;parent_id=id&quot;);</span>
+
+<span class="fc" id="L132">			table = queryUnionAll(joinTable, thirdTable.toString());</span>
+
+<span class="pc bnc" id="L134" title="All 4 branches missed.">		} else if (args.getType().equals(&quot;question&quot;) &amp;&amp; args.getUser() == 0) {</span>
+<span class="nc" id="L135">			table = &quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;;</span>
+<span class="nc" id="L136">			where = new QueryWhere(&quot;owner_user_id is not null&quot;, date, taglike);</span>
+		}
+
+<span class="fc" id="L139">		QueryTable queryTable = new QueryTable(select, table, where, order, null, limit);</span>
+
+<span class="fc" id="L141">		return queryTable.toString();</span>
+	}
+
+	private static String buildEdgeWeightQuery(final Arguments args) {
+<span class="fc" id="L145">		QueryTable firstTable = null;</span>
+<span class="fc" id="L146">		QueryTable secondTable = null;</span>
+
+<span class="fc" id="L148">		QueryDate date = new QueryDate(args.getDay(), args.getMonth(), args.getYear());</span>
+
+<span class="fc bfc" id="L150" title="All 2 branches covered.">		if (date.toString() == &quot;&quot;) {</span>
+<span class="fc" id="L151">			date = null;</span>
+		}
+
+<span class="fc" id="L154">		QuerySelect select = new QuerySelect(new String[] {&quot;`from`&quot;, &quot;`to`&quot; }, new String[] {}, &quot;weight&quot;);</span>
+<span class="fc" id="L155">		QueryOrderBy order = new QueryOrderBy(new String[] {&quot;`from`&quot;, &quot;`to`&quot; });</span>
+<span class="fc" id="L156">		QueryGroupBy group = new QueryGroupBy(new String[] {&quot;`from`&quot;, &quot;`to`&quot; });</span>
+<span class="fc" id="L157">		QueryLimit limit = new QueryLimit(args.getLimit());</span>
+
+<span class="fc" id="L159">		String table = null;</span>
+<span class="fc" id="L160">		QueryWhere where = null;</span>
+
+<span class="pc bpc" id="L162" title="1 of 4 branches missed.">		if (args.getType().equals(&quot;answer&quot;) &amp;&amp; args.getUser() != 0) {</span>
+<span class="fc" id="L163">			firstTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;id&quot; }, new String[] {&quot;`to`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null&quot;, date));
+
+<span class="fc" id="L168">			secondTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;parent_id&quot; },
+							new String[] {&quot;`from`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_answers`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null AND &quot; + &quot;parent_id is not null AND &quot;
+<span class="fc" id="L173">							+ &quot;owner_user_id=&quot; + args.getUser()));</span>
+<span class="pc bpc" id="L174" title="2 of 4 branches missed.">		} else if (args.getType().equals(&quot;question&quot;) &amp;&amp; args.getUser() != 0) {</span>
+<span class="nc" id="L175">			firstTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;id&quot; }, new String[] {&quot;`to`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;,
+<span class="nc" id="L178">					new QueryWhere(&quot;owner_user_id=&quot; + args.getUser(), date));</span>
+
+<span class="nc" id="L180">			secondTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;parent_id&quot; },
+							new String[] {&quot;`from`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_answers`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null AND &quot; + &quot;parent_id is not null&quot;));
+<span class="pc bpc" id="L185" title="2 of 4 branches missed.">		} else if (args.getType().equals(&quot;question&quot;) &amp;&amp; args.getUser() == 0) {</span>
+<span class="fc" id="L186">			firstTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;id&quot; }, new String[] {&quot;`to`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null&quot;, date));
+
+<span class="fc" id="L191">			secondTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;parent_id&quot; },
+							new String[] {&quot;`from`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_answers`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null AND &quot; + &quot;parent_id is not null&quot;));
+		}
+
+<span class="fc" id="L198">		table = queryJoin(firstTable.toString(), secondTable.toString(), &quot;id=parent_id&quot;);</span>
+
+<span class="fc" id="L200">		QueryTable queryTable = new QueryTable(select, table, where, order, group, limit);</span>
+
+<span class="fc" id="L202">		return queryTable.toString();</span>
+	}
+
+	private String buildEdgeQuery(final Arguments args) {
+<span class="fc" id="L206">		QueryTable firstTable = null;</span>
+<span class="fc" id="L207">		QueryTable secondTable = null;</span>
+
+<span class="fc" id="L209">		QueryDate date = new QueryDate(args.getDay(), args.getMonth(), args.getYear());</span>
+
+<span class="fc bfc" id="L211" title="All 2 branches covered.">		if (date.toString() == &quot;&quot;) {</span>
+<span class="fc" id="L212">			date = null;</span>
+		}
+
+<span class="fc" id="L215">		QuerySelect select = new QuerySelect(new String[] {&quot;`from`&quot;, &quot;`to`&quot; }, new String[] {}, true);</span>
+<span class="fc" id="L216">		QueryOrderBy order = new QueryOrderBy(new String[] {&quot;`from`&quot;, &quot;`to`&quot; });</span>
+<span class="fc" id="L217">		QueryLimit limit = new QueryLimit(args.getLimit());</span>
+
+<span class="fc" id="L219">		String table = null;</span>
+<span class="fc" id="L220">		QueryWhere where = null;</span>
+
+<span class="pc bpc" id="L222" title="1 of 4 branches missed.">		if (args.getType().equals(&quot;answer&quot;) &amp;&amp; args.getUser() != 0) {</span>
+<span class="fc" id="L223">			firstTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;id&quot; }, new String[] {&quot;`to`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null&quot;, date));
+
+<span class="fc" id="L228">			secondTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;parent_id&quot; },
+							new String[] {&quot;`from`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_answers`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null AND &quot;
+<span class="fc" id="L233">							+ &quot;parent_id is not null AND owner_user_id=&quot; + args.getUser(),</span>
+							date));
+<span class="pc bpc" id="L235" title="2 of 4 branches missed.">		} else if (args.getType().equals(&quot;question&quot;) &amp;&amp; args.getUser() != 0) {</span>
+<span class="nc" id="L236">			firstTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;id&quot; }, new String[] {&quot;`to`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;,
+<span class="nc" id="L239">					new QueryWhere(&quot;owner_user_id=&quot; + args.getUser(), date));</span>
+
+<span class="nc" id="L241">			secondTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;parent_id&quot; },
+							new String[] {&quot;`from`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_answers`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null AND &quot; + &quot;parent_id is not null&quot;,
+							date));
+<span class="pc bpc" id="L247" title="2 of 4 branches missed.">		} else if (args.getType().equals(&quot;question&quot;) &amp;&amp; args.getUser() == 0) {</span>
+<span class="fc" id="L248">			firstTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;id&quot; }, new String[] {&quot;`to`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null&quot;, date));
+
+<span class="fc" id="L253">			secondTable = new QueryTable(</span>
+					new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;parent_id&quot; },
+							new String[] {&quot;`from`&quot; }),
+					&quot;`bigquery-public-data.stackoverflow.posts_answers`&quot;,
+					new QueryWhere(&quot;owner_user_id is not null AND &quot; + &quot;parent_id is not null&quot;));
+		}
+
+<span class="fc" id="L260">		table = queryJoin(firstTable.toString(), secondTable.toString(), &quot;id=parent_id&quot;);</span>
+
+<span class="fc" id="L262">		QueryTable queryTable = new QueryTable(select, table, where, order, null, limit);</span>
+
+<span class="fc" id="L264">		return queryTable.toString();</span>
+	}
+
+	/**
+	 * Converts the Query to a string.
+	 */
+	@Override
+	public String toString() {
+<span class="fc" id="L272">		return query;</span>
+	}
+
+	private static String queryJoin(final String first, final String second, final String condition) {
+<span class="fc" id="L276">		return &quot;(&quot; + first + &quot;)&quot; + &quot; JOIN &quot; + &quot;(&quot; + second + &quot;)&quot; + &quot; ON &quot; + condition;</span>
+	}
+
+	private static String queryUnionAll(final String first, final String second) {
+<span class="fc" id="L280">		return &quot;(&quot; + first + &quot;)&quot; + &quot; UNION ALL &quot; + &quot;(&quot; + second + &quot;)&quot;;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

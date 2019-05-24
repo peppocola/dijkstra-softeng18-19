@@ -50,23 +50,23 @@ class QueryDate {
 		String date = "";
 
 		if (year != 0) {
-			date += " EXTRACT(year FROM creation_date)=" + year;
+			date += "EXTRACT(year FROM creation_date)=" + year;
 		}
 
 		if (month != 0) {
 			if (year != 0) {
-				date += " AND";
+				date += " AND ";
 			}
 
-			date += " EXTRACT(month FROM creation_date)=" + month;
+			date += "EXTRACT(month FROM creation_date)=" + month;
 		}
 
 		if (day != 0) {
 			if (year != 0 || month != 0) {
-				date += " AND";
+				date += " AND ";
 			}
 
-			date += " EXTRACT(day FROM creation_date)=" + day;
+			date += "EXTRACT(day FROM creation_date)=" + day;
 		}
 
 		return date;
