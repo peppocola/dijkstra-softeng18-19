@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SOQuery.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.sotorrent</a> &gt; <span class="el_source">SOQuery.java</span></div><h1>SOQuery.java</h1><pre class="source lang-java linenums">/**
+ *
+ */
+package it.uniba.sotorrent;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import com.google.auth.oauth2.ServiceAccountCredentials;
+import com.google.cloud.bigquery.BigQuery;
+import com.google.cloud.bigquery.BigQueryOptions;
+import com.google.cloud.bigquery.Field;
+import com.google.cloud.bigquery.FieldValueList;
+import com.google.cloud.bigquery.Job;
+import com.google.cloud.bigquery.JobException;
+import com.google.cloud.bigquery.JobId;
+import com.google.cloud.bigquery.JobInfo;
+import com.google.cloud.bigquery.QueryJobConfiguration;
+import com.google.cloud.bigquery.TableResult;
+
+import it.uniba.query.Query;
+import it.uniba.query.QueryResults;
+
+/**
+ * Class which executes queries. This class interfaces with Google Big Query's
+ * database.
+ * 
+ * &lt;&lt;Bound&gt;&gt;
+ */
+
+public final class SOQuery implements ISOQuery {
+	/**
+	 * Instance of BigQuery service.
+	 */
+	private final BigQuery bigquery;
+	/**
+	 * URL of credentials JSON file.
+	 */
+	private static final String URL = &quot;http://neo.di.uniba.it/credentials/project-dijkstra-sxc5g6.json&quot;;
+
+	/**
+	 * Default constructor, instantiates BigQuery API service.
+	 *
+	 * @throws FileNotFoundException The remote JSON file with credential is 404.
+	 * @throws IOException           Malformed JSON file.
+	 */
+<span class="nc" id="L51">	public SOQuery() throws FileNotFoundException, IOException {</span>
+<span class="nc" id="L52">		bigquery = BigQueryOptions.newBuilder().setProjectId(&quot;enduring-button-237211&quot;)</span>
+<span class="nc" id="L53">				.setCredentials(ServiceAccountCredentials.fromStream(new URL(URL).openStream())).build()</span>
+<span class="nc" id="L54">				.getService();</span>
+<span class="nc" id="L55">	}</span>
+
+	/**
+	 * Starts the query.
+	 *
+	 * @param query The query string.
+	 * @return The job for the query.
+	 * @throws InterruptedException Raised on timeouts.
+	 */
+	@Override
+	public Job runQuery(final Query query) throws InterruptedException {
+		// Use standard SQL syntax for queries.
+		// See: https://cloud.google.com/bigquery/sql-reference/
+<span class="nc" id="L68">		final QueryJobConfiguration queryConfig = QueryJobConfiguration.newBuilder(query.toString())</span>
+<span class="nc" id="L69">				.setUseLegacySql(false).build();</span>
+
+		// Create a job ID so that we can safely retry.
+<span class="nc" id="L72">		final JobId jobId = JobId.of(UUID.randomUUID().toString());</span>
+<span class="nc" id="L73">		Job queryJob = bigquery.create(JobInfo.newBuilder(queryConfig).setJobId(jobId).build());</span>
+
+		// Wait for the query to complete.
+<span class="nc" id="L76">		queryJob = queryJob.waitFor();</span>
+
+		// Check for errors
+<span class="nc bnc" id="L79" title="All 2 branches missed.">		if (queryJob == null) {</span>
+<span class="nc" id="L80">			throw new RuntimeException(&quot;Job no longer exists&quot;);</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">		} else if (queryJob.getStatus().getError() != null) {</span>
+			// You can also look at queryJob.getStatus().getExecutionErrors() for all
+			// errors, not just the latest one.
+<span class="nc" id="L84">			throw new RuntimeException(queryJob.getStatus().getError().toString());</span>
+		}
+<span class="nc" id="L86">		return queryJob;</span>
+	}
+
+	/**
+	 * Returns the results from the query job.
+	 *
+	 * @param queryJob The job associated to the query.
+	 * @return Results as QueryResults.
+	 * @throws JobException         Generic error occurred.
+	 * @throws InterruptedException Raised on timeouts.
+	 */
+	@Override
+	public QueryResults getResults(final Job queryJob) throws JobException, InterruptedException {
+
+<span class="nc" id="L100">		QueryResults results = new QueryResults();</span>
+
+<span class="nc bnc" id="L102" title="All 2 branches missed.">		if (queryJob != null) {</span>
+<span class="nc" id="L103">			final TableResult result = queryJob.getQueryResults();</span>
+<span class="nc" id="L104">			int size = result.getSchema().getFields().size();</span>
+<span class="nc" id="L105">			List&lt;String&gt; columns = new ArrayList&lt;String&gt;();</span>
+
+<span class="nc bnc" id="L107" title="All 2 branches missed.">			for (final Field row : result.getSchema().getFields()) {</span>
+<span class="nc" id="L108">				columns.add(row.getName());</span>
+<span class="nc" id="L109">			}</span>
+
+<span class="nc" id="L111">			results.setColumns(columns);</span>
+
+<span class="nc bnc" id="L113" title="All 2 branches missed.">			for (final FieldValueList row : result.iterateAll()) {</span>
+<span class="nc" id="L114">				String[] tuple = new String[size];</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">				for (int i = 0; i &lt; size; i++) {</span>
+<span class="nc" id="L116">					tuple[i] = row.get(i).getStringValue();</span>
+				}
+<span class="nc" id="L118">				results.addTuple(tuple);</span>
+<span class="nc" id="L119">			}</span>
+		}
+<span class="nc" id="L121">		return results;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

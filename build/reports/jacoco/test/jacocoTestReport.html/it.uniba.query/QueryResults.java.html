@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryResults.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.query</a> &gt; <span class="el_source">QueryResults.java</span></div><h1>QueryResults.java</h1><pre class="source lang-java linenums">package it.uniba.query;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * The QueryResult class. This class creates a linked list that contains the
+ * results of the query.
+ * 
+ * &lt;&lt;Entity&gt;&gt;
+ */
+public class QueryResults implements Iterable&lt;String[]&gt; {
+
+	/**
+	 * The list of results.
+	 */
+	private LinkedList&lt;String[]&gt; data;
+
+	/**
+	 * The list of columns' names.
+	 */
+	private List&lt;String&gt; columns;
+
+	/**
+	 * The default QueryResult constructor.
+	 */
+<span class="nc" id="L28">	public QueryResults() {</span>
+<span class="nc" id="L29">		data = new LinkedList&lt;String[]&gt;();</span>
+<span class="nc" id="L30">	}</span>
+
+	/**
+	 * @param tuple The result tuple.
+	 */
+	public void addTuple(final String[] tuple) {
+<span class="nc" id="L36">		data.add(tuple);</span>
+<span class="nc" id="L37">	}</span>
+
+	/**
+	 * @param cols The columns' names.
+	 */
+	public void setColumns(final List&lt;String&gt; cols) {
+<span class="nc" id="L43">		this.columns = cols;</span>
+<span class="nc" id="L44">	}</span>
+
+	/**
+	 * returns columns.
+	 *
+	 * @return tag
+	 */
+	public List&lt;String&gt; getColumns() {
+<span class="nc" id="L52">		return columns;</span>
+	}
+
+	/**
+	 * The iterator for iterating on the elements of the list (arrays of strings).
+	 */
+	@Override
+	public Iterator&lt;String[]&gt; iterator() {
+<span class="nc" id="L60">		return data.iterator();</span>
+	}
+
+	/**
+	 * converts QueryResult to string.
+	 */
+	@Override
+	public String toString() {
+<span class="nc" id="L68">		String result = &quot;&quot;;</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">		for (String[] row : data) {</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">			for (String cell : row) {</span>
+<span class="nc" id="L71">				result += cell + &quot; &quot;;</span>
+			}
+<span class="nc" id="L73">			result += &quot;\n&quot;;</span>
+<span class="nc" id="L74">		}</span>
+<span class="nc" id="L75">		return result;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

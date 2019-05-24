@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryDate.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.query</a> &gt; <span class="el_source">QueryDate.java</span></div><h1>QueryDate.java</h1><pre class="source lang-java linenums">package it.uniba.query;
+
+/**
+ * The QueryDate class. This class creates the date via toString generate a
+ * piece of the query.
+ * 
+ * &lt;&lt;Entity&gt;&gt;
+ */
+class QueryDate {
+	/**
+	 * The day.
+	 */
+	private int day;
+
+	/**
+	 * The month.
+	 */
+
+	private int month;
+
+	/**
+	 * The year.
+	 */
+	private int year;
+
+	/**
+	 * The QueryDate constructor.
+	 * 
+	 * @param dd   The day
+	 * @param mm   The month
+	 * @param yyyy The year
+	 */
+<span class="fc" id="L33">	QueryDate(final int dd, final int mm, final int yyyy) {</span>
+
+<span class="fc" id="L35">		this.day = dd;</span>
+<span class="fc" id="L36">		this.month = mm;</span>
+<span class="fc" id="L37">		this.year = yyyy;</span>
+
+<span class="fc" id="L39">	}</span>
+
+	/**
+	 * converts the QueryDate to a String.
+	 * 
+	 * @return the string you can append to the query
+	 */
+
+	@Override
+	public String toString() {
+
+<span class="fc" id="L50">		String date = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L52" title="All 2 branches covered.">		if (year != 0) {</span>
+<span class="fc" id="L53">			date += &quot;EXTRACT(year FROM creation_date)=&quot; + year;</span>
+		}
+
+<span class="fc bfc" id="L56" title="All 2 branches covered.">		if (month != 0) {</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">			if (year != 0) {</span>
+<span class="fc" id="L58">				date += &quot; AND &quot;;</span>
+			}
+
+<span class="fc" id="L61">			date += &quot;EXTRACT(month FROM creation_date)=&quot; + month;</span>
+		}
+
+<span class="fc bfc" id="L64" title="All 2 branches covered.">		if (day != 0) {</span>
+<span class="pc bpc" id="L65" title="3 of 4 branches missed.">			if (year != 0 || month != 0) {</span>
+<span class="fc" id="L66">				date += &quot; AND &quot;;</span>
+			}
+
+<span class="fc" id="L69">			date += &quot;EXTRACT(day FROM creation_date)=&quot; + day;</span>
+		}
+
+<span class="fc" id="L72">		return date;</span>
+
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
