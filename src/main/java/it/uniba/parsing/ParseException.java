@@ -1,4 +1,4 @@
-package it.uniba.main;
+package it.uniba.parsing;
 
 /**
  * Exception thrown when a parse error occurs.

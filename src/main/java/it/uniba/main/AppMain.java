@@ -7,6 +7,10 @@ import java.security.GeneralSecurityException;
 
 import com.google.cloud.bigquery.Job;
 
+import it.uniba.parsing.Arguments;
+import it.uniba.parsing.ParseException;
+import it.uniba.parsing.Parser;
+import it.uniba.query.ArgumentException;
 import it.uniba.query.Query;
 import it.uniba.query.QueryResults;
 import it.uniba.sotorrent.GoogleDocsUtils;
@@ -41,17 +45,18 @@ public final class AppMain {
 	 * @throws URISyntaxException       See stack trace for proper location.
 	 */
 	public static void main(final String[] args) throws FileNotFoundException, IOException, InterruptedException,
-			GeneralSecurityException, URISyntaxException {
+	GeneralSecurityException, URISyntaxException {
 
 		if (args.length <= 0) {
 			System.out.println("missing arguments");
 			return;
 		}
 
-		Arguments params;
+		Arguments params = null;
+
 		try {
-			params = new Arguments(args);
-		} catch (final ParseException e) {
+			params = Parser.parse(args);
+		} catch (ParseException e) {
 			System.err.println(e);
 			return;
 		} catch (final NumberFormatException e) {
@@ -62,7 +67,7 @@ public final class AppMain {
 		Query query;
 		try {
 			query = new Query(params);
-		} catch (final ArgumentException e) {
+		} catch (ArgumentException e) {
 			System.err.println(e);
 			return;
 		}
