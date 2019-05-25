@@ -1,23 +1,23 @@
 # INDICE
 1. [Introduzione](#Introduzione)
-2. [Modello di dominio](#Modello di dominio)
-3. [Requisiti specifici](#Requisiti specifici)
-4. [System Design](#System Design)
-    - [Stile architetturale adottato](#Stile architetturale adottato)
-    - [Diagramma dei package](#Diagramma dei package)
-    - [Diagramma dei componenti](#Diagramma dei componenti)
-    - [Commenti](#Commenti SD)
-5. [OO Design](#OO Design)
-    - [Diagrammi delle classi e diagrammi di sequenza](#Diagrammi delle classi e diagrammi di sequenza)
-    - [Design pattern utilizzati](#Design pattern utilizzati)
-    - [Commenti](#Commenti OO)
-6. [Riepilogo del test](#Riepilogo del test)
-7. [Manuale utente](#Manuale utente)
-8. [Processo di sviluppo e organizzazione del lavoro](#Processo di sviluppo e organizzazione del lavoro)
-9. [Analisi retrospettiva](#Analisi retrospettiva)
+2. [Modello di dominio](#Modello-di-dominio)
+3. [Requisiti specifici](#Requisiti-specifici)
+4. [System Design](#System-Design)
+    - [Stile architetturale adottato](#Stile-architetturale-adottato)
+    - [Diagramma dei package](#Diagramma-dei-package)
+    - [Diagramma dei componenti](#Diagramma-dei-componenti)
+    - [Commenti](#Commenti-SD)
+5. [OO Design](#OO-Design)
+    - [Diagrammi delle classi e diagrammi di sequenza](#Diagrammi-delle-classi-e-diagrammi-di-sequenza)
+    - [Design pattern utilizzati](#Design-pattern-utilizzati)
+    - [Commenti](#Commenti-OO)
+6. [Riepilogo del test](#Riepilogo-del-test)
+7. [Manuale utente](#Manuale-utente)
+8. [Processo di sviluppo e organizzazione del lavoro](#Processo-di-sviluppo-e-organizzazione-del-lavoro)
+9. [Analisi retrospettiva](#Analisi-retrospettiva)
     - [Soddisfazioni](#Soddisfazioni)
     - [Insoddisfazioni](#Insoddisfazioni)
-    - [Cosa ci ha fatto impazzire](#Cosa ci ha fatto impazzire)
+    - [Cosa ci ha fatto impazzire](#Cosa-ci-ha-fatto-impazzire)
 
 
 # Introduzione
@@ -51,3 +51,27 @@ Le opzioni permettono di analizzare le domande/risposte relative ad un dato tag 
 - [Gianluca Losciale](https://github.com/LuzDeGea) <br>
 
 Nell'anno accademico 2018/2019.
+
+# Manuale utente
+
+* Esecuzione via Docker attraverso il comando:
+```bash
+docker run --rm softeng1819infuniba/dijkstra <options>
+```
+* `options` include i seguenti parametri di input:
+   - `type`: il tipo di post cercato in Stack Overflow, definito in `{question,answer,post}` (es., `type=post`)
+   - `yyyy`: l'anno in cui un post è stato creato (es., `yyyy=2012`)
+   - `mm`: il mese in cui un post è stato creato (es., `mm=01`)
+   - `dd`: il giorno in cui un post è stato creato (es., `dd=07`)
+   - `taglike`: la sottostringa da cercare nei tag applicati alle domande (es., `taglike=java` varrà per le domande taggate con `java`, `java9`, etc.)
+   - `limit`: il limite al numero di risultati da restituire in una query (es., `limit=1000`)
+   - `edge`: l'opzione per indicare che l'output deve includere gli archi (es., `edge=yes`); il default è output di soli nodi
+   - `weight`: l'opzione per indicare che l'output relativo agli archi deve includere anche i pesi (es. `weight=yes`); il default è output di archi senza pesi
+   - `user`: l'id dell'utente che ha creato un post (es. `user=86`)
+
+* Al termine di ogni esecuzione di sna4so (output):
+  - i risultati di una query sono salvati in un Google Spreedsheet attraverso le relative API
+  - l'applicazione stampa a console l'url per acceddere via web a tale foglio di calcolo
+  - il foglio di calcolo è accessibile in lettura a chiunque abbia il link
+  - il foglio di calcolo può essere salvato in locale in formato CSV
+
