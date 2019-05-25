@@ -82,32 +82,32 @@ class QuerySelect {
 
 	@Override
 	public String toString() {
-		String str = "SELECT ";
+		StringBuffer str = new StringBuffer("SELECT ");
 
 		if (distinct) {
-			str += "distinct ";
+			str.append("distinct ");
 		}
 
 		int i = 0;
 
 		for (; i < attributes.length - 1; i++) {
 			if (i >= aliases.length) {
-				str += attributes[i] + ", ";
+				str.append(attributes[i] + ", ");
 			} else {
-				str += attributes[i] + " as " + aliases[i] + ", ";
+				str.append(attributes[i] + " as " + aliases[i] + ", ");
 			}
 		}
 
 		if (i >= aliases.length) {
-			str += attributes[i];
+			str.append(attributes[i]);
 		} else {
-			str += attributes[i] + " as " + aliases[i];
+			str.append(attributes[i] + " as " + aliases[i]);
 		}
 
 		if (countAlias != null) {
-			str += ", count(*) as " + countAlias;
+			str.append(", count(*) as " + countAlias);
 		}
 
-		return str;
+		return str.toString();
 	}
 }

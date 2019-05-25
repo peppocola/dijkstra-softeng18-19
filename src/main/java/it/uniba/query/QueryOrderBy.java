@@ -24,16 +24,16 @@ class QueryOrderBy {
 
 	@Override
 	public String toString() {
-		String str = "order by ";
+		StringBuffer str = new StringBuffer("order by ");
 
 		int i = 0;
 
 		for (; i < attributes.length - 1; i++) {
-			str += attributes[i] + ", ";
+			str.append(attributes[i] + ", ");
 		}
 
-		str += attributes[i];
+		str.append(attributes[i]);
 
-		return str;
+		return str.toString();
 	}
 }

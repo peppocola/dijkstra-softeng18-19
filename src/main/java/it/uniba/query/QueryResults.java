@@ -65,13 +65,13 @@ public class QueryResults implements Iterable<String[]> {
 	 */
 	@Override
 	public String toString() {
-		String result = "";
+		StringBuffer result = new StringBuffer("");
 		for (String[] row : data) {
 			for (String cell : row) {
-				result += cell + " ";
+				result.append(cell + " ");
 			}
-			result += "\n";
+			result.append("\n");
 		}
-		return result;
+		return result.toString();
 	}
 }

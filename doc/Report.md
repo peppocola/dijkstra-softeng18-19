@@ -69,9 +69,9 @@ docker run --rm softeng1819infuniba/dijkstra <options>
    - `weight`: l'opzione per indicare che l'output relativo agli archi deve includere anche i pesi (es. `weight=yes`); il default è output di archi senza pesi
    - `user`: l'id dell'utente che ha creato un post (es. `user=86`)
 
-
 * Al termine di ogni esecuzione di sna4so (output):
   - i risultati di una query sono salvati in un Google Spreedsheet attraverso le relative API
   - l'applicazione stampa a console l'url per acceddere via web a tale foglio di calcolo
   - il foglio di calcolo è accessibile in lettura a chiunque abbia il link
   - il foglio di calcolo può essere salvato in locale in formato CSV
+
