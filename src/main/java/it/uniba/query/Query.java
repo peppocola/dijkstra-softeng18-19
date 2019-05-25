@@ -51,33 +51,34 @@ public class Query {
 		}
 
 		QuerySelect select = new QuerySelect(new String[] {"owner_user_id" }, new String[] {}, true);
-		QueryOrderBy order = new QueryOrderBy(new String[] {"owner_user_id" });
-		QueryLimit limit = new QueryLimit(args.getLimit());
 
-		String table = null;
-		QueryWhere where = null;
+
+		QueryTable queryTable = new QueryTable(select, null);
 
 		if (args.getType().equals("question") && args.getUser() == 0) {
-			table = "`bigquery-public-data.stackoverflow.posts_questions`";
-			where = new QueryWhere("owner_user_id is not null", date);
+			queryTable.setTable("`bigquery-public-data.stackoverflow.posts_questions`");
+			queryTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 		} else if (args.getType().equals("answer") && args.getUser() == 0) {
-			table = "`bigquery-public-data.stackoverflow.posts_answers`";
-			where = new QueryWhere("owner_user_id is not null", date);
+			queryTable.setTable("`bigquery-public-data.stackoverflow.posts_answers`");
+			queryTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 		} else if (args.getType().equals("post") && args.getUser() == 0) {
 			QueryTable firstTable = new QueryTable(
 					new QuerySelect(new String[] {"owner_user_id" }, new String[] {}, true),
-					"`bigquery-public-data.stackoverflow.posts_answers`",
-					new QueryWhere("owner_user_id is not null", date));
+					"`bigquery-public-data.stackoverflow.posts_answers`");
+			firstTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 
 			QueryTable secondTable = new QueryTable(
 					new QuerySelect(new String[] {"owner_user_id" }, new String[] {}, true),
-					"`bigquery-public-data.stackoverflow.posts_questions`",
-					new QueryWhere("owner_user_id is not null", date));
+					"`bigquery-public-data.stackoverflow.posts_questions`");
+			secondTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 
-			table = queryUnionAll(firstTable.toString(), secondTable.toString());
+			queryTable.setTable(queryUnionAll(firstTable.toString(), secondTable.toString()));
 		}
+		QueryOrderBy order = new QueryOrderBy(new String[] { "owner_user_id" });
+		QueryLimit limit = new QueryLimit(args.getLimit());
 
-		QueryTable queryTable = new QueryTable(select, table, where, order, null, limit);
+		queryTable.setOrder(order);
+		queryTable.setLimit(limit);
 
 		return queryTable.toString();
 	}
@@ -97,36 +98,25 @@ public class Query {
 		String table = null;
 		QueryWhere where = null;
 
-		if (args.getType().equals("answer") && args.getUser() == 0) {
-			QueryTable firstTable = new QueryTable(
-					new QuerySelect(new String[] {"parent_id", "owner_user_id" }, new String[] {},
-							true),
-					"`bigquery-public-data.stackoverflow.posts_answers`",
-					new QueryWhere("owner_user_id is not null", date));
+		QueryTable firstTable = new QueryTable(
+				new QuerySelect(new String[] { "parent_id", "owner_user_id" }, new String[] {}, true),
+				"`bigquery-public-data.stackoverflow.posts_answers`");
 
-			QueryTable secondTable = new QueryTable(
-					new QuerySelect(new String[] {"id" }, new String[] {}, true),
-					"`bigquery-public-data.stackoverflow.posts_questions`",
-					new QueryWhere("id is not null", taglike));
+		QueryTable secondTable = new QueryTable(new QuerySelect(new String[] { "id" }, new String[] {}, true),
+				"`bigquery-public-data.stackoverflow.posts_questions`");
+		QueryTable thirdTable = new QueryTable(new QuerySelect(new String[] { "owner_user_id" }, new String[] {}),
+				"`bigquery-public-data.stackoverflow.posts_questions`");
+		if (args.getType().equals("answer") && args.getUser() == 0) {
+			firstTable.setWhere(new QueryWhere("owner_user_id is not null", date));
+			secondTable.setWhere(new QueryWhere("id is not null", taglike));
 
 			table = queryJoin(firstTable.toString(), secondTable.toString(), "parent_id=id");
 		} else if (args.getType().equals("post") && args.getUser() == 0) {
-			QueryTable firstTable = new QueryTable(
-					new QuerySelect(new String[] {"parent_id", "owner_user_id" }, new String[] {},
-							true),
-					"`bigquery-public-data.stackoverflow.posts_answers`",
-					new QueryWhere("owner_user_id is not null", date));
+			firstTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 
-			QueryTable secondTable = new QueryTable(
-					new QuerySelect(new String[] {"id" }, new String[] {}, true),
-					"`bigquery-public-data.stackoverflow.posts_questions`",
-					new QueryWhere("id is not null", taglike));
+			secondTable.setWhere(new QueryWhere("id is not null", taglike));
 
-			QueryTable thirdTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id" }, new String[] {}),
-					"`bigquery-public-data.stackoverflow.posts_questions`",
-					new QueryWhere("owner_user_id is not null", date, taglike));
-
+			thirdTable.setWhere(new QueryWhere("owner_user_id is not null", date, taglike));
 			String joinTable = queryJoin(firstTable.toString(), secondTable.toString(), "parent_id=id");
 
 			table = queryUnionAll(joinTable, thirdTable.toString());
@@ -136,14 +126,16 @@ public class Query {
 			where = new QueryWhere("owner_user_id is not null", date, taglike);
 		}
 
-		QueryTable queryTable = new QueryTable(select, table, where, order, null, limit);
+		QueryTable queryTable = new QueryTable(select, table);
+		queryTable.setWhere(where);
+		queryTable.setOrder(order);
+		queryTable.setLimit(limit);
 
 		return queryTable.toString();
 	}
 
 	private static String buildEdgeWeightQuery(final Arguments args) {
-		QueryTable firstTable = null;
-		QueryTable secondTable = null;
+
 
 		QueryDate date = new QueryDate(args.getDay(), args.getMonth(), args.getYear());
 
@@ -157,54 +149,39 @@ public class Query {
 		QueryLimit limit = new QueryLimit(args.getLimit());
 
 		String table = null;
-		QueryWhere where = null;
+
+		QueryTable firstTable = new QueryTable(
+				new QuerySelect(new String[] { "owner_user_id", "id" }, new String[] { "`to`" }),
+				"`bigquery-public-data.stackoverflow.posts_questions`");
+		QueryTable secondTable = new QueryTable(
+				new QuerySelect(new String[] { "owner_user_id", "parent_id" }, new String[] { "`from`" }),
+				"`bigquery-public-data.stackoverflow.posts_answers`");
 
 		if (args.getType().equals("answer") && args.getUser() != 0) {
-			firstTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "id" }, new String[] {"`to`" }),
-					"`bigquery-public-data.stackoverflow.posts_questions`",
-					new QueryWhere("owner_user_id is not null", date));
+			firstTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 
-			secondTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "parent_id" },
-							new String[] {"`from`" }),
-					"`bigquery-public-data.stackoverflow.posts_answers`",
-					new QueryWhere("owner_user_id is not null AND " + "parent_id is not null AND "
+			secondTable.setWhere(new QueryWhere("owner_user_id is not null AND " + "parent_id is not null AND "
 							+ "owner_user_id=" + args.getUser()));
 		} else if (args.getType().equals("question") && args.getUser() != 0) {
-			firstTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "id" }, new String[] {"`to`" }),
-					"`bigquery-public-data.stackoverflow.posts_questions`",
-					new QueryWhere("owner_user_id=" + args.getUser(), date));
+			firstTable.setWhere(new QueryWhere("owner_user_id=" + args.getUser(), date));
 
-			secondTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "parent_id" },
-							new String[] {"`from`" }),
-					"`bigquery-public-data.stackoverflow.posts_answers`",
-					new QueryWhere("owner_user_id is not null AND " + "parent_id is not null"));
+			secondTable.setWhere(new QueryWhere("owner_user_id is not null AND " + "parent_id is not null"));
 		} else if (args.getType().equals("question") && args.getUser() == 0) {
-			firstTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "id" }, new String[] {"`to`" }),
-					"`bigquery-public-data.stackoverflow.posts_questions`",
-					new QueryWhere("owner_user_id is not null", date));
+			firstTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 
-			secondTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "parent_id" },
-							new String[] {"`from`" }),
-					"`bigquery-public-data.stackoverflow.posts_answers`",
-					new QueryWhere("owner_user_id is not null AND " + "parent_id is not null"));
+			secondTable.setWhere(new QueryWhere("owner_user_id is not null AND " + "parent_id is not null"));
 		}
 
 		table = queryJoin(firstTable.toString(), secondTable.toString(), "id=parent_id");
 
-		QueryTable queryTable = new QueryTable(select, table, where, order, group, limit);
-
+		QueryTable queryTable = new QueryTable(select, table);
+		queryTable.setOrder(order);
+		queryTable.setGroup(group);
+		queryTable.setLimit(limit);
 		return queryTable.toString();
 	}
 
-	private String buildEdgeQuery(final Arguments args) {
-		QueryTable firstTable = null;
-		QueryTable secondTable = null;
+	private static String buildEdgeQuery(final Arguments args) {
 
 		QueryDate date = new QueryDate(args.getDay(), args.getMonth(), args.getYear());
 
@@ -212,55 +189,40 @@ public class Query {
 			date = null;
 		}
 
-		QuerySelect select = new QuerySelect(new String[] {"`from`", "`to`" }, new String[] {}, true);
-		QueryOrderBy order = new QueryOrderBy(new String[] {"`from`", "`to`" });
-		QueryLimit limit = new QueryLimit(args.getLimit());
 
-		String table = null;
-		QueryWhere where = null;
+
+		QueryTable firstTable = new QueryTable(
+				new QuerySelect(new String[] { "owner_user_id", "id" }, new String[] { "`to`" }),
+				"`bigquery-public-data.stackoverflow.posts_questions`");
+		QueryTable secondTable = new QueryTable(
+				new QuerySelect(new String[] { "owner_user_id", "parent_id" }, new String[] { "`from`" }),
+				"`bigquery-public-data.stackoverflow.posts_answers`");
 
 		if (args.getType().equals("answer") && args.getUser() != 0) {
-			firstTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "id" }, new String[] {"`to`" }),
-					"`bigquery-public-data.stackoverflow.posts_questions`",
-					new QueryWhere("owner_user_id is not null", date));
+			firstTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 
-			secondTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "parent_id" },
-							new String[] {"`from`" }),
-					"`bigquery-public-data.stackoverflow.posts_answers`",
-					new QueryWhere("owner_user_id is not null AND "
+			secondTable.setWhere(new QueryWhere("owner_user_id is not null AND "
 							+ "parent_id is not null AND owner_user_id=" + args.getUser(),
 							date));
 		} else if (args.getType().equals("question") && args.getUser() != 0) {
-			firstTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "id" }, new String[] {"`to`" }),
-					"`bigquery-public-data.stackoverflow.posts_questions`",
-					new QueryWhere("owner_user_id=" + args.getUser(), date));
+			firstTable.setWhere(new QueryWhere("owner_user_id=" + args.getUser(), date));
 
-			secondTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "parent_id" },
-							new String[] {"`from`" }),
-					"`bigquery-public-data.stackoverflow.posts_answers`",
-					new QueryWhere("owner_user_id is not null AND " + "parent_id is not null",
+			secondTable.setWhere(new QueryWhere("owner_user_id is not null AND " + "parent_id is not null",
 							date));
 		} else if (args.getType().equals("question") && args.getUser() == 0) {
-			firstTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "id" }, new String[] {"`to`" }),
-					"`bigquery-public-data.stackoverflow.posts_questions`",
-					new QueryWhere("owner_user_id is not null", date));
-
-			secondTable = new QueryTable(
-					new QuerySelect(new String[] {"owner_user_id", "parent_id" },
-							new String[] {"`from`" }),
-					"`bigquery-public-data.stackoverflow.posts_answers`",
-					new QueryWhere("owner_user_id is not null AND " + "parent_id is not null"));
+			firstTable.setWhere(new QueryWhere("owner_user_id is not null", date));
+			secondTable.setWhere(new QueryWhere("owner_user_id is not null AND " + "parent_id is not null"));
 		}
 
-		table = queryJoin(firstTable.toString(), secondTable.toString(), "id=parent_id");
+		String table = queryJoin(firstTable.toString(), secondTable.toString(), "id=parent_id");
 
-		QueryTable queryTable = new QueryTable(select, table, where, order, null, limit);
+		QuerySelect select = new QuerySelect(new String[] { "`from`", "`to`" }, new String[] {}, true);
+		QueryOrderBy order = new QueryOrderBy(new String[] { "`from`", "`to`" });
+		QueryLimit limit = new QueryLimit(args.getLimit());
 
+		QueryTable queryTable = new QueryTable(select, table);
+		queryTable.setOrder(order);
+		queryTable.setLimit(limit);
 		return queryTable.toString();
 	}
 
