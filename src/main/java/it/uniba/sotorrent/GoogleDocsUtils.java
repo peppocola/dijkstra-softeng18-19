@@ -146,8 +146,7 @@ public class GoogleDocsUtils {
 	 * @throws IOException Generic I/O error.
 	 */
 	public void getSheetByTitle(final String spid) throws IOException {
-		Sheets.Spreadsheets.Get request = sheetsService.spreadsheets().get(spid);
-		Spreadsheet response = request.execute();
+		sheetsService.spreadsheets().get(spid).execute();
 	}
 
 	/**
@@ -225,7 +224,7 @@ public class GoogleDocsUtils {
 				.setRequests(requests);
 		sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();
 
-		if (null != res) {
+		// if (null != res) {
 			int rowIndex = 1;
 			for (String[] entry : res) {
 				requests = new ArrayList<>();
@@ -247,7 +246,7 @@ public class GoogleDocsUtils {
 
 				rowIndex++;
 			}
-		}
+		// }
 
 	}
 
