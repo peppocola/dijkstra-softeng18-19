@@ -49,69 +49,52 @@ class QueryTable {
 		table = t;
 	}
 
-	/**
-	 * Construct a QueryTable.
-	 * 
-	 * @param s The 'select' component
-	 * @param t The 'table' string
-	 * @param w The 'where' component
-	 */
-	QueryTable(final QuerySelect s, final String t, final QueryWhere w) {
-		select = s;
-		table = t;
-		where = w;
+	public QuerySelect getSelect() {
+		return select;
 	}
 
-	/**
-	 * Construct a QueryTable.
-	 * 
-	 * @param s The 'select' component
-	 * @param t The 'table' string
-	 * @param w The 'where' component
-	 * @param o The 'order by' component
-	 */
-	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o) {
-		select = s;
-		table = t;
-		where = w;
-		order = o;
+	public void setSelect(final QuerySelect select) {
+		this.select = select;
 	}
 
-	/**
-	 * Construct a QueryTable.
-	 * 
-	 * @param s The 'select' component
-	 * @param t The 'table' string
-	 * @param w The 'where' component
-	 * @param o The 'order by' component
-	 * @param l The 'limit' component
-	 */
-	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o, final QueryLimit l) {
-		select = s;
-		table = t;
-		where = w;
-		order = o;
-		limit = l;
+	public String getTable() {
+		return table;
 	}
 
-	/**
-	 * Construct a QueryTable.
-	 * 
-	 * @param s The 'select' component
-	 * @param t The 'table' string
-	 * @param w The 'where' component
-	 * @param o The 'order by' component
-	 * @param g The 'group by' component
-	 * @param l The 'limit' component
-	 */
-	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o, final QueryGroupBy g,
-			final QueryLimit l) {
-		select = s;
-		table = t;
-		where = w;
-		order = o;
-		group = g;
-		limit = l;
+	public void setTable(final String table) {
+		this.table = table;
+	}
+
+	public QueryWhere getWhere() {
+		return where;
+	}
+
+	public void setWhere(final QueryWhere where) {
+		this.where = where;
+	}
+
+	public QueryOrderBy getOrder() {
+		return order;
+	}
+
+	public void setOrder(final QueryOrderBy order) {
+		this.order = order;
+	}
+
+	public QueryGroupBy getGroup() {
+		return group;
+	}
+
+	public void setGroup(final QueryGroupBy group) {
+		this.group = group;
+	}
+
+	public QueryLimit getLimit() {
+		return limit;
+	}
+
+	public void setLimit(final QueryLimit limit) {
+		this.limit = limit;
 	}
 
 	@Override
