@@ -24,16 +24,16 @@ class QueryGroupBy {
 
 	@Override
 	public String toString() {
-		String str = "group by ";
+		StringBuffer str = new StringBuffer("group by ");
 
 		int i = 0;
 
 		for (; i < attributes.length - 1; i++) {
-			str += attributes[i] + ", ";
+			str.append(attributes[i] + ", ");
 		}
 
-		str += attributes[i];
+		str.append(attributes[i]);
 
-		return str;
+		return str.toString();
 	}
 }
