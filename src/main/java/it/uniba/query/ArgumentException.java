@@ -1,4 +1,4 @@
-package it.uniba.main;
+package it.uniba.query;
 
 /**
  * Exception thrown when the arguments are invalid.

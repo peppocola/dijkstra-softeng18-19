@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
-import it.uniba.main.ArgumentException;
-import it.uniba.main.Arguments;
+import it.uniba.parsing.Arguments;
+import it.uniba.parsing.Parser;
 
 class QueryTest {
 	@Test
@@ -20,7 +20,7 @@ class QueryTest {
 				+ " WHERE (id is not null) AND REGEXP_CONTAINS (tags, r\"java\"))"
 				+ " ON parent_id=id order by owner_user_id LIMIT 100";
 		try {
-			Arguments args = new Arguments("yyyy=2016 mm=02 type=answer taglike=java limit=100".split(" "));
+			Arguments args = Parser.parse("yyyy=2016 mm=02 type=answer taglike=java limit=100".split(" "));
 			assertEquals(new Query(args).toString(), query);
 		} catch (Exception p) {
 			fail("unexpected exception thrown");
@@ -36,7 +36,7 @@ class QueryTest {
 				+ " order by owner_user_id LIMIT 100";
 
 		try {
-			Arguments args = new Arguments("yyyy=2016 mm=02 dd=11 type=question limit=100".split(" "));
+			Arguments args = Parser.parse("yyyy=2016 mm=02 dd=11 type=question limit=100".split(" "));
 			assertEquals(new Query(args).toString(), query);
 		} catch (Exception p) {
 			fail("unexpected exception thrown");
@@ -54,7 +54,7 @@ class QueryTest {
 				+ "ON id=parent_id group by `from`, `to` order by `from`, `to` LIMIT 100";
 
 		try {
-			Arguments args = new Arguments("type=answer user=86 edge=yes weight=yes limit=100".split(" "));
+			Arguments args = Parser.parse("type=answer user=86 edge=yes weight=yes limit=100".split(" "));
 			assertEquals(new Query(args).toString(), query);
 		} catch (Exception p) {
 			fail("unexpected exception thrown");
@@ -73,7 +73,7 @@ class QueryTest {
 				+ "ON id=parent_id order by `from`, `to` LIMIT 100";
 
 		try {
-			Arguments args = new Arguments(
+			Arguments args = Parser.parse(
 					"yyyy=2016 mm=02 dd=11 type=question edge=yes limit=100".split(" "));
 			assertEquals(new Query(args).toString(), query);
 		} catch (Exception p) {
@@ -94,7 +94,7 @@ class QueryTest {
 				+ "order by owner_user_id LIMIT 100";
 
 		try {
-			Arguments args = new Arguments("yyyy=2016 mm=02 dd=11 type=post limit=100".split(" "));
+			Arguments args = Parser.parse("yyyy=2016 mm=02 dd=11 type=post limit=100".split(" "));
 			assertEquals(new Query(args).toString(), query);
 		} catch (Exception p) {
 			fail("unexpected exception thrown");
@@ -104,7 +104,7 @@ class QueryTest {
 	@Test
 	void testQuery5() {
 		try {
-			Arguments args = new Arguments("yyyy=2016 mm=02 dd=11 limit=100".split(" "));
+			Arguments args = Parser.parse("yyyy=2016 mm=02 dd=11 limit=100".split(" "));
 			assertThrows(ArgumentException.class, () -> {
 				new Query(args);
 			});
@@ -128,7 +128,8 @@ class QueryTest {
 				+ "order by owner_user_id LIMIT 100";
 
 		try {
-			Arguments args = new Arguments("yyyy=2016 mm=02 type=post taglike=java limit=100".split(" "));
+			Arguments args = Parser.parse(
+					"yyyy=2016 mm=02 type=post taglike=java limit=100".split(" "));
 			assertEquals(new Query(args).toString(), query);
 		} catch (Exception p) {
 			fail("unexpected exception thrown");
@@ -148,7 +149,7 @@ class QueryTest {
 				+ "order by `from`, `to` LIMIT 100";
 
 		try {
-			Arguments args = new Arguments(
+			Arguments args = Parser.parse(
 					("yyyy=2016 mm=02 dd=11 type=question " + "edge=yes weight=yes limit=100")
 					.split(" "));
 			assertEquals(new Query(args).toString(), query);
@@ -168,7 +169,7 @@ class QueryTest {
 				+ "ON id=parent_id order by `from`, `to` LIMIT 100";
 
 		try {
-			Arguments args = new Arguments("type=answer user=86 edge=yes limit=100".split(" "));
+			Arguments args = Parser.parse("type=answer user=86 edge=yes limit=100".split(" "));
 			assertEquals(new Query(args).toString(), query);
 		} catch (Exception p) {
 			fail("unexpected exception thrown");

@@ -1,7 +1,6 @@
 package it.uniba.query;
 
-import it.uniba.main.ArgumentException;
-import it.uniba.main.Arguments;
+import it.uniba.parsing.Arguments;
 
 /**
  * The Query class. This class creates the query using an instance of the class

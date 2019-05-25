@@ -7,13 +7,17 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
+import it.uniba.parsing.Arguments;
+import it.uniba.parsing.ParseException;
+import it.uniba.parsing.Parser;
+
 class ArgumentsTest {
 
 	private static String commands;
 
 	private static String[] args;
 
-	private static Arguments params;
+	private static Arguments params = null;
 
 	@Test
 	void testArguments() {
@@ -23,7 +27,7 @@ class ArgumentsTest {
 		args = new String(commands).split(" ");
 
 		try {
-			params = new Arguments(args);
+			params = Parser.parse(args);
 		} catch (final ParseException p) {
 			fail(p.getMessage());
 		}
@@ -47,7 +51,8 @@ class ArgumentsTest {
 		args = new String(commands).split(" ");
 
 		assertThrows(ParseException.class, () -> {
-			new Arguments(args);
+			Parser.parse(args);
+			;
 		});
 
 	}
