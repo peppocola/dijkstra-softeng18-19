@@ -53,48 +53,48 @@ class QueryTable {
 		return select;
 	}
 
-	public void setSelect(final QuerySelect select) {
-		this.select = select;
+	public void setSelect(final QuerySelect s) {
+		this.select = s;
 	}
 
 	public String getTable() {
 		return table;
 	}
 
-	public void setTable(final String table) {
-		this.table = table;
+	public void setTable(final String t) {
+		this.table = t;
 	}
 
 	public QueryWhere getWhere() {
 		return where;
 	}
 
-	public void setWhere(final QueryWhere where) {
-		this.where = where;
+	public void setWhere(final QueryWhere w) {
+		this.where = w;
 	}
 
 	public QueryOrderBy getOrder() {
 		return order;
 	}
 
-	public void setOrder(final QueryOrderBy order) {
-		this.order = order;
+	public void setOrder(final QueryOrderBy o) {
+		this.order = o;
 	}
 
 	public QueryGroupBy getGroup() {
 		return group;
 	}
 
-	public void setGroup(final QueryGroupBy group) {
-		this.group = group;
+	public void setGroup(final QueryGroupBy g) {
+		this.group = g;
 	}
 
 	public QueryLimit getLimit() {
 		return limit;
 	}
 
-	public void setLimit(final QueryLimit limit) {
-		this.limit = limit;
+	public void setLimit(final QueryLimit l) {
+		this.limit = l;
 	}
 
 	@Override
