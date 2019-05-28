@@ -52,6 +52,9 @@ Le opzioni permettono di analizzare le domande/risposte relative ad un dato tag 
 
 Nell'anno accademico 2018/2019.
 
+<br> <br>
+[Torna all'indice...](#Indice)
+
 # Requisiti specifici
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno una domanda (Question) in un dato anno, mese e giorno
@@ -258,6 +261,9 @@ Nell'anno accademico 2018/2019.
   - Verificare che le triple (from, to, weight) siano ordinate in modo crescente
   - Verificare che non ci siano triple con (from, to) ripetuti.
 
+<br> <br>
+[Torna all'indice...](#Indice)
+
 # Manuale utente
 
 * Esecuzione via Docker attraverso il comando:
@@ -280,3 +286,6 @@ docker run --rm softeng1819infuniba/dijkstra <options>
   - l'applicazione stampa a console l'url per acceddere via web a tale foglio di calcolo
   - il foglio di calcolo è accessibile in lettura a chiunque abbia il link
   - il foglio di calcolo può essere salvato in locale in formato CSV
+
+<br> <br>
+[Torna all'indice...](#Indice)
