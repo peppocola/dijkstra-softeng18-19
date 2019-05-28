@@ -63,7 +63,7 @@ sourceSets {
 /*dockerCreateDockerfile {
     	instruction 'COPY credentials.json /'
 }*/
-   
+
 docker {
     javaApplication {
         baseImage = 'openjdk:8'
@@ -85,8 +85,8 @@ repositories {
 dependencies {
 	// Google Big Query API v?: ?
 	compile 'com.google.cloud:google-cloud-bigquery:1.64.0'
-	
-	// Google Spreadsheet API v4: ? 
+
+	// Google Spreadsheet API v4: ?
 	compile 'com.google.api-client:google-api-client:1.23.0'
     compile 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
     compile 'com.google.apis:google-api-services-sheets:v4-rev516-1.23.0'
@@ -95,15 +95,15 @@ dependencies {
 
     // For internal usage
     compile 'com.google.guava:guava:21.0'
-    
+
     // Compile all jars in the lib directory of the project
     //compile fileTree(dir:'lib', include: ['*.jar'])
-    
+
     // JUnit Jupiter API and TestEngine implementation
     testCompile("org.junit.jupiter:junit-jupiter-api:5.0.0")
     testCompile("org.junit.platform:junit-platform-runner:1.0.0")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0")
-  
+
 }
 
 findbugs {
@@ -112,6 +112,12 @@ findbugs {
   effort = "max"
   //findbugsTest.enabled=false
   sourceSets = [sourceSets.main]
+}
+tasks.withType(FindBugs) {
+            reports {
+                xml.enabled = false
+                html.enabled = true
+            }
 }
 
 /*
@@ -145,7 +151,7 @@ pmd {
             ]
 }
  */
- 
+
 checkstyle {
 	// Whether to allow the build to continue if there are warnings. Default: ignoreFailures = false
 	ignoreFailures = true
@@ -183,7 +189,7 @@ jacocoTestReport {
     group = "Reporting"
     description = "Generate Jacoco coverage reports after running tests."
     executionData fileTree(project.rootDir.absolutePath).include("**/${buildDir}/jacoco/*.exec")
-    additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)    
+    additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
 
     reports {
         xml.enabled true
@@ -204,10 +210,9 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
-    
+
     finalizedBy jacocoTestReport
 }
 
 // Main class
 mainClassName = 'it.uniba.main/AppMain'
-

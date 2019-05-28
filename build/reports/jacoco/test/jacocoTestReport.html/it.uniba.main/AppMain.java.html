@@ -1,10 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AppMain.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SNA4Slack</a> &gt; <a href="index.source.html" class="el_package">it.uniba.main</a> &gt; <span class="el_source">AppMain.java</span></div><h1>AppMain.java</h1><pre class="source lang-java linenums">package it.uniba.main;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AppMain.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.main</a> &gt; <span class="el_source">AppMain.java</span></div><h1>AppMain.java</h1><pre class="source lang-java linenums">package it.uniba.main;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.security.GeneralSecurityException;
+
+import com.google.cloud.bigquery.Job;
+
+import it.uniba.query.Query;
+import it.uniba.query.QueryResults;
+import it.uniba.sotorrent.GoogleDocsUtils;
+import it.uniba.sotorrent.ISOQuery;
+import it.uniba.sotorrent.SOQuery;
 
 /**
  * The main class for the project. It must be customized to meet the project
  * assignment specifications.
- * 
+ *
  * &lt;b&gt;DO NOT RENAME&lt;/b&gt;
+ * 
+ * &lt;&lt;Control&gt;&gt;
  */
 public final class AppMain {
 
@@ -16,33 +31,55 @@ public final class AppMain {
 	}
 
 	/**
-	 * This is the main entry of the application.
+	 * * This is the main entry of the application.
 	 *
-	 * @param args
-	 *            The command-line arguments.
+	 * @param args The command-line arguments.
+	 * @throws FileNotFoundException    See stack trace for proper location.
+	 * @throws IOException              See stack trace for proper location.
+	 * @throws InterruptedException     See stack trace for proper location.
+	 * @throws GeneralSecurityException See stack trace for proper location.
+	 * @throws URISyntaxException       See stack trace for proper location.
 	 */
-	public static void main(final String[] args) {
-		
-<span class="nc bnc" id="L26" title="All 2 branches missed.">		if(args.length &gt; 0) {</span>
-<span class="nc bnc" id="L27" title="All 10 branches missed.">			switch (args[0]) {</span>
-			case &quot;it&quot;:
-<span class="nc" id="L29">				System.out.println(&quot;Ciao mondo&quot;);</span>
-<span class="nc" id="L30">				break;</span>
-				
-			case &quot;es&quot;:
-<span class="nc" id="L33">				System.out.println(&quot;Hola Mundo&quot;);</span>
-<span class="nc" id="L34">				break;</span>
+	public static void main(final String[] args) throws FileNotFoundException, IOException, InterruptedException,
+			GeneralSecurityException, URISyntaxException {
 
-			default:
-<span class="nc" id="L37">				System.out.println(&quot;Specify the language. Languages supported: 'it' or 'es'.&quot;);</span>
-<span class="nc" id="L38">				break;</span>
-			
-			}
-		} else {
-<span class="nc" id="L42">			System.out.println(&quot;Hello world.&quot;);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">		if (args.length &lt;= 0) {</span>
+<span class="nc" id="L47">			System.out.println(&quot;missing arguments&quot;);</span>
+<span class="nc" id="L48">			return;</span>
 		}
-		
-<span class="nc" id="L45">	}</span>
+
+		Arguments params;
+		try {
+<span class="nc" id="L53">			params = new Arguments(args);</span>
+<span class="nc" id="L54">		} catch (final ParseException e) {</span>
+<span class="nc" id="L55">			System.err.println(e);</span>
+<span class="nc" id="L56">			return;</span>
+<span class="nc" id="L57">		} catch (final NumberFormatException e) {</span>
+<span class="nc" id="L58">			System.err.println(e);</span>
+<span class="nc" id="L59">			return;</span>
+<span class="nc" id="L60">		}</span>
+
+		Query query;
+		try {
+<span class="nc" id="L64">			query = new Query(params);</span>
+<span class="nc" id="L65">		} catch (final ArgumentException e) {</span>
+<span class="nc" id="L66">			System.err.println(e);</span>
+<span class="nc" id="L67">			return;</span>
+<span class="nc" id="L68">		}</span>
+
+<span class="nc" id="L70">		System.out.println(query);</span>
+
+<span class="nc" id="L72">		final ISOQuery soq = new SOQuery();</span>
+<span class="nc" id="L73">		final Job job = soq.runQuery(query);</span>
+<span class="nc" id="L74">		final QueryResults res = soq.getResults(job);</span>
+
+<span class="nc" id="L76">		final GoogleDocsUtils ut = new GoogleDocsUtils();</span>
+<span class="nc" id="L77">		final String spid = ut.createSheet(&quot;Result&quot;);</span>
+<span class="nc" id="L78">		ut.shareSheet(spid);</span>
+<span class="nc" id="L79">		ut.getSheetByTitle(spid);</span>
+<span class="nc" id="L80">		ut.writeSheet(spid, res);</span>
+
+<span class="nc" id="L82">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

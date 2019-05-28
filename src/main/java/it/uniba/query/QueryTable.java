@@ -1,53 +1,100 @@
 package it.uniba.query;
 
+/**
+ * The SQL syntax of a table class. This class generates the table segment of
+ * the query.
+ * 
+ * Entity
+ */
 class QueryTable {
 
+	/**
+	 * The 'select' component.
+	 */
 	private QuerySelect select;
 
+	/**
+	 * The 'table' string.
+	 */
 	private String table;
 
+	/**
+	 * The 'where' component.
+	 */
 	private QueryWhere where;
 
+	/**
+	 * The 'order by' component.
+	 */
 	private QueryOrderBy order;
 
+	/**
+	 * The 'group by' component.
+	 */
 	private QueryGroupBy group;
 
+	/**
+	 * The 'limit' component.
+	 */
 	private QueryLimit limit;
 
+	/**
+	 * Construct a QueryTable.
+	 * 
+	 * @param s The 'select' component
+	 * @param t The 'table' string
+	 */
 	QueryTable(final QuerySelect s, final String t) {
 		select = s;
 		table = t;
 	}
 
-	QueryTable(final QuerySelect s, final String t, final QueryWhere w) {
-		select = s;
-		table = t;
-		where = w;
+	public QuerySelect getSelect() {
+		return select;
 	}
 
-	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o) {
-		select = s;
-		table = t;
-		where = w;
-		order = o;
+	public void setSelect(final QuerySelect s) {
+		this.select = s;
 	}
 
-	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o, final QueryLimit l) {
-		select = s;
-		table = t;
-		where = w;
-		order = o;
-		limit = l;
+	public String getTable() {
+		return table;
 	}
 
-	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o, final QueryGroupBy g,
-			final QueryLimit l) {
-		select = s;
-		table = t;
-		where = w;
-		order = o;
-		group = g;
-		limit = l;
+	public void setTable(final String t) {
+		this.table = t;
+	}
+
+	public QueryWhere getWhere() {
+		return where;
+	}
+
+	public void setWhere(final QueryWhere w) {
+		this.where = w;
+	}
+
+	public QueryOrderBy getOrder() {
+		return order;
+	}
+
+	public void setOrder(final QueryOrderBy o) {
+		this.order = o;
+	}
+
+	public QueryGroupBy getGroup() {
+		return group;
+	}
+
+	public void setGroup(final QueryGroupBy g) {
+		this.group = g;
+	}
+
+	public QueryLimit getLimit() {
+		return limit;
+	}
+
+	public void setLimit(final QueryLimit l) {
+		this.limit = l;
 	}
 
 	@Override

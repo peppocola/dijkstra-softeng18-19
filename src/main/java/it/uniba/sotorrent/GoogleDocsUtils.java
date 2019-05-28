@@ -7,7 +7,6 @@ import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
@@ -39,7 +38,7 @@ import it.uniba.query.QueryResults;
  * <a href="https://developers.google.com/sheets/api/samples/">this
  * documentation</a>.
  * 
- * <<Bound>>
+ * Bound
  */
 
 public class GoogleDocsUtils {
@@ -146,60 +145,9 @@ public class GoogleDocsUtils {
 	 * @throws IOException Generic I/O error.
 	 */
 	public void getSheetByTitle(final String spid) throws IOException {
-		Sheets.Spreadsheets.Get request = sheetsService.spreadsheets().get(spid);
-		Spreadsheet response = request.execute();
+		sheetsService.spreadsheets().get(spid).execute();
 	}
 
-	/**
-	 * Write results to the spreadsheet. Also, see
-	 * <a href="https://developers.google.com/sheets/api/guides/values">here</a>.
-	 *
-	 * @param spid The spreadsheet id.
-	 * @param res  The hash map of the results, with URL as key and view count as
-	 *             value.
-	 * @throws IOException Generic I/O error.
-	 */
-	public void writeSheet(final String spid, final Map<String, Long> res) throws IOException {
-		List<Request> requests = new ArrayList<>();
-		List<CellData> values = new ArrayList<>();
-
-		values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue("URL")));
-		values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue("Views")));
-		requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
-				.setStart(new GridCoordinate().setSheetId(0).setRowIndex(0).setColumnIndex(0))
-				.setRows(Arrays.asList(new RowData().setValues(values)))
-				.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
-
-		BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
-				.setRequests(requests);
-		sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();
-
-		if (null != res) {
-			int rowIndex = 1;
-			for (Map.Entry<String, Long> entry : res.entrySet()) {
-				requests = new ArrayList<>();
-				values = new ArrayList<>();
-
-				String keyUrl = entry.getKey();
-				values.add(new CellData()
-						.setUserEnteredValue(new ExtendedValue().setStringValue(keyUrl)));
-				Long views = entry.getValue();
-				values.add(new CellData().setUserEnteredValue(
-						new ExtendedValue().setStringValue(String.valueOf(views))));
-				requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
-						.setStart(new GridCoordinate().setSheetId(0).setRowIndex(rowIndex)
-								.setColumnIndex(0))
-						.setRows(Arrays.asList(new RowData().setValues(values)))
-						.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
-
-				batchUpdateRequest = new BatchUpdateSpreadsheetRequest().setRequests(requests);
-				sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();
-
-				rowIndex++;
-			}
-		}
-
-	}
 
 	/**
 	 * Write results to the spreadsheet. Also, see
@@ -225,7 +173,7 @@ public class GoogleDocsUtils {
 				.setRequests(requests);
 		sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();
 
-		if (null != res) {
+		// if (null != res) {
 			int rowIndex = 1;
 			for (String[] entry : res) {
 				requests = new ArrayList<>();
@@ -247,7 +195,7 @@ public class GoogleDocsUtils {
 
 				rowIndex++;
 			}
-		}
+		// }
 
 	}
 

@@ -7,6 +7,10 @@ import java.security.GeneralSecurityException;
 
 import com.google.cloud.bigquery.Job;
 
+import it.uniba.parsing.Arguments;
+import it.uniba.parsing.ParseException;
+import it.uniba.parsing.Parser;
+import it.uniba.query.ArgumentException;
 import it.uniba.query.Query;
 import it.uniba.query.QueryResults;
 import it.uniba.sotorrent.GoogleDocsUtils;
@@ -17,9 +21,7 @@ import it.uniba.sotorrent.SOQuery;
  * The main class for the project. It must be customized to meet the project
  * assignment specifications.
  *
- * <b>DO NOT RENAME</b>
- *
- * <<Control>>
+ * <b>DO NOT RENAME</b> Control
  */
 public final class AppMain {
 
@@ -48,10 +50,11 @@ public final class AppMain {
 			return;
 		}
 
-		Arguments params;
+		Arguments params = null;
+
 		try {
-			params = new Arguments(args);
-		} catch (final ParseException e) {
+			params = Parser.parse(args);
+		} catch (ParseException e) {
 			System.err.println(e);
 			return;
 		} catch (final NumberFormatException e) {
@@ -62,7 +65,7 @@ public final class AppMain {
 		Query query;
 		try {
 			query = new Query(params);
-		} catch (final ArgumentException e) {
+		} catch (ArgumentException e) {
 			System.err.println(e);
 			return;
 		}
