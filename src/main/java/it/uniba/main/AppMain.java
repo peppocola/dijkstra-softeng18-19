@@ -21,9 +21,7 @@ import it.uniba.sotorrent.SOQuery;
  * The main class for the project. It must be customized to meet the project
  * assignment specifications.
  *
- * <b>DO NOT RENAME</b>
- * 
- * Control
+ * <b>DO NOT RENAME</b> Control
  */
 public final class AppMain {
 
@@ -45,7 +43,7 @@ public final class AppMain {
 	 * @throws URISyntaxException       See stack trace for proper location.
 	 */
 	public static void main(final String[] args) throws FileNotFoundException, IOException, InterruptedException,
-	GeneralSecurityException, URISyntaxException {
+			GeneralSecurityException, URISyntaxException {
 
 		if (args.length <= 0) {
 			System.out.println("missing arguments");
@@ -71,8 +69,6 @@ public final class AppMain {
 			System.err.println(e);
 			return;
 		}
-
-		System.out.println(query);
 
 		final ISOQuery soq = new SOQuery();
 		final Job job = soq.runQuery(query);
