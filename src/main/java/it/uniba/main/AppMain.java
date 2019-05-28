@@ -18,7 +18,7 @@ import it.uniba.sotorrent.SOQuery;
  * assignment specifications.
  *
  * <b>DO NOT RENAME</b>
- * 
+ *
  * <<Control>>
  */
 public final class AppMain {
@@ -66,8 +66,6 @@ public final class AppMain {
 			System.err.println(e);
 			return;
 		}
-
-		System.out.println(query);
 
 		final ISOQuery soq = new SOQuery();
 		final Job job = soq.runQuery(query);
