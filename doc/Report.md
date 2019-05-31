@@ -57,7 +57,9 @@ Nell'anno accademico 2018/2019.
 
 # Modello di dominio
 
-![modello_di_dominio](./images/modello_di_dominio.jpg)
+<center>
+<img width="700" alt="Modello_di_dominio.jpg" src="./images/Modello_di_dominio.jpg">
+</center>
 
 <br> <br>
 [Torna all'indice...](#Indice)
@@ -75,7 +77,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query1](https://user-images.githubusercontent.com/45401861/56416368-e945f700-6290-11e9-8e92-ff522a8ee905.png)
+  ![sprint1-query1](./images/UserStories/sprint1-query1.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno dato almeno una risposta (Answer) in un dato anno, mese e giorno.
 
@@ -89,7 +91,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query2](https://user-images.githubusercontent.com/45401861/56416534-6f623d80-6291-11e9-8608-1a87210f1125.png)
+  ![sprint1-query2](./images/UserStories/sprint1-query2.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno un Post in un dato mese, anno, giorno (un Post può essere una domanda o una risposta).
 
@@ -103,7 +105,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query3](https://user-images.githubusercontent.com/45401861/56416636-c10ac800-6291-11e9-9859-ca0374740675.png)
+  ![sprint1-query3](./images/UserStories/sprint1-query3.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno una domanda (Question) su un dato argomento (Tag) in un dato mese e anno.
 
@@ -117,7 +119,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query4](https://user-images.githubusercontent.com/45401861/56416766-22329b80-6292-11e9-8386-6a04ab4aefdd.png)
+  ![sprint1-query4](./images/UserStories/sprint1-query4.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno dato almeno una risposta (Answer) su un dato argomento (Tag) in un dato mese e anno
 
@@ -131,7 +133,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query5](https://user-images.githubusercontent.com/45401861/56416839-5efe9280-6292-11e9-86f1-1de7bfc69145.png)
+  <img src="./images/UserStories/sprint1-query5.png" alt="sprint1-query5" width="100"/>
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno un Post su un dato argomento (Tag) in un dato mese e anno (un Post può essere una domanda o una risposta)
 
@@ -145,7 +147,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query6](https://user-images.githubusercontent.com/45401861/56416909-966d3f00-6292-11e9-90da-b81b3c37cabd.png)
+  ![sprint1-query6](./images/UserStories/sprint1-query6.png)
 
 * Visualizzare la lista delle prime 100 coppie (from, to) relative a domande (Question) poste in un dato anno, mese e giorno
 
@@ -159,7 +161,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="94" alt="sprint2-query1" src="https://user-images.githubusercontent.com/45401861/57567486-5ead6f00-73da-11e9-9795-ff21b312b092.png">
+  <img width="94" alt="sprint2-query1" src="./images/UserStories/sprint2-query1.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la coppia (from, to) dove to è l'id dell'utente che ha posto la domanda e from è l'id dell'utente che ha risposto.
@@ -179,7 +181,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="88" alt="sprint2-query2" src="https://user-images.githubusercontent.com/45401861/57567491-6d942180-73da-11e9-9415-a53ff70b5f6c.png">
+  <img width="94" alt="sprint2-query2" src="./images/UserStories/sprint2-query2.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la coppia (from, to) dove to è l'id dell'utente che ha posto la domanda, specificato come valore di user, e from è l'id dell'utente che ha risposto.
@@ -199,7 +201,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="92" alt="sprint2-query3" src="https://user-images.githubusercontent.com/45401861/57567499-78e74d00-73da-11e9-9633-51b96829afd1.png">
+  <img width="94" alt="sprint2-query3" src="./images/UserStories/sprint2-query3.png">
 
 
 
@@ -220,7 +222,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="131" alt="sprint2-query4" src="https://user-images.githubusercontent.com/45401861/57567502-81d81e80-73da-11e9-9455-d678b8e30af5.png">
+  <img width="131" alt="sprint2-query4" src="./images/UserStories/sprint2-query4.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, from è l'id dell'utente che ha risposto e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
@@ -240,7 +242,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="124" alt="sprint2-query5" src="https://user-images.githubusercontent.com/45401861/57567505-8ef50d80-73da-11e9-8560-3115e10768d2.png">
+  <img width="124" alt="sprint2-query5" src="./images/UserStories/sprint2-query5.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, specificato come valore di user, from è l'id dell'utente che ha risposto e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
@@ -260,7 +262,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="124" alt="sprint2-query6" src="https://user-images.githubusercontent.com/45401861/57567510-99afa280-73da-11e9-806d-d87e990e5809.png">
+  <img width="124" alt="sprint2-query6" src="./images/UserStories/sprint2-query6.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, from è l'id dell'utente che ha risposto, specificato come valore di user, e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
