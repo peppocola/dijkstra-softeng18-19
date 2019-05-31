@@ -265,8 +265,9 @@ Nell'anno accademico 2018/2019.
 [Torna all'indice...](#Indice)
 
 # OO Design
++ # Diagrammi delle classi e diagrammi di sequenza
 
-* Di seguito viene presentato il diagramma delle classi
+Di seguito viene presentato il diagramma delle classi
 
 <center>
 <img width="700" alt="Modello_di_dominio.jpg" src="./images/Classes.png">
@@ -292,7 +293,7 @@ e il diagramma di sequenza relativo alla user story 1 dello sprint 2
 
 * I design pattern utilizzati sono quello dell'iterator
 
-* 
+*
 
 # Manuale utente
 
