@@ -55,6 +55,13 @@ Nell'anno accademico 2018/2019.
 <br> <br>
 [Torna all'indice...](#Indice)
 
+# Modello di dominio
+
+![modello_di_dominio](./images/modello_di_dominio.jpg)
+
+<br> <br>
+[Torna all'indice...](#Indice)
+
 # Requisiti specifici
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno una domanda (Question) in un dato anno, mese e giorno
