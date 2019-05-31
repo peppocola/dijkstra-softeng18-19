@@ -9,6 +9,8 @@ import it.uniba.query.QueryResults;
 /**
  * Interface for running a query on Stack Overflow via Google's BigQuery
  * service.
+ * 
+ * <i>&#60;Bound&#62;</i>
  */
 public interface ISOQuery {
 

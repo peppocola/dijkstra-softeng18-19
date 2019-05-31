@@ -1,7 +1,7 @@
 package it.uniba.parsing;
 
 /**
- * This class parses the input parameters. NoEcb
+ * This class parses the input parameters. <i>&#60;NoEcb&#62;</i>
  */
 public final class Parser {
 
