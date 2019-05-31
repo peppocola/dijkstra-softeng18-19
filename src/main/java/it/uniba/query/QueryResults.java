@@ -1,5 +1,6 @@
 package it.uniba.query;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -74,4 +75,38 @@ public class QueryResults implements Iterable<String[]> {
 		}
 		return result.toString();
 	}
+
+	/**
+	 * compares two QueryResults.
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		QueryResults other;
+
+		try {
+			other = (QueryResults) obj;
+		} catch (ClassCastException e) {
+			return false;
+		}
+
+		for (int i = 0; i < data.size(); i++) {
+			if (!Arrays.equals(data.get(i), other.data.get(i))) {
+				return false;
+			}
+		}
+		return columns.equals(other.columns);
+	}
+
+	/**
+	 * hashCode not designed. DEPRECATED.
+	 */
+	@Override
+	public int hashCode() {
+		assert false : "hashCode not designed";
+		return Integer.MAX_VALUE; // any arbitrary constant will do
+	}
+
 }

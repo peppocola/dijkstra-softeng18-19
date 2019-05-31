@@ -1,15 +1,10 @@
-package it.uniba.main;
+package it.uniba.parsing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
-
-import it.uniba.parsing.Arguments;
-import it.uniba.parsing.ParseException;
-import it.uniba.parsing.Parser;
 
 class ArgumentsTest {
 
@@ -43,19 +38,7 @@ class ArgumentsTest {
 		assertTrue(params.getWeight());
 	}
 
-	@Test
-	void testArguments1() {
 
-		commands = new String(
-				"yyyy=2016 mm=march dd=11 type=question edge=maybe weight=yes user=1109 taglike=java limit=100");
-		args = new String(commands).split(" ");
-
-		assertThrows(ParseException.class, () -> {
-			Parser.parse(args);
-			;
-		});
-
-	}
 
 
 }
