@@ -265,35 +265,37 @@ Nell'anno accademico 2018/2019.
 [Torna all'indice...](#Indice)
 
 # OO Design
-+ # Diagrammi delle classi e diagrammi di sequenza
++ <a name="#Diagrammi-delle-classi-e-diagrammi-di-sequenza"></a>
 
-Di seguito viene presentato il diagramma delle classi
+  Di seguito viene presentato il diagramma delle classi
 
-<center>
-<img width="700" alt="Modello_di_dominio.jpg" src="./images/Classes.png">
-</center>
+  <center>
+  <img width="700" alt="Modello_di_dominio.jpg" src="./images/Classes.png">
+  </center>
 
-<br> <br>
+  <br> <br>
 
-il diagramma di sequenza relativo alla user story 1 dello sprint 1
+  il diagramma di sequenza relativo alla user story 1 dello sprint 1
 
-<center>
-<img width="700" alt="Modello_di_dominio.jpg" src="./images/Sprint1Query1Sequence.png">
-</center>
+  <center>
+  <img width="700" alt="Modello_di_dominio.jpg" src="./images/Sprint1Query1Sequence.png">
+  </center>
 
-<br> <br>
+  <br> <br>
 
-e il diagramma di sequenza relativo alla user story 1 dello sprint 2
+  e il diagramma di sequenza relativo alla user story 1 dello sprint 2
 
-<center>
-<img width="700" alt="Modello_di_dominio.jpg" src="./images/Sprint2Query1Sequence.png">
-</center>
+  <center>
+  <img width="700" alt="Modello_di_dominio.jpg" src="./images/Sprint2Query1Sequence.png">
+  </center>
 
-<br> <br>
+  <br> <br>
 
-* I design pattern utilizzati sono quello dell'iterator
+* <a name="Design-pattern-utilizzati"></a>
 
-*
+  I design pattern utilizzati sono quello dell'iterator
+
+* <a name="Commenti-OO"></a>
 
 # Manuale utente
 
