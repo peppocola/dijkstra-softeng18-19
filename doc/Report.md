@@ -336,7 +336,12 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 <br> <br>
 [Torna all'indice](#Indice)
 
+# Riepilogo del test
 
+<br>
+<img src="images/jacoco.png">
+
+[Torna all'indice](#Indice)
 # Manuale utente
 
 * Esecuzione via Docker attraverso il comando:
