@@ -1,46 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryWhere.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.query</a> &gt; <span class="el_source">QueryWhere.java</span></div><h1>QueryWhere.java</h1><pre class="source lang-java linenums">package it.uniba.query;
 
+/**
+ * The SQL syntax 'where' class. This class generates the 'where' segment of the
+ * query.
+ * 
+ * &lt;i&gt;&amp;#60;Entity&amp;#62;&lt;/i&gt;
+ */
 class QueryWhere {
 
+	/**
+	 * The basic check string.
+	 */
 	private String check;
 
+	/**
+	 * The eventual date check.
+	 */
 	private QueryDate date;
 
+	/**
+	 * The eventual taglike check.
+	 */
 	private QueryTaglike taglike;
 
-<span class="fc" id="L11">	QueryWhere(final String ch) {</span>
-<span class="fc" id="L12">		check = ch;</span>
-<span class="fc" id="L13">	}</span>
+	/**
+	 * Construct a QueryWhere.
+	 * 
+	 * @param ch The basic check string
+	 */
+<span class="fc" id="L31">	QueryWhere(final String ch) {</span>
+<span class="fc" id="L32">		check = ch;</span>
+<span class="fc" id="L33">	}</span>
 
-<span class="fc" id="L15">	QueryWhere(final String ch, final QueryDate dt) {</span>
-<span class="fc" id="L16">		check = ch;</span>
-<span class="fc" id="L17">		date = dt;</span>
-<span class="fc" id="L18">	}</span>
+	/**
+	 * Construct a QueryWhere
+	 * 
+	 * @param ch The basic check string
+	 * @param dt The query date
+	 */
+<span class="fc" id="L41">	QueryWhere(final String ch, final QueryDate dt) {</span>
+<span class="fc" id="L42">		check = ch;</span>
+<span class="fc" id="L43">		date = dt;</span>
+<span class="fc" id="L44">	}</span>
 
-<span class="fc" id="L20">	QueryWhere(final String ch, final QueryTaglike tag) {</span>
-<span class="fc" id="L21">		check = ch;</span>
-<span class="fc" id="L22">		taglike = tag;</span>
-<span class="fc" id="L23">	}</span>
+	/**
+	 * Construct a QueryWhere
+	 * 
+	 * @param ch  The basic check string
+	 * @param tag The query taglike
+	 */
+<span class="fc" id="L52">	QueryWhere(final String ch, final QueryTaglike tag) {</span>
+<span class="fc" id="L53">		check = ch;</span>
+<span class="fc" id="L54">		taglike = tag;</span>
+<span class="fc" id="L55">	}</span>
 
-<span class="fc" id="L25">	QueryWhere(final String ch, final QueryDate dt, final QueryTaglike tag) {</span>
-<span class="fc" id="L26">		check = ch;</span>
-<span class="fc" id="L27">		date = dt;</span>
-<span class="fc" id="L28">		taglike = tag;</span>
-<span class="fc" id="L29">	}</span>
+	/**
+	 * Construct a QueryWhere
+	 * 
+	 * @param ch  The basic check string
+	 * @param dt  The query date
+	 * @param tag The query taglike
+	 */
+<span class="fc" id="L64">	QueryWhere(final String ch, final QueryDate dt, final QueryTaglike tag) {</span>
+<span class="fc" id="L65">		check = ch;</span>
+<span class="fc" id="L66">		date = dt;</span>
+<span class="fc" id="L67">		taglike = tag;</span>
+<span class="fc" id="L68">	}</span>
 
 	@Override
 	public String toString() {
-<span class="fc" id="L33">		String str = &quot;WHERE &quot; + &quot;(&quot; + check + &quot;)&quot;;</span>
+<span class="fc" id="L72">		String str = &quot;WHERE &quot; + &quot;(&quot; + check + &quot;)&quot;;</span>
 
-<span class="fc bfc" id="L35" title="All 2 branches covered.">		if (date != null) {</span>
-<span class="fc" id="L36">			str += &quot; AND &quot; + date;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">		if (date != null) {</span>
+<span class="fc" id="L75">			str += &quot; AND &quot; + date;</span>
 		}
 
-<span class="fc bfc" id="L39" title="All 2 branches covered.">		if (taglike != null) {</span>
-<span class="fc" id="L40">			str += &quot; AND &quot; + taglike;</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">		if (taglike != null) {</span>
+<span class="fc" id="L79">			str += &quot; AND &quot; + taglike;</span>
 		}
 
-<span class="fc" id="L43">		return str;</span>
+<span class="fc" id="L82">		return str;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

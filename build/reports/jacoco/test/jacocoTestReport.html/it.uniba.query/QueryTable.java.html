@@ -1,76 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryTable.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.query</a> &gt; <span class="el_source">QueryTable.java</span></div><h1>QueryTable.java</h1><pre class="source lang-java linenums">package it.uniba.query;
 
+/**
+ * The SQL syntax of a table class. This class generates the table segment of
+ * the query.
+ * 
+ * &lt;i&gt;&amp;#60;Entity&amp;#62;&lt;/i&gt;
+ */
 class QueryTable {
 
+	/**
+	 * The 'select' component.
+	 */
 	private QuerySelect select;
 
+	/**
+	 * The 'table' string.
+	 */
 	private String table;
 
+	/**
+	 * The 'where' component.
+	 */
 	private QueryWhere where;
 
+	/**
+	 * The 'order by' component.
+	 */
 	private QueryOrderBy order;
 
+	/**
+	 * The 'group by' component.
+	 */
 	private QueryGroupBy group;
 
+	/**
+	 * The 'limit' component.
+	 */
 	private QueryLimit limit;
 
-<span class="nc" id="L17">	QueryTable(final QuerySelect s, final String t) {</span>
-<span class="nc" id="L18">		select = s;</span>
-<span class="nc" id="L19">		table = t;</span>
-<span class="nc" id="L20">	}</span>
+	/**
+	 * Construct a QueryTable.
+	 * 
+	 * @param s The 'select' component
+	 * @param t The 'table' string
+	 */
+<span class="fc" id="L47">	QueryTable(final QuerySelect s, final String t) {</span>
+<span class="fc" id="L48">		select = s;</span>
+<span class="fc" id="L49">		table = t;</span>
+<span class="fc" id="L50">	}</span>
 
-<span class="fc" id="L22">	QueryTable(final QuerySelect s, final String t, final QueryWhere w) {</span>
-<span class="fc" id="L23">		select = s;</span>
-<span class="fc" id="L24">		table = t;</span>
-<span class="fc" id="L25">		where = w;</span>
-<span class="fc" id="L26">	}</span>
+	public QuerySelect getSelect() {
+<span class="nc" id="L53">		return select;</span>
+	}
 
-<span class="nc" id="L28">	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o) {</span>
-<span class="nc" id="L29">		select = s;</span>
-<span class="nc" id="L30">		table = t;</span>
-<span class="nc" id="L31">		where = w;</span>
-<span class="nc" id="L32">		order = o;</span>
-<span class="nc" id="L33">	}</span>
+	public void setSelect(final QuerySelect s) {
+<span class="nc" id="L57">		this.select = s;</span>
+<span class="nc" id="L58">	}</span>
 
-<span class="nc" id="L35">	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o, final QueryLimit l) {</span>
-<span class="nc" id="L36">		select = s;</span>
-<span class="nc" id="L37">		table = t;</span>
-<span class="nc" id="L38">		where = w;</span>
-<span class="nc" id="L39">		order = o;</span>
-<span class="nc" id="L40">		limit = l;</span>
-<span class="nc" id="L41">	}</span>
+	public String getTable() {
+<span class="nc" id="L61">		return table;</span>
+	}
 
-	QueryTable(final QuerySelect s, final String t, final QueryWhere w, final QueryOrderBy o, final QueryGroupBy g,
-<span class="fc" id="L44">			final QueryLimit l) {</span>
-<span class="fc" id="L45">		select = s;</span>
-<span class="fc" id="L46">		table = t;</span>
-<span class="fc" id="L47">		where = w;</span>
-<span class="fc" id="L48">		order = o;</span>
-<span class="fc" id="L49">		group = g;</span>
-<span class="fc" id="L50">		limit = l;</span>
-<span class="fc" id="L51">	}</span>
+	public void setTable(final String t) {
+<span class="fc" id="L65">		this.table = t;</span>
+<span class="fc" id="L66">	}</span>
+
+	public QueryWhere getWhere() {
+<span class="nc" id="L69">		return where;</span>
+	}
+
+	public void setWhere(final QueryWhere w) {
+<span class="fc" id="L73">		this.where = w;</span>
+<span class="fc" id="L74">	}</span>
+
+	public QueryOrderBy getOrder() {
+<span class="nc" id="L77">		return order;</span>
+	}
+
+	public void setOrder(final QueryOrderBy o) {
+<span class="fc" id="L81">		this.order = o;</span>
+<span class="fc" id="L82">	}</span>
+
+	public QueryGroupBy getGroup() {
+<span class="nc" id="L85">		return group;</span>
+	}
+
+	public void setGroup(final QueryGroupBy g) {
+<span class="fc" id="L89">		this.group = g;</span>
+<span class="fc" id="L90">	}</span>
+
+	public QueryLimit getLimit() {
+<span class="nc" id="L93">		return limit;</span>
+	}
+
+	public void setLimit(final QueryLimit l) {
+<span class="fc" id="L97">		this.limit = l;</span>
+<span class="fc" id="L98">	}</span>
 
 	@Override
 	public String toString() {
-<span class="fc" id="L55">		String str = select + &quot; FROM &quot; + table;</span>
+<span class="fc" id="L102">		String str = select + &quot; FROM &quot; + table;</span>
 
-<span class="fc bfc" id="L57" title="All 2 branches covered.">		if (where != null) {</span>
-<span class="fc" id="L58">			str += &quot; &quot; + where;</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">		if (where != null) {</span>
+<span class="fc" id="L105">			str += &quot; &quot; + where;</span>
 		}
 
-<span class="fc bfc" id="L61" title="All 2 branches covered.">		if (group != null) {</span>
-<span class="fc" id="L62">			str += &quot; &quot; + group;</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">		if (group != null) {</span>
+<span class="fc" id="L109">			str += &quot; &quot; + group;</span>
 		}
 
-<span class="fc bfc" id="L65" title="All 2 branches covered.">		if (order != null) {</span>
-<span class="fc" id="L66">			str += &quot; &quot; + order;</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">		if (order != null) {</span>
+<span class="fc" id="L113">			str += &quot; &quot; + order;</span>
 		}
 
-<span class="fc bfc" id="L69" title="All 2 branches covered.">		if (limit != null) {</span>
-<span class="fc" id="L70">			str += &quot; &quot; + limit;</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">		if (limit != null) {</span>
+<span class="fc" id="L117">			str += &quot; &quot; + limit;</span>
 		}
 
-<span class="fc" id="L73">		return str;</span>
+<span class="fc" id="L120">		return str;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
