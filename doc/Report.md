@@ -323,6 +323,7 @@ Il nostro MVP non è da ritenersi completamente puro, poichè non è presente un
 <br><br>
   <img width="600" height="" src="images/SystemDesign/Diagramma-componenti.PNG">
 <br><br>
+
 # <a name="Commenti-SD"></a>Commenti delle decisioni prese
 
 
