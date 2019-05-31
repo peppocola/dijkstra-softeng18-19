@@ -7,7 +7,6 @@ import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
@@ -39,7 +38,7 @@ import it.uniba.query.QueryResults;
  * &lt;a href=&quot;https://developers.google.com/sheets/api/samples/&quot;&gt;this
  * documentation&lt;/a&gt;.
  * 
- * &lt;&lt;Bound&gt;&gt;
+ * &lt;i&gt;&amp;#60;Bound&amp;#62;&lt;/i&gt;
  */
 
 public class GoogleDocsUtils {
@@ -50,7 +49,7 @@ public class GoogleDocsUtils {
 	/**
 	 * Permissions to manage Google Drive.
 	 */
-<span class="nc" id="L53">	private static final List&lt;String&gt; SCOPES = Arrays.asList(SheetsScopes.DRIVE);</span>
+<span class="fc" id="L52">	private static final List&lt;String&gt; SCOPES = Arrays.asList(SheetsScopes.DRIVE);</span>
 	/**
 	 * The instance of the Google Spreadsheet service.
 	 */
@@ -71,15 +70,15 @@ public class GoogleDocsUtils {
 	/**
 	 * Default constructor, authenticates and instantiate services.
 	 */
-<span class="nc" id="L74">	public GoogleDocsUtils() {</span>
+<span class="fc" id="L73">	public GoogleDocsUtils() {</span>
 		try {
-<span class="nc" id="L76">			credential = authorize();</span>
-<span class="nc" id="L77">			sheetsService = getSheetsService();</span>
-<span class="nc" id="L78">			driveService = getDriveService();</span>
-<span class="nc" id="L79">		} catch (Exception e) {</span>
-<span class="nc" id="L80">			System.err.println(e);</span>
-<span class="nc" id="L81">		}</span>
-<span class="nc" id="L82">	}</span>
+<span class="fc" id="L75">			credential = authorize();</span>
+<span class="fc" id="L76">			sheetsService = getSheetsService();</span>
+<span class="fc" id="L77">			driveService = getDriveService();</span>
+<span class="nc" id="L78">		} catch (Exception e) {</span>
+<span class="nc" id="L79">			System.err.println(e);</span>
+<span class="fc" id="L80">		}</span>
+<span class="fc" id="L81">	}</span>
 
 	/**
 	 * Performs Google authentication process.
@@ -90,9 +89,9 @@ public class GoogleDocsUtils {
 	 * @throws URISyntaxException       Malformed URI.
 	 */
 	private Credential authorize() throws IOException, GeneralSecurityException, URISyntaxException {
-<span class="nc" id="L93">		GoogleCredential authCred = GoogleCredential.fromStream(new URL(URL).openStream()).toBuilder()</span>
-<span class="nc" id="L94">				.setServiceAccountScopes(SCOPES).build();</span>
-<span class="nc" id="L95">		return authCred;</span>
+<span class="fc" id="L92">		GoogleCredential authCred = GoogleCredential.fromStream(new URL(URL).openStream()).toBuilder()</span>
+<span class="fc" id="L93">				.setServiceAccountScopes(SCOPES).build();</span>
+<span class="fc" id="L94">		return authCred;</span>
 	}
 
 	/**
@@ -104,9 +103,9 @@ public class GoogleDocsUtils {
 	 * @throws URISyntaxException       Malformed URI.
 	 */
 	private Sheets getSheetsService() throws IOException, GeneralSecurityException, URISyntaxException {
-<span class="nc" id="L107">		return new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(),</span>
-<span class="nc" id="L108">				JacksonFactory.getDefaultInstance(), credential).setApplicationName(APPLICATION_NAME)</span>
-<span class="nc" id="L109">				.build();</span>
+<span class="fc" id="L106">		return new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(),</span>
+<span class="fc" id="L107">				JacksonFactory.getDefaultInstance(), credential).setApplicationName(APPLICATION_NAME)</span>
+<span class="fc" id="L108">						.build();</span>
 	}
 
 	/**
@@ -118,9 +117,9 @@ public class GoogleDocsUtils {
 	 * @throws URISyntaxException       Malformed URI.
 	 */
 	private Drive getDriveService() throws IOException, GeneralSecurityException, URISyntaxException {
-<span class="nc" id="L121">		return new Drive.Builder(GoogleNetHttpTransport.newTrustedTransport(),</span>
-<span class="nc" id="L122">				JacksonFactory.getDefaultInstance(), credential).setApplicationName(APPLICATION_NAME)</span>
-<span class="nc" id="L123">				.build();</span>
+<span class="fc" id="L120">		return new Drive.Builder(GoogleNetHttpTransport.newTrustedTransport(),</span>
+<span class="fc" id="L121">				JacksonFactory.getDefaultInstance(), credential).setApplicationName(APPLICATION_NAME)</span>
+<span class="fc" id="L122">						.build();</span>
 	}
 
 	/**
@@ -131,11 +130,11 @@ public class GoogleDocsUtils {
 	 * @throws IOException Generic I/O error.
 	 */
 	public String createSheet(final String title) throws IOException {
-<span class="nc" id="L134">		Spreadsheet spreadsheet = new Spreadsheet().setProperties(new SpreadsheetProperties().setTitle(title));</span>
-<span class="nc" id="L135">		spreadsheet = sheetsService.spreadsheets().create(spreadsheet).setFields(&quot;spreadsheetId&quot;).execute();</span>
-<span class="nc" id="L136">		String spid = spreadsheet.getSpreadsheetId();</span>
-<span class="nc" id="L137">		System.out.println(&quot;Spreadhsheet URL: https://docs.google.com/spreadsheets/d/&quot; + spid);</span>
-<span class="nc" id="L138">		return spid;</span>
+<span class="fc" id="L133">		Spreadsheet spreadsheet = new Spreadsheet().setProperties(new SpreadsheetProperties().setTitle(title));</span>
+<span class="fc" id="L134">		spreadsheet = sheetsService.spreadsheets().create(spreadsheet).setFields(&quot;spreadsheetId&quot;).execute();</span>
+<span class="fc" id="L135">		String spid = spreadsheet.getSpreadsheetId();</span>
+<span class="fc" id="L136">		System.out.println(&quot;Spreadhsheet URL: https://docs.google.com/spreadsheets/d/&quot; + spid);</span>
+<span class="fc" id="L137">		return spid;</span>
 
 	}
 
@@ -146,60 +145,8 @@ public class GoogleDocsUtils {
 	 * @throws IOException Generic I/O error.
 	 */
 	public void getSheetByTitle(final String spid) throws IOException {
-<span class="nc" id="L149">		Sheets.Spreadsheets.Get request = sheetsService.spreadsheets().get(spid);</span>
-<span class="nc" id="L150">		Spreadsheet response = request.execute();</span>
-<span class="nc" id="L151">	}</span>
-
-	/**
-	 * Write results to the spreadsheet. Also, see
-	 * &lt;a href=&quot;https://developers.google.com/sheets/api/guides/values&quot;&gt;here&lt;/a&gt;.
-	 *
-	 * @param spid The spreadsheet id.
-	 * @param res  The hash map of the results, with URL as key and view count as
-	 *             value.
-	 * @throws IOException Generic I/O error.
-	 */
-	public void writeSheet(final String spid, final Map&lt;String, Long&gt; res) throws IOException {
-<span class="nc" id="L163">		List&lt;Request&gt; requests = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L164">		List&lt;CellData&gt; values = new ArrayList&lt;&gt;();</span>
-
-<span class="nc" id="L166">		values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(&quot;URL&quot;)));</span>
-<span class="nc" id="L167">		values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(&quot;Views&quot;)));</span>
-<span class="nc" id="L168">		requests.add(new Request().setUpdateCells(new UpdateCellsRequest()</span>
-<span class="nc" id="L169">				.setStart(new GridCoordinate().setSheetId(0).setRowIndex(0).setColumnIndex(0))</span>
-<span class="nc" id="L170">				.setRows(Arrays.asList(new RowData().setValues(values)))</span>
-<span class="nc" id="L171">				.setFields(&quot;userEnteredValue,userEnteredFormat.backgroundColor&quot;)));</span>
-
-<span class="nc" id="L173">		BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()</span>
-<span class="nc" id="L174">				.setRequests(requests);</span>
-<span class="nc" id="L175">		sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();</span>
-
-<span class="nc bnc" id="L177" title="All 2 branches missed.">		if (null != res) {</span>
-<span class="nc" id="L178">			int rowIndex = 1;</span>
-<span class="nc bnc" id="L179" title="All 2 branches missed.">			for (Map.Entry&lt;String, Long&gt; entry : res.entrySet()) {</span>
-<span class="nc" id="L180">				requests = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L181">				values = new ArrayList&lt;&gt;();</span>
-
-<span class="nc" id="L183">				String keyUrl = entry.getKey();</span>
-<span class="nc" id="L184">				values.add(new CellData()</span>
-<span class="nc" id="L185">						.setUserEnteredValue(new ExtendedValue().setStringValue(keyUrl)));</span>
-<span class="nc" id="L186">				Long views = entry.getValue();</span>
-<span class="nc" id="L187">				values.add(new CellData().setUserEnteredValue(</span>
-<span class="nc" id="L188">						new ExtendedValue().setStringValue(String.valueOf(views))));</span>
-<span class="nc" id="L189">				requests.add(new Request().setUpdateCells(new UpdateCellsRequest()</span>
-<span class="nc" id="L190">						.setStart(new GridCoordinate().setSheetId(0).setRowIndex(rowIndex)</span>
-<span class="nc" id="L191">								.setColumnIndex(0))</span>
-<span class="nc" id="L192">						.setRows(Arrays.asList(new RowData().setValues(values)))</span>
-<span class="nc" id="L193">						.setFields(&quot;userEnteredValue,userEnteredFormat.backgroundColor&quot;)));</span>
-
-<span class="nc" id="L195">				batchUpdateRequest = new BatchUpdateSpreadsheetRequest().setRequests(requests);</span>
-<span class="nc" id="L196">				sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();</span>
-
-<span class="nc" id="L198">				rowIndex++;</span>
-<span class="nc" id="L199">			}</span>
-		}
-
-<span class="nc" id="L202">	}</span>
+<span class="nc" id="L148">		sheetsService.spreadsheets().get(spid).execute();</span>
+<span class="nc" id="L149">	}</span>
 
 	/**
 	 * Write results to the spreadsheet. Also, see
@@ -210,46 +157,44 @@ public class GoogleDocsUtils {
 	 * @throws IOException Generic I/O error.
 	 */
 	public void writeSheet(final String spid, final QueryResults res) throws IOException {
-<span class="nc" id="L213">		List&lt;Request&gt; requests = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L214">		List&lt;CellData&gt; values = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L160">		List&lt;Request&gt; requests = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L161">		List&lt;CellData&gt; values = new ArrayList&lt;&gt;();</span>
 
-<span class="nc bnc" id="L216" title="All 2 branches missed.">		for (String cell : res.getColumns()) {</span>
-<span class="nc" id="L217">			values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(cell)));</span>
-<span class="nc" id="L218">		}</span>
-<span class="nc" id="L219">		requests.add(new Request().setUpdateCells(new UpdateCellsRequest()</span>
-<span class="nc" id="L220">				.setStart(new GridCoordinate().setSheetId(0).setRowIndex(0).setColumnIndex(0))</span>
-<span class="nc" id="L221">				.setRows(Arrays.asList(new RowData().setValues(values)))</span>
-<span class="nc" id="L222">				.setFields(&quot;userEnteredValue,userEnteredFormat.backgroundColor&quot;)));</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">		for (String cell : res.getColumns()) {</span>
+<span class="nc" id="L164">			values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(cell)));</span>
+<span class="nc" id="L165">		}</span>
+<span class="nc" id="L166">		requests.add(new Request().setUpdateCells(new UpdateCellsRequest()</span>
+<span class="nc" id="L167">				.setStart(new GridCoordinate().setSheetId(0).setRowIndex(0).setColumnIndex(0))</span>
+<span class="nc" id="L168">				.setRows(Arrays.asList(new RowData().setValues(values)))</span>
+<span class="nc" id="L169">				.setFields(&quot;userEnteredValue,userEnteredFormat.backgroundColor&quot;)));</span>
 
-<span class="nc" id="L224">		BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()</span>
-<span class="nc" id="L225">				.setRequests(requests);</span>
-<span class="nc" id="L226">		sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();</span>
+<span class="nc" id="L171">		BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()</span>
+<span class="nc" id="L172">				.setRequests(requests);</span>
+<span class="nc" id="L173">		sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();</span>
 
-<span class="nc bnc" id="L228" title="All 2 branches missed.">		if (null != res) {</span>
-<span class="nc" id="L229">			int rowIndex = 1;</span>
-<span class="nc bnc" id="L230" title="All 2 branches missed.">			for (String[] entry : res) {</span>
-<span class="nc" id="L231">				requests = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L232">				values = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L175">		int rowIndex = 1;</span>
+<span class="nc bnc" id="L176" title="All 2 branches missed.">		for (String[] entry : res) {</span>
+<span class="nc" id="L177">			requests = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L178">			values = new ArrayList&lt;&gt;();</span>
 
-<span class="nc bnc" id="L234" title="All 2 branches missed.">				for (String value : entry) {</span>
-<span class="nc" id="L235">					values.add(new CellData().setUserEnteredValue(</span>
-<span class="nc" id="L236">							new ExtendedValue().setStringValue(value)));</span>
-				}
+<span class="nc bnc" id="L180" title="All 2 branches missed.">			for (String value : entry) {</span>
+<span class="nc" id="L181">				values.add(new CellData()</span>
+<span class="nc" id="L182">						.setUserEnteredValue(new ExtendedValue().setStringValue(value)));</span>
+			}
 
-<span class="nc" id="L239">				requests.add(new Request().setUpdateCells(new UpdateCellsRequest()</span>
-<span class="nc" id="L240">						.setStart(new GridCoordinate().setSheetId(0).setRowIndex(rowIndex)</span>
-<span class="nc" id="L241">								.setColumnIndex(0))</span>
-<span class="nc" id="L242">						.setRows(Arrays.asList(new RowData().setValues(values)))</span>
-<span class="nc" id="L243">						.setFields(&quot;userEnteredValue,userEnteredFormat.backgroundColor&quot;)));</span>
+<span class="nc" id="L185">			requests.add(new Request().setUpdateCells(new UpdateCellsRequest()</span>
+<span class="nc" id="L186">					.setStart(new GridCoordinate().setSheetId(0).setRowIndex(rowIndex)</span>
+<span class="nc" id="L187">							.setColumnIndex(0))</span>
+<span class="nc" id="L188">					.setRows(Arrays.asList(new RowData().setValues(values)))</span>
+<span class="nc" id="L189">					.setFields(&quot;userEnteredValue,userEnteredFormat.backgroundColor&quot;)));</span>
 
-<span class="nc" id="L245">				batchUpdateRequest = new BatchUpdateSpreadsheetRequest().setRequests(requests);</span>
-<span class="nc" id="L246">				sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();</span>
+<span class="nc" id="L191">			batchUpdateRequest = new BatchUpdateSpreadsheetRequest().setRequests(requests);</span>
+<span class="nc" id="L192">			sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();</span>
 
-<span class="nc" id="L248">				rowIndex++;</span>
-<span class="nc" id="L249">			}</span>
-		}
+<span class="nc" id="L194">			rowIndex++;</span>
+<span class="nc" id="L195">		}</span>
 
-<span class="nc" id="L252">	}</span>
+<span class="nc" id="L197">	}</span>
 
 	/**
 	 * Makes the spreadsheet readable to anyone with the link.
@@ -260,27 +205,27 @@ public class GoogleDocsUtils {
 	 * @throws URISyntaxException       Malformed URI.
 	 */
 	public void shareSheet(final String spid) throws IOException, GeneralSecurityException, URISyntaxException {
-<span class="nc" id="L263">		JsonBatchCallback&lt;Permission&gt; callback = new JsonBatchCallback&lt;Permission&gt;() {</span>
+<span class="nc" id="L208">		JsonBatchCallback&lt;Permission&gt; callback = new JsonBatchCallback&lt;Permission&gt;() {</span>
 			@Override
 			public void onFailure(final GoogleJsonError e, final HttpHeaders responseHeaders)
 					throws IOException {
 				// Handle error
-<span class="nc" id="L268">				System.err.println(e.getMessage());</span>
-<span class="nc" id="L269">			}</span>
+<span class="nc" id="L213">				System.err.println(e.getMessage());</span>
+<span class="nc" id="L214">			}</span>
 
 			@Override
 			public void onSuccess(final Permission permission, final HttpHeaders responseHeaders)
 					throws IOException {
 				// System.out.println(&quot;Permission ID: &quot; + permission.getId());
-<span class="nc" id="L275">			}</span>
+<span class="nc" id="L220">			}</span>
 		};
-<span class="nc" id="L277">		BatchRequest batch = driveService.batch();</span>
-<span class="nc" id="L278">		Permission userPermission = new Permission().setType(&quot;anyone&quot;).setRole(&quot;reader&quot;);</span>
-<span class="nc" id="L279">		driveService.permissions().create(spid, userPermission).setFields(&quot;id&quot;).queue(batch, callback);</span>
+<span class="nc" id="L222">		BatchRequest batch = driveService.batch();</span>
+<span class="nc" id="L223">		Permission userPermission = new Permission().setType(&quot;anyone&quot;).setRole(&quot;reader&quot;);</span>
+<span class="nc" id="L224">		driveService.permissions().create(spid, userPermission).setFields(&quot;id&quot;).queue(batch, callback);</span>
 
-<span class="nc" id="L281">		batch.execute();</span>
+<span class="nc" id="L226">		batch.execute();</span>
 
-<span class="nc" id="L283">	}</span>
+<span class="nc" id="L228">	}</span>
 
 	// Intentionally not used it. Use it to delete a sheet.
 	/**
@@ -291,9 +236,9 @@ public class GoogleDocsUtils {
 	 */
 	@SuppressWarnings(&quot;unused&quot;)
 	private void deleteSheet(final String spid) throws IOException {
-<span class="nc" id="L294">		driveService.files().delete(spid).execute();</span>
+<span class="nc" id="L239">		driveService.files().delete(spid).execute();</span>
 
-<span class="nc" id="L296">	}</span>
+<span class="nc" id="L241">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryResults.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.query</a> &gt; <span class="el_source">QueryResults.java</span></div><h1>QueryResults.java</h1><pre class="source lang-java linenums">package it.uniba.query;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,9 +9,9 @@ import java.util.List;
  * The QueryResult class. This class creates a linked list that contains the
  * results of the query.
  * 
- * &lt;&lt;Entity&gt;&gt;
+ * &lt;i&gt;&amp;#60;Entity&amp;#62;&lt;/i&gt;
  */
-public class QueryResults implements Iterable&lt;String[]&gt; {
+<span class="pc bpc" id="L14" title="1 of 2 branches missed.">public class QueryResults implements Iterable&lt;String[]&gt; {</span>
 
 	/**
 	 * The list of results.
@@ -25,23 +26,23 @@ public class QueryResults implements Iterable&lt;String[]&gt; {
 	/**
 	 * The default QueryResult constructor.
 	 */
-<span class="nc" id="L28">	public QueryResults() {</span>
-<span class="nc" id="L29">		data = new LinkedList&lt;String[]&gt;();</span>
-<span class="nc" id="L30">	}</span>
+<span class="fc" id="L29">	public QueryResults() {</span>
+<span class="fc" id="L30">		data = new LinkedList&lt;String[]&gt;();</span>
+<span class="fc" id="L31">	}</span>
 
 	/**
 	 * @param tuple The result tuple.
 	 */
 	public void addTuple(final String[] tuple) {
-<span class="nc" id="L36">		data.add(tuple);</span>
-<span class="nc" id="L37">	}</span>
+<span class="fc" id="L37">		data.add(tuple);</span>
+<span class="fc" id="L38">	}</span>
 
 	/**
 	 * @param cols The columns' names.
 	 */
 	public void setColumns(final List&lt;String&gt; cols) {
-<span class="nc" id="L43">		this.columns = cols;</span>
-<span class="nc" id="L44">	}</span>
+<span class="fc" id="L44">		this.columns = cols;</span>
+<span class="fc" id="L45">	}</span>
 
 	/**
 	 * returns columns.
@@ -49,7 +50,7 @@ public class QueryResults implements Iterable&lt;String[]&gt; {
 	 * @return tag
 	 */
 	public List&lt;String&gt; getColumns() {
-<span class="nc" id="L52">		return columns;</span>
+<span class="nc" id="L53">		return columns;</span>
 	}
 
 	/**
@@ -57,7 +58,7 @@ public class QueryResults implements Iterable&lt;String[]&gt; {
 	 */
 	@Override
 	public Iterator&lt;String[]&gt; iterator() {
-<span class="nc" id="L60">		return data.iterator();</span>
+<span class="nc" id="L61">		return data.iterator();</span>
 	}
 
 	/**
@@ -65,14 +66,48 @@ public class QueryResults implements Iterable&lt;String[]&gt; {
 	 */
 	@Override
 	public String toString() {
-<span class="nc" id="L68">		String result = &quot;&quot;;</span>
-<span class="nc bnc" id="L69" title="All 2 branches missed.">		for (String[] row : data) {</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">			for (String cell : row) {</span>
-<span class="nc" id="L71">				result += cell + &quot; &quot;;</span>
+<span class="nc" id="L69">		StringBuffer result = new StringBuffer(&quot;&quot;);</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">		for (String[] row : data) {</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">			for (String cell : row) {</span>
+<span class="nc" id="L72">				result.append(cell + &quot; &quot;);</span>
 			}
-<span class="nc" id="L73">			result += &quot;\n&quot;;</span>
-<span class="nc" id="L74">		}</span>
-<span class="nc" id="L75">		return result;</span>
+<span class="nc" id="L74">			result.append(&quot;\n&quot;);</span>
+<span class="nc" id="L75">		}</span>
+<span class="nc" id="L76">		return result.toString();</span>
 	}
+
+	/**
+	 * compares two QueryResults.
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+<span class="pc bpc" id="L84" title="1 of 2 branches missed.">		if (obj == null) {</span>
+<span class="nc" id="L85">			return false;</span>
+		}
+		QueryResults other;
+
+		try {
+<span class="fc" id="L90">			other = (QueryResults) obj;</span>
+<span class="nc" id="L91">		} catch (ClassCastException e) {</span>
+<span class="nc" id="L92">			return false;</span>
+<span class="fc" id="L93">		}</span>
+
+<span class="fc bfc" id="L95" title="All 2 branches covered.">		for (int i = 0; i &lt; data.size(); i++) {</span>
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">			if (!Arrays.equals(data.get(i), other.data.get(i))) {</span>
+<span class="nc" id="L97">				return false;</span>
+			}
+		}
+<span class="fc" id="L100">		return columns.equals(other.columns);</span>
+	}
+
+	/**
+	 * hashCode not designed. DEPRECATED.
+	 */
+	@Override
+	public int hashCode() {
+<span class="nc bnc" id="L108" title="All 2 branches missed.">		assert false : &quot;hashCode not designed&quot;;</span>
+<span class="nc" id="L109">		return Integer.MAX_VALUE; // any arbitrary constant will do</span>
+	}
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
