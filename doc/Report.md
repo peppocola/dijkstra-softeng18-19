@@ -273,6 +273,76 @@ Nell'anno accademico 2018/2019.
 <br> <br>
 [Torna all'indice...](#Indice)
 
+# System Design
+
+**Stile architetturale**
+
+
+
+Lo stile architetturale adottato segue il pattern del *Model View Presenter*.
+
+Infatti lo stile MVP è uno stile adatto per i sistemi interattivi, in cui c'è una netta separazione tra la logica di presentazione dei dati *(Viev)*  e la logica business *(Model)*.<br>
+Di consuguenza si nota che c'è un indipendenza tra le tre grandi componenti che sono alla base di questo pattern.
+
+I tre componenti principali sono:
+* **Model** : Gestisce i metodi per l'accesso ai dati. Il model nel *MVP* non comunica direttamente con *view* e non si preoccupa di come i dati vengono rappresentati, ma comunica direttamente con il *presenter*.<br>
+Nella nostra applicazione SOQuery e QueryResult lavorano sul *model*, nello specifico *SOQuery* si occupa del recupero dei dati tramite l'interazione con l' API GoogleBigQuery, mentre *QueryResult* specifica come i dati vengono rappresentati all'interno dell'applicazione.
+
+* **View** : Permette la rappresentazione visuale dei dati (sono previste viste multiple) e fornisce uniba prima interfaccia con l'utente. La view non ha informazione sulla gestione dei dati, ma si occupa solo di rappresentarli, infatti non ha una comunicazione diretta con il *model*, ma ottiene le informazioni necessarie sui dati direttamente del *presenter*.<br>
+Nel nostra caso l'interazione tra l'utente e l'applicazione è caratterizzata dall'utilizzo di un interfaccia di tipo *CLI* (Command Line Interface).<br>
+I dati vengono visualizzati su un foglio elettronico generato da *Google API Services Sheets* e condiviso da *Google API Services Drive*.
+
+* **Presenter** : Gestisce la sequenza delle interazioni tra l'applicazione e l'utente, facendo controlli sull'input e fornendo comandi per il *modello* o la *vista*.
+A differenza del *MVC* dove è presente il *controller*, nel *MVP* la presenza del *Presenter* garantisce la totale separazione tra il modello e le viste.<br>
+Infatti il Model non notifica eventi alle viste.
+Nell'applicazione le componenti che si occupano di gestire le sequenze di interazioni sono il *Parser, Arguments, Query* e *GoogleDocsUtils.*<br>
+*Parser* si occupa di analizzare sintatticamente il comando fornito in input dall'utente.
+<br>*Arguments* invece prede i parametri scritti dall'utente.
+<br>*Query* in base ai parametri forniti da Arguments genera la query associata al comando.
+<br>*GoogleDocsUtils* scrive i risultati delle query nel foglio elettronico che poi verrà visualizzato dell'utente.
+
+<center>
+<br>
+  <img width="600" src="images/SystemDesign/MVP.PNG">
+</center>
+<br><br>
+
+Il nostro MVP non è da ritenersi completamente puro, poichè non è presente una *GUI* e quindi in questo caso le componenti view hanno un ruolo minimale.<br><br>
+
+
+**Diagramma dei package**
+
+<br><br>
+Il diagramma dei package è strutturato nel seguente modo:
+<center>
+<br>
+  <img width="600" src="images/SystemDesign/diagramma-package.png">
+</center>
+<br><br>
+
+
+**Diagramma dei componenti**
+
+<br><br>
+Il diagramma dei componenti è strutturato nel seguente modo:
+<center>
+<br><br>
+  <img width="600" height="" src="images/SystemDesign/diagramma-componenti.PNG">
+</center>
+
+<br><br>
+**Commento delle decisioni prese**
+
+Inizialmente avevamo pensato di adottare come stile architetturale il *"Pipe and filter"*, ma notando che c'era un interazione frequente con le API di Google e che più volte si comunicava con gli stessi sottosistemi esterni abbiamo optato per utilizzare un altro stile architetturele ovvero il *Model-View-Presenter* (**MVP**).
+
+Infatti lo stile MVP è un stile adatto per i sistemi interattivi, dove c'è una netta separazione tra le varie componenti del sistema che però comunicano frequentemente tra di loro.
+
+
+
+<br> <br>
+[Torna all'indice](#Indice)
+
+
 # Manuale utente
 
 * Esecuzione via Docker attraverso il comando:
