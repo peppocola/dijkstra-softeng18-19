@@ -57,7 +57,7 @@ Nell'anno accademico 2018/2019.
 
 # Modello di dominio
 
-![modello_di_dominio](./images/modello_di_dominio.jpg)
+![modello_di_dominio](./images/Modello_di_dominio.jpg)
 
 <br> <br>
 [Torna all'indice...](#Indice)
