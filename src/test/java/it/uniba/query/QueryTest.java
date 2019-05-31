@@ -10,8 +10,9 @@ import it.uniba.parsing.Arguments;
 import it.uniba.parsing.Parser;
 
 class QueryTest {
+
 	@Test
-	void testQuery() {
+	void testQueryYearMonthAnswerTag() {
 		String query = "SELECT distinct owner_user_id" + " FROM (SELECT distinct parent_id, owner_user_id"
 				+ " FROM `bigquery-public-data.stackoverflow.posts_answers`"
 				+ " WHERE (owner_user_id is not null) AND EXTRACT(year FROM creation_date)=2016"
@@ -28,7 +29,7 @@ class QueryTest {
 	}
 
 	@Test
-	void testQuery1() {
+	void testQueryYearMonthDayQuestion() {
 		String query = "SELECT distinct owner_user_id"
 				+ " FROM `bigquery-public-data.stackoverflow.posts_questions`"
 				+ " WHERE (owner_user_id is not null) AND EXTRACT(year FROM creation_date)=2016"
@@ -44,7 +45,7 @@ class QueryTest {
 	}
 
 	@Test
-	void testQuery2() {
+	void testQueryAnswerUserEdgeWeight() {
 		String query = "SELECT `from`, `to`, count(*) as weight " + "FROM (SELECT owner_user_id as `to`, id "
 				+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
 				+ "WHERE (owner_user_id is not null)) JOIN "
@@ -62,7 +63,7 @@ class QueryTest {
 	}
 
 	@Test
-	void testQuery3() {
+	void testQueryYearMonthDayQuestionEdge() {
 		String query = "SELECT distinct `from`, `to` " + "FROM (SELECT owner_user_id as `to`, id "
 				+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
 				+ "WHERE (owner_user_id is not null) AND EXTRACT(year FROM creation_date)=2016 "
@@ -82,7 +83,7 @@ class QueryTest {
 	}
 
 	@Test
-	void testQuery4() {
+	void testQueryYearMonthDayPost() {
 		String query = "SELECT distinct owner_user_id FROM ("
 				+ "SELECT distinct owner_user_id FROM `bigquery-public-data.stackoverflow.posts_answers` "
 				+ "WHERE (owner_user_id is not null) AND EXTRACT(year FROM creation_date)=2016 "
@@ -102,7 +103,7 @@ class QueryTest {
 	}
 
 	@Test
-	void testQuery5() {
+	void testQueryYearMonthDayNoType() {
 		try {
 			Arguments args = Parser.parse("yyyy=2016 mm=02 dd=11 limit=100".split(" "));
 			assertThrows(ArgumentException.class, () -> {
@@ -114,7 +115,7 @@ class QueryTest {
 	}
 
 	@Test
-	void testQuery6() {
+	void testQueryYearMonthPostTag() {
 		String query = "SELECT distinct owner_user_id FROM " + "((SELECT distinct parent_id, owner_user_id "
 				+ "FROM `bigquery-public-data.stackoverflow.posts_answers` "
 				+ "WHERE (owner_user_id is not null) AND EXTRACT(year FROM creation_date)=2016 "
@@ -137,7 +138,7 @@ class QueryTest {
 	}
 
 	@Test
-	void testQuery7() {
+	void testQueryYearMonthDayQuestionEdgeWeight() {
 		String query = "SELECT `from`, `to`, count(*) as weight " + "FROM (SELECT owner_user_id as `to`, id "
 				+ "FROM `bigquery-public-data.stackoverflow.posts_questions` "
 				+ "WHERE (owner_user_id is not null) AND EXTRACT(year FROM creation_date)=2016 "
@@ -159,7 +160,7 @@ class QueryTest {
 	}
 
 	@Test
-	void testQuery8() {
+	void testQueryAnswerUserEdge() {
 		String query = "SELECT distinct `from`, `to` FROM ("
 				+ "SELECT owner_user_id as `to`, id FROM `bigquery-public-data.stackoverflow.posts_questions` "
 				+ "WHERE (owner_user_id is not null)) "
