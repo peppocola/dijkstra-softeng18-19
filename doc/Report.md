@@ -336,6 +336,13 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 <br> <br>
 [Torna all'indice](#Indice)
 
+# Riepilogo del test
+
+<br>
+<img src="images/jacoco.PNG">
+<br>
+
+[Torna all'indice](#Indice)
 
 # Manuale utente
 
