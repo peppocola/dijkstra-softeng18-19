@@ -2,7 +2,8 @@
 package it.uniba.parsing;
 
 /**
- * The input parameters class. This class contains the input parameters. Entity
+ * The input parameters class. This class contains the input parameters.
+ * <i>&#60;Entity&#62;</i>
  */
 public class Arguments {
 
@@ -135,10 +136,9 @@ public class Arguments {
 
 	/**
 	 * set the year.
-	 *
-	 * @return The yearr
+	 * 
+	 * @param yyyy the year
 	 */
-
 	public void setYear(final int yyyy) {
 		year = yyyy;
 	}
@@ -146,7 +146,7 @@ public class Arguments {
 	/**
 	 * set the month.
 	 *
-	 * @return The month;
+	 * @param mm the month
 	 */
 	public void setMonth(final int mm) {
 		month = mm;
@@ -155,7 +155,7 @@ public class Arguments {
 	/**
 	 * set the day.
 	 *
-	 * @return The day
+	 * @param dd The day
 	 */
 	public void setDay(final int dd) {
 		day = dd;
@@ -164,7 +164,7 @@ public class Arguments {
 	/**
 	 * set the type.
 	 *
-	 * @return The type
+	 * @param ty The type
 	 */
 	public void setType(final String ty) {
 		type = ty;
@@ -173,7 +173,7 @@ public class Arguments {
 	/**
 	 * set the taglike.
 	 *
-	 * @return The taglike
+	 * @param tgl The taglike
 	 */
 	public void setTaglike(final String tgl) {
 		taglike = tgl;
@@ -182,25 +182,25 @@ public class Arguments {
 	/**
 	 * set the limit.
 	 *
-	 * @return The limit
+	 * @param lim The limit
 	 */
 	public void setLimit(final long lim) {
 		limit = lim;
 	}
 
 	/**
-	 * Get the edge.
+	 * set the edge.
 	 *
-	 * @return The edge
+	 * @param ed The edge
 	 */
 	public void setEdge(final boolean ed) {
 		edge = ed;
 	}
 
 	/**
-	 * Get the weight.
+	 * set the weight.
 	 *
-	 * @return The weight
+	 * @param wgt The weight
 	 */
 	public void setWeight(final boolean wgt) {
 		weight = wgt;
@@ -209,7 +209,7 @@ public class Arguments {
 	/**
 	 * set the user.
 	 *
-	 * @return The user
+	 * @param usr The user
 	 */
 	public void setUser(final long usr) {
 		user = usr;

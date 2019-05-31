@@ -29,7 +29,7 @@ import it.uniba.query.QueryResults;
  * Class which executes queries. This class interfaces with Google Big Query's
  * database.
  * 
- * Bound
+ * <i>&#60;Bound&#62;</i>
  */
 
 public final class SOQuery implements ISOQuery {

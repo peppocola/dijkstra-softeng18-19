@@ -9,7 +9,7 @@ import java.util.List;
  * The QueryResult class. This class creates a linked list that contains the
  * results of the query.
  * 
- * Entity
+ * <i>&#60;Entity&#62;</i>
  */
 public class QueryResults implements Iterable<String[]> {
 
