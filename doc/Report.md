@@ -264,6 +264,36 @@ Nell'anno accademico 2018/2019.
 <br> <br>
 [Torna all'indice...](#Indice)
 
+# OO Design
+
+* Di seguito viene presentato il diagramma delle classi
+
+<center>
+<img width="700" alt="Modello_di_dominio.jpg" src="./images/Classes.png">
+</center>
+
+<br> <br>
+
+il diagramma di sequenza relativo alla user story 1 dello sprint 1
+
+<center>
+<img width="700" alt="Modello_di_dominio.jpg" src="./images/Sprint1Query1Sequence.png">
+</center>
+
+<br> <br>
+
+e il diagramma di sequenza relativo alla user story 1 dello sprint 2
+
+<center>
+<img width="700" alt="Modello_di_dominio.jpg" src="./images/Sprint2Query1Sequence.png">
+</center>
+
+<br> <br>
+
+* I design pattern utilizzati sono quello dell'iterator
+
+* 
+
 # Manuale utente
 
 * Esecuzione via Docker attraverso il comando:
