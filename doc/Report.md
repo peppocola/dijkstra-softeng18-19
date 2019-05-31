@@ -274,9 +274,9 @@ Nell'anno accademico 2018/2019.
 [Torna all'indice...](#Indice)
 
 # System Design
+<br><br>
 
-**Stile architetturale**
-
+# Stile architetturale adottato
 
 
 Lo stile architetturale adottato segue il pattern del *Model View Presenter*.
@@ -302,35 +302,29 @@ Nell'applicazione le componenti che si occupano di gestire le sequenze di intera
 <br>*Query* in base ai parametri forniti da Arguments genera la query associata al comando.
 <br>*GoogleDocsUtils* scrive i risultati delle query nel foglio elettronico che poi verrà visualizzato dell'utente.
 
-<center>
 <br>
   <img width="600" src="images/SystemDesign/MVP.PNG">
-</center>
 <br><br>
 
-Il nostro MVP non è da ritenersi completamente puro, poichè non è presente una *GUI* e quindi in questo caso le componenti view hanno un ruolo minimale.<br><br>
+Il nostro MVP non è da ritenersi completamente puro, poichè non è presente una *GUI* e quindi in questo caso le componenti view hanno un ruolo minimale.
 
 
-**Diagramma dei package**
+# Diagramma dei package
+
 
 <br><br>
-<center>
-<br>
   <img width="600" src="images/SystemDesign/diagramma-package.png">
-</center>
 <br><br>
 
 
-**Diagramma dei componenti**
+# Diagramma dei componenti
 
 <br>
-<center>
 <br><br>
   <img width="600" height="" src="images/SystemDesign/Diagramma-componenti.PNG">
-</center>
-
 <br><br>
-**Commento delle decisioni prese**
+# <a name="Commenti-SD"></a>Commenti delle decisioni prese
+
 
 Inizialmente avevamo pensato di adottare come stile architetturale il *"Pipe and filter"*, ma notando che c'era un interazione frequente con le API di Google e che più volte si comunicava con gli stessi sottosistemi esterni abbiamo optato per utilizzare il *Model-View-Presenter* (**MVP**).
 
