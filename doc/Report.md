@@ -362,3 +362,37 @@ docker run --rm softeng1819infuniba/dijkstra <options>
 
 <br> <br>
 [Torna all'indice...](#Indice)
+
+# Processo di sviluppo e organizzazione del lavoro
+Il processo di sviluppo di **SNA4SO** è avvenuto seguendo un approccio *simil-* [***SCRUM***](https://it.wikipedia.org/wiki/Scrum_%28informatica%29).
+Tale approccio ha previsto quattro sprint di durata variabile. così composti:
+  - I professori hanno "interpretato" il ruolo del **Product Owner**.
+  Per ogni sprint, in aula e via [*Slack*](https://slack.com/intl/en-it/) ci sono stati comunicati i requisiti e le priorità sotto forma di *Definition of Done* e *User Stories*.
+  Abbiamo realizzato la *board* del progetto e, dallo Sprint 2, abbiamo anche stimato gli *Story Points* delle varie *User Story* (**Sprint Backlog**).
+  <br> <br>
+  - La *Definition of Done* definiva lo **Sprint Goal**, l'obiettivo da raggiugnere dal Team alla fine dello sprint.
+  <br> <br>
+  - La ripartizione del lavoro è avvenuta in modo flessibile. Non c'erano dei ruoli prestabiliti e ogni componente si è proposto autonomamente per lo svolgimento di un compito specifico.
+  <br> <br>
+  - La lista dei compiti da svolgere è stata realizzata tramite una lavagna virtuale fornita da [**GitHub**](https://github.com/) (*Project Board*).
+  La lavagna è stata organizzata in stile [*Kanban*](https://it.wikipedia.org/wiki/Kanban), con *4+1* colonne:
+  <br> <br>
+    - **TO DO**, compiti non ancora svolti
+    - **IN PROGRESS**, compiti in svolgimento
+    - **REVIEW**, compiti in attesa di *build* di *Travis-CI* e revisione di almeno un componente del team
+    - **READY**, compiti svolti ma in attesa di revisione da parte dei Professori
+    - **DONE**, compiti svolti che non necessitano di ulteriore revisione
+  <br> <br>
+  - Le varie attività sono state gestite seguendo il **GitHub Flow**: <br>
+    ogni *Issue* è stata assegnata ad uno o due membri del team che hanno lavorato su un *branch* per implementare cambiamenti nel software.
+    Una volta completata la fase di sviluppo e superata la fase di testing, il *branch* è stato *pushato* in remoto per permettere ad uno o più componenti del team di effettuare la fase di review e per attendere l'esito della *build* di *Travis-CI*.
+    Superate queste due fasi, venivano risolti i conflitti se presenti e poi effettuato il *merge* sul *master*.
+  <br> <br>
+  - Non ci sono stati dei veri e propri **Daily Meeting** con orario e durata specifici da rispettare. Il *Daily Meeting* è avvenuto all'inizio di ogni incontro (virtuale o fisico) del team, aveva durata variabile in base all'argomento di discussione, precedeva la ripartizione dei compiti e l'inizio del lavoro vero e proprio.
+  <br> <br>
+  - Ci sono stati degli ulteriori momenti di discussione sul lavoro svolto e da svolgere, avvenute in aula tra una lezione e l'altra, non sempre immediatamente seguiti da una fase di sviluppo.
+  <br> <br>
+  - Sia per la fase di sviluppo, sia per i *Daily Meeting*, nella maggior parte dei casi abbiamo comunicato via [**Skype**](https://www.skype.com/it/), essendo i vari componenti del team per la maggior parte pendolari e provenienti da luoghi distanti tra loro. Per lo sviluppo in *Pair-Programming* abbiamo spesso utilizzato lo strumento *condivisione schermo* di [*Skype*](https://www.skype.com/it/) che ci ha permesso di avere maggiore possibilità di aiutarci a vicenda.
+
+<br> <br>
+[Torna all'indice...](#Indice)
