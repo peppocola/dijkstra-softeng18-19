@@ -265,7 +265,7 @@ Nell'anno accademico 2018/2019.
 [Torna all'indice...](#Indice)
 
 # OO Design
-+ <a name="#Diagrammi-delle-classi-e-diagrammi-di-sequenza"></a>
++ <a name="Diagrammi-delle-classi-e-diagrammi-di-sequenza"></a>
 
   Di seguito viene presentato il diagramma delle classi
 
