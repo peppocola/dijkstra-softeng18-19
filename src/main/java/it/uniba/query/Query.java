@@ -70,7 +70,8 @@ public class Query {
 					"`bigquery-public-data.stackoverflow.posts_questions`");
 			secondTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 
-			queryTable.setTable(queryUnionAll(firstTable.toString(), secondTable.toString()));
+			queryTable.setTable(QueryUtils.getInstance().queryUnionAll(firstTable.toString(),
+					secondTable.toString()));
 		}
 		QueryOrderBy order = new QueryOrderBy(new String[] {"owner_user_id" });
 		QueryLimit limit = new QueryLimit(args.getLimit());
@@ -109,16 +110,18 @@ public class Query {
 			firstTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 			secondTable.setWhere(new QueryWhere("id is not null", taglike));
 
-			table = queryJoin(firstTable.toString(), secondTable.toString(), "parent_id=id");
+			table = QueryUtils.getInstance().queryJoin(firstTable.toString(), secondTable.toString(),
+					"parent_id=id");
 		} else if (args.getType().equals("post") && args.getUser() == 0) {
 			firstTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 
 			secondTable.setWhere(new QueryWhere("id is not null", taglike));
 
 			thirdTable.setWhere(new QueryWhere("owner_user_id is not null", date, taglike));
-			String joinTable = queryJoin(firstTable.toString(), secondTable.toString(), "parent_id=id");
+			String joinTable = QueryUtils.getInstance().queryJoin(firstTable.toString(),
+					secondTable.toString(), "parent_id=id");
 
-			table = queryUnionAll(joinTable, thirdTable.toString());
+			table = QueryUtils.getInstance().queryUnionAll(joinTable, thirdTable.toString());
 
 		} else if (args.getType().equals("question") && args.getUser() == 0) {
 			table = "`bigquery-public-data.stackoverflow.posts_questions`";
@@ -172,7 +175,8 @@ public class Query {
 					new QueryWhere("owner_user_id is not null AND " + "parent_id is not null"));
 		}
 
-		table = queryJoin(firstTable.toString(), secondTable.toString(), "id=parent_id");
+		table = QueryUtils.getInstance().queryJoin(firstTable.toString(), secondTable.toString(),
+				"id=parent_id");
 
 		QueryTable queryTable = new QueryTable(select, table);
 		queryTable.setOrder(order);
@@ -212,7 +216,8 @@ public class Query {
 					new QueryWhere("owner_user_id is not null AND " + "parent_id is not null"));
 		}
 
-		String table = queryJoin(firstTable.toString(), secondTable.toString(), "id=parent_id");
+		String table = QueryUtils.getInstance().queryJoin(firstTable.toString(), secondTable.toString(),
+				"id=parent_id");
 
 		QuerySelect select = new QuerySelect(new String[] {"`from`", "`to`" }, new String[] {}, true);
 		QueryOrderBy order = new QueryOrderBy(new String[] {"`from`", "`to`" });
@@ -232,11 +237,4 @@ public class Query {
 		return query;
 	}
 
-	private static String queryJoin(final String first, final String second, final String condition) {
-		return "(" + first + ")" + " JOIN " + "(" + second + ")" + " ON " + condition;
-	}
-
-	private static String queryUnionAll(final String first, final String second) {
-		return "(" + first + ")" + " UNION ALL " + "(" + second + ")";
-	}
 }
