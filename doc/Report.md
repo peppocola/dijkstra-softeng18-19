@@ -58,7 +58,7 @@ Nell'anno accademico 2018/2019.
 # Modello di dominio
 
 <center>
-<img width="700" alt="Modello_di_dominio.jpg" src="./images/Modello_di_dominio.jpg">
+<img width="700" alt="Modello_di_dominio.jpg" src="./drawings/ModelloDiDominio/Modello_di_dominio.jpg">
 </center>
 
 <br> <br>
@@ -77,7 +77,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query1](./images/UserStories/sprint1-query1.png)
+  ![sprint1-query1](./drawings/UserStories/sprint1-query1.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno dato almeno una risposta (Answer) in un dato anno, mese e giorno.
 
@@ -91,7 +91,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query2](./images/UserStories/sprint1-query2.png)
+  ![sprint1-query2](./drawings/UserStories/sprint1-query2.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno un Post in un dato mese, anno, giorno (un Post può essere una domanda o una risposta).
 
@@ -105,7 +105,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query3](./images/UserStories/sprint1-query3.png)
+  ![sprint1-query3](./drawings/UserStories/sprint1-query3.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno una domanda (Question) su un dato argomento (Tag) in un dato mese e anno.
 
@@ -119,7 +119,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query4](./images/UserStories/sprint1-query4.png)
+  ![sprint1-query4](./drawings/UserStories/sprint1-query4.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno dato almeno una risposta (Answer) su un dato argomento (Tag) in un dato mese e anno
 
@@ -133,7 +133,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  <img src="./images/UserStories/sprint1-query5.png" alt="sprint1-query5" width="100"/>
+  <img src="./drawings/UserStories/sprint1-query5.png" alt="sprint1-query5" width="100"/>
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno un Post su un dato argomento (Tag) in un dato mese e anno (un Post può essere una domanda o una risposta)
 
@@ -147,7 +147,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query6](./images/UserStories/sprint1-query6.png)
+  ![sprint1-query6](./drawings/UserStories/sprint1-query6.png)
 
 * Visualizzare la lista delle prime 100 coppie (from, to) relative a domande (Question) poste in un dato anno, mese e giorno
 
@@ -161,7 +161,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="94" alt="sprint2-query1" src="./images/UserStories/sprint2-query1.png">
+  <img width="94" alt="sprint2-query1" src="./drawings/UserStories/sprint2-query1.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la coppia (from, to) dove to è l'id dell'utente che ha posto la domanda e from è l'id dell'utente che ha risposto.
@@ -181,7 +181,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="94" alt="sprint2-query2" src="./images/UserStories/sprint2-query2.png">
+  <img width="94" alt="sprint2-query2" src="./drawings/UserStories/sprint2-query2.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la coppia (from, to) dove to è l'id dell'utente che ha posto la domanda, specificato come valore di user, e from è l'id dell'utente che ha risposto.
@@ -201,7 +201,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="94" alt="sprint2-query3" src="./images/UserStories/sprint2-query3.png">
+  <img width="94" alt="sprint2-query3" src="./drawings/UserStories/sprint2-query3.png">
 
 
 
@@ -222,7 +222,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="131" alt="sprint2-query4" src="./images/UserStories/sprint2-query4.png">
+  <img width="131" alt="sprint2-query4" src="./drawings/UserStories/sprint2-query4.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, from è l'id dell'utente che ha risposto e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
@@ -242,7 +242,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="124" alt="sprint2-query5" src="./images/UserStories/sprint2-query5.png">
+  <img width="124" alt="sprint2-query5" src="./drawings/UserStories/sprint2-query5.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, specificato come valore di user, from è l'id dell'utente che ha risposto e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
@@ -262,7 +262,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="124" alt="sprint2-query6" src="./images/UserStories/sprint2-query6.png">
+  <img width="124" alt="sprint2-query6" src="./drawings/UserStories/sprint2-query6.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, from è l'id dell'utente che ha risposto, specificato come valore di user, e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
@@ -301,7 +301,7 @@ Nell'applicazione le componenti che si occupano di gestire le sequenze di intera
 <br>*GoogleDocsUtils* scrive i risultati delle query nel foglio elettronico che poi verrà visualizzato dell'utente.
 
 <br>
-  <img width="600" src="images/SystemDesign/MVP.PNG">
+  <img width="600" src="drawings/SystemDesign/MVP.PNG">
 <br>
 
 *Il nostro MVP non è da ritenersi completamente puro, poichè non è presente una GUI (<a href="https://it.wikipedia.org/wiki/Interfaccia_grafica">Graphical User Interface</a>) e quindi in questo caso le componenti view hanno un ruolo minimale.*
@@ -309,13 +309,13 @@ Nell'applicazione le componenti che si occupano di gestire le sequenze di intera
 ### Diagramma dei package
 
 <br>
-  <img width="600" src="images/SystemDesign/diagramma-package.png">
+  <img width="600" src="drawings/SystemDesign/diagramma-package.png">
 <br>
 
 ### Diagramma dei componenti
 
 <br>
-  <img height="400" src="images/SystemDesign/diagramma-componenti.PNG">
+  <img height="400" src="drawings/SystemDesign/diagramma-componenti.PNG">
 <br>
 
 ### <a name="Commenti-SD"></a>Commenti delle decisioni prese
@@ -323,18 +323,16 @@ Nell'applicazione le componenti che si occupano di gestire le sequenze di intera
 Inizialmente avevamo pensato di adottare come stile architetturale il *"Pipe and filter"*, ma notando che c'era un interazione frequente con le API di Google e che più volte si comunicava con gli stessi sottosistemi esterni abbiamo optato per utilizzare il *Model-View-Presenter* (**MVP**).<br>
 Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta separazione tra le varie componenti del sistema che però comunicano frequentemente tra di loro.
 
-
-<br>
+<br><br>
 [Torna all'indice...](#Indice)
 
-
 # OO Design
-<a name="Diagrammi-delle-classi-e-diagrammi-di-sequenza"></a>
+### <a name="Diagrammi-delle-classi-e-diagrammi-di-sequenza"></a> Diagrammi delle classi e diagrammi di sequenza
 
 * Di seguito viene presentato il diagramma delle classi ...
 
 <center>
-	<img width="900" alt="Classes.png" src="./images/Classes.png">
+	<img width="900" alt="Classes.png" src="./drawings/OODesign/Classes.png">
 </center>
 
 <br> <br>
@@ -342,7 +340,7 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 ... il diagramma di sequenza relativo alla user story 1 dello sprint 1 ...
 
 <center>
-	<img width="900" alt="Sprint1Query1Sequence.png" src="./images/Sprint1Query1Sequence.png">
+	<img width="900" alt="Sprint1Query1Sequence.png" src="./drawings/OODesign/Sprint1Query1Sequence.png">
 </center>
 
 <br> <br>
@@ -350,7 +348,7 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 ... e il diagramma di sequenza relativo alla user story 1 dello sprint 2.
 
 <center>
-	<img width="900" alt="Sprint2Query1Sequence.png" src="./images/Sprint2Query1Sequence.png">
+	<img width="900" alt="Sprint2Query1Sequence.png" src="./drawings/OODesign/Sprint2Query1Sequence.png">
 </center>
 
 <br> <br>
@@ -360,7 +358,7 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 ### Design patterns
   Il primo design pattern utilizzato è quello dell'iterator. La classe **QueryResults**, che modella il risultato di una query, estende la classe *Iterable*. Pertanto gli oggetti istanziati dalla classe **QueryResults** sono iterabili lungo le righe della tabella risultante dall'esecuzione di una query.
   <br>
-  Il secondo (ma più importante) design pattern utilizzato è quello del **Builder**. E' stata definita una interfaccia chiamata **IQueryBuilder** che modella le operazioni che ogni costruttore (builder) di query deve avere, e sono:
+  Il secondo (ma più importante) design pattern utilizzato è quello del [**Builder**](https://it.wikipedia.org/wiki/Builder). E' stata definita una interfaccia chiamata **IQueryBuilder** che modella le operazioni che ogni costruttore (builder) di query deve avere, e sono:
 * *IQueryBuilder buildSelect()*
 * *IQueryBuilder buildTable()*
 * *IQueryBuilder buildWhere()*
@@ -377,7 +375,7 @@ La classe **QueryDirector** al momento dell'istanziazione, in base ai parametri 
 
 Quando viene chiamato il metodo **construct()** di **QueryDirector**, esso demanda al builder astratto di costruire la query. Dopodichè è possibile ottenere la query come stringa chiamando il metodo **getQuery()** di **QueryDirector**.
 
-Il terzo design pattern utilizzato, associatio al design pattern del **Builder** è quello del [fluent-interface](https://en.wikipedia.org/wiki/Fluent_interface). Sostanzialmente ogni operazione che **IQueryBuilder** possiede ha come valore di ritorno un oggetto d'istanza di una classe che implementa l'interfaccia **IQueryBuilder**. Questo permette di concatenare i metodi per la costruzione della query "a cascata". Ad esempio:
+Il terzo design pattern utilizzato, associato al design pattern del **Builder** è quello del [fluent-interface](https://en.wikipedia.org/wiki/Fluent_interface). Sostanzialmente ogni operazione che **IQueryBuilder** possiede ha come valore di ritorno un oggetto d'istanza di una classe che implementa l'interfaccia **IQueryBuilder**. Questo permette di concatenare i metodi per la costruzione della query "a cascata". Ad esempio:
 ~~~java
 query = builder.buildSelect()
 	.buildTable()
@@ -396,6 +394,25 @@ L'ultimo design pattern utilizzato è quello del **Singleton**. La classe **Pars
 
 Il design pattern dell'iterator rappresenta un modo semplice ed intuitivo per ciclare lungo le tuple del risultato dell'esecuzione della query, mentre il design pattern del builder consente di estendere il codice anche per altre future tipologie di query, semplicemente implementando l'interfaccia **IQueryBuilder** e modificando il costruttore della classe **QueryDirector**. Inoltre il design pattern del fluent-interface rende il codice più leggibile e coinciso.
 
+***N.B.***: C'è un unico diagramma delle classi perchè sarebbe stato ridondante riportarne due identici.
+
+<br><br>
+[Torna all'indice...](#Indice)
+
+# Riepilogo del test
+
+<br>
+
+<img height=700 src="drawings/RiepilogoTest/coverall-List.PNG">
+
+<img height=400 src="drawings/RiepilogoTest/coverall.PNG">
+
+<img src="drawings/RiepilogoTest/jacoco.PNG">
+
+<img height="120" src="drawings/RiepilogoTest/TestSummary.PNG">
+
+<br><br>
+[Torna all'indice...](#Indice)
 
 # Manuale utente
 
@@ -458,7 +475,7 @@ Tale approccio ha previsto quattro sprint di durata variabile. così composti:
 [Torna all'indice...](#Indice)
 
 # Analisi retrospettiva
-- # Soddisfazioni
+- ### Soddisfazioni
     Il confronto tra i vari membri del team è stato molto utile e costruttivo. Le nostre discussioni e i nostri scambi di idee riguardo le varie soluzioni per risolvere uno stesso problema hanno insegnato molto ad ogni membro del team.
     <br> <br>
     Siamo quasi sempre riusciti a terminare il lavoro da svolgere con largo anticipo, ciò ha permesso, negli ultimi giorni dello sprint, di dedicarsi al refactoring e ad una più calma revisione del lavoro svolto.
@@ -467,11 +484,11 @@ Tale approccio ha previsto quattro sprint di durata variabile. così composti:
     <br> <br>
 
 
-- # Insoddisfazioni
+- ### Insoddisfazioni
     Essendo nuovi al metodo [**SCRUM**](https://it.wikipedia.org/wiki/Scrum_%28informatica%29) e al *Team Work* in questo ambito, è stato difficile per noi limitare la discussione del *Daily Meeting* a pochi minuti con poche domande telegrafiche. Tuttavia questi momenti sono stati molto utili al team per chiarire meglio gli obiettivi e come raggiungerli senza accumulare debito tecnico tra i vari sprint.
     Con maggiore esperienza probabilmente saremmo riusciti ad essere più diretti e precisi nel *Daily Meeting* e ad essere esaustivi in meno tempo.
 
-- # Cosa ci ha fatto impazzire
+- ### Cosa ci ha fatto impazzire
     Non auguriamo al nostro peggior nemico di dover utilizzare [***VISUAL PARADIGM***](www.visual-paradigm.com).
     Il software per la modellazione [***UML***](https://it.wikipedia.org/wiki/Unified_Modeling_Language) è risultato macchinoso e scomodo in entrambe le sue versioni (WEB e non). Spesso abbiamo avuto problemi inspiegabili (es. frecce sparite). *Visual Paradigm* non ci è sembrato molto *user-friendly*. Ha una interfaccia vecchia e poco intuitiva. È molto difficile imparare ad utilizzarlo per bene senza prima aver passato diverse ore nel reparto di neuropsichiatria. Abbiamo trovato molto più comodo (quando possibile), utilizzare una lavagna e disegnare a mano i diagrammi UML. Non avendo sempre questa possibilità ed essendo le foto alla lavagna poco "formali" per la stesura di una relazione tecnica, abbiamo dovuto utilizzarlo. Siamo molto felici di aver finito e speriamo di non rivederlo mai più.
 
