@@ -377,8 +377,8 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 <img src="images/RiepilogoTest/jacoco.PNG">
 
 <img height="120" src="images/RiepilogoTest/TestSummary.PNG">
-
 <br>
+
 [Torna all'indice](#Indice)
 
 # Manuale utente
