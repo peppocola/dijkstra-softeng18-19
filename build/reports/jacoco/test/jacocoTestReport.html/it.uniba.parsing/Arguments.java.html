@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Arguments.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.parsing</a> &gt; <span class="el_source">Arguments.java</span></div><h1>Arguments.java</h1><pre class="source lang-java linenums">
+package it.uniba.parsing;
+
+/**
+ * The input parameters class. This class contains the input parameters.
+ * &lt;i&gt;&amp;#60;Entity&amp;#62;&lt;/i&gt;
+ */
+<span class="fc" id="L8">public class Arguments {</span>
+
+	/**
+	 * The year.
+	 */
+	private int year;
+
+	/**
+	 * The month.
+	 */
+	private int month;
+
+	/**
+	 * The day.
+	 */
+	private int day;
+
+	/**
+	 * The type (can be 'question', 'post' and 'answer').
+	 */
+	private String type;
+
+	/**
+	 * The tag string.
+	 */
+	private String taglike;
+
+	/**
+	 * The limit number to the query output.
+	 */
+	private long limit;
+
+	/**
+	 * The edge. If true, enables edges in the query. Default option is false.
+	 */
+	private boolean edge;
+
+	/**
+	 * The weight. The option to show weights in the edges' output. Default option
+	 * is false.
+	 */
+	private boolean weight;
+
+	/**
+	 * The user. The user id of the user whom created the post.
+	 */
+	private long user;
+
+	/**
+	 * Get the year.
+	 *
+	 * @return The year
+	 */
+	public int getYear() {
+<span class="fc" id="L62">		return year;</span>
+	}
+
+	/**
+	 * Get the month.
+	 *
+	 * @return The month
+	 */
+	public int getMonth() {
+<span class="fc" id="L71">		return month;</span>
+	}
+
+	/**
+	 * Get the day.
+	 *
+	 * @return The day
+	 */
+	public int getDay() {
+<span class="fc" id="L80">		return day;</span>
+	}
+
+	/**
+	 * Get the type.
+	 *
+	 * @return The type
+	 */
+	public String getType() {
+<span class="fc" id="L89">		return type;</span>
+	}
+
+	/**
+	 * Get the tag.
+	 *
+	 * @return The tag
+	 */
+	public String getTaglike() {
+<span class="fc" id="L98">		return taglike;</span>
+	}
+
+	/**
+	 * Get the limit.
+	 *
+	 * @return The limit
+	 */
+	public long getLimit() {
+<span class="fc" id="L107">		return limit;</span>
+	}
+
+	/**
+	 * Get the edge.
+	 *
+	 * @return The edge
+	 */
+	public boolean getEdge() {
+<span class="fc" id="L116">		return edge;</span>
+	}
+
+	/**
+	 * Get the weight.
+	 *
+	 * @return The weight
+	 */
+	public boolean getWeight() {
+<span class="fc" id="L125">		return weight;</span>
+	}
+
+	/**
+	 * Get the user.
+	 *
+	 * @return The user
+	 */
+	public long getUser() {
+<span class="fc" id="L134">		return user;</span>
+	}
+
+	/**
+	 * set the year.
+	 * 
+	 * @param yyyy the year
+	 */
+	public void setYear(final int yyyy) {
+<span class="fc" id="L143">		year = yyyy;</span>
+<span class="fc" id="L144">	}</span>
+
+	/**
+	 * set the month.
+	 *
+	 * @param mm the month
+	 */
+	public void setMonth(final int mm) {
+<span class="fc" id="L152">		month = mm;</span>
+<span class="fc" id="L153">	}</span>
+
+	/**
+	 * set the day.
+	 *
+	 * @param dd The day
+	 */
+	public void setDay(final int dd) {
+<span class="fc" id="L161">		day = dd;</span>
+<span class="fc" id="L162">	}</span>
+
+	/**
+	 * set the type.
+	 *
+	 * @param ty The type
+	 */
+	public void setType(final String ty) {
+<span class="fc" id="L170">		type = ty;</span>
+<span class="fc" id="L171">	}</span>
+
+	/**
+	 * set the taglike.
+	 *
+	 * @param tgl The taglike
+	 */
+	public void setTaglike(final String tgl) {
+<span class="fc" id="L179">		taglike = tgl;</span>
+<span class="fc" id="L180">	}</span>
+
+	/**
+	 * set the limit.
+	 *
+	 * @param lim The limit
+	 */
+	public void setLimit(final long lim) {
+<span class="fc" id="L188">		limit = lim;</span>
+<span class="fc" id="L189">	}</span>
+
+	/**
+	 * set the edge.
+	 *
+	 * @param ed The edge
+	 */
+	public void setEdge(final boolean ed) {
+<span class="fc" id="L197">		edge = ed;</span>
+<span class="fc" id="L198">	}</span>
+
+	/**
+	 * set the weight.
+	 *
+	 * @param wgt The weight
+	 */
+	public void setWeight(final boolean wgt) {
+<span class="fc" id="L206">		weight = wgt;</span>
+<span class="fc" id="L207">	}</span>
+
+	/**
+	 * set the user.
+	 *
+	 * @param usr The user
+	 */
+	public void setUser(final long usr) {
+<span class="fc" id="L215">		user = usr;</span>
+<span class="fc" id="L216">	}</span>
+
+	/**
+	 * Converts the arguments to a String.
+	 *
+	 * @return The string that rappresents the arguments
+	 */
+	@Override
+	public String toString() {
+<span class="nc" id="L225">		String str = &quot;&quot;;</span>
+
+<span class="nc" id="L227">		str = &quot;yyyy=&quot; + year + &quot; mm=&quot; + month + &quot; dd=&quot; + day + &quot; type=&quot; + type + &quot; taglike=&quot; + taglike</span>
+				+ &quot; limit=&quot; + limit + &quot; edge=&quot; + edge + &quot; weight=&quot; + weight + &quot; user=&quot; + user;
+
+<span class="nc" id="L230">		return str;</span>
+	}
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
