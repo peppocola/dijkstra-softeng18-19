@@ -16,7 +16,7 @@ import com.google.cloud.bigquery.JobException;
 import it.uniba.parsing.ParseException;
 import it.uniba.parsing.Parser;
 import it.uniba.query.ArgumentException;
-import it.uniba.query.Query;
+import it.uniba.query.QueryDirector;
 import it.uniba.query.QueryResults;
 
 class SOQueryTest {
@@ -34,8 +34,9 @@ class SOQueryTest {
 		}
 		Job job = null;
 		try {
-			job = soq.runQuery(new Query(
-					parser.parse("yyyy=2016 mm=02 type=answer taglike=java limit=10".split(" "))));
+			job = soq.runQuery(new QueryDirector(
+					parser.parse("yyyy=2016 mm=02 type=answer taglike=java limit=10".split(" ")))
+							.construct().getQuery());
 		} catch (InterruptedException e) {
 			fail(e.getMessage());
 		} catch (ArgumentException e) {
@@ -78,7 +79,9 @@ class SOQueryTest {
 		Job job = null;
 		try {
 			job = soq.runQuery(
-					new Query(parser.parse("type=answer user=86 edge=yes limit=100".split(" "))));
+					new QueryDirector(parser
+							.parse("type=answer user=86 edge=yes limit=100".split(" ")))
+									.construct().getQuery());
 		} catch (InterruptedException e) {
 			fail(e.getMessage());
 		} catch (ArgumentException e) {
@@ -121,8 +124,9 @@ class SOQueryTest {
 		}
 		Job job = null;
 		try {
-			job = soq.runQuery(new Query(
-					parser.parse("type=answer user=86 edge=yes weight=yes limit=100".split(" "))));
+			job = soq.runQuery(new QueryDirector(
+					parser.parse("type=answer user=86 edge=yes weight=yes limit=100".split(" ")))
+							.construct().getQuery());
 		} catch (InterruptedException e) {
 			fail(e.getMessage());
 		} catch (ArgumentException e) {

@@ -11,7 +11,7 @@ import it.uniba.parsing.Arguments;
 import it.uniba.parsing.ParseException;
 import it.uniba.parsing.Parser;
 import it.uniba.query.ArgumentException;
-import it.uniba.query.Query;
+import it.uniba.query.QueryDirector;
 import it.uniba.query.QueryResults;
 import it.uniba.sotorrent.GoogleDocsUtils;
 import it.uniba.sotorrent.ISOQuery;
@@ -62,16 +62,18 @@ public final class AppMain {
 			return;
 		}
 
-		Query query;
+		QueryDirector query;
 		try {
-			query = new Query(params);
+			query = new QueryDirector(params);
 		} catch (ArgumentException e) {
 			System.err.println(e);
 			return;
 		}
 
+		query.construct();
+
 		final ISOQuery soq = new SOQuery();
-		final Job job = soq.runQuery(query);
+		final Job job = soq.runQuery(query.getQuery());
 		final QueryResults res = soq.getResults(job);
 
 		final GoogleDocsUtils ut = new GoogleDocsUtils();

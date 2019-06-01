@@ -40,6 +40,13 @@ class QueryTable {
 
 	/**
 	 * Construct a QueryTable.
+	 */
+	QueryTable() {
+
+	}
+
+	/**
+	 * Construct a QueryTable.
 	 * 
 	 * @param s The 'select' component
 	 * @param t The 'table' string

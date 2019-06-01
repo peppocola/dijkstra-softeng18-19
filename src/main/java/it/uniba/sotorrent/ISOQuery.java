@@ -3,7 +3,6 @@ package it.uniba.sotorrent;
 import com.google.cloud.bigquery.Job;
 import com.google.cloud.bigquery.JobException;
 
-import it.uniba.query.Query;
 import it.uniba.query.QueryResults;
 
 /**
@@ -22,7 +21,7 @@ public interface ISOQuery {
 	 * @throws InterruptedException Raised on timeouts.
 	 */
 
-	Job runQuery(Query query) throws InterruptedException;
+	Job runQuery(String query) throws InterruptedException;
 
 	/**
 	 * Returns the results from the query job.
