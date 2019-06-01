@@ -374,12 +374,16 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 # Riepilogo del test
 
 <br>
+<img height=700 src="images/RiepilogoTest/coverall-List.PNG">
+
+<img height=400 src="images/RiepilogoTest/coverall.PNG">
+
 <img src="images/RiepilogoTest/jacoco.PNG">
 
 <img height="120" src="images/RiepilogoTest/TestSummary.PNG">
 <br>
 
-[Torna all'indice](#Indice)
+[Torna all'indice...](#Indice)
 
 # Manuale utente
 
