@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="it.uniba.sotorrent.GoogleDocsUtilsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-05-31T11:34:01" hostname="DESKTOP-K7M5LAA" time="2.704">
+<testsuite name="it.uniba.sotorrent.GoogleDocsUtilsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-01T08:03:13" hostname="loreloc-pc" time="1.841">
   <properties/>
-  <testcase name="testcreateSheet()" classname="it.uniba.sotorrent.GoogleDocsUtilsTest" time="2.704"/>
-  <system-out><![CDATA[Spreadhsheet URL: https://docs.google.com/spreadsheets/d/1EpjOiY7FbeTks8FCDwIMKgBM6_9Knw_dlFMtvr0-Mvc
+  <testcase name="testcreateSheet()" classname="it.uniba.sotorrent.GoogleDocsUtilsTest" time="1.841"/>
+  <system-out><![CDATA[Spreadhsheet URL: https://docs.google.com/spreadsheets/d/1wc_tLgOrFXAZJgdfv2YfwxeGUldg4kcs1SFwFTnP0k4
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
