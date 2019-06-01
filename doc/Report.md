@@ -394,7 +394,22 @@ L'ultimo design pattern utilizzato è quello del **Singleton**. La classe **Pars
 
 Il design pattern dell'iterator rappresenta un modo semplice ed intuitivo per ciclare lungo le tuple del risultato dell'esecuzione della query, mentre il design pattern del builder consente di estendere il codice anche per altre future tipologie di query, semplicemente implementando l'interfaccia **IQueryBuilder** e modificando il costruttore della classe **QueryDirector**. Inoltre il design pattern del fluent-interface rende il codice più leggibile e coinciso.
 
-<br> <br>
+<br><br>
+[Torna all'indice...](#Indice)
+
+# Riepilogo del test
+
+<br>
+
+<img height=700 src="drawings/RiepilogoTest/coverall-List.PNG">
+
+<img height=400 src="drawings/RiepilogoTest/coverall.PNG">
+
+<img src="drawings/RiepilogoTest/jacoco.PNG">
+
+<img height="120" src="drawings/RiepilogoTest/TestSummary.PNG">
+
+<br><br>
 [Torna all'indice...](#Indice)
 
 # Manuale utente
