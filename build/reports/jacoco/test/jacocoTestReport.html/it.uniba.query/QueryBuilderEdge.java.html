@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryBuilderEdge.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.query</a> &gt; <span class="el_source">QueryBuilderEdge.java</span></div><h1>QueryBuilderEdge.java</h1><pre class="source lang-java linenums">package it.uniba.query;
+
+import it.uniba.parsing.Arguments;
+
+/**
+ * The builder for a query that uses edges.
+ * 
+ * &lt;i&gt;&amp;#60;Entity&amp;#62;&lt;/i&gt;
+ */
+class QueryBuilderEdge implements IQueryBuilder {
+	private QueryTable query;
+	private Arguments args;
+	private QueryDate date;
+
+<span class="fc" id="L15">	QueryBuilderEdge(final Arguments arguments) {</span>
+<span class="fc" id="L16">		query = new QueryTable();</span>
+<span class="fc" id="L17">		this.args = arguments;</span>
+<span class="fc" id="L18">		date = new QueryDate(args.getDay(), args.getMonth(), args.getYear());</span>
+
+<span class="fc bfc" id="L20" title="All 2 branches covered.">		if (date.toString().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L21">			date = null;</span>
+		}
+<span class="fc" id="L23">	}</span>
+
+	/**
+	 * Builds the select.
+	 * 
+	 * @return the query builder
+	 */
+	@Override
+	public IQueryBuilder buildSelect() {
+<span class="fc" id="L32">		query.setSelect(new QuerySelect(new String[] {&quot;`from`&quot;, &quot;`to`&quot; }, new String[] {}, true));</span>
+<span class="fc" id="L33">		return this;</span>
+	}
+
+	/**
+	 * Builds the table.
+	 * 
+	 * @return the query builder
+	 */
+	@Override
+	public IQueryBuilder buildTable() {
+
+
+<span class="fc" id="L45">		QueryTable firstTable = new QueryTable(</span>
+				new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;id&quot; }, new String[] {&quot;`to`&quot; }),
+				&quot;`bigquery-public-data.stackoverflow.posts_questions`&quot;);
+<span class="fc" id="L48">		QueryTable secondTable = new QueryTable(</span>
+				new QuerySelect(new String[] {&quot;owner_user_id&quot;, &quot;parent_id&quot; }, new String[] {&quot;`from`&quot; }),
+				&quot;`bigquery-public-data.stackoverflow.posts_answers`&quot;);
+
+<span class="pc bpc" id="L52" title="1 of 4 branches missed.">		if (args.getType().equals(&quot;answer&quot;) &amp;&amp; args.getUser() != 0) {</span>
+<span class="fc" id="L53">			firstTable.setWhere(new QueryWhere(&quot;owner_user_id is not null&quot;, date));</span>
+
+<span class="fc" id="L55">			secondTable.setWhere(new QueryWhere(&quot;owner_user_id is not null AND &quot;</span>
+<span class="fc" id="L56">					+ &quot;parent_id is not null AND owner_user_id=&quot; + args.getUser(), date));</span>
+<span class="pc bpc" id="L57" title="2 of 4 branches missed.">		} else if (args.getType().equals(&quot;question&quot;) &amp;&amp; args.getUser() != 0) {</span>
+<span class="nc" id="L58">			firstTable.setWhere(new QueryWhere(&quot;owner_user_id=&quot; + args.getUser(), date));</span>
+
+<span class="nc" id="L60">			secondTable.setWhere(new QueryWhere(&quot;owner_user_id is not null AND &quot; + &quot;parent_id is not null&quot;,</span>
+					date));
+<span class="pc bpc" id="L62" title="2 of 4 branches missed.">		} else if (args.getType().equals(&quot;question&quot;) &amp;&amp; args.getUser() == 0) {</span>
+<span class="fc" id="L63">			firstTable.setWhere(new QueryWhere(&quot;owner_user_id is not null&quot;, date));</span>
+<span class="fc" id="L64">			secondTable.setWhere(</span>
+					new QueryWhere(&quot;owner_user_id is not null AND &quot; + &quot;parent_id is not null&quot;));
+		}
+
+<span class="fc" id="L68">		query.setTable(QueryUtils.queryJoin(firstTable.toString(), secondTable.toString(),</span>
+				&quot;id=parent_id&quot;));
+<span class="fc" id="L70">		return this;</span>
+	}
+
+	/**
+	 * Builds the where.
+	 * 
+	 * @return the query builder
+	 */
+	@Override
+	public IQueryBuilder buildWhere() {
+
+<span class="fc" id="L81">		return this;</span>
+	}
+
+	/**
+	 * Builds the group by.
+	 * 
+	 * @return the query builder
+	 */
+	@Override
+	public IQueryBuilder buildGroupBy() {
+<span class="fc" id="L91">		return this;</span>
+
+	}
+
+	/**
+	 * Builds the order by.
+	 * 
+	 * @return the query builder
+	 */
+	@Override
+	public IQueryBuilder buildOrderBy() {
+<span class="fc" id="L102">		query.setOrder(new QueryOrderBy(new String[] {&quot;`from`&quot;, &quot;`to`&quot; }));</span>
+<span class="fc" id="L103">		return this;</span>
+	}
+
+	/**
+	 * Builds the limit.
+	 * 
+	 * @return the query builder
+	 */
+	@Override
+	public IQueryBuilder buildLimit() {
+<span class="fc" id="L113">		query.setLimit(new QueryLimit(args.getLimit()));</span>
+<span class="fc" id="L114">		return this;</span>
+	}
+
+	/**
+	 * Returns the queryTable.
+	 * 
+	 * @return the QueryTable
+	 */
+	@Override
+	public QueryTable getResult() {
+<span class="fc" id="L124">		return query;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

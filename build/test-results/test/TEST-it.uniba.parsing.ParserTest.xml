@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="it.uniba.parsing.ParserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-01T13:19:12" hostname="DESKTOP-40T4KNA" time="0.007">
+<testsuite name="it.uniba.parsing.ParserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-01T17:12:23" hostname="DESKTOP-K7M5LAA" time="0.006">
   <properties/>
-  <testcase name="testParser()" classname="it.uniba.parsing.ParserTest" time="0.007"/>
+  <testcase name="testParser()" classname="it.uniba.parsing.ParserTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

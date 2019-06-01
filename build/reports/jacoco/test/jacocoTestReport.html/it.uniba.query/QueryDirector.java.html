@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryDirector.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.query</a> &gt; <span class="el_source">QueryDirector.java</span></div><h1>QueryDirector.java</h1><pre class="source lang-java linenums">package it.uniba.query;
+
+import it.uniba.parsing.Arguments;
+
+/**
+ * Builds the query calling the right builder.
+ *
+ */
+public class QueryDirector {
+
+	private IQueryBuilder builder;
+	private QueryTable query;
+
+<span class="fc" id="L14">	public QueryDirector(final Arguments args) throws ArgumentException {</span>
+<span class="fc bfc" id="L15" title="All 2 branches covered.">		if (args.getType() == null) {</span>
+<span class="fc" id="L16">			throw new ArgumentException(&quot;invalid argument &quot; + args.getType());</span>
+		}
+
+<span class="fc bfc" id="L19" title="All 2 branches covered.">		if (args.getEdge()) {</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">			if (args.getWeight()) {</span>
+<span class="fc" id="L21">				builder = new QueryBuilderEdgeWeight(args);</span>
+			} else {
+<span class="fc" id="L23">				builder = new QueryBuilderEdge(args);</span>
+			}
+		} else {
+<span class="fc bfc" id="L26" title="All 2 branches covered.">			if (args.getTaglike() == null) {</span>
+<span class="fc" id="L27">				builder = new QueryBuilderUserID(args);</span>
+			} else {
+<span class="fc" id="L29">				builder = new QueryBuilderUserIDTaglike(args);</span>
+			}
+		}
+
+<span class="fc" id="L33">	}</span>
+
+	/**
+	 * Assemble the query.
+	 * 
+	 * @return the query director
+	 */
+	public QueryDirector construct() {
+<span class="fc" id="L41">		query = builder.buildSelect().buildTable().buildWhere().buildGroupBy().buildOrderBy().buildLimit()</span>
+<span class="fc" id="L42">				.getResult();</span>
+<span class="fc" id="L43">		return this;</span>
+	}
+
+	/**
+	 * Returns the query.
+	 * 
+	 * @return the query or null if construct() is not used first
+	 */
+	public String getQuery() {
+
+<span class="fc" id="L53">		return query.toString();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

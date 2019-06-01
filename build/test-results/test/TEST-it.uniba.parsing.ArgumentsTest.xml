@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="it.uniba.parsing.ArgumentsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-01T13:19:12" hostname="DESKTOP-40T4KNA" time="0.046">
+<testsuite name="it.uniba.parsing.ArgumentsTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-06-01T17:12:23" hostname="DESKTOP-K7M5LAA" time="0.079">
   <properties/>
-  <testcase name="testArguments()" classname="it.uniba.parsing.ArgumentsTest" time="0.046"/>
+  <testcase name="testArguments()" classname="it.uniba.parsing.ArgumentsTest" time="0.06"/>
+  <testcase name="testToString()" classname="it.uniba.parsing.ArgumentsTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

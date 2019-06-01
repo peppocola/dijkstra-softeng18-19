@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="JUnit Jupiter" tests="15" skipped="0" failures="0" errors="0" time="13.183" hostname="DESKTOP-40T4KNA" timestamp="2019-06-01T15:19:10">
+<testsuite name="JUnit Jupiter" tests="16" skipped="0" failures="0" errors="0" time="11.681" hostname="DESKTOP-K7M5LAA" timestamp="2019-06-01T19:12:19">
 <properties>
 <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
 <property name="file.encoding" value="windows-1252"/>
@@ -7,29 +7,29 @@
 <property name="file.separator" value="\"/>
 <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
 <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
-<property name="java.class.path" value="C:\Users\anton\progetto1819-dijkstra\build\classes\java\test;C:\Users\anton\progetto1819-dijkstra\build\resources\test;C:\Users\anton\progetto1819-dijkstra\build\classes\java\main;C:\Users\anton\progetto1819-dijkstra\build\resources\main;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.cloud\google-cloud-bigquery\1.64.0\5f36ee28621b7eaccbfb98cf2fab1d68b51d4bef\google-cloud-bigquery-1.64.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.apis\google-api-services-sheets\v4-rev516-1.23.0\27be18389c71171d9248a0c1c84c41d57bba3267\google-api-services-sheets-v4-rev516-1.23.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.apis\google-api-services-drive\v3-rev154-1.25.0\b840aeb45c31b97e28f365667f93bbd86fd8790d\google-api-services-drive-v3-rev154-1.25.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.cloud\google-cloud-core-http\1.64.0\f45925e04324207d766dbcb12f4d58a1f86e58d9\google-cloud-core-http-1.64.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.apis\google-api-services-bigquery\v2-rev20181104-1.27.0\d539fb4b7ac318cadc344579fa6f80ae6cb8070e\google-api-services-bigquery-v2-rev20181104-1.27.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.api-client\google-api-client\1.27.0\7d498c11db92fb72521784212c953612a42e50db\google-api-client-1.27.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client-jetty\1.23.0\e0deaf34371e9ca09f9a04bcbaa854243283cae4\google-oauth-client-jetty-1.23.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.cloud\google-cloud-core\1.64.0\22175a6506b6a6c76b226a98005095ca0dc51ec2\google-cloud-core-1.64.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.api\gax-httpjson\0.57.0\db33a8de6ac64a9265472c386b7b2efb5c0a7bbc\gax-httpjson-0.57.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.api\gax\1.40.0\5c041bfeab54fcd309cb0653df16f0edf9e14be4\gax-1.40.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.protobuf\protobuf-java-util\3.6.1\35f62815e87c32b01bf1ed8c5aa3f9e33a08c2f3\protobuf-java-util-3.6.1.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.auth\google-auth-library-oauth2-http\0.13.0\c93cc4307226014ab6b7554af71308ba1a8f4f54\google-auth-library-oauth2-http-0.13.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client-appengine\1.28.0\3f3f6869fcd4080e17aa37c24a1144a55bbd64e7\google-http-client-appengine-1.28.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client-jackson2\1.28.0\ff58559c28960a7988aeab3d66dbe3a07e983187\google-http-client-jackson2-1.28.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client-java6\1.23.0\7acbddf56c4ad04efc9d3b48fe015e6250241bf0\google-oauth-client-java6-1.23.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client\1.27.0\1979e3b499f1ef49959005ca59101791361abca9\google-oauth-client-1.27.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client\1.28.0\cc5f55b32dd3458329a92ca9b3cdedfa7fbc03ef\google-http-client-1.28.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\io.opencensus\opencensus-contrib-http-util\0.18.0\76a37e4a931d5801a9e25b0c0353e5f37c4d1e8e\opencensus-contrib-http-util-0.18.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.api.grpc\proto-google-iam-v1\0.12.0\ea312c0250a5d0a7cdd1b20bc2c3259938b79855\proto-google-iam-v1-0.12.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.api\api-common\1.7.0\ea59fb8b2450999345035dec8a6f472543391766\api-common-1.7.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\26.0-android\ef69663836b339db335fde0df06fb3cd84e3742b\guava-26.0-android.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter-engine\5.0.0\811b65ec5a499732868f76c1d2a6f5786774ff82\junit-jupiter-engine-5.0.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter-api\5.0.0\f7fe1b74bef74d640493781abecafba191472ad\junit-jupiter-api-5.0.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-runner\1.0.0\441aff408cd4ac7595d877a6f11b28c2ec535eb0\junit-platform-runner-1.0.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\javax.annotation\javax.annotation-api\1.3.2\934c04d3cfef185a8008e7bf34331b79730a9d43\javax.annotation-api-1.3.2.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.mortbay.jetty\jetty\6.1.26\2f546e289fddd5b1fab1d4199fbb6e9ef43ee4b0\jetty-6.1.26.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-suite-api\1.0.0\9dafe3b1e364203e3ced0e601892184a6119fc5\junit-platform-suite-api-1.0.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-launcher\1.0.0\5602a195a442636276efefce2a4c7b418cd67e5c\junit-platform-launcher-1.0.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-engine\1.0.0\fdc6f63a689b894529ea5e9e218b65422748fd\junit-platform-engine-1.0.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-commons\1.0.0\d2e03d9b21020746d48fe45834ff7d71fbcbd7b2\junit-platform-commons-1.0.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.apiguardian\apiguardian-api\1.0.0\3ef5276905e36f4d8055fe3cb0bdcc7503ffc85d\apiguardian-api-1.0.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.opentest4j\opentest4j\1.0.0\6f09c598e9ff64bf0ce2fa7e7de49a99ba83c0b4\opentest4j-1.0.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.api.grpc\proto-google-common-protos\1.14.0\ad60859aff00b10176d00f277d9bf7474f966916\proto-google-common-protos-1.14.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.auth\google-auth-library-credentials\0.13.0\aaaef2cea944d272259f3a0315bc5deb296f5171\google-auth-library-credentials-0.13.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\io.opencensus\opencensus-api\0.18.0\b89a8f8dfd1e1e0d68d83c82a855624814b19a6e\opencensus-api-0.18.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.mortbay.jetty\jetty-util\6.1.26\e5642fe0399814e1687d55a3862aa5a3417226a9\jetty-util-6.1.26.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.mortbay.jetty\servlet-api\2.5-20081211\22bff70037e1e6fa7e6413149489552ee2064702\servlet-api-2.5-20081211.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\1.1\976d8d30bebc251db406f2bdb3eb01962b5685b3\j2objc-annotations-1.1.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.threeten\threetenbp\1.3.3\3ea31c96676ff12ab56be0b1af6fff61d1a4f1f2\threetenbp-1.3.3.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.protobuf\protobuf-java\3.6.1\d06d46ecfd92ec6d0f3b423b4cd81cb38d8b924\protobuf-java-3.6.1.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\io.grpc\grpc-context\1.14.0\77252b5f926875891aaae5629e6ab2ef968cd6c6\grpc-context-1.14.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.checkerframework\checker-compat-qual\2.5.2\dc0b20906c9e4b9724af29d11604efa574066892\checker-compat-qual-2.5.2.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.google.errorprone\error_prone_annotations\2.1.3\39b109f2cd352b2d71b52a3b5a1a9850e1dc304b\error_prone_annotations-2.1.3.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.codehaus.mojo\animal-sniffer-annotations\1.14\775b7e22fb10026eed3f86e8dc556dfafe35f2d5\animal-sniffer-annotations-1.14.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.9.6\4e393793c37c77e042ccc7be5a914ae39251b365\jackson-core-2.9.6.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-console\1.1.0\1ea376db54ab4ec0018c5e99d414e1c7c034387\junit-platform-console-1.1.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-launcher\1.1.0\ba098edde4e59cacd9225e238ea3ad9c946684ab\junit-platform-launcher-1.1.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-engine\1.1.0\2596bd4d909e7ea8d029272db4338075445d731b\junit-platform-engine-1.1.0.jar;C:\Users\anton\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-commons\1.1.0\d6aa21029f9cedfb4cc8a9e9efc0bd97987205b8\junit-platform-commons-1.1.0.jar"/>
+<property name="java.class.path" value="C:\Users\Paolo\progetto1819-dijkstra\build\classes\java\test;C:\Users\Paolo\progetto1819-dijkstra\build\resources\test;C:\Users\Paolo\progetto1819-dijkstra\build\classes\java\main;C:\Users\Paolo\progetto1819-dijkstra\build\resources\main;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.cloud\google-cloud-bigquery\1.64.0\5f36ee28621b7eaccbfb98cf2fab1d68b51d4bef\google-cloud-bigquery-1.64.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.apis\google-api-services-sheets\v4-rev516-1.23.0\27be18389c71171d9248a0c1c84c41d57bba3267\google-api-services-sheets-v4-rev516-1.23.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.apis\google-api-services-drive\v3-rev154-1.25.0\b840aeb45c31b97e28f365667f93bbd86fd8790d\google-api-services-drive-v3-rev154-1.25.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.cloud\google-cloud-core-http\1.64.0\f45925e04324207d766dbcb12f4d58a1f86e58d9\google-cloud-core-http-1.64.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.apis\google-api-services-bigquery\v2-rev20181104-1.27.0\d539fb4b7ac318cadc344579fa6f80ae6cb8070e\google-api-services-bigquery-v2-rev20181104-1.27.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.api-client\google-api-client\1.27.0\7d498c11db92fb72521784212c953612a42e50db\google-api-client-1.27.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client-jetty\1.23.0\e0deaf34371e9ca09f9a04bcbaa854243283cae4\google-oauth-client-jetty-1.23.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.cloud\google-cloud-core\1.64.0\22175a6506b6a6c76b226a98005095ca0dc51ec2\google-cloud-core-1.64.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.api\gax-httpjson\0.57.0\db33a8de6ac64a9265472c386b7b2efb5c0a7bbc\gax-httpjson-0.57.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.api\gax\1.40.0\5c041bfeab54fcd309cb0653df16f0edf9e14be4\gax-1.40.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.protobuf\protobuf-java-util\3.6.1\35f62815e87c32b01bf1ed8c5aa3f9e33a08c2f3\protobuf-java-util-3.6.1.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.auth\google-auth-library-oauth2-http\0.13.0\c93cc4307226014ab6b7554af71308ba1a8f4f54\google-auth-library-oauth2-http-0.13.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client-appengine\1.28.0\3f3f6869fcd4080e17aa37c24a1144a55bbd64e7\google-http-client-appengine-1.28.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client-jackson2\1.28.0\ff58559c28960a7988aeab3d66dbe3a07e983187\google-http-client-jackson2-1.28.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client-java6\1.23.0\7acbddf56c4ad04efc9d3b48fe015e6250241bf0\google-oauth-client-java6-1.23.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client\1.27.0\1979e3b499f1ef49959005ca59101791361abca9\google-oauth-client-1.27.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client\1.28.0\cc5f55b32dd3458329a92ca9b3cdedfa7fbc03ef\google-http-client-1.28.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\io.opencensus\opencensus-contrib-http-util\0.18.0\76a37e4a931d5801a9e25b0c0353e5f37c4d1e8e\opencensus-contrib-http-util-0.18.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.api.grpc\proto-google-iam-v1\0.12.0\ea312c0250a5d0a7cdd1b20bc2c3259938b79855\proto-google-iam-v1-0.12.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.api\api-common\1.7.0\ea59fb8b2450999345035dec8a6f472543391766\api-common-1.7.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\26.0-android\ef69663836b339db335fde0df06fb3cd84e3742b\guava-26.0-android.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter-engine\5.0.0\811b65ec5a499732868f76c1d2a6f5786774ff82\junit-jupiter-engine-5.0.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter-api\5.0.0\f7fe1b74bef74d640493781abecafba191472ad\junit-jupiter-api-5.0.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-runner\1.0.0\441aff408cd4ac7595d877a6f11b28c2ec535eb0\junit-platform-runner-1.0.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\javax.annotation\javax.annotation-api\1.3.2\934c04d3cfef185a8008e7bf34331b79730a9d43\javax.annotation-api-1.3.2.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.mortbay.jetty\jetty\6.1.26\2f546e289fddd5b1fab1d4199fbb6e9ef43ee4b0\jetty-6.1.26.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-suite-api\1.0.0\9dafe3b1e364203e3ced0e601892184a6119fc5\junit-platform-suite-api-1.0.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-launcher\1.0.0\5602a195a442636276efefce2a4c7b418cd67e5c\junit-platform-launcher-1.0.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-engine\1.0.0\fdc6f63a689b894529ea5e9e218b65422748fd\junit-platform-engine-1.0.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-commons\1.0.0\d2e03d9b21020746d48fe45834ff7d71fbcbd7b2\junit-platform-commons-1.0.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.apiguardian\apiguardian-api\1.0.0\3ef5276905e36f4d8055fe3cb0bdcc7503ffc85d\apiguardian-api-1.0.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.opentest4j\opentest4j\1.0.0\6f09c598e9ff64bf0ce2fa7e7de49a99ba83c0b4\opentest4j-1.0.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.api.grpc\proto-google-common-protos\1.14.0\ad60859aff00b10176d00f277d9bf7474f966916\proto-google-common-protos-1.14.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.auth\google-auth-library-credentials\0.13.0\aaaef2cea944d272259f3a0315bc5deb296f5171\google-auth-library-credentials-0.13.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\io.opencensus\opencensus-api\0.18.0\b89a8f8dfd1e1e0d68d83c82a855624814b19a6e\opencensus-api-0.18.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.mortbay.jetty\jetty-util\6.1.26\e5642fe0399814e1687d55a3862aa5a3417226a9\jetty-util-6.1.26.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.mortbay.jetty\servlet-api\2.5-20081211\22bff70037e1e6fa7e6413149489552ee2064702\servlet-api-2.5-20081211.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\1.1\976d8d30bebc251db406f2bdb3eb01962b5685b3\j2objc-annotations-1.1.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.threeten\threetenbp\1.3.3\3ea31c96676ff12ab56be0b1af6fff61d1a4f1f2\threetenbp-1.3.3.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.protobuf\protobuf-java\3.6.1\d06d46ecfd92ec6d0f3b423b4cd81cb38d8b924\protobuf-java-3.6.1.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\io.grpc\grpc-context\1.14.0\77252b5f926875891aaae5629e6ab2ef968cd6c6\grpc-context-1.14.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.checkerframework\checker-compat-qual\2.5.2\dc0b20906c9e4b9724af29d11604efa574066892\checker-compat-qual-2.5.2.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.google.errorprone\error_prone_annotations\2.1.3\39b109f2cd352b2d71b52a3b5a1a9850e1dc304b\error_prone_annotations-2.1.3.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.codehaus.mojo\animal-sniffer-annotations\1.14\775b7e22fb10026eed3f86e8dc556dfafe35f2d5\animal-sniffer-annotations-1.14.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.9.6\4e393793c37c77e042ccc7be5a914ae39251b365\jackson-core-2.9.6.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-console\1.1.0\1ea376db54ab4ec0018c5e99d414e1c7c034387\junit-platform-console-1.1.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-launcher\1.1.0\ba098edde4e59cacd9225e238ea3ad9c946684ab\junit-platform-launcher-1.1.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-engine\1.1.0\2596bd4d909e7ea8d029272db4338075445d731b\junit-platform-engine-1.1.0.jar;C:\Users\Paolo\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-commons\1.1.0\d6aa21029f9cedfb4cc8a9e9efc0bd97987205b8\junit-platform-commons-1.1.0.jar"/>
 <property name="java.class.version" value="52.0"/>
-<property name="java.endorsed.dirs" value="C:\Program Files\Java\jre1.8.0_211a\lib\endorsed"/>
-<property name="java.ext.dirs" value="C:\Program Files\Java\jre1.8.0_211a\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
-<property name="java.home" value="C:\Program Files\Java\jre1.8.0_211a"/>
-<property name="java.io.tmpdir" value="C:\Users\anton\AppData\Local\Temp\"/>
-<property name="java.library.path" value="C:\Program Files\Java\jre1.8.0_211a\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_211a/bin/server;C:/Program Files/Java/jre1.8.0_211a/bin;C:/Program Files/Java/jre1.8.0_211a/lib/amd64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\MinGW\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\ProgramData\anton\atom\bin;C:\Users\anton\Desktop\eclipse;;."/>
+<property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_201\jre\lib\endorsed"/>
+<property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+<property name="java.home" value="C:\Program Files\Java\jdk1.8.0_201\jre"/>
+<property name="java.io.tmpdir" value="C:\Users\Paolo\AppData\Local\Temp\"/>
+<property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_201\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jdk1.8.0_201/bin/../jre/bin/server;C:/Program Files/Java/jdk1.8.0_201/bin/../jre/bin;C:/Program Files/Java/jdk1.8.0_201/bin/../jre/lib/amd64;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\MinGW\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\Gradle\gradle-5.4\bin;C:\Program Files\Java\jdk1.8.0_201\bin;C:\Users\Paolo\AppData\Local\atom\bin;C:\Users\Paolo\Desktop\eclipse;;."/>
 <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-<property name="java.runtime.version" value="1.8.0_211-b12"/>
+<property name="java.runtime.version" value="1.8.0_201-b09"/>
 <property name="java.specification.name" value="Java Platform API Specification"/>
 <property name="java.specification.vendor" value="Oracle Corporation"/>
 <property name="java.specification.version" value="1.8"/>
 <property name="java.vendor" value="Oracle Corporation"/>
 <property name="java.vendor.url" value="http://java.oracle.com/"/>
 <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
-<property name="java.version" value="1.8.0_211"/>
+<property name="java.version" value="1.8.0_201"/>
 <property name="java.vm.info" value="mixed mode"/>
 <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
 <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
 <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
 <property name="java.vm.specification.version" value="1.8"/>
 <property name="java.vm.vendor" value="Oracle Corporation"/>
-<property name="java.vm.version" value="25.211-b12"/>
+<property name="java.vm.version" value="25.201-b09"/>
 <property name="line.separator" value="
 "/>
 <property name="os.arch" value="amd64"/>
@@ -37,39 +37,45 @@
 <property name="os.version" value="10.0"/>
 <property name="path.separator" value=";"/>
 <property name="sun.arch.data.model" value="64"/>
-<property name="sun.boot.class.path" value="C:\Program Files\Java\jre1.8.0_211a\lib\resources.jar;C:\Program Files\Java\jre1.8.0_211a\lib\rt.jar;C:\Program Files\Java\jre1.8.0_211a\lib\sunrsasign.jar;C:\Program Files\Java\jre1.8.0_211a\lib\jsse.jar;C:\Program Files\Java\jre1.8.0_211a\lib\jce.jar;C:\Program Files\Java\jre1.8.0_211a\lib\charsets.jar;C:\Program Files\Java\jre1.8.0_211a\lib\jfr.jar;C:\Program Files\Java\jre1.8.0_211a\classes"/>
-<property name="sun.boot.library.path" value="C:\Program Files\Java\jre1.8.0_211a\bin"/>
+<property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_201\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_201\jre\classes"/>
+<property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_201\jre\bin"/>
 <property name="sun.cpu.endian" value="little"/>
 <property name="sun.cpu.isalist" value="amd64"/>
 <property name="sun.desktop" value="windows"/>
 <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-<property name="sun.java.command" value="org.junit.platform.console.ConsoleLauncher --details NONE --scan-class-path C:\Users\anton\progetto1819-dijkstra\build\classes\java\main;C:\Users\anton\progetto1819-dijkstra\build\resources\main;C:\Users\anton\progetto1819-dijkstra\build\classes\java\test;C:\Users\anton\progetto1819-dijkstra\build\resources\test -n ^.*Tests?$ -T slow -e junit-jupiter --reports-dir C:\Users\anton\progetto1819-dijkstra\build\test-results\junit-platform"/>
+<property name="sun.java.command" value="org.junit.platform.console.ConsoleLauncher --details NONE --scan-class-path C:\Users\Paolo\progetto1819-dijkstra\build\classes\java\main;C:\Users\Paolo\progetto1819-dijkstra\build\resources\main;C:\Users\Paolo\progetto1819-dijkstra\build\classes\java\test;C:\Users\Paolo\progetto1819-dijkstra\build\resources\test -n ^.*Tests?$ -T slow -e junit-jupiter --reports-dir C:\Users\Paolo\progetto1819-dijkstra\build\test-results\junit-platform"/>
 <property name="sun.java.launcher" value="SUN_STANDARD"/>
 <property name="sun.jnu.encoding" value="Cp1252"/>
 <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
 <property name="sun.os.patch.level" value=""/>
 <property name="user.country" value="IT"/>
-<property name="user.dir" value="C:\Users\anton\progetto1819-dijkstra"/>
-<property name="user.home" value="C:\Users\anton"/>
+<property name="user.dir" value="C:\Users\Paolo\progetto1819-dijkstra"/>
+<property name="user.home" value="C:\Users\Paolo"/>
 <property name="user.language" value="it"/>
-<property name="user.name" value="anton"/>
+<property name="user.name" value="Paolo"/>
 <property name="user.script" value=""/>
 <property name="user.timezone" value="Europe/Berlin"/>
 <property name="user.variant" value=""/>
 </properties>
-<testcase name="testArguments()" classname="it.uniba.parsing.ArgumentsTest" time="0.023">
+<testcase name="testArguments()" classname="it.uniba.parsing.ArgumentsTest" time="0.033">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.parsing.ArgumentsTest]/[method:testArguments()]
 display-name: testArguments()
 ]]></system-out>
 </testcase>
-<testcase name="testParser()" classname="it.uniba.parsing.ParserTest" time="0.003">
+<testcase name="testToString()" classname="it.uniba.parsing.ArgumentsTest" time="0.004">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.parsing.ArgumentsTest]/[method:testToString()]
+display-name: testToString()
+]]></system-out>
+</testcase>
+<testcase name="testParser()" classname="it.uniba.parsing.ParserTest" time="0.002">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.parsing.ParserTest]/[method:testParser()]
 display-name: testParser()
 ]]></system-out>
 </testcase>
-<testcase name="testQueryYearMonthDayQuestion()" classname="it.uniba.query.QueryDirectorTest" time="0.009">
+<testcase name="testQueryYearMonthDayQuestion()" classname="it.uniba.query.QueryDirectorTest" time="0.01">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.query.QueryDirectorTest]/[method:testQueryYearMonthDayQuestion()]
 display-name: testQueryYearMonthDayQuestion()
@@ -81,19 +87,19 @@ unique-id: [engine:junit-jupiter]/[class:it.uniba.query.QueryDirectorTest]/[meth
 display-name: testQueryYearMonthDayQuestionEdgeWeight()
 ]]></system-out>
 </testcase>
-<testcase name="testQueryYearMonthDayQuestionEdge()" classname="it.uniba.query.QueryDirectorTest" time="0.002">
+<testcase name="testQueryYearMonthDayQuestionEdge()" classname="it.uniba.query.QueryDirectorTest" time="0.005">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.query.QueryDirectorTest]/[method:testQueryYearMonthDayQuestionEdge()]
 display-name: testQueryYearMonthDayQuestionEdge()
 ]]></system-out>
 </testcase>
-<testcase name="testQueryAnswerUserEdge()" classname="it.uniba.query.QueryDirectorTest" time="0.001">
+<testcase name="testQueryAnswerUserEdge()" classname="it.uniba.query.QueryDirectorTest" time="0.005">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.query.QueryDirectorTest]/[method:testQueryAnswerUserEdge()]
 display-name: testQueryAnswerUserEdge()
 ]]></system-out>
 </testcase>
-<testcase name="testQueryYearMonthDayNoType()" classname="it.uniba.query.QueryDirectorTest" time="0.002">
+<testcase name="testQueryYearMonthDayNoType()" classname="it.uniba.query.QueryDirectorTest" time="0.001">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.query.QueryDirectorTest]/[method:testQueryYearMonthDayNoType()]
 display-name: testQueryYearMonthDayNoType()
@@ -111,37 +117,37 @@ unique-id: [engine:junit-jupiter]/[class:it.uniba.query.QueryDirectorTest]/[meth
 display-name: testQueryAnswerUserEdgeWeight()
 ]]></system-out>
 </testcase>
-<testcase name="testQueryYearMonthAnswerTag()" classname="it.uniba.query.QueryDirectorTest" time="0.002">
+<testcase name="testQueryYearMonthAnswerTag()" classname="it.uniba.query.QueryDirectorTest" time="0.003">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.query.QueryDirectorTest]/[method:testQueryYearMonthAnswerTag()]
 display-name: testQueryYearMonthAnswerTag()
 ]]></system-out>
 </testcase>
-<testcase name="testQueryYearMonthPostTag()" classname="it.uniba.query.QueryDirectorTest" time="0.001">
+<testcase name="testQueryYearMonthPostTag()" classname="it.uniba.query.QueryDirectorTest" time="0.002">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.query.QueryDirectorTest]/[method:testQueryYearMonthPostTag()]
 display-name: testQueryYearMonthPostTag()
 ]]></system-out>
 </testcase>
-<testcase name="testcreateSheet()" classname="it.uniba.sotorrent.GoogleDocsUtilsTest" time="1.963">
+<testcase name="testcreateSheet()" classname="it.uniba.sotorrent.GoogleDocsUtilsTest" time="1.652">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.sotorrent.GoogleDocsUtilsTest]/[method:testcreateSheet()]
 display-name: testcreateSheet()
 ]]></system-out>
 </testcase>
-<testcase name="testgetResultThreeColumns()" classname="it.uniba.sotorrent.SOQueryTest" time="3.857">
+<testcase name="testgetResultThreeColumns()" classname="it.uniba.sotorrent.SOQueryTest" time="3.333">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.sotorrent.SOQueryTest]/[method:testgetResultThreeColumns()]
 display-name: testgetResultThreeColumns()
 ]]></system-out>
 </testcase>
-<testcase name="testgetResultTwoColumns()" classname="it.uniba.sotorrent.SOQueryTest" time="2.723">
+<testcase name="testgetResultTwoColumns()" classname="it.uniba.sotorrent.SOQueryTest" time="2.61">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.sotorrent.SOQueryTest]/[method:testgetResultTwoColumns()]
 display-name: testgetResultTwoColumns()
 ]]></system-out>
 </testcase>
-<testcase name="testgetResultOneColumn()" classname="it.uniba.sotorrent.SOQueryTest" time="3.265">
+<testcase name="testgetResultOneColumn()" classname="it.uniba.sotorrent.SOQueryTest" time="2.343">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:it.uniba.sotorrent.SOQueryTest]/[method:testgetResultOneColumn()]
 display-name: testgetResultOneColumn()
