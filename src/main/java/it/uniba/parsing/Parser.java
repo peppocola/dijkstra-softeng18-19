@@ -6,15 +6,33 @@ package it.uniba.parsing;
 public final class Parser {
 
 	/**
+	 * INSTANCE constant that holds the sole instance.
+	 */
+	private static final Parser INSTANCE = new Parser();
+
+	/**
 	 * The regular expression used to parse the arguments.
 	 */
 	private static final String REGEX = "(" + "(yyyy=(\\d){4})|" + "(mm=(\\d){1,2})|" + "(dd=(\\d){1,2})|"
 			+ "(type=(question|post|answer))|" + "(taglike=(\\w)+)|" + "(limit=(\\d)+)|"
 			+ "(edge=(yes|no))|" + "(weight=(yes|no))|" + "(user=(\\d)+)" + ")";
 
+	/**
+	 * Private (hidden) constructor.
+	 */
 	private Parser() {
 	}
-	public static Arguments parse(final String[] args) throws ParseException {
+
+	/**
+	 * Static operation that returns the sole instance.
+	 * 
+	 * @return the instance
+	 */
+	public static Parser getInstance() {
+		return INSTANCE;
+	}
+
+	public Arguments parse(final String[] args) throws ParseException {
 
 		Arguments parsed = new Arguments();
 

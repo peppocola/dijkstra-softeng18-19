@@ -22,6 +22,7 @@ import it.uniba.query.QueryResults;
 class SOQueryTest {
 	ISOQuery soq;
 
+	private static Parser parser = Parser.getInstance();
 	@Test
 	void testgetResultOneColumn() {
 		try {
@@ -34,7 +35,7 @@ class SOQueryTest {
 		Job job = null;
 		try {
 			job = soq.runQuery(new Query(
-					Parser.parse("yyyy=2016 mm=02 type=answer taglike=java limit=10".split(" "))));
+					parser.parse("yyyy=2016 mm=02 type=answer taglike=java limit=10".split(" "))));
 		} catch (InterruptedException e) {
 			fail(e.getMessage());
 		} catch (ArgumentException e) {
@@ -77,7 +78,7 @@ class SOQueryTest {
 		Job job = null;
 		try {
 			job = soq.runQuery(
-					new Query(Parser.parse("type=answer user=86 edge=yes limit=100".split(" "))));
+					new Query(parser.parse("type=answer user=86 edge=yes limit=100".split(" "))));
 		} catch (InterruptedException e) {
 			fail(e.getMessage());
 		} catch (ArgumentException e) {
@@ -121,7 +122,7 @@ class SOQueryTest {
 		Job job = null;
 		try {
 			job = soq.runQuery(new Query(
-					Parser.parse("type=answer user=86 edge=yes weight=yes limit=100".split(" "))));
+					parser.parse("type=answer user=86 edge=yes weight=yes limit=100".split(" "))));
 		} catch (InterruptedException e) {
 			fail(e.getMessage());
 		} catch (ArgumentException e) {

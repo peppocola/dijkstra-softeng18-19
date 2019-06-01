@@ -51,9 +51,9 @@ public final class AppMain {
 		}
 
 		Arguments params = null;
-
+		Parser parser = Parser.getInstance();
 		try {
-			params = Parser.parse(args);
+			params = parser.parse(args);
 		} catch (ParseException e) {
 			System.err.println(e);
 			return;
@@ -78,7 +78,7 @@ public final class AppMain {
 		final String spid = ut.createSheet("Result");
 		ut.shareSheet(spid);
 		ut.getSheetByTitle(spid);
-		ut.writeSheet("", res);
+		ut.writeSheet(spid, res);
 
 	}
 
