@@ -25,7 +25,7 @@ class QueryBuilderEdge implements IQueryBuilder {
 	/**
 	 * Builds the select.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildSelect() {
@@ -36,7 +36,7 @@ class QueryBuilderEdge implements IQueryBuilder {
 	/**
 	 * Builds the table.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildTable() {
@@ -73,7 +73,7 @@ class QueryBuilderEdge implements IQueryBuilder {
 	/**
 	 * Builds the where.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildWhere() {
@@ -84,7 +84,7 @@ class QueryBuilderEdge implements IQueryBuilder {
 	/**
 	 * Builds the group by.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildGroupBy() {
@@ -95,7 +95,7 @@ class QueryBuilderEdge implements IQueryBuilder {
 	/**
 	 * Builds the order by.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildOrderBy() {
@@ -106,7 +106,7 @@ class QueryBuilderEdge implements IQueryBuilder {
 	/**
 	 * Builds the limit.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildLimit() {
