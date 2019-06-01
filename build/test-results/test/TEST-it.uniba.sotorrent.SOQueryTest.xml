@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="it.uniba.sotorrent.SOQueryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-06-01T13:19:15" hostname="DESKTOP-40T4KNA" time="10.841">
+<testsuite name="it.uniba.sotorrent.SOQueryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-06-01T17:12:27" hostname="DESKTOP-K7M5LAA" time="9.961">
   <properties/>
-  <testcase name="testgetResultThreeColumns()" classname="it.uniba.sotorrent.SOQueryTest" time="3.814"/>
-  <testcase name="testgetResultTwoColumns()" classname="it.uniba.sotorrent.SOQueryTest" time="3.339"/>
-  <testcase name="testgetResultOneColumn()" classname="it.uniba.sotorrent.SOQueryTest" time="3.687"/>
+  <testcase name="testgetResultThreeColumns()" classname="it.uniba.sotorrent.SOQueryTest" time="3.855"/>
+  <testcase name="testgetResultTwoColumns()" classname="it.uniba.sotorrent.SOQueryTest" time="3.13"/>
+  <testcase name="testgetResultOneColumn()" classname="it.uniba.sotorrent.SOQueryTest" time="2.976"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

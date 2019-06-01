@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="it.uniba.query.QueryDirectorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2019-06-01T17:12:23" hostname="DESKTOP-K7M5LAA" time="0.082">
+  <properties/>
+  <testcase name="testQueryYearMonthDayQuestion()" classname="it.uniba.query.QueryDirectorTest" time="0.014"/>
+  <testcase name="testQueryYearMonthDayQuestionEdgeWeight()" classname="it.uniba.query.QueryDirectorTest" time="0.011"/>
+  <testcase name="testQueryYearMonthDayQuestionEdge()" classname="it.uniba.query.QueryDirectorTest" time="0.003"/>
+  <testcase name="testQueryAnswerUserEdge()" classname="it.uniba.query.QueryDirectorTest" time="0.004"/>
+  <testcase name="testQueryYearMonthDayNoType()" classname="it.uniba.query.QueryDirectorTest" time="0.002"/>
+  <testcase name="testQueryYearMonthDayPost()" classname="it.uniba.query.QueryDirectorTest" time="0.004"/>
+  <testcase name="testQueryAnswerUserEdgeWeight()" classname="it.uniba.query.QueryDirectorTest" time="0.001"/>
+  <testcase name="testQueryYearMonthAnswerTag()" classname="it.uniba.query.QueryDirectorTest" time="0.008"/>
+  <testcase name="testQueryYearMonthPostTag()" classname="it.uniba.query.QueryDirectorTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
