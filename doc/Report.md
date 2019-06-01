@@ -58,7 +58,7 @@ Nell'anno accademico 2018/2019.
 # Modello di dominio
 
 <center>
-<img width="700" alt="Modello_di_dominio.jpg" src="./drawings/Modello_di_dominio.jpg">
+<img width="700" alt="Modello_di_dominio.jpg" src="./drawings/ModelloDiDominio/Modello_di_dominio.jpg">
 </center>
 
 <br> <br>
@@ -456,7 +456,7 @@ Tale approccio ha previsto quattro sprint di durata variabile. così composti:
 [Torna all'indice...](#Indice)
 
 # Analisi retrospettiva
-- # Soddisfazioni
+- ### Soddisfazioni
     Il confronto tra i vari membri del team è stato molto utile e costruttivo. Le nostre discussioni e i nostri scambi di idee riguardo le varie soluzioni per risolvere uno stesso problema hanno insegnato molto ad ogni membro del team.
     <br> <br>
     Siamo quasi sempre riusciti a terminare il lavoro da svolgere con largo anticipo, ciò ha permesso, negli ultimi giorni dello sprint, di dedicarsi al refactoring e ad una più calma revisione del lavoro svolto.
@@ -465,11 +465,11 @@ Tale approccio ha previsto quattro sprint di durata variabile. così composti:
     <br> <br>
 
 
-- # Insoddisfazioni
+- ### Insoddisfazioni
     Essendo nuovi al metodo [**SCRUM**](https://it.wikipedia.org/wiki/Scrum_%28informatica%29) e al *Team Work* in questo ambito, è stato difficile per noi limitare la discussione del *Daily Meeting* a pochi minuti con poche domande telegrafiche. Tuttavia questi momenti sono stati molto utili al team per chiarire meglio gli obiettivi e come raggiungerli senza accumulare debito tecnico tra i vari sprint.
     Con maggiore esperienza probabilmente saremmo riusciti ad essere più diretti e precisi nel *Daily Meeting* e ad essere esaustivi in meno tempo.
 
-- # Cosa ci ha fatto impazzire
+- ### Cosa ci ha fatto impazzire
     Non auguriamo al nostro peggior nemico di dover utilizzare [***VISUAL PARADIGM***](www.visual-paradigm.com).
     Il software per la modellazione [***UML***](https://it.wikipedia.org/wiki/Unified_Modeling_Language) è risultato macchinoso e scomodo in entrambe le sue versioni (WEB e non). Spesso abbiamo avuto problemi inspiegabili (es. frecce sparite). *Visual Paradigm* non ci è sembrato molto *user-friendly*. Ha una interfaccia vecchia e poco intuitiva. È molto difficile imparare ad utilizzarlo per bene senza prima aver passato diverse ore nel reparto di neuropsichiatria. Abbiamo trovato molto più comodo (quando possibile), utilizzare una lavagna e disegnare a mano i diagrammi UML. Non avendo sempre questa possibilità ed essendo le foto alla lavagna poco "formali" per la stesura di una relazione tecnica, abbiamo dovuto utilizzarlo. Siamo molto felici di aver finito e speriamo di non rivederlo mai più.
 
