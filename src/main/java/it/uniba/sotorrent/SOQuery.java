@@ -22,7 +22,6 @@ import com.google.cloud.bigquery.JobInfo;
 import com.google.cloud.bigquery.QueryJobConfiguration;
 import com.google.cloud.bigquery.TableResult;
 
-import it.uniba.query.Query;
 import it.uniba.query.QueryResults;
 
 /**
@@ -62,7 +61,7 @@ public final class SOQuery implements ISOQuery {
 	 * @throws InterruptedException Raised on timeouts.
 	 */
 	@Override
-	public Job runQuery(final Query query) throws InterruptedException {
+	public Job runQuery(final String query) throws InterruptedException {
 		// Use standard SQL syntax for queries.
 		// See: https://cloud.google.com/bigquery/sql-reference/
 		final QueryJobConfiguration queryConfig = QueryJobConfiguration.newBuilder(query.toString())
