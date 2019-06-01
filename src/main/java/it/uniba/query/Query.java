@@ -6,7 +6,7 @@ import it.uniba.parsing.Arguments;
  * The Query class. This class creates the query using an instance of the class
  * Arguments.
  * 
- * Entity
+ * <i>&#60;Entity&#62;</i>
  */
 public class Query {
 

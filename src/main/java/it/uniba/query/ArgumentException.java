@@ -3,7 +3,7 @@ package it.uniba.query;
 /**
  * Exception thrown when the arguments are invalid.
  * 
- * noECB
+ * <i>&#60;noECB&#62;</i>
  */
 public class ArgumentException extends Exception {
 

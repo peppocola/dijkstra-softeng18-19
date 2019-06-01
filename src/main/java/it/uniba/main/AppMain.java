@@ -21,7 +21,7 @@ import it.uniba.sotorrent.SOQuery;
  * The main class for the project. It must be customized to meet the project
  * assignment specifications.
  *
- * <b>DO NOT RENAME</b> Control
+ * <b>DO NOT RENAME</b> <i>&#60;Control&#62;</i>
  */
 public final class AppMain {
 
@@ -78,7 +78,7 @@ public final class AppMain {
 		final String spid = ut.createSheet("Result");
 		ut.shareSheet(spid);
 		ut.getSheetByTitle(spid);
-		ut.writeSheet(spid, res);
+		ut.writeSheet("", res);
 
 	}
 

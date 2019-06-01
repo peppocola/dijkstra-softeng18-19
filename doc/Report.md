@@ -55,6 +55,15 @@ Nell'anno accademico 2018/2019.
 <br> <br>
 [Torna all'indice...](#Indice)
 
+# Modello di dominio
+
+<center>
+<img width="700" alt="Modello_di_dominio.jpg" src="./images/Modello_di_dominio.jpg">
+</center>
+
+<br> <br>
+[Torna all'indice...](#Indice)
+
 # Requisiti specifici
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno una domanda (Question) in un dato anno, mese e giorno
@@ -68,7 +77,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query1](https://user-images.githubusercontent.com/45401861/56416368-e945f700-6290-11e9-8e92-ff522a8ee905.png)
+  ![sprint1-query1](./images/UserStories/sprint1-query1.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno dato almeno una risposta (Answer) in un dato anno, mese e giorno.
 
@@ -82,7 +91,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query2](https://user-images.githubusercontent.com/45401861/56416534-6f623d80-6291-11e9-8608-1a87210f1125.png)
+  ![sprint1-query2](./images/UserStories/sprint1-query2.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno un Post in un dato mese, anno, giorno (un Post può essere una domanda o una risposta).
 
@@ -96,7 +105,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query3](https://user-images.githubusercontent.com/45401861/56416636-c10ac800-6291-11e9-9859-ca0374740675.png)
+  ![sprint1-query3](./images/UserStories/sprint1-query3.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno una domanda (Question) su un dato argomento (Tag) in un dato mese e anno.
 
@@ -110,7 +119,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query4](https://user-images.githubusercontent.com/45401861/56416766-22329b80-6292-11e9-8386-6a04ab4aefdd.png)
+  ![sprint1-query4](./images/UserStories/sprint1-query4.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno dato almeno una risposta (Answer) su un dato argomento (Tag) in un dato mese e anno
 
@@ -124,7 +133,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query5](https://user-images.githubusercontent.com/45401861/56416839-5efe9280-6292-11e9-86f1-1de7bfc69145.png)
+  <img src="./images/UserStories/sprint1-query5.png" alt="sprint1-query5" width="100"/>
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno un Post su un dato argomento (Tag) in un dato mese e anno (un Post può essere una domanda o una risposta)
 
@@ -138,7 +147,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query6](https://user-images.githubusercontent.com/45401861/56416909-966d3f00-6292-11e9-90da-b81b3c37cabd.png)
+  ![sprint1-query6](./images/UserStories/sprint1-query6.png)
 
 * Visualizzare la lista delle prime 100 coppie (from, to) relative a domande (Question) poste in un dato anno, mese e giorno
 
@@ -152,7 +161,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="94" alt="sprint2-query1" src="https://user-images.githubusercontent.com/45401861/57567486-5ead6f00-73da-11e9-9795-ff21b312b092.png">
+  <img width="94" alt="sprint2-query1" src="./images/UserStories/sprint2-query1.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la coppia (from, to) dove to è l'id dell'utente che ha posto la domanda e from è l'id dell'utente che ha risposto.
@@ -172,7 +181,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="88" alt="sprint2-query2" src="https://user-images.githubusercontent.com/45401861/57567491-6d942180-73da-11e9-9415-a53ff70b5f6c.png">
+  <img width="94" alt="sprint2-query2" src="./images/UserStories/sprint2-query2.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la coppia (from, to) dove to è l'id dell'utente che ha posto la domanda, specificato come valore di user, e from è l'id dell'utente che ha risposto.
@@ -192,7 +201,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="92" alt="sprint2-query3" src="https://user-images.githubusercontent.com/45401861/57567499-78e74d00-73da-11e9-9633-51b96829afd1.png">
+  <img width="94" alt="sprint2-query3" src="./images/UserStories/sprint2-query3.png">
 
 
 
@@ -213,7 +222,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="131" alt="sprint2-query4" src="https://user-images.githubusercontent.com/45401861/57567502-81d81e80-73da-11e9-9455-d678b8e30af5.png">
+  <img width="131" alt="sprint2-query4" src="./images/UserStories/sprint2-query4.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, from è l'id dell'utente che ha risposto e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
@@ -233,7 +242,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="124" alt="sprint2-query5" src="https://user-images.githubusercontent.com/45401861/57567505-8ef50d80-73da-11e9-8560-3115e10768d2.png">
+  <img width="124" alt="sprint2-query5" src="./images/UserStories/sprint2-query5.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, specificato come valore di user, from è l'id dell'utente che ha risposto e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
@@ -253,7 +262,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="124" alt="sprint2-query6" src="https://user-images.githubusercontent.com/45401861/57567510-99afa280-73da-11e9-806d-d87e990e5809.png">
+  <img width="124" alt="sprint2-query6" src="./images/UserStories/sprint2-query6.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, from è l'id dell'utente che ha risposto, specificato come valore di user, e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
@@ -297,6 +306,77 @@ Nell'anno accademico 2018/2019.
 
 * <a name="Commenti-OO"></a>
 
+# System Design
+<br><br>
+
+# Stile architetturale adottato
+
+
+Lo stile architetturale adottato segue il pattern del *Model View Presenter*.
+
+Infatti lo stile MVP è uno stile adatto per i sistemi interattivi, in cui c'è una netta separazione tra la logica di presentazione dei dati *(View)*  e la logica di business *(Model)*.<br>
+Di conseguenza si nota un'indipendenza tra le tre grandi componenti che sono alla base di questo pattern.
+
+I tre componenti principali sono:
+* **Model** : Gestisce i metodi per l'accesso ai dati. Il model nel *MVP* non comunica direttamente con *view* e non si preoccupa di come i dati vengono rappresentati, ma comunica direttamente con il *presenter*.<br>
+Nella nostra applicazione SOQuery e QueryResult lavorano sul *model*.<br>
+Nello specifico *SOQuery* si occupa del recupero dei dati tramite l'interazione con l' API GoogleBigQuery, mentre *QueryResult* specifica come i dati vengono rappresentati all'interno dell'applicazione.
+
+* **View** : Permette la rappresentazione visuale dei dati (sono previste viste multiple) e fornisce una prima interfaccia con l'utente. La view non ha informazione sulla gestione dei dati, ma si occupa solo di rappresentarli. Infatti non ha una comunicazione diretta con il *model* ma ottiene le informazioni necessarie sui dati direttamente del *presenter*.<br>
+Nel nostra caso l'interazione tra l'utente e l'applicazione è caratterizzata dall'utilizzo di un interfaccia di tipo *CLI* (Command Line Interface).<br>
+I dati vengono visualizzati su un foglio elettronico generato da *Google API Services Sheets* e condiviso da *Google API Services Drive*.
+
+* **Presenter** : Gestisce la sequenza delle interazioni tra l'applicazione e l'utente, facendo controlli sull'input e fornendo comandi per il *modello* o la *vista*.
+A differenza del *MVC* dove è presente il *controller*, nel *MVP* la presenza del *Presenter* garantisce la totale separazione tra il modello e le viste.<br>
+Infatti il Model non notifica eventi alle viste.
+Nell'applicazione le componenti che si occupano di gestire le sequenze di interazioni sono *Parser, Arguments, Query* e *GoogleDocsUtils.*<br>
+*Parser* si occupa di analizzare sintatticamente il comando fornito in input dall'utente e inserisce i dati un oggetto di tipo "Arguments".
+<br>*Arguments* contiene i parametri scritti dall'utente per costruire la query.
+<br>*Query* in base ai parametri forniti da Arguments genera la query associata al comando.
+<br>*GoogleDocsUtils* scrive i risultati delle query nel foglio elettronico che poi verrà visualizzato dell'utente.
+
+<br>
+  <img width="600" src="images/SystemDesign/MVP.PNG">
+<br><br>
+
+Il nostro MVP non è da ritenersi completamente puro, poichè non è presente una *GUI* e quindi in questo caso le componenti view hanno un ruolo minimale.
+
+
+# Diagramma dei package
+
+
+<br><br>
+  <img width="600" src="images/SystemDesign/diagramma-package.png">
+<br><br>
+
+
+# Diagramma dei componenti
+
+<br>
+<br><br>
+  <img width="600" height="" src="images/SystemDesign/Diagramma-componenti.PNG">
+<br><br>
+
+# <a name="Commenti-SD"></a>Commenti delle decisioni prese
+
+
+Inizialmente avevamo pensato di adottare come stile architetturale il *"Pipe and filter"*, ma notando che c'era un interazione frequente con le API di Google e che più volte si comunicava con gli stessi sottosistemi esterni abbiamo optato per utilizzare il *Model-View-Presenter* (**MVP**).
+
+Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta separazione tra le varie componenti del sistema che però comunicano frequentemente tra di loro.
+
+
+
+<br> <br>
+[Torna all'indice](#Indice)
+
+# Riepilogo del test
+
+<br>
+<img src="images/jacoco.PNG">
+<br>
+
+[Torna all'indice](#Indice)
+
 # Manuale utente
 
 * Esecuzione via Docker attraverso il comando:
@@ -319,6 +399,68 @@ docker run --rm softeng1819infuniba/dijkstra <options>
   - l'applicazione stampa a console l'url per acceddere via web a tale foglio di calcolo
   - il foglio di calcolo è accessibile in lettura a chiunque abbia il link
   - il foglio di calcolo può essere salvato in locale in formato CSV
+
+<br> <br>
+[Torna all'indice...](#Indice)
+
+# Processo di sviluppo e organizzazione del lavoro
+Il processo di sviluppo di **SNA4SO** è avvenuto seguendo un approccio *simil-* [***SCRUM***](https://it.wikipedia.org/wiki/Scrum_%28informatica%29).
+Tale approccio ha previsto quattro sprint di durata variabile. così composti:
+  - I professori hanno "interpretato" il ruolo del **Product Owner**.
+  Per ogni sprint, in aula e via [*Slack*](https://slack.com/intl/en-it/) ci sono stati comunicati i requisiti e le priorità sotto forma di *Definition of Done* e *User Stories*.
+  Abbiamo realizzato la *board* del progetto e, dallo Sprint 2, abbiamo anche stimato gli *Story Points* delle varie *User Story* (**Sprint Backlog**).
+  <br> <br>
+  - La *Definition of Done* definiva lo **Sprint Goal**, l'obiettivo da raggiugnere dal Team alla fine dello sprint.
+  <br> <br>
+  - La ripartizione del lavoro è avvenuta in modo flessibile. Non c'erano dei ruoli prestabiliti e ogni componente si è proposto autonomamente per lo svolgimento di un compito specifico.
+  <br> <br>
+  - La lista dei compiti da svolgere è stata realizzata tramite una lavagna virtuale fornita da [**GitHub**](https://github.com/) (*Project Board*).
+  La lavagna è stata organizzata in stile [*Kanban*](https://it.wikipedia.org/wiki/Kanban), con *4+1* colonne:
+  <br> <br>
+    - **TO DO**, compiti non ancora svolti
+    - **IN PROGRESS**, compiti in svolgimento
+    - **REVIEW**, compiti in attesa di *build* di *Travis-CI* e revisione di almeno un componente del team
+    - **READY**, compiti svolti ma in attesa di revisione da parte dei Professori
+    - **DONE**, compiti svolti che non necessitano di ulteriore revisione
+  <br> <br>
+  - Le varie attività sono state gestite seguendo il **GitHub Flow**: <br>
+    ogni *Issue* è stata assegnata ad uno o due membri del team che hanno lavorato su un *branch* per implementare cambiamenti nel software.
+    Una volta completata la fase di sviluppo e superata la fase di testing, il *branch* è stato *pushato* in remoto per permettere ad uno o più componenti del team di effettuare la fase di review e per attendere l'esito della *build* di *Travis-CI*.
+    Superate queste due fasi, venivano risolti i conflitti se presenti e poi effettuato il *merge* sul *master*.
+  <br> <br>
+  - Non ci sono stati dei veri e propri **Daily Meeting** con orario e durata specifici da rispettare. Il *Daily Meeting* è avvenuto all'inizio di ogni incontro (virtuale o fisico) del team, aveva durata variabile in base all'argomento di discussione, precedeva la ripartizione dei compiti e l'inizio del lavoro vero e proprio.
+  <br> <br>
+  - Ci sono stati degli ulteriori momenti di discussione sul lavoro svolto e da svolgere, avvenute in aula tra una lezione e l'altra, non sempre immediatamente seguiti da una fase di sviluppo.
+  <br> <br>
+  - Sia per la fase di sviluppo, sia per i *Daily Meeting*, nella maggior parte dei casi abbiamo comunicato via [**Skype**](https://www.skype.com/it/), essendo i vari componenti del team per la maggior parte pendolari e provenienti da luoghi distanti tra loro. Per lo sviluppo in *Pair-Programming* abbiamo spesso utilizzato lo strumento *condivisione schermo* di [*Skype*](https://www.skype.com/it/) che ci ha permesso di avere maggiore possibilità di aiutarci a vicenda.
+
+<br> <br>
+[Torna all'indice...](#Indice)
+
+# Analisi retrospettiva
+- # Soddisfazioni
+    Il confronto tra i vari membri del team è stato molto utile e costruttivo. Le nostre discussioni e i nostri scambi di idee riguardo le varie soluzioni per risolvere uno stesso problema hanno insegnato molto ad ogni membro del team.
+    <br> <br>
+    Siamo quasi sempre riusciti a terminare il lavoro da svolgere con largo anticipo, ciò ha permesso, negli ultimi giorni dello sprint, di dedicarsi al refactoring e ad una più calma revisione del lavoro svolto.
+    <br> <br>
+    [**GitHub**](https://github.com/) e [**Git**](https://git-scm.com/) si sono rivelati strumenti molto comodi ed utili una volta aver imparato le basi ed essersi abituati.
+    <br> <br>
+
+
+- # Insoddisfazioni
+    Essendo nuovi al metodo [**SCRUM**](https://it.wikipedia.org/wiki/Scrum_%28informatica%29) e al *Team Work* in questo ambito, è stato difficile per noi limitare la discussione del *Daily Meeting* a pochi minuti con poche domande telegrafiche. Tuttavia questi momenti sono stati molto utili al team per chiarire meglio gli obiettivi e come raggiungerli senza accumulare debito tecnico tra i vari sprint.
+    Con maggiore esperienza probabilmente saremmo riusciti ad essere più diretti e precisi nel *Daily Meeting* e ad essere esaustivi in meno tempo.
+
+- # Cosa ci ha fatto impazzire
+    Non auguriamo al nostro peggior nemico di dover utilizzare [***VISUAL PARADIGM***](www.visual-paradigm.com).
+    Il software per la modellazione [***UML***](https://it.wikipedia.org/wiki/Unified_Modeling_Language) è risultato macchinoso e scomodo in entrambe le sue versioni (WEB e non). Spesso abbiamo avuto problemi inspiegabili (es. frecce sparite). *Visual Paradigm* non ci è sembrato molto *user-friendly*. Ha una interfaccia vecchia e poco intuitiva. È molto difficile imparare ad utilizzarlo per bene senza prima aver passato diverse ore nel reparto di neuropsichiatria. Abbiamo trovato molto più comodo (quando possibile), utilizzare una lavagna e disegnare a mano i diagrammi UML. Non avendo sempre questa possibilità ed essendo le foto alla lavagna poco "formali" per la stesura di una relazione tecnica, abbiamo dovuto utilizzarlo. Siamo molto felici di aver finito e speriamo di non rivederlo mai più.
+
+    Nutriamo rancore verso l'IDE [***ECLIPSE***](https://www.eclipse.org/), che sebbene con *Formatter* e *Save Actions* ci abbia evitato molti errori di [**CheckStyle**](https://en.wikipedia.org/wiki/Checkstyle) , ci ha rovinato diversi pomeriggi mostrando errori inesistenti, poi risolti solamente chiudendolo e riaprendolo dopo varie imprecazioni. A volte abbiamo anche dovuto fare un *Clean* per risolvere errori che non avevano motivo di esistere. È stato frustrante soprattutto per alcuni del nostro team doverlo utilizzare, abituati ad un semplice text editor (vedi [**ATOM**](https://atom.io/)) e alla compilazione/esecuzione da riga di comando, anche grazie alla eperienza acquisita nel primo semestre con il prof. [*Nicola Di Mauro*](http://www.di.uniba.it/~ndm/), durante l'insegnamento di [**ASD**](http://www.di.uniba.it/~ndm/courses/asd/)
+
+    ~~~~
+    sudo apt-get autoremove eclipse*
+    rm -r ~/.eclipse/
+    ~~~~
 
 <br> <br>
 [Torna all'indice...](#Indice)

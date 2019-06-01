@@ -1,44 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.8">
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\main\AppMain.java">
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\main\AppMain.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\main\ArgumentException.java">
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\parsing\Arguments.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\main\Arguments.java">
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\parsing\ParseException.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\main\ParseException.java">
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\parsing\Parser.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\Query.java">
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\ArgumentException.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryDate.java">
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\Query.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryGroupBy.java">
-<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryDate.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryLimit.java">
-<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryGroupBy.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryOrderBy.java">
-<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryLimit.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryResults.java">
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryOrderBy.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QuerySelect.java">
-<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryResults.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryTable.java">
-<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QuerySelect.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryTaglike.java">
-<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryTable.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryWhere.java">
-<error line="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryTaglike.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\GoogleDocsUtils.java">
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryWhere.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\ISOQuery.java">
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\GoogleDocsUtils.java">
 </file>
-<file name="C:\Users\giuse\Desktop\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\SOQuery.java">
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\ISOQuery.java">
+</file>
+<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\SOQuery.java">
 </file>
 </checkstyle>

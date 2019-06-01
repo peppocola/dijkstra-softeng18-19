@@ -4,7 +4,7 @@ package it.uniba.query;
  * The QueryTaglike class. This class creates the date via toString generate a
  * piece of the query.
  * 
- * Entity
+ * <i>&#60;Entity&#62;</i>
  */
 class QueryTaglike {
 

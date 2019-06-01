@@ -38,7 +38,7 @@ import it.uniba.query.QueryResults;
  * <a href="https://developers.google.com/sheets/api/samples/">this
  * documentation</a>.
  * 
- * Bound
+ * <i>&#60;Bound&#62;</i>
  */
 
 public class GoogleDocsUtils {
@@ -105,7 +105,7 @@ public class GoogleDocsUtils {
 	private Sheets getSheetsService() throws IOException, GeneralSecurityException, URISyntaxException {
 		return new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(),
 				JacksonFactory.getDefaultInstance(), credential).setApplicationName(APPLICATION_NAME)
-				.build();
+						.build();
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class GoogleDocsUtils {
 	private Drive getDriveService() throws IOException, GeneralSecurityException, URISyntaxException {
 		return new Drive.Builder(GoogleNetHttpTransport.newTrustedTransport(),
 				JacksonFactory.getDefaultInstance(), credential).setApplicationName(APPLICATION_NAME)
-				.build();
+						.build();
 	}
 
 	/**
@@ -148,7 +148,6 @@ public class GoogleDocsUtils {
 		sheetsService.spreadsheets().get(spid).execute();
 	}
 
-
 	/**
 	 * Write results to the spreadsheet. Also, see
 	 * <a href="https://developers.google.com/sheets/api/guides/values">here</a>.
@@ -173,29 +172,27 @@ public class GoogleDocsUtils {
 				.setRequests(requests);
 		sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();
 
-		// if (null != res) {
-			int rowIndex = 1;
-			for (String[] entry : res) {
-				requests = new ArrayList<>();
-				values = new ArrayList<>();
+		int rowIndex = 1;
+		for (String[] entry : res) {
+			requests = new ArrayList<>();
+			values = new ArrayList<>();
 
-				for (String value : entry) {
-					values.add(new CellData().setUserEnteredValue(
-							new ExtendedValue().setStringValue(value)));
-				}
-
-				requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
-						.setStart(new GridCoordinate().setSheetId(0).setRowIndex(rowIndex)
-								.setColumnIndex(0))
-						.setRows(Arrays.asList(new RowData().setValues(values)))
-						.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
-
-				batchUpdateRequest = new BatchUpdateSpreadsheetRequest().setRequests(requests);
-				sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();
-
-				rowIndex++;
+			for (String value : entry) {
+				values.add(new CellData()
+						.setUserEnteredValue(new ExtendedValue().setStringValue(value)));
 			}
-		// }
+
+			requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
+					.setStart(new GridCoordinate().setSheetId(0).setRowIndex(rowIndex)
+							.setColumnIndex(0))
+					.setRows(Arrays.asList(new RowData().setValues(values)))
+					.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
+
+			batchUpdateRequest = new BatchUpdateSpreadsheetRequest().setRequests(requests);
+			sheetsService.spreadsheets().batchUpdate(spid, batchUpdateRequest).execute();
+
+			rowIndex++;
+		}
 
 	}
 
