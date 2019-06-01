@@ -14,6 +14,8 @@ class ArgumentsTest {
 
 	private static Arguments params = null;
 
+	private static Parser parser = Parser.getInstance();
+
 	@Test
 	void testArguments() {
 
@@ -22,7 +24,7 @@ class ArgumentsTest {
 		args = new String(commands).split(" ");
 
 		try {
-			params = Parser.parse(args);
+			params = parser.parse(args);
 		} catch (final ParseException p) {
 			fail(p.getMessage());
 		}

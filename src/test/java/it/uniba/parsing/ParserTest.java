@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 class ParserTest {
 	private static String commands;
 	private static String[] args;
+	private static Parser parser = Parser.getInstance();
 
 	@Test
 	void testParser() {
@@ -16,7 +17,7 @@ class ParserTest {
 		args = new String(commands).split(" ");
 
 		assertThrows(ParseException.class, () -> {
-			Parser.parse(args);
+			parser.parse(args);
 
 		});
 
