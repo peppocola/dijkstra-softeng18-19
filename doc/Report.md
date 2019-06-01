@@ -273,6 +273,61 @@ Nell'anno accademico 2018/2019.
 <br> <br>
 [Torna all'indice...](#Indice)
 
+# System Design
+
+### Stile architetturale adottato
+
+Lo stile architetturale adottato segue il pattern del <a href="https://en.wikipedia.org/wiki/Model–view–presenter">*Model View Presenter*</a>.
+
+Infatti lo stile MVP è uno stile adatto per i sistemi interattivi, in cui c'è una netta separazione tra la logica di presentazione dei dati *(View)*  e la logica di business *(Model)*.<br>
+Di conseguenza si nota un'indipendenza tra le tre grandi componenti che sono alla base di questo pattern.
+
+I tre componenti principali sono:
+* **Model** : Gestisce i metodi per l'accesso ai dati. Il model nel *MVP* non comunica direttamente con *view* e non si preoccupa di come i dati vengono rappresentati, ma comunica direttamente con il *presenter*.<br>
+Nella nostra applicazione SOQuery e QueryResult lavorano sul *model*.<br>
+Nello specifico *SOQuery* si occupa del recupero dei dati tramite l'interazione con l' API GoogleBigQuery, mentre *QueryResult* specifica come i dati vengono rappresentati all'interno dell'applicazione.
+
+* **View** : Permette la rappresentazione visuale dei dati (sono previste viste multiple) e fornisce una prima interfaccia con l'utente. La view non ha informazione sulla gestione dei dati, ma si occupa solo di rappresentarli. Infatti non ha una comunicazione diretta con il *model* ma ottiene le informazioni necessarie sui dati direttamente del *presenter*.<br>
+Nel nostra caso l'interazione tra l'utente e l'applicazione è caratterizzata dall'utilizzo di un interfaccia di tipo *CLI* (*<a href="https://it.wikipedia.org/wiki/Interfaccia_a_riga_di_comando">Command Line Interface</a>*) .<br>
+I dati vengono visualizzati su un foglio elettronico generato da *Google API Services Sheets* e condiviso da *Google API Services Drive*.
+
+* **Presenter** : Gestisce la sequenza delle interazioni tra l'applicazione e l'utente, facendo controlli sull'input e fornendo comandi per il *modello* o la *vista*.
+A differenza del <a href="https://it.wikipedia.org/wiki/Model-view-controller">*Model View Controller*</a> dove è presente il *controller*, nel *MVP* la presenza del *Presenter* garantisce la totale separazione tra il modello e le viste.<br>
+Infatti il Model non notifica eventi alle viste.
+Nell'applicazione le componenti che si occupano di gestire le sequenze di interazioni sono *Parser, Arguments, Query* e *GoogleDocsUtils.*<br>
+*Parser* si occupa di analizzare sintatticamente il comando fornito in input dall'utente e inserisce i dati un oggetto di tipo "Arguments".
+<br>*Arguments* contiene i parametri scritti dall'utente per costruire la query.
+<br>*Query* in base ai parametri forniti da Arguments genera la query associata al comando.
+<br>*GoogleDocsUtils* scrive i risultati delle query nel foglio elettronico che poi verrà visualizzato dell'utente.
+
+<br>
+  <img width="600" src="images/SystemDesign/MVP.PNG">
+<br>
+
+*Il nostro MVP non è da ritenersi completamente puro, poichè non è presente una GUI (<a href="https://it.wikipedia.org/wiki/Interfaccia_grafica">Graphical User Interface</a>) e quindi in questo caso le componenti view hanno un ruolo minimale.*
+
+### Diagramma dei package
+
+<br>
+  <img width="600" src="images/SystemDesign/diagramma-package.png">
+<br>
+
+### Diagramma dei componenti
+
+<br>
+  <img height="400" src="images/SystemDesign/diagramma-componenti.PNG">
+<br>
+
+### <a name="Commenti-SD"></a>Commenti delle decisioni prese
+
+Inizialmente avevamo pensato di adottare come stile architetturale il *"Pipe and filter"*, ma notando che c'era un interazione frequente con le API di Google e che più volte si comunicava con gli stessi sottosistemi esterni abbiamo optato per utilizzare il *Model-View-Presenter* (**MVP**).<br>
+Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta separazione tra le varie componenti del sistema che però comunicano frequentemente tra di loro.
+
+
+<br>
+[Torna all'indice...](#Indice)
+
+
 # OO Design
 <a name="Diagrammi-delle-classi-e-diagrammi-di-sequenza"></a>
 
@@ -341,82 +396,6 @@ L'ultimo design pattern utilizzato è quello del **Singleton**. La classe **Pars
 
 Il design pattern dell'iterator rappresenta un modo semplice ed intuitivo per ciclare lungo le tuple del risultato dell'esecuzione della query, mentre il design pattern del builder consente di estendere il codice anche per altre future tipologie di query, semplicemente implementando l'interfaccia **IQueryBuilder** e modificando il costruttore della classe **QueryDirector**. Inoltre il design pattern del fluent-interface rende il codice più leggibile e coinciso.
 
-# System Design
-<br><br>
-
-# Stile architetturale adottato
-
-
-Lo stile architetturale adottato segue il pattern del *Model View Presenter*.
-
-Infatti lo stile MVP è uno stile adatto per i sistemi interattivi, in cui c'è una netta separazione tra la logica di presentazione dei dati *(View)*  e la logica di business *(Model)*.<br>
-Di conseguenza si nota un'indipendenza tra le tre grandi componenti che sono alla base di questo pattern.
-
-I tre componenti principali sono:
-* **Model** : Gestisce i metodi per l'accesso ai dati. Il model nel *MVP* non comunica direttamente con *view* e non si preoccupa di come i dati vengono rappresentati, ma comunica direttamente con il *presenter*.<br>
-Nella nostra applicazione SOQuery e QueryResult lavorano sul *model*.<br>
-Nello specifico *SOQuery* si occupa del recupero dei dati tramite l'interazione con l' API GoogleBigQuery, mentre *QueryResult* specifica come i dati vengono rappresentati all'interno dell'applicazione.
-
-* **View** : Permette la rappresentazione visuale dei dati (sono previste viste multiple) e fornisce una prima interfaccia con l'utente. La view non ha informazione sulla gestione dei dati, ma si occupa solo di rappresentarli. Infatti non ha una comunicazione diretta con il *model* ma ottiene le informazioni necessarie sui dati direttamente del *presenter*.<br>
-Nel nostra caso l'interazione tra l'utente e l'applicazione è caratterizzata dall'utilizzo di un interfaccia di tipo *CLI* (Command Line Interface).<br>
-I dati vengono visualizzati su un foglio elettronico generato da *Google API Services Sheets* e condiviso da *Google API Services Drive*.
-
-* **Presenter** : Gestisce la sequenza delle interazioni tra l'applicazione e l'utente, facendo controlli sull'input e fornendo comandi per il *modello* o la *vista*.
-A differenza del *MVC* dove è presente il *controller*, nel *MVP* la presenza del *Presenter* garantisce la totale separazione tra il modello e le viste.<br>
-Infatti il Model non notifica eventi alle viste.
-Nell'applicazione le componenti che si occupano di gestire le sequenze di interazioni sono *Parser, Arguments, Query* e *GoogleDocsUtils.*<br>
-*Parser* si occupa di analizzare sintatticamente il comando fornito in input dall'utente e inserisce i dati un oggetto di tipo "Arguments".
-<br>*Arguments* contiene i parametri scritti dall'utente per costruire la query.
-<br>*Query* in base ai parametri forniti da Arguments genera la query associata al comando.
-<br>*GoogleDocsUtils* scrive i risultati delle query nel foglio elettronico che poi verrà visualizzato dell'utente.
-
-<br>
-  <img width="600" src="images/SystemDesign/MVP.PNG">
-<br><br>
-
-Il nostro MVP non è da ritenersi completamente puro, poichè non è presente una *GUI* e quindi in questo caso le componenti view hanno un ruolo minimale.
-
-
-# Diagramma dei package
-
-
-<br><br>
-  <img width="600" src="images/SystemDesign/diagramma-package.png">
-<br><br>
-
-
-# Diagramma dei componenti
-
-<br>
-<br><br>
-  <img width="600" height="" src="images/SystemDesign/Diagramma-componenti.PNG">
-<br><br>
-
-# <a name="Commenti-SD"></a>Commenti delle decisioni prese
-
-
-Inizialmente avevamo pensato di adottare come stile architetturale il *"Pipe and filter"*, ma notando che c'era un interazione frequente con le API di Google e che più volte si comunicava con gli stessi sottosistemi esterni abbiamo optato per utilizzare il *Model-View-Presenter* (**MVP**).
-
-Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta separazione tra le varie componenti del sistema che però comunicano frequentemente tra di loro.
-
-
-
-<br> <br>
-[Torna all'indice](#Indice)
-
-# Riepilogo del test
-
-<br>
-<img height=700 src="images/RiepilogoTest/coverall-List.PNG">
-
-<img height=400 src="images/RiepilogoTest/coverall.PNG">
-
-<img src="images/RiepilogoTest/jacoco.PNG">
-
-<img height="120" src="images/RiepilogoTest/TestSummary.PNG">
-<br>
-
-[Torna all'indice...](#Indice)
 
 # Manuale utente
 
