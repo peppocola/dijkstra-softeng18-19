@@ -40,7 +40,22 @@ class ArgumentsTest {
 		assertTrue(params.getWeight());
 	}
 
+	@Test
+	void testToString() {
 
+		commands = new String(
+				"yyyy=2016 mm=02 dd=11 type=question edge=yes weight=yes user=1109 taglike=java limit=100");
+		args = new String(commands).split(" ");
 
+		try {
+			params = parser.parse(args);
+		} catch (final ParseException p) {
+			fail(p.getMessage());
+		}
 
+		String compare = new String(
+				"yyyy=2016 mm=2 dd=11 type=question taglike=java limit=100 edge=true weight=true user=1109");
+
+		assertEquals(params.toString(), compare);
+	}
 }
