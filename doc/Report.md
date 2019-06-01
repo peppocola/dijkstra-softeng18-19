@@ -333,6 +333,8 @@ query = builder.buildSelect()
 	.getResult();
 ~~~
 
+L'ultimo design pattern utilizzato è quello del **Singleton**. La classe **Parser**, infatti, non è istanziabile direttamente, ma è presente un'unica istanza per tutto il programma.
+
 <a name="Commenti-OO"></a>
 
 ### Commenti
