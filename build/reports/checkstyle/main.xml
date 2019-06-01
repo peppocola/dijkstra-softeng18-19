@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.8">
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\main\AppMain.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/main/AppMain.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\parsing\Arguments.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/parsing/Arguments.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\parsing\ParseException.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/parsing/ParseException.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\parsing\Parser.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/parsing/Parser.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\ArgumentException.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/query/ArgumentException.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\Query.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/query/Query.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryDate.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/query/QueryDate.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryGroupBy.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/query/QueryGroupBy.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryLimit.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/query/QueryLimit.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryOrderBy.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/query/QueryOrderBy.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryResults.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/query/QueryResults.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QuerySelect.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/query/QuerySelect.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryTable.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/query/QueryTable.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryTaglike.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/query/QueryTaglike.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\query\QueryWhere.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/query/QueryWhere.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\GoogleDocsUtils.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/sotorrent/GoogleDocsUtils.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\ISOQuery.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/sotorrent/ISOQuery.java">
 </file>
-<file name="C:\Users\Paolo\progetto1819-dijkstra\src\main\java\it\uniba\sotorrent\SOQuery.java">
+<file name="/home/loreloc/Documents/progetto1819-dijkstra/src/main/java/it/uniba/sotorrent/SOQuery.java">
 </file>
 </checkstyle>

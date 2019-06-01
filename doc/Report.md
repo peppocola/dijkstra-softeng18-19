@@ -273,6 +273,41 @@ Nell'anno accademico 2018/2019.
 <br> <br>
 [Torna all'indice...](#Indice)
 
+# OO Design
+  <a name="Diagrammi-delle-classi-e-diagrammi-di-sequenza"></a>
+
+  * Di seguito viene presentato il diagramma delle classi ...
+
+  <center>
+  <img width="700" alt="Classes.png" src="./images/Classes.png">
+  </center>
+
+  <br> <br>
+
+  ... il diagramma di sequenza relativo alla user story 1 dello sprint 1 ...
+
+  <center>
+  <img width="700" alt="Sprint1Query1Sequence.png" src="./images/Sprint1Query1Sequence.png">
+  </center>
+
+  <br> <br>
+
+  ... e il diagramma di sequenza relativo alla user story 1 dello sprint 2.
+
+  <center>
+  <img width="700" alt="Sprint2Query1Sequence.png" src="./images/Sprint2Query1Sequence.png">
+  </center>
+
+  <br> <br>
+
+  <a name="Design-pattern-utilizzati"></a>
+
+  * I design pattern utilizzati sono quello dell'iterator. La classe QueryResults è modella il risultato di una query. E' possibile infatti iterare sulle righe che compongono la tabella risultante dall'esecuzione della query.
+ 
+  <a name="Commenti-OO"></a>
+
+  * Non sono stati individuati altri design patterns per cui valga la pena modificare il codice.
+
 # System Design
 <br><br>
 
