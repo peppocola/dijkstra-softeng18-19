@@ -303,7 +303,7 @@ Nell'anno accademico 2018/2019.
   <a name="Design-pattern-utilizzati"></a>
 
   * I design pattern utilizzati sono quello dell'iterator. La classe QueryResults è modella il risultato di una query. E' possibile infatti iterare sulle righe che compongono la tabella risultante dall'esecuzione della query.
- 
+
   <a name="Commenti-OO"></a>
 
   * Non sono stati individuati altri design patterns per cui valga la pena modificare il codice.
@@ -374,7 +374,9 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 # Riepilogo del test
 
 <br>
-<img src="images/jacoco.PNG">
+<img src="images/RiepilogoTest/jacoco.PNG">
+
+<img height="120" src="images/RiepilogoTest/TestSummary.PNG">
 <br>
 
 [Torna all'indice](#Indice)
