@@ -274,39 +274,68 @@ Nell'anno accademico 2018/2019.
 [Torna all'indice...](#Indice)
 
 # OO Design
-  <a name="Diagrammi-delle-classi-e-diagrammi-di-sequenza"></a>
+<a name="Diagrammi-delle-classi-e-diagrammi-di-sequenza"></a>
 
-  * Di seguito viene presentato il diagramma delle classi ...
+* Di seguito viene presentato il diagramma delle classi ...
 
-  <center>
-  <img width="700" alt="Classes.png" src="./images/Classes.png">
-  </center>
+<center>
+	<img width="700" alt="Classes.png" src="./images/Classes.png">
+</center>
 
-  <br> <br>
+<br> <br>
 
-  ... il diagramma di sequenza relativo alla user story 1 dello sprint 1 ...
+... il diagramma di sequenza relativo alla user story 1 dello sprint 1 ...
 
-  <center>
-  <img width="800" alt="Sprint1Query1Sequence.png" src="./images/Sprint1Query1Sequence.png">
-  </center>
+<center>
+	<img width="800" alt="Sprint1Query1Sequence.png" src="./images/Sprint1Query1Sequence.png">
+</center>
 
-  <br> <br>
+<br> <br>
 
-  ... e il diagramma di sequenza relativo alla user story 1 dello sprint 2.
+... e il diagramma di sequenza relativo alla user story 1 dello sprint 2.
 
-  <center>
-  <img width="800" alt="Sprint2Query1Sequence.png" src="./images/Sprint2Query1Sequence.png">
-  </center>
+<center>
+	<img width="800" alt="Sprint2Query1Sequence.png" src="./images/Sprint2Query1Sequence.png">
+</center>
 
-  <br> <br>
+<br> <br>
 
-  <a name="Design-pattern-utilizzati"></a>
+<a name="Design-pattern-utilizzati"></a>
 
-  * I design pattern utilizzati sono quello dell'iterator. La classe QueryResults è modella il risultato di una query. E' possibile infatti iterare sulle righe che compongono la tabella risultante dall'esecuzione della query.
+### Design patterns
+  Il primo design pattern utilizzato è quello dell'iterator. La classe **QueryResults**, che modella il risultato di una query, estende la classe *Iterable*. Pertanto gli oggetti istanziati dalla classe **QueryResults** sono iterabili lungo le righe della tabella risultante dall'esecuzione di una query.
+  <br>
+  Il secondo (ma più importante) design pattern utilizzato è quello del **Builder**. E' stata definita una interfaccia chiamata **IQueryBuilder** che modella le operazioni che ogni costruttore (builder) di query deve avere, e sono:
+* *IQueryBuilder buildSelect()*
+* *IQueryBuilder buildTable()*
+* *IQueryBuilder buildWhere()*
+* *IQueryBuilder buildGroupBy()*
+* *IQueryBuilder buildOrderBy()*
+* *IQueryBuilder buildLimit()*
+* *QueryTable getResult()*
 
-  <a name="Commenti-OO"></a>
+La classe **QueryDirector** al momento dell'istanziazione, in base ai parametri passati in input (di classe **Arguments**) istanzia una classe concreta che implementa **IQueryBuilder**. Le classi concrete tutt'ora implementate sono:
+* *QueryBuilderUserID*: responsabile di costruire le query che interrogano il database sugli user id;
+* *QueryBuilderUserIDTaglike*: analogo a *QueryBuilderUserID* ma filtra anche in base al tag;
+* *QueryBuilderEdge*: responsabile di costruire le query che interrogano il database sulle relazioni tra utenti;
+* *QueryBuilderEdgeWeight*: analogo a *QueryBuilderEdge* ma che si occupa anche di interrogare il database sul numero di relazioni tra utenti.
 
-  * Non sono stati individuati altri design patterns per cui valga la pena modificare il codice.
+Quando viene chiamato il metodo **construct()** di **QueryDirectory**, esso demanda al builder astratto di costruire la query. Dopodichè è possibile ottenere la query come stringa chiamando il metodo **getQuery()** di **QueryDirector**.
+
+Il terzo design pattern utilizzato, associatio al design pattern del **Builder** è quello del [fluent-interface](https://en.wikipedia.org/wiki/Fluent_interface). Sostanzialmente ogni operazione che **IQueryBuilder** possiede ha come valore di ritorno un oggetto d'istanza di una classe che implementa l'interfaccia **IQueryBuilder**. Questo permette di concatenare i metodi per la costruzione della query "a cascata". Ad esempio:
+~~~java
+query = builder.buildSelect()
+	.buildTable()
+	.buildWhere()
+	.buildGroupBy()
+	.buildOrderBy()
+	.buildLimit()
+	.getResult();
+~~~
+
+<a name="Commenti-OO"></a>
+
+### Commenti
 
 # System Design
 <br><br>
