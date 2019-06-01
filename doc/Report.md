@@ -302,7 +302,7 @@ Nell'anno accademico 2018/2019.
 
   <a name="Design-pattern-utilizzati"></a>
 
-  * I design pattern utilizzati sono quello dell'iterator.
+  * I design pattern utilizzati sono quello dell'iterator. La classe QueryResults è modella il risultato di una query. E' possibile infatti iterare sulle righe che compongono la tabella risultante dall'esecuzione della query.
  
   <a name="Commenti-OO"></a>
 
