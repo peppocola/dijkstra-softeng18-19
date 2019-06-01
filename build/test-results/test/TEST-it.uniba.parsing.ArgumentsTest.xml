@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="it.uniba.parsing.ArgumentsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-01T08:03:13" hostname="loreloc-pc" time="0.005">
+<testsuite name="it.uniba.parsing.ArgumentsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-01T13:19:12" hostname="DESKTOP-40T4KNA" time="0.046">
   <properties/>
-  <testcase name="testArguments()" classname="it.uniba.parsing.ArgumentsTest" time="0.005"/>
+  <testcase name="testArguments()" classname="it.uniba.parsing.ArgumentsTest" time="0.046"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
