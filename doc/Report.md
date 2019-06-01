@@ -358,7 +358,7 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 ### Design patterns
   Il primo design pattern utilizzato è quello dell'iterator. La classe **QueryResults**, che modella il risultato di una query, estende la classe *Iterable*. Pertanto gli oggetti istanziati dalla classe **QueryResults** sono iterabili lungo le righe della tabella risultante dall'esecuzione di una query.
   <br>
-  Il secondo (ma più importante) design pattern utilizzato è quello del **Builder**. E' stata definita una interfaccia chiamata **IQueryBuilder** che modella le operazioni che ogni costruttore (builder) di query deve avere, e sono:
+  Il secondo (ma più importante) design pattern utilizzato è quello del [**Builder**](https://it.wikipedia.org/wiki/Builder). E' stata definita una interfaccia chiamata **IQueryBuilder** che modella le operazioni che ogni costruttore (builder) di query deve avere, e sono:
 * *IQueryBuilder buildSelect()*
 * *IQueryBuilder buildTable()*
 * *IQueryBuilder buildWhere()*
