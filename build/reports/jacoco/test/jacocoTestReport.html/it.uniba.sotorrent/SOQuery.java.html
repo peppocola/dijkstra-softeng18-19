@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SOQuery.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.sotorrent</a> &gt; <span class="el_source">SOQuery.java</span></div><h1>SOQuery.java</h1><pre class="source lang-java linenums">/**
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SOQuery.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sna4so</a> &gt; <a href="index.source.html" class="el_package">it.uniba.sotorrent</a> &gt; <span class="el_source">SOQuery.java</span></div><h1>SOQuery.java</h1><pre class="source lang-java linenums">/**
  *
  */
 package it.uniba.sotorrent;
@@ -22,7 +22,6 @@ import com.google.cloud.bigquery.JobInfo;
 import com.google.cloud.bigquery.QueryJobConfiguration;
 import com.google.cloud.bigquery.TableResult;
 
-import it.uniba.query.Query;
 import it.uniba.query.QueryResults;
 
 /**
@@ -48,11 +47,11 @@ public final class SOQuery implements ISOQuery {
 	 * @throws FileNotFoundException The remote JSON file with credential is 404.
 	 * @throws IOException           Malformed JSON file.
 	 */
-<span class="fc" id="L51">	public SOQuery() throws FileNotFoundException, IOException {</span>
-<span class="fc" id="L52">		bigquery = BigQueryOptions.newBuilder().setProjectId(&quot;enduring-button-237211&quot;)</span>
-<span class="fc" id="L53">				.setCredentials(ServiceAccountCredentials.fromStream(new URL(URL).openStream())).build()</span>
-<span class="fc" id="L54">				.getService();</span>
-<span class="fc" id="L55">	}</span>
+<span class="fc" id="L50">	public SOQuery() throws FileNotFoundException, IOException {</span>
+<span class="fc" id="L51">		bigquery = BigQueryOptions.newBuilder().setProjectId(&quot;enduring-button-237211&quot;)</span>
+<span class="fc" id="L52">				.setCredentials(ServiceAccountCredentials.fromStream(new URL(URL).openStream())).build()</span>
+<span class="fc" id="L53">				.getService();</span>
+<span class="fc" id="L54">	}</span>
 
 	/**
 	 * Starts the query.
@@ -62,28 +61,28 @@ public final class SOQuery implements ISOQuery {
 	 * @throws InterruptedException Raised on timeouts.
 	 */
 	@Override
-	public Job runQuery(final Query query) throws InterruptedException {
+	public Job runQuery(final String query) throws InterruptedException {
 		// Use standard SQL syntax for queries.
 		// See: https://cloud.google.com/bigquery/sql-reference/
-<span class="fc" id="L68">		final QueryJobConfiguration queryConfig = QueryJobConfiguration.newBuilder(query.toString())</span>
-<span class="fc" id="L69">				.setUseLegacySql(false).build();</span>
+<span class="fc" id="L67">		final QueryJobConfiguration queryConfig = QueryJobConfiguration.newBuilder(query.toString())</span>
+<span class="fc" id="L68">				.setUseLegacySql(false).build();</span>
 
 		// Create a job ID so that we can safely retry.
-<span class="fc" id="L72">		final JobId jobId = JobId.of(UUID.randomUUID().toString());</span>
-<span class="fc" id="L73">		Job queryJob = bigquery.create(JobInfo.newBuilder(queryConfig).setJobId(jobId).build());</span>
+<span class="fc" id="L71">		final JobId jobId = JobId.of(UUID.randomUUID().toString());</span>
+<span class="fc" id="L72">		Job queryJob = bigquery.create(JobInfo.newBuilder(queryConfig).setJobId(jobId).build());</span>
 
 		// Wait for the query to complete.
-<span class="fc" id="L76">		queryJob = queryJob.waitFor();</span>
+<span class="fc" id="L75">		queryJob = queryJob.waitFor();</span>
 
 		// Check for errors
-<span class="pc bpc" id="L79" title="1 of 2 branches missed.">		if (queryJob == null) {</span>
-<span class="nc" id="L80">			throw new RuntimeException(&quot;Job no longer exists&quot;);</span>
-<span class="pc bpc" id="L81" title="1 of 2 branches missed.">		} else if (queryJob.getStatus().getError() != null) {</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">		if (queryJob == null) {</span>
+<span class="nc" id="L79">			throw new RuntimeException(&quot;Job no longer exists&quot;);</span>
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">		} else if (queryJob.getStatus().getError() != null) {</span>
 			// You can also look at queryJob.getStatus().getExecutionErrors() for all
 			// errors, not just the latest one.
-<span class="nc" id="L84">			throw new RuntimeException(queryJob.getStatus().getError().toString());</span>
+<span class="nc" id="L83">			throw new RuntimeException(queryJob.getStatus().getError().toString());</span>
 		}
-<span class="fc" id="L86">		return queryJob;</span>
+<span class="fc" id="L85">		return queryJob;</span>
 	}
 
 	/**
@@ -97,28 +96,28 @@ public final class SOQuery implements ISOQuery {
 	@Override
 	public QueryResults getResults(final Job queryJob) throws JobException, InterruptedException {
 
-<span class="fc" id="L100">		QueryResults results = new QueryResults();</span>
+<span class="fc" id="L99">		QueryResults results = new QueryResults();</span>
 
-<span class="pc bpc" id="L102" title="1 of 2 branches missed.">		if (queryJob != null) {</span>
-<span class="fc" id="L103">			final TableResult result = queryJob.getQueryResults();</span>
-<span class="fc" id="L104">			int size = result.getSchema().getFields().size();</span>
-<span class="fc" id="L105">			List&lt;String&gt; columns = new ArrayList&lt;String&gt;();</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">		if (queryJob != null) {</span>
+<span class="fc" id="L102">			final TableResult result = queryJob.getQueryResults();</span>
+<span class="fc" id="L103">			int size = result.getSchema().getFields().size();</span>
+<span class="fc" id="L104">			List&lt;String&gt; columns = new ArrayList&lt;String&gt;();</span>
 
-<span class="fc bfc" id="L107" title="All 2 branches covered.">			for (final Field row : result.getSchema().getFields()) {</span>
-<span class="fc" id="L108">				columns.add(row.getName());</span>
-<span class="fc" id="L109">			}</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">			for (final Field row : result.getSchema().getFields()) {</span>
+<span class="fc" id="L107">				columns.add(row.getName());</span>
+<span class="fc" id="L108">			}</span>
 
-<span class="fc" id="L111">			results.setColumns(columns);</span>
+<span class="fc" id="L110">			results.setColumns(columns);</span>
 
-<span class="fc bfc" id="L113" title="All 2 branches covered.">			for (final FieldValueList row : result.iterateAll()) {</span>
-<span class="fc" id="L114">				String[] tuple = new String[size];</span>
-<span class="fc bfc" id="L115" title="All 2 branches covered.">				for (int i = 0; i &lt; size; i++) {</span>
-<span class="fc" id="L116">					tuple[i] = row.get(i).getStringValue();</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">			for (final FieldValueList row : result.iterateAll()) {</span>
+<span class="fc" id="L113">				String[] tuple = new String[size];</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">				for (int i = 0; i &lt; size; i++) {</span>
+<span class="fc" id="L115">					tuple[i] = row.get(i).getStringValue();</span>
 				}
-<span class="fc" id="L118">				results.addTuple(tuple);</span>
-<span class="fc" id="L119">			}</span>
+<span class="fc" id="L117">				results.addTuple(tuple);</span>
+<span class="fc" id="L118">			}</span>
 		}
-<span class="fc" id="L121">		return results;</span>
+<span class="fc" id="L120">		return results;</span>
 	}
 
 }
