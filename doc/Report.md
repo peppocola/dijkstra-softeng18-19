@@ -279,7 +279,7 @@ Nell'anno accademico 2018/2019.
 * Di seguito viene presentato il diagramma delle classi ...
 
 <center>
-	<img width="700" alt="Classes.png" src="./images/Classes.png">
+	<img width="900" alt="Classes.png" src="./images/Classes.png">
 </center>
 
 <br> <br>
@@ -287,7 +287,7 @@ Nell'anno accademico 2018/2019.
 ... il diagramma di sequenza relativo alla user story 1 dello sprint 1 ...
 
 <center>
-	<img width="800" alt="Sprint1Query1Sequence.png" src="./images/Sprint1Query1Sequence.png">
+	<img width="900" alt="Sprint1Query1Sequence.png" src="./images/Sprint1Query1Sequence.png">
 </center>
 
 <br> <br>
@@ -295,7 +295,7 @@ Nell'anno accademico 2018/2019.
 ... e il diagramma di sequenza relativo alla user story 1 dello sprint 2.
 
 <center>
-	<img width="800" alt="Sprint2Query1Sequence.png" src="./images/Sprint2Query1Sequence.png">
+	<img width="900" alt="Sprint2Query1Sequence.png" src="./images/Sprint2Query1Sequence.png">
 </center>
 
 <br> <br>
