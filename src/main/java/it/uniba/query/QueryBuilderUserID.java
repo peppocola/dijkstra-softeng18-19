@@ -60,7 +60,7 @@ class QueryBuilderUserID implements IQueryBuilder {
 					"`bigquery-public-data.stackoverflow.posts_questions`");
 			secondTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 
-			query.setTable(QueryUtils.getInstance().queryUnionAll(firstTable.toString(),
+			query.setTable(QueryUtils.queryUnionAll(firstTable.toString(),
 					secondTable.toString()));
 		}
 		return this;

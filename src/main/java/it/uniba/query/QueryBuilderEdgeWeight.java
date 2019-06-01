@@ -67,7 +67,7 @@ class QueryBuilderEdgeWeight implements IQueryBuilder {
 					new QueryWhere("owner_user_id is not null AND " + "parent_id is not null"));
 		}
 
-		query.setTable(QueryUtils.getInstance().queryJoin(firstTable.toString(), secondTable.toString(),
+		query.setTable(QueryUtils.queryJoin(firstTable.toString(), secondTable.toString(),
 				"id=parent_id"));
 		return this;
 	}

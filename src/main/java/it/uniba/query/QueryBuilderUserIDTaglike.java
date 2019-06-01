@@ -56,7 +56,7 @@ class QueryBuilderUserIDTaglike implements IQueryBuilder {
 			firstTable.setWhere(new QueryWhere("owner_user_id is not null", date));
 			secondTable.setWhere(new QueryWhere("id is not null", taglike));
 
-			query.setTable(QueryUtils.getInstance().queryJoin(firstTable.toString(), secondTable.toString(),
+			query.setTable(QueryUtils.queryJoin(firstTable.toString(), secondTable.toString(),
 					"parent_id=id"));
 		} else if (args.getType().equals("post") && args.getUser() == 0) {
 			firstTable.setWhere(new QueryWhere("owner_user_id is not null", date));
@@ -64,10 +64,10 @@ class QueryBuilderUserIDTaglike implements IQueryBuilder {
 			secondTable.setWhere(new QueryWhere("id is not null", taglike));
 
 			thirdTable.setWhere(new QueryWhere("owner_user_id is not null", date, taglike));
-			String joinTable = QueryUtils.getInstance().queryJoin(firstTable.toString(),
+			String joinTable = QueryUtils.queryJoin(firstTable.toString(),
 					secondTable.toString(), "parent_id=id");
 
-			query.setTable(QueryUtils.getInstance().queryUnionAll(joinTable, thirdTable.toString()));
+			query.setTable(QueryUtils.queryUnionAll(joinTable, thirdTable.toString()));
 
 		} else if (args.getType().equals("question") && args.getUser() == 0) {
 			query.setTable("`bigquery-public-data.stackoverflow.posts_questions`");
