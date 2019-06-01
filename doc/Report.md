@@ -327,7 +327,7 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 [Torna all'indice...](#Indice)
 
 # OO Design
-<a name="Diagrammi-delle-classi-e-diagrammi-di-sequenza"></a>
+### <a name="Diagrammi-delle-classi-e-diagrammi-di-sequenza"></a> Diagrammi delle classi e diagrammi di sequenza
 
 * Di seguito viene presentato il diagramma delle classi ...
 
@@ -393,6 +393,8 @@ L'ultimo design pattern utilizzato è quello del **Singleton**. La classe **Pars
 ### Commenti
 
 Il design pattern dell'iterator rappresenta un modo semplice ed intuitivo per ciclare lungo le tuple del risultato dell'esecuzione della query, mentre il design pattern del builder consente di estendere il codice anche per altre future tipologie di query, semplicemente implementando l'interfaccia **IQueryBuilder** e modificando il costruttore della classe **QueryDirector**. Inoltre il design pattern del fluent-interface rende il codice più leggibile e coinciso.
+
+***N.B.***: C'è un unico diagramma delle classi perchè sarebbe stato ridondante riportarne due identici.
 
 <br><br>
 [Torna all'indice...](#Indice)
