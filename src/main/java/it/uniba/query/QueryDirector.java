@@ -34,6 +34,8 @@ public class QueryDirector {
 
 	/**
 	 * Assemble the query.
+	 * 
+	 * @return the query director
 	 */
 	public QueryDirector construct() {
 		query = builder.buildSelect().buildTable().buildWhere().buildGroupBy().buildOrderBy().buildLimit()

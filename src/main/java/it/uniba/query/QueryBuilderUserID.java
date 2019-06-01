@@ -26,7 +26,7 @@ class QueryBuilderUserID implements IQueryBuilder {
 	/**
 	 * Builds the select.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildSelect() {
@@ -37,7 +37,7 @@ class QueryBuilderUserID implements IQueryBuilder {
 	/**
 	 * Builds the table.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildTable() {
@@ -69,7 +69,7 @@ class QueryBuilderUserID implements IQueryBuilder {
 	/**
 	 * Builds the where.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildWhere() {
@@ -88,7 +88,7 @@ class QueryBuilderUserID implements IQueryBuilder {
 	/**
 	 * Builds the group by.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildGroupBy() {
@@ -99,7 +99,7 @@ class QueryBuilderUserID implements IQueryBuilder {
 	/**
 	 * Builds the order by.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildOrderBy() {
@@ -110,7 +110,7 @@ class QueryBuilderUserID implements IQueryBuilder {
 	/**
 	 * Builds the limit.
 	 * 
-	 * @return
+	 * @return the query builder
 	 */
 	@Override
 	public IQueryBuilder buildLimit() {
