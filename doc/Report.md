@@ -320,7 +320,7 @@ La classe **QueryDirector** al momento dell'istanziazione, in base ai parametri 
 * *QueryBuilderEdge*: responsabile di costruire le query che interrogano il database sulle relazioni tra utenti;
 * *QueryBuilderEdgeWeight*: analogo a *QueryBuilderEdge* ma che si occupa anche di interrogare il database sul numero di relazioni tra utenti.
 
-Quando viene chiamato il metodo **construct()** di **QueryDirectory**, esso demanda al builder astratto di costruire la query. Dopodichè è possibile ottenere la query come stringa chiamando il metodo **getQuery()** di **QueryDirector**.
+Quando viene chiamato il metodo **construct()** di **QueryDirector**, esso demanda al builder astratto di costruire la query. Dopodichè è possibile ottenere la query come stringa chiamando il metodo **getQuery()** di **QueryDirector**.
 
 Il terzo design pattern utilizzato, associatio al design pattern del **Builder** è quello del [fluent-interface](https://en.wikipedia.org/wiki/Fluent_interface). Sostanzialmente ogni operazione che **IQueryBuilder** possiede ha come valore di ritorno un oggetto d'istanza di una classe che implementa l'interfaccia **IQueryBuilder**. Questo permette di concatenare i metodi per la costruzione della query "a cascata". Ad esempio:
 ~~~java
