@@ -60,7 +60,7 @@ Nell'anno accademico 2018/2019.
 # Modello di dominio
 
 <center>
-<img width="700" alt="Modello_di_dominio.jpg" src="./drawings/ModelloDiDominio/Modello_di_dominio.jpg">
+<img width="700" alt="Modello_di_dominio.jpg" src="./doc/drawings/ModelloDiDominio/Modello_di_dominio.jpg">
 </center>
 
 <br> <br>
@@ -79,7 +79,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query1](./drawings/UserStories/sprint1-query1.png)
+  ![sprint1-query1](./doc/drawings/UserStories/sprint1-query1.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno dato almeno una risposta (Answer) in un dato anno, mese e giorno.
 
@@ -93,7 +93,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query2](./drawings/UserStories/sprint1-query2.png)
+  ![sprint1-query2](./doc/drawings/UserStories/sprint1-query2.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno un Post in un dato mese, anno, giorno (un Post può essere una domanda o una risposta).
 
@@ -107,7 +107,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query3](./drawings/UserStories/sprint1-query3.png)
+  ![sprint1-query3](./doc/drawings/UserStories/sprint1-query3.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno una domanda (Question) su un dato argomento (Tag) in un dato mese e anno.
 
@@ -121,7 +121,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query4](./drawings/UserStories/sprint1-query4.png)
+  ![sprint1-query4](./doc/drawings/UserStories/sprint1-query4.png)
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno dato almeno una risposta (Answer) su un dato argomento (Tag) in un dato mese e anno
 
@@ -135,7 +135,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  <img src="./drawings/UserStories/sprint1-query5.png" alt="sprint1-query5" width="100"/>
+  <img src="./doc/drawings/UserStories/sprint1-query5.png" alt="sprint1-query5" width="100"/>
 
 * Visualizzare la lista dei primi 100 id utente (User) che hanno fatto almeno un Post su un dato argomento (Tag) in un dato mese e anno (un Post può essere una domanda o una risposta)
 
@@ -149,7 +149,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista di owner_user_id univoci e non nulli, ordinati in modo crescente come da esempio in figura:
 
-  ![sprint1-query6](./drawings/UserStories/sprint1-query6.png)
+  ![sprint1-query6](./doc/drawings/UserStories/sprint1-query6.png)
 
 * Visualizzare la lista delle prime 100 coppie (from, to) relative a domande (Question) poste in un dato anno, mese e giorno
 
@@ -163,7 +163,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="94" alt="sprint2-query1" src="./drawings/UserStories/sprint2-query1.png">
+  <img width="94" alt="sprint2-query1" src="./doc/drawings/UserStories/sprint2-query1.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la coppia (from, to) dove to è l'id dell'utente che ha posto la domanda e from è l'id dell'utente che ha risposto.
@@ -183,7 +183,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="94" alt="sprint2-query2" src="./drawings/UserStories/sprint2-query2.png">
+  <img width="94" alt="sprint2-query2" src="./doc/drawings/UserStories/sprint2-query2.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la coppia (from, to) dove to è l'id dell'utente che ha posto la domanda, specificato come valore di user, e from è l'id dell'utente che ha risposto.
@@ -203,7 +203,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="94" alt="sprint2-query3" src="./drawings/UserStories/sprint2-query3.png">
+  <img width="94" alt="sprint2-query3" src="./doc/drawings/UserStories/sprint2-query3.png">
 
 
 
@@ -224,7 +224,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="131" alt="sprint2-query4" src="./drawings/UserStories/sprint2-query4.png">
+  <img width="131" alt="sprint2-query4" src="./doc/drawings/UserStories/sprint2-query4.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, from è l'id dell'utente che ha risposto e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
@@ -244,7 +244,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="124" alt="sprint2-query5" src="./drawings/UserStories/sprint2-query5.png">
+  <img width="124" alt="sprint2-query5" src="./doc/drawings/UserStories/sprint2-query5.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, specificato come valore di user, from è l'id dell'utente che ha risposto e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
@@ -264,7 +264,7 @@ Nell'anno accademico 2018/2019.
 
   il risultato è una lista come da esempio in figura:
 
-  <img width="124" alt="sprint2-query6" src="./drawings/UserStories/sprint2-query6.png">
+  <img width="124" alt="sprint2-query6" src="./doc/drawings/UserStories/sprint2-query6.png">
 
 
   - Verificare che per ogni domanda e risposta sia visualizzata una riga con la tripla (from, to, weight) dove to è l'id dell'utente che ha posto la domanda, from è l'id dell'utente che ha risposto, specificato come valore di user, e weight è il peso associato al numero di volte che l'utente from ha risposto all'utente to.
@@ -303,7 +303,7 @@ Nell'applicazione le componenti che si occupano di gestire le sequenze di intera
 <br>*GoogleDocsUtils* scrive i risultati delle query nel foglio elettronico che poi verrà visualizzato dell'utente.
 
 <br>
-  <img width="600" src="drawings/SystemDesign/MVP.PNG">
+  <img width="600" src="doc/drawings/SystemDesign/MVP.PNG">
 <br>
 
 *Il nostro MVP non è da ritenersi completamente puro, poichè non è presente una GUI (<a href="https://it.wikipedia.org/wiki/Interfaccia_grafica">Graphical User Interface</a>) e quindi in questo caso le componenti view hanno un ruolo minimale.*
@@ -311,13 +311,13 @@ Nell'applicazione le componenti che si occupano di gestire le sequenze di intera
 ### Diagramma dei package
 
 <br>
-  <img width="600" src="drawings/SystemDesign/diagramma-package.png">
+  <img width="600" src="doc/drawings/SystemDesign/diagramma-package.png">
 <br>
 
 ### Diagramma dei componenti
 
 <br>
-  <img height="400" src="drawings/SystemDesign/diagramma-componenti.PNG">
+  <img height="400" src="doc/drawings/SystemDesign/diagramma-componenti.PNG">
 <br>
 
 ### <a name="Commenti-SD"></a>Commenti delle decisioni prese
@@ -334,7 +334,7 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 * Di seguito viene presentato il diagramma delle classi ...
 
 <center>
-	<img width="900" alt="Classes.png" src="./drawings/OODesign/Classes.png">
+	<img width="900" alt="Classes.png" src="./doc/drawings/OODesign/Classes.png">
 </center>
 
 <br> <br>
@@ -342,7 +342,7 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 ... il diagramma di sequenza relativo alla user story 1 dello sprint 1 ...
 
 <center>
-	<img width="900" alt="Sprint1Query1Sequence.png" src="./drawings/OODesign/Sprint1Query1Sequence.png">
+	<img width="900" alt="Sprint1Query1Sequence.png" src="./doc/drawings/OODesign/Sprint1Query1Sequence.png">
 </center>
 
 <br> <br>
@@ -350,7 +350,7 @@ Infatti lo stile MVP è adatto per i sistemi interattivi, in cui c'è una netta 
 ... e il diagramma di sequenza relativo alla user story 1 dello sprint 2.
 
 <center>
-	<img width="900" alt="Sprint2Query1Sequence.png" src="./drawings/OODesign/Sprint2Query1Sequence.png">
+	<img width="900" alt="Sprint2Query1Sequence.png" src="./doc/drawings/OODesign/Sprint2Query1Sequence.png">
 </center>
 
 <br> <br>
@@ -405,13 +405,13 @@ Il design pattern dell'iterator rappresenta un modo semplice ed intuitivo per ci
 
 <br>
 
-<img height=700 src="drawings/RiepilogoTest/coverall-List.PNG">
+<img height=700 src="doc/drawings/RiepilogoTest/coverall-List.PNG">
 
-<img height=400 src="drawings/RiepilogoTest/coverall.PNG">
+<img height=400 src="doc/drawings/RiepilogoTest/coverall.PNG">
 
-<img src="drawings/RiepilogoTest/jacoco.PNG">
+<img src="doc/drawings/RiepilogoTest/jacoco.PNG">
 
-<img height="120" src="drawings/RiepilogoTest/TestSummary.PNG">
+<img height="120" src="doc/drawings/RiepilogoTest/TestSummary.PNG">
 
 <br><br>
 [Torna all'indice...](#Indice)
